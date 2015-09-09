@@ -5,12 +5,9 @@
       <br><a href="mailto:{{ site.email }}">{{ site.email }}</a>
       <br>314 West Village H
       </p>
-      <p><a href="{{ '/ntuck-pgp.txt' | prepend: site.baseurl }}">PGP Key</a></p>
     </div>
 
     <div class="col-sm-6">
-      <p>Copyright &copy; 2014-2015 Nat Tuck</p>
-          
       {% if site.github_username %}
       <p>      
       <a href="https://github.com/{{ site.github_username }}">
@@ -24,8 +21,8 @@
         </a>
       </p>
       {% endif %}
-
-
+      
+      <p><a href="{{ '/ntuck-pgp.txt' | prepend: site.baseurl }}">PGP Key</a></p>
     </div>
   </div>
 </div>
