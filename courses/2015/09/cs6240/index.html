@@ -1,0 +1,331 @@
+---
+layout: default
+title: CS 6240 - Fall 2015
+---
+
+<div class="row">
+  <div class="col-sm-12">
+    <h1>CS 6240 - Parallel Data Processing in MapReduce</h1>
+
+    <h2>Excercise Data</h2>
+
+    <ul>
+      <li><a href="match-data/">Simple Matching</a></li>
+    </ul>
+
+    <h2>Overview</h2>
+
+    <p>Graduate course. This course covers techniques for analyzing very large
+    data sets. We introduce the MapReduce programming model and the core
+    technologies it relies on in practice, such as a distributed file system.
+    Related approaches and technologies from distributed databases and Cloud
+    Computing will also be introduced. Particular emphasis is placed on
+    practical examples and hands-on programming experience. Both plain
+    MapReduce and database-inspired advanced programming models running on top
+    of a MapReduce infrastructure will be used.</p>
+
+    <!--
+    <p>This course will be based on the existing course by 
+      <a href="http://www.ccs.neu.edu/home/mirek/">Prof. Mirek Riedewald</a>.
+    For now, see 
+     <a href="http://www.ccs.neu.edu/home/mirek/classes/2015-S-CS6240/index.htm">
+       his course page.</a></p>
+    -->
+
+   <h2>Essential Resources</h2>
+
+   <ul>
+     <li><a href="https://nuonline.neu.edu">NEU Online Blackboard</a></li>
+     <li><a href="https://piazza.com/northeastern/fall2015/6240">Piazza</a></li>
+   </ul>
+
+   <h2>Instructor Info</h2>
+
+   <ul>
+     <li>Instructor: Nat Tuck</li>
+     <li>Email: <a href="mailto:ntuck@ccs.neu.edu">ntuck@ccs.neu.edu</a></li>
+     <li>Office: 314 WVH</li>
+     <li>Office Hours: TBA</li>
+     <li>TA: TBA</li>
+   </ul>
+
+   <h2>Office Hours</h2>
+
+   <table class="table table-striped">
+     <thead>
+       <th>Name</th>
+       <th>Time</th>
+       <th>Room</th>
+       <th>Email</th>
+     </thead>
+     <tr>
+       <td>Nat Tuck</td>
+       <td>Monday, 3pm-4pm</td>
+       <td>WVH 314</td>
+       <td>ntuck@ccs</td>
+     </tr>
+     <tr>
+       <td>Rundong Li</td>
+       <td>Wednesdays, 3:00-4:00 PM</td>
+       <td>WVH Room 472</td>
+       <td>rundong@ccs</td>
+     </tr>
+     <tr>
+       <td>Pooja Chitrakar</td>
+       <td>Thursdays,  6:30-7:30 PM</td>
+       <td>CCIS Lab</td>
+       <td>chitrap@ccs</td>
+     </tr>
+     <tr>
+       <td>Nikite Gulve</td>
+       <td>Fridays, 12:00-1:00 PM</td>
+       <td>WVH Main Lab</td>
+       <td>nik2709@ccs.neu.edu</td>
+     </tr>
+   </table>
+
+   <h2>Policies</h2>
+
+   <ul>
+     <li>There are no deadline extensions or make-up assignments/exams unless you have
+     a major emergency with appropriate documentation.</li>
+     <li>Please note that you are not allowed to share homework solutions with
+     others, or copy anybody else’s homework entirely or in parts. We will
+     check for originality during the grading process. Violations will be
+     reported both to OSCCR and to the college, and will likely result in an F
+     for the course.</li> 
+   </ul>
+
+   <h2>Class Split</h2>
+
+   <p>This is a "partially flipped" class. For most weeks you will only need to come
+   to one lecture a week. You will be assigned Tuesday or Friday randomly.</p>
+
+   <h2>Schedule</h2>
+
+   <table class="table table-striped">
+     <thead>
+       <tr>
+         <th>Week #</th>
+         <th>Dates</th>
+         <th>Topics</th>
+         <th>Assignments Due</th>
+         <th>Split?</th>
+       </tr>
+     </thead>
+     <tbody>
+
+     <tr>
+       <td>1</td>
+       <td>Sep 11</td>
+       <td>Course Intro</td>
+       <td>-</td>
+       <td>No</td>
+     </tr>
+     
+     <tr>
+       <td>2</td>
+       <td>Sep 15, 18</td>
+       <td>Parallel Processing</td>
+       <td>-</td>
+       <td>Yes</td>
+     </tr>
+
+     <tr>
+       <td>3</td>
+       <td>Sep 22, 25</td>
+       <td>Map-Reduce Overview</td>
+       <td>HW1</td>
+       <td>Yes</td>
+     </tr>
+
+     <tr>
+       <td>4</td>
+       <td>Sep 29, Oct 2</td>
+       <td>Fundamental Techniques</td>
+       <td>-</td>
+       <td>Yes</td>
+     </tr>
+
+     <tr>
+       <td>5</td>
+       <td>Oct 6, 9</td>
+       <td>Basic Algoritdms</td>
+       <td>HW2</td>
+       <td>Yes</td>
+     </tr>
+
+     <tr>
+       <td>6</td>
+       <td>Oct 13, 16</td>
+       <td>Applications of Basic Algoritdms</td>
+       <td>-</td>
+       <td>Yes</td>
+     </tr>
+
+     <tr>
+       <td>7</td>
+       <td>Oct 20, 23</td>
+       <td>Pig</td>
+       <td>Project Proposal</td>
+       <td>Yes</td>
+     </tr>
+
+     <tr>
+       <td>8</td>
+       <td>Oct 27, 30</td>
+       <td>Databases</td>
+       <td>-</td>
+       <td>Yes</td>
+     </tr>
+
+     <tr>
+       <td>9</td>
+       <td>Nov 3, 6</td>
+       <td>CAP Theorem, HBase &amp; Hive</td>
+       <td>HW3</td>
+       <td>Yes</td>
+     </tr>
+
+     <tr>
+       <td>10</td>
+       <td>Nov 10, 13</td>
+       <td>Midterm Exam</td>
+       <td>-</td>
+       <td>No</td>
+     </tr>
+     
+     <tr>
+       <td>11</td>
+       <td>Nov 17, 20</td>
+       <td>Graph Algorithms</td>
+       <td>HW4</td>
+       <td>Yes</td>
+     </tr>
+
+     <tr>
+       <td>12</td>
+       <td>Nov 24</td>
+       <td>Intelligent Partitioning</td>
+       <td>-</td>
+       <td>No</td>
+     </tr>
+
+     <tr>
+       <td>13</td>
+       <td>Dec 1, 4</td>
+       <td>Data Mining, Spark</td>
+       <td>Final Project</td>
+       <td>Yes</td>
+     </tr>
+
+     <tr>
+       <td>14</td>
+       <td>Dec 8, 11</td>
+       <td>Bonus Topic</td>
+       <td>-</td>
+       <td>Yes</td>
+     </tr>
+
+     <tr>
+       <td>15</td>
+       <td>Dec 15, 18</td>
+       <td>Project Presentations</td>
+       <td>-</td>
+       <td>No</td>
+     </tr>
+
+     </tbody>
+   </table>
+
+   <h2>Pre-reqs</h2>
+
+   <p>CS 5800 or CS 7800, or consent of instructor</p>
+
+   <h2>Grading</h2>
+
+   <table class="table table-striped" style="width: 50%">
+     <tbody>
+     <tr>
+       <td>Blackboard Modules</td>
+       <td>10%</td>
+     </tr>
+
+     <tr>
+       <td>Participation</td>
+       <td>20%</td>
+     </tr>
+
+     <tr>
+       <td>Mid-term Exam</td>
+       <td>20%</td>
+     </tr>
+
+     <tr>
+       <td>Homeworks</td>
+       <td>20%</td>
+     </tr>
+
+     <tr>
+       <td>Project Proposal</td>
+       <td>10%</td>
+     </tr>
+
+     <tr>
+       <td>Project</td>
+       <td>20%</td>
+     </tr>
+     </tbody>
+   </table>
+
+   <h2>Recommended Textbooks &amp; Materials</h2>
+
+   <p>To gain a deeper understanding of the material covered in this course, we
+   recommend the following books, most of which are available online (and for
+   free) for Northeastern University students from 
+   <a href="http://proquest.safaribooksonline.com.ezproxy.neu.edu/">Safari Books
+     Online</a>.
+   </p>
+
+   <ul>
+     <li>Hadoop: The Definitive Guide by Tom White</li>
+     <li>MapReduce Design Patterns by Donald Miner and Adam Shook</li>
+     <li>Programming Elastic MapReduce by Kevin Schmidt and Christopher Phillips</li>
+     <li>HBase: The Definitive Guide by Lars George</li>
+     <li>Programming Hive by Edward Capriolo, Dean Wampler, and Jason Rutherglen</li>
+     <li>Hadoop in Practice by Alex Holmes</li>
+     <li>Hadoop in Action by Chuck Lam</li>
+   </ul>
+
+   <p>For a nice compact summary of MapReduce and some design patterns, read
+   Data-Intensive Text Processing with MapReduce by Jimmy Lin and Chris Dyer,
+   which is available for free at
+   <a href="http://www.umiacs.umd.edu/~jimmylin/book.html">
+     http://www.umiacs.umd.edu/~jimmylin/book.html</a>.  
+   </p> 
+
+   <p>For some topics we will work with research papers or other online
+   resources. One important resource will be the Hadoop API.</p>
+
+   <h2>Special Accomodations</h2>
+
+   <p>If the Disability Resource Center has formally approved you for an
+   academic accommodation in this class, please present the instructor with
+   your “Professor Notification Letter” during the first week of the semester,
+   so that we can address your specific needs as early as possible.</p>
+
+   <h2>Academic Integrity Policy</h2>
+
+   <p>A commitment to the principles of academic integrity is essential to the
+   mission of Northeastern University. The promotion of independent and
+   original scholarship ensures that students derive the most from their
+   educational experience and their pursuit of knowledge. Academic dishonesty
+   violates the most fundamental values of an intellectual community and
+   undermines the achievements of the entire University.</p>
+
+   <p>For more information, please refer to the 
+   <a href="http://www.northeastern.edu/osccr/academic-integrity-policy/">Academic 
+     Integrity</a> web page.</p>
+  </div>
+</div>
+
