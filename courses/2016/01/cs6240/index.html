@@ -1,0 +1,453 @@
+---
+layout: default
+title: Map Reduce - Spring 2016
+---
+
+<h1>CS 6240 - Parallel Data Processing with Map-Reduce</h1>
+
+<p>Explore to the underlying principles of the distributed processing of large
+data sets. Gain an understanding of the performance and usability tradeoffs of
+various data analytics infrastructures. Work with large data sets and conduct
+practical experiments with machine learning techniques. Gain a working
+knowledge of technologies such as Hadoop and Spark and an insight into their
+implementation. The class builds on known principles such as the design recipe,
+testing and code reviews.
+
+<h2>Notes / Data</h2>
+
+<ul>
+  <li><a href="data/lahman-baseball-2014.zip">Baseball Data</a></li>
+  <li><a href="r-notes.html">Make a Graph in R</a></li>
+</ul>
+
+<h2>Work For This Class</h2>
+
+<p>This course will require 15hrs/week on average. 
+
+<h3>Weekly Assignments</h3>
+
+<p>Each week you will be given a homework assignment, due on Thursday at midnight.
+The initial assignments will be solo, but will jump to teams of 2 and then 4
+as the semester progresses.
+
+<p>Once you submit your assignment, it will be assigned to another team for
+code review. Code reviews are due the following Monday at midnight.
+
+<h3>Code Walks</h3>
+
+<p>Each week some teams will be randomly selected for in-class code walks. Both
+the team that wrote the code and the team that reviewed it will be asked to explain
+and justify their work.
+
+<h3>Quizzes</h3>
+
+<p>At the start of each class there may be a 5-10 minute quiz. This will test
+key points of understanding on the course material, as well as the assigned
+reading.
+
+<h3>In-Class Coding</h3>
+
+<p>There will be weekly in-class coding assignments. These should take about an
+hour, and are expected to be completed in class. For these assignments you will
+work alone - although verbal discussion is allowed - make sure to bring a
+laptop.
+
+<h3>Blackboard Modules</h3>
+
+<p>NU Online Blackboard: <a href="http://nuonline.neu.edu">http://nuonline.neu.edu</a>
+
+<p>Each week you are expected to review the lesson material and complete the
+online quiz for a module on NU Online Blackboard. This material is from the
+online version of the class, and covers slightly different material from a
+slightly different perspective.
+
+<h3>Final Project</h3>
+
+<p>Once you've learned how to use map-reduce, you'll have to build it.
+
+<h2>Grading</h2>
+
+<table class="table table-striped" style="width: 30em">
+  <tr>
+    <td>Homework &amp; Peer Code Reviews</td>
+    <td>20%</td>
+  </tr>
+  <tr>
+    <td>Code Walks</td>
+    <td>10%</td>
+  </tr>
+  <tr>
+    <td>Final Project</td>
+    <td>40%</td>
+  </tr>
+  <tr>
+  <tr>
+    <td>In-Class Coding</td>
+    <td>10%</td>
+  </tr>
+  <tr>
+    <td>Blackboard Modules</td>
+    <td>10%</td>
+  </tr>
+  <tr>
+    <td>Quizzes</td>
+    <td>10%</td>
+  </tr>
+</table>
+
+<p>Grades will be assigned on the following scale:</p>
+
+<table class="table table-striped">
+  <tr>
+    <td>95+</td>
+    <td>90+</td>
+    <td>85+</td>
+    <td>80+</td>
+    <td>75+</td>
+    <td>70+</td>
+    <td>60+</td>
+  </tr>
+  <tr>
+    <td>A</td>
+    <td>A-</td>
+    <td>B+</td>
+    <td>B</td>
+    <td>B-</td>
+    <td>C</td>
+    <td>D</td>
+  </tr>
+</table>
+
+<h2>Schedule</h2>
+
+<table class="table table-striped" style="width: 60em">
+  <tr>
+    <td>
+      Jan 12<br>
+      Jan 15
+    </td>
+    <td>
+      <ul>
+        <li>Distributed Processing</li>
+        <li>Concurrency: Threads in Java</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: HTG Ch 1-2</li>
+        <li>Friday: HW0, BB1 Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Jan 19<br>
+      Jan 22
+    </td>
+    <td>
+      <ul>
+        <li>Read: [CAP Theorem]</li>
+        <li>Databases and Big Data</li>
+        <li>SQL and NoSQL</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Tuesday: HW0 Review Due</li>
+        <li>Thursday: HW1, BB2 Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Jan 26<br>
+      Jan 29
+    </td>
+    <td>
+      <ul>
+        <li>Map Reduce</li>
+        <li>Data Analytics in the Small</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: HTDG Ch 5, 6, 7; MR04</li>
+        <li>Monday: HW1 Code Review Due</li>
+        <li>Thursday: HW2, BB3 Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Feb 2<br>
+      Feb 5
+    </td>
+    <td>
+      <ul>
+        <li>Map-Reduce in Depth</li>
+        <li>Combiners, In-Map Combining, Custom Partitioners</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: HTDG Ch 5, 6, 7, 8, 16</li>
+        <li>Monday: HW2 Code Review Due</li>
+        <li>Thursday: HW3, BB4 Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Feb 9<br>
+      Feb 12 
+    </td>
+    <td>
+      <ul>
+        <li>Measuring Performance</li>
+        <li>Distributed Sort &amp; Join</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: MAS11; VLDB12; O+14</li>
+        <li>Monday: HW3 Code Review Due</li>
+        <li>Thursday: HW4, BB5 Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Feb 16<br>
+      Feb 19 
+    </td>
+    <td>
+      <ul>
+        <li>Hadoop &amp; Beyond</li>
+        <li>Introducing Spark</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: S14; SK12</li>
+        <li>Monday: HW4 Code Review Due</li>
+        <li>Thursday: HW5, BB6 Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Feb 22<br>
+      Feb 25 
+    </td>
+    <td>
+      <ul>
+        <li>Data-Parallel Pipelines</li>
+        <li>BigTable / HBase</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: FJ10; R+12; OS06; M3R12</li>
+        <li>Monday: HW5 Code Review Due</li>
+        <li>Thursday: HW6, BB7 Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Mar 1<br>
+      Mar 4
+    </td>
+    <td>
+      <ul>
+        <li>Resilient Distributed Data</li>
+        <li>Relational Data Processing</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: RDD12, A+15</li>
+        <li>Monday: HW6 Code Review Due</li>
+        <li>Thursday: HW7, BB8 Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Mar 7
+    </td>
+    <td colspan=2">
+      <p style="text-align: center"><big><strong>Spring Break</strong></big></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Mar 15<br>
+      Mar 18
+    </td>
+    <td>
+      <ul>
+        <li>Scaling Spark</li>
+        <li>Project Planning: Building Map-Reduce</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: AD15</li> 
+        <li>Monday: HW7 Code Review Due</li>
+        <li>Thursday: HW8, BB9 Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Mar 22<br>
+      Mar 25
+    </td>
+    <td>
+      <ul>
+        <li>Building a Distributed System</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: [Bulk Synchronous Parallel model, Sockets in Java HOWTO]
+        <li>Monday: HW8 Code Review Due</li>
+        <li>Thursday: BB11 Due</li>
+        <li>Work on HW9. You get two weeks for a reason.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Mar 29<br>
+      Apr 1
+    </td>
+    <td>
+      <ul>
+        <li>Application: K-Means</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Thursday: HW9 Review, BB12 Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Apr 5 <br>
+      Apr 8
+    </td>
+    <td>
+      <ul>
+        <li>Application: Shortest Path</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Thursday: BB13 Due</li>
+        <li>Work on project.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Apr 12<br>
+      Apr 15
+    </td>
+    <td>
+      <ul>
+        <li>OpenCL</li>
+        <li>K-Means in OpenCL</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Thursday: BB14 Due</li>
+        <li>Work on project.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Apr 19<br>
+      Apr 22 
+    </td>
+    <td>
+      <ul>
+        <li>Bonus Topic</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Thursday: Project Report Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Apr 25-29
+    </td>
+    <td colspan="2">
+      <p style="text-align: center"><big><strong>Final Project Presentations</strong></big></p>
+    </td>
+  </tr>
+</table>
+
+<p><strong>Reading</strong></p>
+<p>
+<b>HTDG</b> <i>Hadoop The Definitive Guide</i>,  White, O'Reilly<br>
+<b>MR04</b> <i>MapReduce: Simplified Data Processing on Large Clusters</i>, 
+<a href="http://research.google.com/people/jeff/">Dean</a>,
+<a href="http://research.google.com/people/sanjay/">Ghemawat</a>, OSDI04, 
+<a href="http://research.google.com/archive/mapreduce-osdi04.pdf">PDF</a><br>
+<b>FJ10</b> <i>FlumeJava: Easy, Efficient Data-Parallel Pipelines</i>, Chambers+, PLDI'10, 
+<a href="http://pages.cs.wisc.edu/~akella/CS838/F12/838-CloudPapers/FlumeJava.pdf">PDF</a><br>
+<b>SK12</b> <i>Possible Hadoop Trajectories</i> Stonebraker, Kepner, CACM'12 
+<a href="http://cacm.acm.org/blogs/blog-cacm/149074-possible-hadoop-trajectories/fulltext">Text</a><br>
+<b>S14</b> <i>Hadoop at a Crossroads?</i> Stonebraker, CACM'14 
+<a href="http://cacm.acm.org/blogs/blog-cacm/177467-hadoop-at-a-crossroads/fulltext">Text</a><br>
+<b>M3R12</b> <i>Increased Performance for In-Memory Hadoop Jobs</i>, Shinnar+, VLDB'12 
+<a href="http://vldb.org/pvldb/vol5/p1736_avrahamshinnar_vldb2012.pdf">PDF</a><br>
+<b>RDD12</b> <i>A Fault-Tolerant Abstraction for In-Memory Cluster Comp,</i> Zaharia+, NSDI'12 
+<a href="https://www.cs.berkeley.edu/~matei/papers/2012/nsdi_spark.pdf">PDF</a><br>
+<b>VLDB12</b> <i>The Performance of MapReduce: An In-depth Study</i>,  Jiang+l., VLDB'10, 
+<a href="http://www.vldb.org/pvldb/vldb2010/papers/E03.pdf">PDF</a><br>
+<b>MAS11</b> <i>Evaluating MapReduce Performance Using Workload Suites</i>, Chen+., MASCOTS'11 
+<a href="http://barbie.uta.edu/~jli/Resources/MapReduce&amp;Hadoop/the%20case%20for%20evaluating%20mapreduce.pdf">
+  PDF</a><br>
+<b>OS06</b> <i>Bigtable: A Distributed Storage System for Structured Data</i>, Chang+, OSDI06  
+<a href="http://static.googleusercontent.com/media/research.google.com/en/us/archive/bigtable-osdi06.pdf">
+  PDF</a><br>
+<b>R+12</b> <i>Nobody ever got fired for using Hadoop on a cluster, </i>Rowstron<i>+, </i>
+<a href="http://research.microsoft.com/pubs/179615/msrtr-2013-2.pdf">PDF</a><br>
+<b>A+15</b> <i>Spark SQL: Relational Data Processing in Spark,</i> Armburst+, SIGMOD15 
+<a href="https://amplab.cs.berkeley.edu/wp-content/uploads/2015/03/SparkSQLSigmod2015.pdf">PDF</a><br>
+<b>O+14</b> <i>Anti-Combining for MapReduce,</i> Okcan+, SIGMOD14 
+<a href="http://www.ccs.neu.edu/home/mirek/papers/2014-SIGMOD-AntiCombining.pdf">PDF</a><br>
+<b>AD15</b> <i>Scaling spark in the real world: performance and usability</i>, Armburst+, VLDB15 
+<a href="https://people.csail.mit.edu/matei/papers/2015/vldb_spark.pdf">PDF</a>
+</p>
+
+<h2>Policies</h2>
+
+<h3>Sharing Code</h3>
+
+<p>TODO: Sharing / Cheating</p>
+
+<h3>Grade Challenges</h3>
+
+<p>If you want to contest a grade once you've recieved it, this class uses a
+variant of the "coach's challenge" system to resolve such challenges. Here are the rules:
+
+<ul>
+  <li>Once you recieve a grade on Bottlenose, you have one week to challenge it.</li>
+  <li>Challenges are a quiz grade. In order to issue a challenge, you must spend half
+    the points on the quiz.</li>
+  <li>When you issue a challenge, I will re-grade the assignment.</li>
+  <li>If you end up with a higher score, you get your quiz points back.</li>
+  <li>If not, you lose the spent quiz points.</li>
+  <li>If you run out of quiz points, you can no longer issue challenges.</li>
+</ul>
+
