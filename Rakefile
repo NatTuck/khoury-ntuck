@@ -1,5 +1,9 @@
 
-task :default => [:ship]
+task :default => [:build]
+
+task :build do
+  system("jekyll b")
+end
 
 task :ship do
   system("jekyll b")

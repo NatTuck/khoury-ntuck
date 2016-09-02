@@ -1,0 +1,65 @@
+---
+layout: default
+---
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<h1>Random Forests</h1>
+
+<p>Here are some notes and references for random forests.
+
+<h2>Building a Tree</h2>
+
+<p>There are a number of approaches to building random trees for your forest. 
+This section describes one of them.
+
+<p>In our training data, we have D data points (rows) and A attributes (columns).
+<p>First, we should futz with our attributes a bit.
+
+<ul>
+<li>Remove any clearly irrelevent attributes.
+<li>Synthesize new attributes that are likely to be relevent (e.g. "holiday?" for flights,
+inflation adjusted dollars for baseball salaries)
+</ul>
+
+<p>Now, we can build our trees:
+
+<ul>
+<li>For each tree, we first randomly select a smaller number of data points to work with
+(maybe sqrt(D) of them).</li>
+<li>Then we randomly select a small number of attributes to work with.
+<li>For each possible question on those attributes, we calculate the Information Gain of
+chosing that question.
+<li>Greedily, whichever question has the highest information gain is the next node in our tree.
+<li>For each child node, we recursively perform the same procedure with new random attributes.
+</ul>
+
+<p>Here's the formulas for information gain assuming a binary tree:
+<ul>
+<li>p = # of data points with postive answer
+<li>n = # of data points with negative answer 
+<li>H = entropy
+<li>EH = expected entropy (assuming the data is random)
+<li>I = information gain (how much better we did than expected, given our choice)
+</ul>
+
+<div>
+  $$ H(\frac{p}{p + n}, \frac{n}{p + n}) = -\frac{p}{p + n} log_2(\frac{p}{p + n})
+                                          - \frac{n}{p + n} log_2(\frac{n}{p + n}) $$
+  $$ EH(\frac{p}{p + n}, \frac{n}{p + n}) = \sum_{i=1}^{k} \frac{p_i + n_i}{p + n} \times
+                            H(\frac{p_i}{p_i + n_i}, \frac{n_i}{p_i + n_i}) $$
+  $$ I(\frac{p}{p + n}, \frac{n}{p + n}) = 
+                      H(\frac{p}{p + n}, \frac{n}{p + n}) - EH(\frac{p}{p + n}, \frac{n}{p + n}) $$
+</div>
+
+
+<h2>References</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Decision_tree_learning">Wikipedia: Decision Trees</a>
+<li><a href="https://en.wikipedia.org/wiki/Random_forest">Wikipedia: Random Forests</a>
+<li><a href="https://www.youtube.com/watch?v=-dCtJjlEEgM">UBC Lecture: Decision Trees</a>
+<li><a href="https://www.youtube.com/watch?v=3kYujfDgmNk">UBC Lecture: Random Forests</a>
+</ul>

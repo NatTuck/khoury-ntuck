@@ -1,6 +1,6 @@
 # Site settings
 title: Nat Tuck
-email: ntuck@ccs.neu.edu
+email: "ntuck ⚓ ccs.neu.edu"
 description: > # this means to ignore newlines until "baseurl:"
     Nat Tuck, CCS Lecturer @ Northeastern
 baseurl: "/home/ntuck" # the subpath of your site, e.g. /blog/
