@@ -1,0 +1,346 @@
+---
+layout: default
+---
+
+<h1>CS 3650 - Computer Systems</h1>
+
+<p>
+Introduces the basic design of computing systems, computer
+operating systems, and assembly language using a RISC
+architecture. Describes caches and virtual memory. Covers the
+interface between assembly language and high-level languages,
+including call frames and pointers. Covers the use of system calls
+and systems programming to show the interaction with the
+operating system. Covers the basic structures of an operating
+system, including application interfaces, processes, threads,
+synchronization, interprocess communication, deadlock, memory
+management, file systems, and input/output control.
+
+<h2>Resources</h2>
+
+<ul>
+  <li><a href="http://www.ccs.neu.edu/course/cs3650/parent/MIPS-simulator/Mars4_5.jar">MARS 4.5</a>
+    - The MIPS simulator we'll be using.</li>
+  <li><a href="http://www.ostep.org">Operating Systems, Three Easy Pieces</a> - Online text.</li>
+  <li><a href="https://pdos.csail.mit.edu/6.828/2014/xv6.html">Xv6 Unix Source</a>
+    - Another online "text".</li>
+  <li><a href="http://www.ccs.neu.edu/course/cs3650/">Prof Cooperman's Course Page</a> 
+    - Lots of links to great resources.</li>
+</ul>
+
+<h2>Office Hours</h2>
+
+<table class="table table-striped">
+  <tr>
+    <td>Nat Tuck</td>
+    <td>WVH 314</td>
+    <td>TBA</td>
+    <td>ntuck ⚓ ccs.neu.edu</td>
+  </tr>
+</table>
+
+<h2>Work For This Class</h2>
+
+<h3>Homework Assignments</h3>
+
+<p>Homework assignments will be available in the course subdirectory (...),
+accessible from your CCIS Linux account. Homework will be submitted using the
+submission scripts available on the CCIS servers.
+
+<h3>In-Class Participation</h3>
+
+<p>Questions will occasionally be asked in class of a random student. Answering
+these questions in class will contribute to a virtual "class participation" homework
+assignment.
+
+<h3>Exams</h3>
+
+<p>We'll have two exams, a midterm and a final. These account for the majority
+of the grade. Exam topics may include anything we cover before the exam. The final
+will be cumulative.</p>
+
+<h2>Grading</h2>
+
+<table class="table table-striped" style="width: 30em">
+  <tr>
+    <td>Homework</td>
+    <td>30%</td>
+  </tr>
+  <tr>
+    <td>Midterm Exam</td>
+    <td>30%</td>
+  </tr>
+  <tr>
+    <td>Final Exam</td>
+    <td>40%</td>
+  </tr>
+</table>
+
+<h2>Schedule</h2>
+
+<p>Here's how the semester is likely to play out. Details subject to change.
+
+<table class="table table-striped" style="width: 60em">
+  <tr>
+    <th>Dates</th>
+    <th>Topics</th>
+    <th>Work Due</th>
+  </tr>
+  <tr>
+    <td>
+      Sep 9
+    </td>
+    <td>
+      <ul>
+        <li>Introduction</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: Ch 1, Ch 2.1-2.8</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Sep 13<br>
+      Sep 16 
+    </td>
+    <td>
+      <ul>
+        <li>Assembly Language</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: Ch 2.1-2.8, Appendix A.6, A.9, A.10</li>
+        <li>Read: Green Card</li>
+        <li>HW1 (ASM1) Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Sep 20<br>
+      Sep 23
+    </td>
+    <td>
+      <ul>
+        <li>Pointers in C</li>
+      </ul>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Sep 27<br>
+      Sep 30
+    </td>
+    <td>
+      <ul>
+        <li>More Assembly</li>
+        <li>Symbol Tables</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>HW2 (C Ptrs) Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Oct 4<br>
+      Oct 7
+    </td>
+    <td>
+      <ul>
+        <li>UNIX Shell</li>
+        <li>UNIX Syscalls: fork, exec, waitpid</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: ostep.org: Ch 5, 14</li>
+        <li>HW3 (ASM2) Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Oct 11<br>
+      Oct 14 
+    </td>
+    <td>
+      <ul>
+        <li>CPU Caches: Direct, Set Assoc, Fully Assoc</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: Ch 5.3 - 5.4</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Oct 18<br>
+      Oct 21
+    </td>
+    <td>
+      <ul>
+        <li>More on Caches</li>
+        <li>Python</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: <a href="https://docs.python.org/3/tutorial/">Python Tutorial</a></li>
+        <li>HW4 (Shell) Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Oct 25<br>
+      Oct 28
+    </td>
+    <td>
+      <ul>
+        <li>Mid-Term Exam</li>
+        <li>Virtual Memory</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>HW5 (Python) Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Nov 1<br>
+      Nov 4
+    </td>
+    <td>
+      <ul>
+        <li>MMU / TLB</li>
+        <li>Unix Process Table</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: Ch 5.7; ostep.org: Ch 15, 18, 19</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Nov 8<br>
+      No class Friday
+    </td>
+    <td>
+      <ul>
+        <li>Page Tables</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: xv6 proc.h, proc.c, vm.c</li>
+        <li>HW6 (Cache) Due</li>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Nov 15<br>
+      Apr 18
+    </td>
+    <td>
+      <ul>
+        <li>POSIX Threads</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: ostep.org: Ch 26, 27.1, 27.2</li>
+        <li>HW7 (xv6) Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Nov 22<br>
+      No class Friday
+    </td>
+    <td>
+      <ul>
+        <li>Mutexes, Semaphores</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: ostep.org: Ch 27.3, 28, 31</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Nov 29<br>
+      Dec 2
+    </td>
+    <td>
+      <ul>
+        <li>Cond Vars</li>
+        <li>Solutions for Parallelism</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>ostep.org: Ch 30</li>
+        <li>HW8 (Threads) Due</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Dec 6<br>
+      Dec 9
+    </td>
+    <td>
+      <ul>
+        <li>Bonus Topic / Overflow</li>
+        <li>Review</li>
+      </ul>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Dec 12 - 16
+    </td>
+    <td colspan="2">
+      <p style="text-align: center"><big><strong>Final Exam</strong></big></p>
+    </td>
+  </tr>
+</table>
+
+<h2>Policies</h2>
+
+<h3>Collaboration &amp; Sharing Code</h3>
+
+<ul>
+  <li>You must personally write the code you submit for assignments.</li>
+  <li>If you see someone else's assignment code, you're both cheating.</li>
+
+  <li>Discussion is encouraged, including discussing small snippets of code
+    written on, e.g., a whiteboard.</li>
+  <li>To be safe, avoid having disscussions in front of active computers.</li>
+  <li>Cases of code plagarism (sharing / submitting other people's assignment
+    code) will result in a 0 on the assignment and a report to OSCCR. A second
+    offense will mean a 0 grade for the course.</li>
+</ul>
+
