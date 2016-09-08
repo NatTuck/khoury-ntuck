@@ -75,6 +75,10 @@ Unfortunately, the programming community has spent the last 50 years figuring
 out how to program sequential machines. Parallel machines require some new
 tricks.
 
+### Parallel Programming Speedup
+
+Show slides.
+
 ### Parallel Programming Techniques
 
  - Multiple processes - A modern OS can run two different programs on different cores at the same time.
@@ -89,6 +93,9 @@ MPI vs. MapReduce
 
  - MPI - Low level message passing.
  - MapReduce - Clever idea from Google for big data processing
+ - Basic idea, two phases:
+   - Map: Process each piece of the data.
+   - Reduce: Combine the results of the map step.
 
 ### Threading Example
 
@@ -96,3 +103,11 @@ We'll start with threads.
 
 MillionSum example.
 
+### AWS Credits
+
+- awseducate.com for credit
+- Set up an Amazon AWS account, requires credit card.
+- HW1 will require this to be set up.
+- Watch AWS usage. The credit should be more than enough for
+  the semester - but it's easy to use up in a day or two if
+  you do the wrong thing.
