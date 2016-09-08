@@ -4,6 +4,18 @@ layout: default
 
 # Computer Systems
 
+## First Thing
+
+ - Questions on the Homework?
+   - No. That makes sense.
+
+## Overview of Topics
+
+- Computer Archetecture
+- Programming: C -> ASM -> Machine Code
+- Operating Systems: What do they give you? How do they work?
+- Working on Linux.
+
 ## Syllabus
 
 - Grading
@@ -12,13 +24,7 @@ layout: default
 - Homeworks
   - Late policy: Graders do one pass. If you submit after grading, you get a zero. If late homework
     is graded, you lose 25% of available points.
-
-## Overview of Topics
-
-- Computer Archetecture
-- Programming: C -> ASM -> Machine Code
-- Operating Systems: What do they give you? How do they work?
-- Working on Linux.
+- Textbook ; Readings
 
 ## What We've Seen
 
@@ -60,7 +66,7 @@ layout: default
      - name dest, arg1, arg2
    - Show memory for .text
    - Show register values on left.
-   - Show breakpoints / register values at breakpoints.
+   - Show breakpoints / register values at breakpoints (incl $pc).
 
  - Show MIPS ASM for area
   - Talk about function calls.
@@ -82,7 +88,10 @@ layout: default
 ## Homework
 
  - Pull up HW1
+   - View files with less, q to quit.
  - Explain how to submit.
+   - Copy files to/from server with scp
+   - Windows: WinSCP, Putty
  - We'll cover recursion on Tuesday.
 
 
