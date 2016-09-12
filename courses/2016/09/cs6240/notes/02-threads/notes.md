@@ -26,6 +26,14 @@ Two parts:
 ## More on Parallel Programming
 
  - Locks, Barriers, and Monitors
+   - synch method - current object
+   - sync static method - current class
+   - synchronized (obj) block - that object
+   - .wait method - must hold lock, release lock and block
+   - .notify method - must hold lock, wake up waiter after lock is released
+   - barrier - everyone must reach barrier before anyone proceeds beyond it
+     - can build with lock, wait, notifyAll, and a counter
+     - or, implicitly with something like .join
 
  - Three basic problems
    - Data races
