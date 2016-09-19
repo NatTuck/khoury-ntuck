@@ -12,7 +12,8 @@ int
 is_prime(long* primes, long xx)
 {
     for (long ii = 0; *(primes + ii) <= sqrt_up(xx); ++ii) {
-        long pp = *(primes + ii);
+        //long pp = *(primes + ii);
+        long pp = ii[primes];
         if ((xx % pp) == 0) {
             return 0;
         }
