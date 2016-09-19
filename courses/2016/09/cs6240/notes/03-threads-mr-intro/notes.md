@@ -4,13 +4,20 @@ layout: default
 
 # Wrapping up Threads, Introducing Map-Reduce
 
-## Map-Reduce Sum, Threads
+## Notes
 
+ - Show notes directory again.
 
+## Map-Reduce / WordCount / Gradle
 
-## Map-Reduce Sum, Map-Reduce
+ - Show demo on celedyr
+ - Open WordCount code, describe
+ - Open Makefile
+ - Open build.gradle
 
+## In-class coding
 
-## Building with Gradle
-
-
+ - Goal, print all 0's before all 1's.
+ - Do this by implementing "Barrier", as described last class.
+ - Tools: synchronized(), .wait, .notifyAll
+ - Number of threads is known and constant
