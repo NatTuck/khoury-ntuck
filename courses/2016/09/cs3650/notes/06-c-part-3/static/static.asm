@@ -32,12 +32,45 @@ main:
 	sub $a0, $t1, $t0
 	jal pi
 	
+	la $a0, foo
+	li $a1, 4
+	jal pa 
+	
 	jal exit
 	
 endl:
 	li $v0, 4
 	la $a0, eol
 	syscall
+	jr $ra
+
+pa:
+	subi $sp, $sp, 20
+	sw $ra, 0($sp)
+	sw $t0, 4($sp)
+	sw $t1, 8($sp)
+	sw $t2, 12($sp)
+	sw $t3, 16($sp)
+	move $t1, $a0
+	move $t2, $a1
+	
+	li $t0, 0
+again:
+	beq $t0, $t2, done
+	sll $t3, $t0, 2
+	add $t3, $t3, $t1
+	lw $a0, 0($t3)
+	jal pi
+	addi $t0, $t0, 1	
+	j again
+
+done:
+	lw $ra, 0($sp)
+	lw $t0, 4($sp)
+	lw $t1, 8($sp)
+	lw $t2, 12($sp)
+	lw $t3, 16($sp)	
+	addi $sp, $sp, 20
 	jr $ra
 
 pi:
