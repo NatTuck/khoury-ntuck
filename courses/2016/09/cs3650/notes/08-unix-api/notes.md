@@ -27,16 +27,44 @@ layout: default
  - Function pointers and structs are obnoxious.
  - Let's rename our types to something reasonable.
 
-# Headers, Macros
+# Macros
+
+ - Constants
+ - "Function-style" macros. 
+    - Always paren your arguments.
+    - Show DOUBLE(a) (a + a)
+    - DOUBLE(x++)
+
+# Unix Shell
+
+ - Type a command, it runs.
+ - Redirect to / from files.
+ - Pipe to other commands.
+ - Background jobs. &amp;
+    - Ctrl+Z
+    - ps
+    - fg
+    - bg
+ - Subshells.
+
+# Unix APIs
+
+ - POSIX (UNIX / Linux) operating systems provide their interface to
+   programs at the C language level.
+ - The interface comes in the form of two piles of functions.
+   - The C library (man section 3).
+   - System calls  (man section 2).
+     - These are C wrappers around the same sort of system calls
+       we saw in MARS.
+
+# stdio
  
- - Let's put int\_vec in a separate file.
- - Header.
- - Include guards.
+ - man stdio
+ - printf, fgets, 
 
-# Generics
- 
- - We don't have them. That's what C++ does. We can do without, it just sucks.
+# fork / exec
 
-# Evil Macros, Static Functions
+ - draw a picture
+ - man fork
 
- - If we have time.
+
