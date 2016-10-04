@@ -69,8 +69,10 @@ layout: default
  - man execl
  - fork - copy the current process
  - exec - replace program in the current process with a new one
+ - wait, waitpid
 
 # open vs fopen
 
  - open, close, read, write
  - fopen, fclose, fread, fwrite, printf, etc.
+
