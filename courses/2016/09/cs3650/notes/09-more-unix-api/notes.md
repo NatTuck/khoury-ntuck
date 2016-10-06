@@ -21,6 +21,12 @@ layout: default
  - man stdio
  - printf, fgets, 
 
+# open vs fopen
+
+ - open, close, read, write
+ - fopen, fclose, fread, fwrite, printf, etc.
+ - File handles (integers) vs. FILE "objects".
+
 # fork / exec
 
  - draw a picture
@@ -29,19 +35,14 @@ layout: default
  - fork - copy the current process
  - exec - replace program in the current process with a new one
 
-# open vs fopen
-
- - open, close, read, write
- - fopen, fclose, fread, fwrite, printf, etc.
-
 # Fork Examples
 
  - show fork1, fork2, etc.
 
 # Pipe
 
+ - man 2 pipe
  - pipe
  - pipe with exec, replacing stdin
  - pipe with fork, doing IPC
-
 
