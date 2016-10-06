@@ -44,5 +44,5 @@ layout: default
  - man 2 pipe
  - pipe
  - pipe with exec, replacing stdin
- - pipe with fork, doing IPC
+ - pipe with fork: pipe to sort example
 
