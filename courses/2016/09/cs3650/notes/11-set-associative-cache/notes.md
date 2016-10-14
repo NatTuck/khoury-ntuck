@@ -141,7 +141,25 @@ How we split up the address for the cache:
  - tag: 36 bits
  - Upper 16 bits: Ignored, not used in current hardware.
 
-# Write back?
+
+### Web Simulator
+
+http://www.ecs.umass.edu/ece/koren/architecture/Cache/default.htm
+
+ - Memory size sets total bits.
+ - Block size sets ignored "byte select bits".
+ - The rest are index.
+ - Increasing "set size" (ways) moves index bits to tag bits:
+   - There are less sets to distinguish.
+   - There are more possible lines that can be stored in each slot.
+
+http://www.ecs.umass.edu/ece/koren/architecture/Cache/page3.htm
+
+ - Give me an address that will map to slot 4 for...
+ - 128B, 2B, Direct
+ - 128B, 4B, 2-way
+
+## Write back?
 
 How do we handle writes?
 
@@ -150,4 +168,30 @@ We have two standard choices:
  - Write-back: Write to cache
    - What do we do when we evict a cache line?
    - Either always write it to memory, or add a "dirty" bit.
+
+## Replacement Policy
+
+In a direct mapped cache, when we put something new into a cache
+line we kick out whatever was there before.
+
+For a set-associative cache, it's more complicated. For a 4-way
+cache, when we need to kick a line out, we have to chose one of
+4 lines already in cache to evict.
+
+Here are some possible schemes:
+ - First In First Out  - Kick out the one that was loaded least recently.
+ - Least Recently Used - Kick out the one that was accessed least recently.
+ - Random - Select a line to kick out at random.
+
+The whole idea of having a cache is based on the idea that recently used stuff
+is most likely to get used again, so we expect LRU to be best.
+
+## Cache Performance Testing
+
+The Opteron:
+
+ - L1d cache:             16K
+ - L1i cache:             64K
+ - L2 cache:              2048K
+ - L3 cache:              6144K
 
