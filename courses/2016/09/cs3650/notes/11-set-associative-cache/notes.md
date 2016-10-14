@@ -186,12 +186,8 @@ Here are some possible schemes:
 The whole idea of having a cache is based on the idea that recently used stuff
 is most likely to get used again, so we expect LRU to be best.
 
-## Cache Performance Testing
+# Opteron Cache Layout
 
-The Opteron:
+Show image.
 
- - L1d cache:             16K
- - L1i cache:             64K
- - L2 cache:              2048K
- - L3 cache:              6144K
-
+Can get actual cache layout with "lscpu".
