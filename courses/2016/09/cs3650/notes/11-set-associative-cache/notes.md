@@ -151,3 +151,8 @@ We have two standard choices:
    - What do we do when we evict a cache line?
    - Either always write it to memory, or add a "dirty" bit.
 
+# Opteron Cache Layout
+
+Show image.
+
+Can get actual cache layout with "lscpu".
