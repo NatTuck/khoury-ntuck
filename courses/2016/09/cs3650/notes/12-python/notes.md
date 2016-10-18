@@ -43,11 +43,32 @@ Python is the lamest of the three. We'll look at Python.
 ## Python Basics
 
  - Open a text file, traditionally named whatever.py
+ - Type in the program.
+ - Execute the file with "python whatever.py"
+ - Shebang line. We can start the file with
+    #!/usr/bin/python
+    set it executable
+    and just run it like a program
+
 
 ## The Cool Things about Python
 
  - List comprehensions.
+    - [x + 1 for x in range(1, 10) if x % 3 == 0]
  - Range syntax.
+    - range(0, 10)[3:7]
  - NumPy / SciPy
+
+## Sample Python Programs
+
+ - Reverse words.
+   - .split() returns a list.
+   - .reverse() mutates a list. 
+   - reversed(...) gives a reverse iterator
+ - This list: https://wiki.python.org/moin/SimplePrograms
+
+## Mention SWIG
+
+ - Call C functions from any of a variety of languages.
 
 
