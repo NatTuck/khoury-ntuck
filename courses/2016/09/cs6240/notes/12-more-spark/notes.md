@@ -15,11 +15,11 @@ http://spark.apache.org/docs/latest/programming-guide.html
 
  - sc.parallelize  // array -> RDD
  - sc.textFile     // text file -> RDD
- - sc.saveAsTextFile // RDD -> text file
+ - xs.saveAsTextFile // RDD -> text file
  - sc.sequenceFile
- - sc.saveAsSequenceFile
+ - xs.saveAsSequenceFile
  - sc.objectFile   // default Java serializeation
- - sc.saveAsObjectFile
+ - xs.saveAsObjectFile
 
 ### RDD[Record] operations.
 
@@ -58,10 +58,22 @@ to other higher order functions: Mutations to captured variables are lost.
 This behavior doesn't show up in local execution. This means that code that
 works locally may still be wrong.
 
+### Broadcast Variables
+
+For large values, resending the same value to multiple RDD operations as
+a captured variable can be expensive. This operation can be performed manually
+once with sc.broadcast().
+
+    var xx = sc.broadcast(... anything ...)
+    { => xx.value }
+
+Values that have been broadcast should not be modified.
+
 ### RDD[(Key, Value)] operations.
 
-Spark has special operations for the common case of an RDD of (Key, Value) pairs, allowing
-the RDD to be treated as if it were a Map of { Key => [List of Values] }.
+Spark has special operations for the common case of an RDD of (Key, Value)
+pairs (a PairRDD), allowing the RDD to be treated as if it were a Map of { Key
+=> [List of Values] }.
  
  - xs.mapValues    // RDD to RDD, function on values only.
  - xs.reduceByKey  // RDD to RDD, multiple values for each key are combined to one/key.
@@ -69,6 +81,7 @@ the RDD to be treated as if it were a Map of { Key => [List of Values] }.
  - xs.groupByKey   // Actually produces the RDD[(Key, List[Values])] data structure.
  - xs.sortByKey
  - xs.cogroup(ys)  // (K, V), (K, W) -> (K, List[V], List[W])
+ - xs.collectAsMap // Return to driver process as map.
 
 ### Partition operations
 
@@ -77,14 +90,48 @@ When running on multiple machines, RDD data is partitioned across the worker nod
 This is explicitly exposed in the RDD API, allowing you to select how the data
 is partitioned and then operate on entire partitions.
 
- - mapPartitions          // List[RDD] -> List[RDD], operate on entire partitions
- - mapPartitionsWithIndex // Like mapPartitions, but tells you which partition you're on
- -
+ - sc.paralleize(array, NN) // RDD with NN partitions
+ - mapPartitions            // List[RDD] -> List[RDD], operate on entire partitions
+ - mapPartitionsWithIndex   // Like mapPartitions, but tells you which partition you're on
+
+ - xs.partitionBy          // PairRDD shuffled according to partitioner
 
 ### Caching and Regeneration
 
  - xs.persist
  - xs.cache
+
+### Accumulators
+
+The one safe global operation in parallel Spark code is updating an Accumulator.
+These are like global counters in Map-Reduce.
+
+Get an accumulator:
+
+ - acc = sc.longAccumulator("name")
+ - acc = sc.doubleAccumulator("name")
+
+Valid operations in parallel:
+
+ - acc.add(same-type)
+
+Note that many functional RDD operations are lazy, and so will not actually
+occur until needed. This isn't a problem with xs.forEach.
+
+Valid operations in driver:
+
+ - acc.reset()
+ - acc.sum
+ - acc.count
+ - acc.avg
+
+Custom accumulators:
+
+ - If you have a value that you want to accumulate by repeated application
+   of an operation that is both associative and commutative, you can define
+   a custom accumulator type.
+ - Usually this isn't nessisary - you could have just used xs.reduce()
+
 
 ## Bloom Filter Join
 
@@ -135,8 +182,8 @@ n = number of items
 So expected false postive rate for the example is about 40%.
 
 
-## Introducing Spark
+## Hall of Fame
 
-Show two Spark examples.
+ - Show bloom filter example.
 
 
