@@ -68,28 +68,45 @@ layout: default
 
 ## Process table
 
-`
-struct proc {
-  uint sz;                     // Size of process memory (bytes)
-  pde_t* pgdir;                // Page table
-  // ...
-  int pid;                     // Process ID
-  struct proc *parent;         // Parent process
-  // ...
-  struct file *ofile[MAX_FILES];  // Open files
-  struct inode *cwd;           // Current directory
-  // ...
-};
-`
+There's an array of struct proc somewhere.
 
-`
-struct file {
-  enum { FD_NONE, FD_PIPE, FD_INODE } type;
-  int ref; // reference count
-  char readable;
-  char writable;
-  struct pipe *pipe;
-  struct inode *ip;
-  uint off;
-};
-`
+    struct proc {
+      uint sz;                     // Size of process memory (bytes)
+      pde_t* pgdir;                // Page table
+      // ...
+      int pid;                     // Process ID
+      struct proc *parent;         // Parent process
+      // ...
+      struct file *ofile[MAX_FILES];  // Open files
+      struct inode *cwd;           // Current directory
+      // ...
+    };
+
+Process state:
+
+ * pid (not an index into the process table)
+ * parent link (forming tree in table)
+ * Current working directory
+ * The file table
+ * ... more stuff I've left out
+
+The file table has this stuff in it:
+
+    struct file {
+      enum { FD_NONE, FD_PIPE, FD_INODE } type;
+      int ref; // reference count
+      char readable;
+      char writable;
+      struct pipe *pipe;
+      struct inode *ip;
+      uint off;
+    };
+
+File state:
+ 
+  * What kind of file?
+  * A reference count.
+    * Can this structure be shared between processes? 
+    * Appear multiple times in the table?
+
+## More xv6 examples...
