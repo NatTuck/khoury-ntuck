@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# CS3650: A Day of Python
+# CS3650: Introducing xv6
 
 ## First Thing
 
@@ -109,4 +109,5 @@ File state:
     * Can this structure be shared between processes? 
     * Appear multiple times in the table?
 
-## More xv6 examples...
+## Program & Process Slides
+

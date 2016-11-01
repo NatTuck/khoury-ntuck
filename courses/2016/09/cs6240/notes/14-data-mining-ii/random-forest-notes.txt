@@ -1,0 +1,164 @@
+=== Random Forest Notes ===
+
+== Decision Trees ==
+
+Given a record, we can classify it by feeding it into a decision tree.
+
+ - Each non-leaf node in the tree is a question. Each possible answer is
+   an out-edge. 
+ - We start at the root and ask the root question of the record. We follow
+   the edge associated with the answer.
+ - When we get to a leaf, that's our classification.
+ ...
+ - Classification may be a probability histogram (e.g. 2/3 A, 1/3 B).
+
+Example:
+
+                                Does it live on land?
+            Yes                                                     No
+     Does it have wings?                                    Does it Breathe Air?
+    Yes               No                                 Yes                    No
+   Bird              Cow                                Whale                  Fish
+
+
+
+
+To generate a tree:
+ - For each remaining attribute, calculate information gain (reduction in entropy) for
+   picking that attribute for the root of the subtree.
+ - Pick the maximum.
+ - Remove it from the attribute set, recurse.
+ - Stop when you run out of attributes or data points.
+
+
+-- Maximize Information Gain --
+H(p/(p+n), n/(p+n)) = -(p/(p+n))log(p/(p+n) - (n/(p+n))log(n/(p+n))   [log base 2]
+EH(A) = sum(1..k) of [ ((p_i + n_i) / (p + n)) * H( (p_i / (p_i + n_i)), (n_i / (p_i + n_i)) ) ]
+I(A) = H(p/(p+n), n/(p+n)) - EH(A)
+
+-- Minimize Gini Impurity --
+sum [ non-matching items in bucket / total items in bucket ]
+
+
+Continuous attributes:
+ - Split into multiple attributes binary attributes.
+   - Can pick split points randomly.
+   - Pick the record values as potential split points.
+ - Treat those binary attributes just like other binary attributes in the data.
+
+Tree Height: ~10?
+# of Trees: ~200?
+
+Age	Income		Abortion?	Guns?		Car		Vote
+60	40k		F		F		Toyota		R
+22	15k		T		T		Ford		D
+30	60k		F		T		Toyota		R
+40	70k		T		F		Ford		D
+81	30k		F		F		GM		D
+45	90k		F		T		Honda		R
+
+
+Which attribute to pick for root?
+
+Abortion?
+
+T = DD
+F = RRRD
+
+Gini Impurity = 0/2 + 0/2 + 1/4 + 1/4 + 1/4 + 3/4 = 1.5
+
+
+Guns?
+
+T = DRR
+F = RDD
+
+Gini Impurity = 2/3 + 1/3 + 1/3 + 2/3 + 1/3 + 1/3 = 2.33
+
+
+Abortion is a better choice for the tree root than guns.
+
+
+Continuous attributes: Consider each value as a cutoff for a < comparision,
+test as separate questions.
+
+So (age < 60), (age < 22), (age < 30), etc...
+
+Derive an attribute?
+ - Old = age >= 60.
+
+Discrete, non-binary attributes
+ - N-way branch?
+ - Equality to specific value?
+ - Derive an attribute?
+
+== Random Forests ==
+
+We're going to generate several random trees. To classify new data, we run it through all
+the trees and take the most popular answer.
+
+To randomize, do both of:
+ - Select a random subset of features.
+ - Select a random subset of records.
+
+Repeat for each node in each tree.
+
+To use:
+
+- Run your new datapoint through each tree.
+- Sum the results.
+- Highest score classification wins.
+
+== Baseball Hall of Fame ==
+
+To be included in the hall of fame, a player must:
+ - Have played for 10 years.
+ - Have been retired for five years.
+ - Be voted in by committee within a 20 year window.
+
+Can we predict who will be included in the hall of fame next?
+
+Records:
+ - Baseball players. The data we have is spread across a bunch of files,
+   so we'll need to do a processing step to pull them together.
+
+ - Players who retired before 2000 are our training set.
+ - Players who retired between 2000 and 2009 are our test set.
+ - Players retiring after 2009 we can make predictions about.
+
+Attributes:
+ - player ID
+ - By year:
+   - Games Played
+   - Awards Earned
+   - Batting: Batting Average
+   - Batting: Home Runs
+   - Colleges played for
+   - Pitcher?
+   - Pitching: Earned Run Average (hits / 9 innings)
+   - Teams played on.
+   - Played?
+   - Salary
+
+How do we normalize these attributes to be per player?
+   - Total # or #/year? Games played? Home runs?
+   - Flag vs. count? Both? 
+     - Played for Texas A&M University vs. Played for 2 schools
+     - Was MVP? Was MVP twice? Got 10 awards?
+     - Played for Yankees vs. Played for 5 teams?
+   - Year data
+     - Year started?
+     - Year retired?
+     - Played in 1977 vs. played for 12 years.
+   - Salary?
+     - Total salary
+     - Average salary
+     - Inflation?
+       - Total / average normalized to 2010 dollars?
+   
+What's the earned run average for someone who didn't pitch?
+   - Could use trinary decisions on ERA field - above, below, n/a.
+   - Alternatively, can just pick an arbitrary value for non-pitchers (e.g. 100).
+     - But then trees will have to use ERA twice to distinguish on this field properly.
+
+
