@@ -79,10 +79,10 @@ Gini Impurity = 2/3 + 1/3 + 1/3 + 2/3 + 1/3 + 1/3 = 2.33
 Abortion is a better choice for the tree root than guns.
 
 
-Continuous attributes: Consider each value as a cutoff for a < comparision,
+Continuous attributes: Consider each value as a cutoff for a =< comparision,
 test as separate questions.
 
-So (age < 60), (age < 22), (age < 30), etc...
+So (age =< 60), (age =< 22), (age =< 30), etc...
 
 Derive an attribute?
  - Old = age >= 60.
