@@ -148,4 +148,18 @@ The API for threads on Linux (and other Unix-like systems) is POSIX threads.
  - Wait for it to finish with pthread\_join
  - Link your program with -lpthread
 
-Let's take a look at that.
+*Let's take a look at that.*
+
+There's an alternative to pthread\_join: pthread\_detatch. If you call this, you're
+telling the system that you never plan to join on this thread. You either don't care
+when it finishes, or you plan to deal with that some other way. 
+
+ - When your main thread finishes (return from main, exit()), your program ends.
+ - Stack size: Default 2MB. Doesn't auto-grow. 
+
+More stuff to look at:
+
+ - Check out the manpages for pthread\_create, pthread\_attr\_init and the various
+  pthread\_setattr\_* calls. 
+
+
