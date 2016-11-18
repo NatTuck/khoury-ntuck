@@ -4,6 +4,12 @@ layout: default
 
 # CS3650: POSIX Threads
 
+## Firster Thing
+
+ - Honor Students interested in undergrad research opportunities: Cooperman has
+   an open slot for his checkpoint research. If you're an honor student you got
+   an email about this - check for Cooperman's project.
+
 ## First Thing
 
  - Homework Questions?
