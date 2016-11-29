@@ -6,7 +6,7 @@ layout: default
 
 ## Exam Results
 
-
+ - [exam scores](exam-scores.txt)
 
 ## Project Annoucement
 

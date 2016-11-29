@@ -1,0 +1,5 @@
+Min                0.38
+Max                0.92
+Mean               0.598
+Median             0.61
+StdDev             0.14
