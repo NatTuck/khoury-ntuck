@@ -19,14 +19,15 @@ Supporting proper transactions is expensive. It either requires sequential
 execution or it requires that multiple parallel processes "sync up" if they're
 operating on potentially conflicting data.
 
-If we aren't running a stock exchange, and we want better performance, it's
-possible to give up some of these properties. 
+The general idea of NoSQL databases is to give up the absolute consistency of
+transactions from SQL in favor of better performance, especially for data big
+enough to not fit on / get decent query performance out of one machine.
 
 
 ## The CAP Theorem
 
-When we build a database system distributed across many computers, 
-there are three properties we'd really like to have:
+When we build a database system distributed across many computers, there are
+three properties we'd really like to have:
 
  - Consistency: Reads give you the right data.
  - Availability: You can always do a read or write in bounded time.
@@ -40,59 +41,91 @@ could block the read or write until the partition is fixed, but that'd violate
 availability.
 
 
-## Apache Cassandra
+## Key-Value Store
 
-Cassandra is a good example for the discussion, because the interface it
-provides is pretty close to SQL. It provides basic schemas and things that look
-basically like tables.
+The most basic type of NoSQL database is a key-value store. Generally, these
+map a string key to arbitrary string data, like a big HashMap[String, String].
+The implementation tends to be a "Distributed Hash Table", which is a neat bit
+of technology worth googling.
 
-Data is stored distributed (and replicated, for reliability) across a cluster
-of machines. The number of replicas is user-configured, giving a tradeoff between
-read performance, write performance, and failure tolerance. 
+Because the data is stored on a cluster, you generally want to survive machine
+failures. This is handled by data replicas. Rather than storing each record
+once, you instead store it several times. If you store each record on three
+nodes, then any two nodes can fail without data loss. This can also speed up
+reads - any of the three nodes can respond to a read request.
 
-Cassandra gives you the option to chose between consistency and availability.
-For reads and writes, the user selects how many replicas must reply to the
-request.
+The values stored in a K-V store are generally big enough that you can store
+complex data using string serializeation (e.g. JSON). But the K-V store has no
+idea what the value means: value serialization, deserialization, and processing
+is entirely up to the application.
 
-Consider a cluster with a replication factor of 3.
+Assume we have 3 replicas per key-value pair.
 
- - If reads and writes each require 1 replica to respond, then we've given up
-   consistency. You may write to replica A then read from replica B, and the
-   read will get old data. Availibility is pretty good - access to any one replica
-   allows reads and writes.
+"Eventual Consistency":
 
- - If reads and writes each require 2 replicas to respond, then we have
-   consistency. If you do a write, it'll update 2/3 replicas. Any subsequent
-   read will have to talk to a replica with the latest data. This loses 
-   availability. If the cluster is partitioned, only one side of the split will
-   have access to the required 2/3 to do a read or write.
+If reads and writes each require 1 replica to respond, then we've given up
+consistency. You may write to replica A then read from replica B, and the read
+will get old data. Availibility is pretty good - access to any one replica
+allows reads and writes.
 
-If what you want is a distributed database, then Cassandra is a pretty good
-option. It looks vaguely like an SQL database, and the choice between
-availability and consistency is very clearly visible.
+Once you've written to one replica, the system will automatically replicate the
+write to the others. Usually this takes only a few miliseconds, which is an
+acceptable window for old data in many applications. In the presence of
+partitions, there's no guarantee that this will happen in a reasonable amount
+of time - but it will happen "eventually".
 
-Cassandra is a "column store", like HBase.
+"Strong Consistency":
 
+If reads and writes each require 2 replicas to respond, then we have
+consistency. If you do a write, it'll update 2/3 replicas. Any subsequent read
+will have to talk to a replica with the latest data. This loses availability.
+If the cluster is partitioned, only one side of the split will have access to
+the required 2/3 to do a read or write.
 
-## Key-Value Stores
-
-Redis, Memcached, Riak, Voldemort
-
-These are like a hash map with a network interface. They've got different
-tradeoffs.
+An example of a K-V store that works exactly like this is Riak.
 
 
 ## Document Stores
 
-MogoDB, Couchbase
+If you're storing JSON in your K-V store, then there are a couple of benefits
+you can get from building support for JSON into the database itself. Systems
+like this are called Document Stores.
 
-Couchbase Deep Dive
+JSON (or, equally, XML) document support gives you:
+
+ - Field based queries. You can scan for a document where the key "foo" has the
+   value "bar".
+ - Indexes. You can build secondary indexes based on the contents of the documents.
+
+An example of a JSON document store is CouchDB. In CouchDB, indexes are added
+by creating a JavaScript function that maps a JSON document to a string.
+Whenever a new document is added, it runs this function to find the secondary
+index key for the document.
 
 
+## Column Stores
+
+A column store adds schemas to the basic K-V store design. Instead of a single
+value being associated with a key, a key gives you access to a whole row of
+values.
+
+Internally, this is implemented as key-value store per column, with the system
+handling each column having its own type. This has some efficiency advantages
+over the RDBMS strategy of storing rows together, especially if queries that
+select only some fields of a "table" are common.
+
+Example: Apache Cassandra
+
+Cassandra uses a language that's basically SQL for queries, and provides the
+same concept of replicas and consistency / performance tradeoffs of a K-V store.
 
 
-## Graph DBs
+## K-V Store for Index Join in Map-Reduce job
 
-Neo4J, etc.
+Joins in Map-Reduce can be inefficient, especially if you're doing multiple
+joins to a small portion of a dataset.
 
+If you load the dataset into a K-V store in one map-only job, then it's easy to
+do joins to that dataset in further map-only jobs. This is pretty similar to an
+index join in an RBDMS, using the K-V store as the index.
 
