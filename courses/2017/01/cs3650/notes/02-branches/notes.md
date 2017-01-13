@@ -19,13 +19,14 @@ layout: default
    - Talk about conditional branches.
    - Talk about unconditional jumps.
 
- - Instruction formats:
-   - R - inst $dest, $arg1, $arg2; e.g. add
-   - I - inst $dest, $arg1, number; e.g. addi
-   - J - inst addr, ; e.g. j, jal
-   - Show bit layouts (on green card)
-     - There are only 26 bytes for an address in J format. How can jump work?
-     - There are only 16 bytes for an address in I format (e.g. beq). How can this work?
+## Instruction Formats
+
+ - R - inst $dest, $arg1, $arg2; e.g. add
+ - I - inst $dest, $arg1, number; e.g. addi
+ - J - inst addr, ; e.g. j, jal
+ - Show bit layouts (on green card)
+   - There are only 26 bytes for an address in J format. How can jump work?
+   - There are only 16 bytes for an address in I format (e.g. beq). How can this work?
 
 ## Recursion
 
@@ -33,5 +34,4 @@ layout: default
  - Talk about the stack.
  - Write factorial.
  - Show strlen.
-
 
