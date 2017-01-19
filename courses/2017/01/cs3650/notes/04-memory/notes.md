@@ -44,7 +44,9 @@ memory when we're done with it.
 
 ## Example
 
-Assembly linked list.
+Not assembly linked list.
 
+Sum-array-stack
+Sum array heap
 
 
