@@ -1,10 +1,13 @@
 .globl main
 
-.data
+.text
 main:
 	# Build up a list.
 
-
+	# Call sum on it.
+	
+	li $v0, 10
+	syscall
 
 car:
 	# aka first
