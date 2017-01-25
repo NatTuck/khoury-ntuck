@@ -6,7 +6,8 @@ layout: default
 
 ## Enumerations
 
-Farm example.
+ - Farm example.
+ - Traffic Light
 
 ## Universe of Data
 
@@ -17,4 +18,7 @@ Farm example.
 | Examples       | 3, "goat"         | (make-truck ...)              | "red", "green", "blue"   | ... |
 | Template       | Trivial           | Use all selectors             | A cond branch for each   | ... |
 | xxxxxxxxxxxxxx | xxxxxxxxxxxxxxxxx | xxxxxxxxxxxxxxxxxxxxxxxxxxxxx | xxxxxxxxxxxxxxxxxxxxxxxx | ... |
+
+## More Design Recipe Examples
+
 

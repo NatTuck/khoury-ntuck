@@ -21,11 +21,11 @@
 ; Species -> String
 ; What sound does an animal of this species make?
 
-(check-expect (sound1 "cow") "moo")
-(check-expect (sound1 "pig") "oink")
-(check-expect (sound1 "sheep") "baaa")
+(check-expect (s-sound "cow") "moo")
+(check-expect (s-sound "pig") "oink")
+(check-expect (s-sound "sheep") "baaa")
 
-(define (sound1 s)
+(define (s-sound s)
   (cond [(string=? "cow" s) "moo"]
         [(string=? "pig" s) "oink"]
         [(string=? "sheep" s) "baaa"]))
@@ -48,10 +48,10 @@
 ; Animal -> String
 ; What sound does the animal make?
 
-(check-expect (sound2 (make-animal "cow" "Bessy" 200)) "moo")
+(check-expect (a-sound (make-animal "cow" "Bessy" 200)) "moo")
 
-(define (sound2 a)
-  (sound1 (animal-species a)))
+(define (a-sound a)
+  (s-sound (animal-species a)))
 
 
 

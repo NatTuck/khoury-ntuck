@@ -2,6 +2,8 @@
 ;; about the language level of this file in a form that our tools can easily process.
 #reader(lib "htdp-beginner-reader.ss" "lang")((modname dr-examples) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 
+; Design a function to convert Fareninheight temperatures to Celsius
+
 ; Number -> Number
 ; Convert Fareinheit to Celsius
 
@@ -19,4 +21,22 @@
 
 
 
-; 
+; Something with a struct
+
+
+
+
+
+; Something with an enumeration
+
+
+
+
+
+
+; Something nested
+
+
+
+
+; Something with a 
