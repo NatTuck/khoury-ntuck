@@ -22,5 +22,9 @@ main(int _ac, char* _av[])
     printf("== Matrix C ==\n");
     print_matrix(cc);
 
+    free_matrix(aa);
+    free_matrix(bb);
+    free_matrix(cc);
+
     return 0;
 }
