@@ -15,6 +15,10 @@ layout: default
 
 ## More in C
 
+Matrix Multiplication
+
+![mmul](./mmul-formula.svg)
+
  - Structs
  - 2D arrays
    - Array of pointer to array
