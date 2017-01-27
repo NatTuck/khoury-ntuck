@@ -3,11 +3,11 @@
 
 #define SIZE 3
 
-const int MM1_[SIZE][SIZE] = 
+const int MM1[SIZE][SIZE] = 
   { { 1, 0, 0 },
     { 0, 1, 0 },
     { 0, 0, 1 } };
-const int MM2_[SIZE][SIZE] = 
+const int MM2[SIZE][SIZE] = 
   { { 0, 1, 2 },
     { 0, 0, 1 },
     { 0, 0, 0 } };

@@ -1,7 +1,7 @@
 
 CFLAGS=-g
 
-all: mmul mmul2
+#all: mmul mmul2
 
 mmul: mmul.c
 
