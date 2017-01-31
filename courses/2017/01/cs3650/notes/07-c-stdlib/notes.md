@@ -8,31 +8,22 @@ layout: default
 
  - Questions on the Homework?
 
-## Map in C
+## intsort
 
- - Function Pointers
- - Complain about no generics
+ - isort-ints.c
+   - Note use of "argc" and "argv" as standard argument names.
+   - FILE\* ("file objects")
+   - fopen/fclose
+   - feof (eof flag)
+   - fgets (vs. gets, buffer size, one buffer)
+ - ivec
+   - draw the structure
+   - discuss constant-factor expansion
+   - realloc (avoids manual copying, *may* expand in place)
+   - "object oriented" style
+   - pain of no generics
+   - qsort: function, etc. show manpage
 
-## More in C
+## Stuff to Cover
 
-Matrix Multiplication
-
-![mmul](./mmul-formula.svg)
-
- - Structs
- - 2D arrays
-   - Array of pointer to array
-   - One array, manual indexing
-   - Draw these on the board
-
-## C Preprocessor
-
- - Includes just copy and paste.
- - if / end for conditional compliation
- - Can fake generics, but it's awful
-
-## Matrix Multiplication
-
- - 2D matrices
- - Computationally expensive
 
