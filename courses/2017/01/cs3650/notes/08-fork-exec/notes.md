@@ -8,6 +8,23 @@ layout: default
 
  - Questions on the Homework?
 
+## Shell Basics
+
+    sort # type stuff into stdin
+    sort < file # redirect from file
+    sort > file # redirect to file
+    sleep 2 # wait
+    sleep 10 &   # don't wait, show ps
+    sleep 10 # ctrl+Z, fg
+    sleep 10 # ctrl+Z, bg
+    sort | uniq # pipe
+    true
+    echo $?
+    false
+    echo $?
+    true && echo good
+    true || echo good 
+
 ## System Calls in C
 
  - Hello -> Hello-fio -> Hello-sysio
