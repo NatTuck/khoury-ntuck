@@ -8,36 +8,10 @@ layout: default
 
  - Questions on the Homework?
 
-## Shell Basics
-
-    sort # type stuff into stdin
-    sort < file # redirect from file
-    sort > file # redirect to file
-    sleep 2 # wait
-    sleep 10 &   # don't wait, show ps
-    sleep 10 # ctrl+Z, fg
-    sleep 10 # ctrl+Z, bg
-    sort | uniq # pipe
-    true
-    echo $?
-    false
-    echo $?
-    true && echo good
-    true || echo good 
-
-## System Calls in C
-
- - Hello -> Hello-fio -> Hello-sysio
- - man 2 open
- - man 2 close
-
-## Slides
-
- - Blargh
-
 ## Fork & Exec
 
  - draw a picture
+ - compare fork/exec vs. CreateProcess
  - man fork
  - man execl
  - fork - copy the current process
@@ -49,5 +23,10 @@ layout: default
 
 ## Pipe Examples
 
- - If there's time.
+ - show pipe0, pipe1
+ - show fork-pipe
+
+## Slides
+
+ - Blargh
 
