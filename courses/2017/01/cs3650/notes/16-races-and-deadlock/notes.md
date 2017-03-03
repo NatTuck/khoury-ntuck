@@ -10,9 +10,18 @@ layout: default
 
 ## Concurrent + Shared Mutable Data = Wrong
 
- - Wrong answer w/o mutex.
+ - Problem: Data Race
+ - Fix: Sequential execution
+ - Fix: Immutable data
  - Fix: mutex invariant
+   - Problem: Deadlock
+   - Fix: Never hold two mutexes
+   - Fix: Mutex Ordering
+   - Fix: Mutex Trylocks / Timeouts
  - Fix: barrier invariant
+ - Fix: No shared data - message passing
+   - Problem: Deadlock
+   - Fix: Require a communication DAG
 
 ## TODO
 

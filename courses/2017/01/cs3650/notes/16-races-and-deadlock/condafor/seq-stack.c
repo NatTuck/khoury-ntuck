@@ -9,7 +9,7 @@ int stptr = 0;
 void
 stack_push(int xx)
 {
-    stack[++stptr] = xx;
+    stack[stptr++] = xx;
 }
 
 int
