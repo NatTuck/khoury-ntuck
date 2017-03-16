@@ -9,6 +9,27 @@ layout: default
  - Homework Status?
  - Homework Questions?
 
+## Thread, Mutex, Condv Review
+
+Your program is broken if:
+
+ - You have multiple threads.
+ - They read / write from the same memory location (share data).
+
+Fixing this with mutexes:
+
+ - Each piece of data (memory location) must be protected by a mutex.
+ - You must hold the mutex (lock it) before any access to the shared
+   data - read *or* write.
+   
+Condition variables:
+
+ - If you want to wait on some condition that may be changed by another
+   thread (e.g. wait for a queue to be non-empty), you can add a condition
+   variable to the mutex that guards that data.
+ - You must hold the mutex to do any condition variable operation.
+ - pthread_cond_wait must be in a loop checking the condition.
+
 ## Looking at HW8
 
  - Quickly walk through program.
@@ -72,6 +93,7 @@ So in sem-queue.c, we have some relevent properties.
 If we treat all of these as invariants, we can prove that
 sem-queue.c has no race conditions.
 
+Do an example with QUEUE\_SIZE = 2, MAX\_INT = 4.
   
 
 ### Transform sem-queue.c into shared-queue.c
