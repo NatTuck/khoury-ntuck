@@ -93,13 +93,21 @@ So in sem-queue.c, we have some relevent properties.
 If we treat all of these as invariants, we can prove that
 sem-queue.c has no race conditions.
 
-Do an example with QUEUE\_SIZE = 2, MAX\_INT = 4.
-  
+Do an example with QUEUE\_SIZE = 2, MAX\_INT = 4 on the board.
+
 
 ### Transform sem-queue.c into shared-queue.c
    
  - Point out mmap, mmap flags.
  - Point out semaphore init "shared" flag.
 
-## Forward to HW9
+## Forward to HW09
+
+ - Same task as HW08
+ - Same queue usage as HW08.
+   - Except fixed size to fit in fixed shared memory.
+   - Fixed size means array / ring buffer makes more sense.
+ - Processes instead of threads (pthread-create => fork)
+ - Semaphores and atomics instead of mutexes and cond vars.
+ - Basically replace the HW08 queues with shared-queue.
 
