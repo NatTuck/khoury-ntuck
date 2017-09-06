@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 
 # The Web
 
@@ -25,12 +29,32 @@ Standard web app:
    - Browser makes an HTTP request to server
    - Server generates a new page...
 
+Deeper Picture:
+
+ - One server?
+ - Multiple servers:
+   - Web Server
+   - Database Server
+ - Scaling:
+   - Multiple web servers
+   - Load balancer
+ - Application servers?
+ - Three tiers
+   - Web
+   - App
+   - Database
+
 # Overhead
 
  - Class Web Site
    - Notes, show today's notes
  - Piazza
  - Bottlenose
+ 
+ - Project: 
+   - Build a moderately complicated web app.
+   - Teams of one or two.
+   - Start trying to find a partner now.
 
 # Web Tech Overview
 
@@ -45,11 +69,31 @@ HTTP 1.0 was entirely stateless.
  - Server doesn't know that two requests come from the same browser.
  - No way to have multiple sites per IP.
 
+Example: (end the GET with two newlines)
+
+```
+$ telnet seagull.ccs.neu.edu 80
+GET / HTTP/1.0
+```
+
 ### HTTP/1.1
 
 New methods: PUT, DELETE, PATCH, HEAD
 
 Add Host header to support multiple sites.
+
+Example: (end the GET with two newlines)
+
+```
+$ telnet seagull.ccs.neu.edu 80
+GET / HTTP/1.1
+Host: seagull.ccs.neu.edu
+
+$ telnet seagull.ccs.neu.edu 80
+GET / HTTP/1.1
+Host: example.com
+
+```
 
 HTTP 1.1 is still stateless, but adds "cookies".
 
@@ -164,9 +208,24 @@ Modern Decision Tree:
 
  - Microsoft?
  - Java?
- - Pick a language and DB
- 
-Concerns: Performance vs. Productivity; Developer availability
+ - Pick a framework and DB
+
+Framework / Languages choices:
+
+ - Framework: Heavy vs. Light, Opinionated vs. Flexible
+ - Language: Performance
+   - Native code: C, C++, Rust
+   - Native code + runtime: Go, Haskell
+   - Heavy VMs: Java, .NET
+   - "Fast" scripting languages: JavaScript, Lua
+   - Scripting languages: Perl, Python, Ruby
+ - Specific features 
+
+Database choices:
+
+ - SQL vs. NoSQL
+
+This semester we're going to use Elixir/Phoenix/PostgreSQL
 
 # Hosting a Static Web Site
 
@@ -185,11 +244,14 @@ First, secure the server.
 - Log in to the server (ssh root@ip)
 - Enable the software firewall
 
-    ufw allow 22/tcp # important, this allows ssh
-    ufw allow 80/tcp
-    ufw allow 443/tcp
-    ufw allow 4000/tcp
-    ufw enable
+
+```
+ufw allow 22/tcp # important, this allows ssh
+ufw allow 80/tcp
+ufw allow 443/tcp
+ufw allow 4000/tcp
+ufw enable
+```
 
 - Create a non-root user.
   - adduser name
@@ -216,4 +278,32 @@ Next, set up the web server.
  - (as normal user) Create /home/name/www/index.html
  - Visit the server IP
  
- 
+Let's set up another web site too.
+
+ - (as root) Save off the template below in /etc/nginx/sites-enabled
+ - Edit the root and server name.
+ - 
+
+
+sites-available/ironbeard.com :
+
+```
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /home/nat/www/ironbeard.com;
+
+        index index.html;
+
+        server_name ironbeard.com www.ironbeard.com;
+
+        location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+        }
+}
+```
+
+
