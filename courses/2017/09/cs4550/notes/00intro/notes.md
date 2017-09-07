@@ -2,14 +2,13 @@
 layout: default
 ---
 
-
 # The Web
 
 What is the web?
 
- - HTTP
- - URLs
- - HTML / CSS / JS
+ - Protocols: HTTP, URLs
+ - Content Standards: HTML / CSS / JS
+ - Data Conventions: JSON, REST
    
 What is web development?
 
@@ -50,7 +49,11 @@ Deeper Picture:
    - Notes, show today's notes
  - Piazza
  - Bottlenose
- 
+
+ - Schedule
+   - Lectures: Build an online store
+   - Homework: Build a microblog service
+
  - Project: 
    - Build a moderately complicated web app.
    - Teams of one or two.
@@ -234,7 +237,8 @@ This semester we're going to use Elixir/Phoenix/PostgreSQL
 - Set up a VPS
   - Walk through the process on vultr
   - Set an SSH key
-- Register a domain
+  - (you can generate a key with "ssh-keygen -t rsa")
+- Register a domain (use ironbeard.com)
   - Point it (including www.) to the VPS's IP addr
   
 ## Set up the server
@@ -271,19 +275,24 @@ Next, set up the web server.
     cd /etc/nginx/sites-enabled
     vim default
 
- - Change "root" to /home/name/www
+ - Change "root" to /home/name/home/www
  
     service nginx restart
 
- - (as normal user) Create /home/name/www/index.html
+ - (as normal user) Create /home/name/www/home/index.html
  - Visit the server IP
- 
+
+Testing while waiting for DNS:
+
+ - Create an entry in /etc/hosts for the site.
+
 Let's set up another web site too.
 
- - (as root) Save off the template below in /etc/nginx/sites-enabled
- - Edit the root and server name.
- - 
-
+ - (as root) Save off the template below in /etc/nginx/sites-available
+ - Edit the root and server name (site2.ironbeard.com)
+ - Symlink the config file to /etc/nginx/sites-enabled
+ - Restart nginx
+ - Create hosts entry and test that.
 
 sites-available/ironbeard.com :
 
