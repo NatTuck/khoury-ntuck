@@ -275,7 +275,7 @@ Next, set up the web server.
     cd /etc/nginx/sites-enabled
     vim default
 
- - Change "root" to /home/name/home/www
+ - Change "root" to /home/name/www/home
  
     service nginx restart
 
