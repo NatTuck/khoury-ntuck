@@ -29,7 +29,9 @@ to figure out what existing apps do. Let's go take a look at a web store.
    - Main content: description, photo, order form
    - Order form: options, quantity, add to cart
    - Note: main nav, breadcrumbs
-
+ - Add it to the cart.
+ - Start the checkout process.
+ 
 # User-First Design
 
 In this design we figure out what users need to do with the app and
