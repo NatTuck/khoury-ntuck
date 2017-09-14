@@ -1,0 +1,19 @@
+User Stories
+
+ - "As a normal user, I can buy a product from the store."
+
+  * Alice visits the store home page.
+  * She sees a product she wants and clicks it.
+  * She enters that she wants 17 of them, and clicks "add to cart".
+  * She hits "check out".
+  * She logs in to her existing account.
+  * She confirms her order.
+
+ - "As a normal user, I can search for available products."
+ - "As a normal user, I can browser for products by characteristics."
+ - "As a normal user, I can leave a review for a product."
+ - "As a new user, I can create an account."
+ - "As a normal user, I can edit my account info."
+ - "As a normal user, I can log in."
+ - "As an admin, I can add a product to the store."
+ - "
