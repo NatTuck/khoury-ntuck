@@ -194,6 +194,7 @@ $ mix phx.server
 Check out http://localhost:4000/products
 
 
+<!--
 ## Deploy Our App
 
 Edit the production config (config/prod.exs):
@@ -219,6 +220,7 @@ $ mkdir nu_mart
 $ tar xzvf ../nu_mart.tar.gz
 $ 
 ```
+-->
 
 
 
