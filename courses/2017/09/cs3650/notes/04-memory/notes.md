@@ -4,8 +4,6 @@ layout: default
 
 # Computer Systems
 
-## HW Extension
-
 ## Memory Segments in a Process
 
  - Stack
