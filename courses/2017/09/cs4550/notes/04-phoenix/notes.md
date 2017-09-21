@@ -92,24 +92,7 @@ $ mix phx.server
 
 Check out http://localhost:4000/products
 
-## Commit to Git
-
-Handling config/prod.secret.exs:
-
- - This contains the app's secrets.
-   - Database password.
-   - Cookie secret.
- - These are nesisary to run the app, but should
-   not be commited to a git repo.
- - So we need a secret management scheme.
-
-## Deploying
-
-
-
-
-<!--
-## Deploy Our App
+## Production Config
 
 Edit the production config (config/prod.exs):
 
@@ -121,6 +104,49 @@ config :nu_mart, NuMartWeb.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json"
 ```
 
+## Commit to Git
+
+Handling config/prod.secret.exs:
+
+ - This contains the app's secrets.
+   - Database password.
+   - Cookie secret.
+ - These are nesisary to run the app, but should
+   not be commited to a git repo.
+ - So we need a secret management scheme.
+ 
+## Deploying
+
+Create a user, db user, and db on the production server:
+
+```
+$ pwgen 12 1
+[password 2]
+$ ssh user@production
+$ sudo su - root
+# adduser numart
+password: [password 2]
+# sudo su - postgres
+$ createuser -d -P nu_mart
+password: [password 2]
+```
+
+Set up SSH login for new user.
+
+```ssh-copy-id numart@host
+
+
+Cheater deployment:
+
+ - Install esl-erlang / elixir on production server.
+ - Check out the git repo as the new user.
+ - Fill in config/prod.secret.exs
+ - mix deps.get
+ - MIX_ENV=prod mix phoenix.digest
+ - In screen, MIX_ENV=prod PORT=8000 iex -S mix
+
+## Proper Deployment
+
 Do the deployment:
 
 ```
@@ -128,13 +154,16 @@ Do the deployment:
 $ mix deps.get
 $ mix release.init
 $ MIX_ENV=prod mix release --env=prod
-$ scp _build/prod/rel/nu_mart/releases/0.0.1/nu_mart.tar.gz nat@eagle.ferrus.net:~
-$ ssh nat@eagle.ferrus.net
+$ scp _build/prod/rel/nu_mart/releases/0.0.1/nu_mart.tar.gz numar@production
+$ ssh numart@production
 $ mkdir nu_mart
 $ tar xzvf ../nu_mart.tar.gz
-$ 
+$ PORT=8000 ./bin/dorp start
 ```
--->
 
+## SystemD
 
+See my_app.service
+
+The service file goes in /etc/systemd/system
 
