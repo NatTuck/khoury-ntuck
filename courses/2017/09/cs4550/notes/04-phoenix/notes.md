@@ -92,6 +92,35 @@ $ mix phx.server
 
 Check out http://localhost:4000/products
 
+## Automated Tests
+
+Sync config/test.exs user/pass with config/dev.exs
+
+```$ mix test```
+
+Why failures?
+
+## A quick app tour.
+
+Standard layout:
+
+ - assets - client side stuff
+   - static files
+   - css
+   - js
+   - nodejs / brunch
+ - lib
+   - nu_mart_web - code to handle web reqs
+     - router.ex
+     - controllers
+     - templates
+     - views
+   - nu_mart - support code
+     - shop/shop.ex - database access
+     - shop/product.ex - database schema for product resource
+  - test
+    - 
+
 ## Production Config
 
 Edit the production config (config/prod.exs):
@@ -133,16 +162,18 @@ password: [password 2]
 
 Set up SSH login for new user.
 
-```ssh-copy-id numart@host
-
+```ssh-copy-id numart@host```
 
 Cheater deployment:
 
  - Install esl-erlang / elixir on production server.
  - Check out the git repo as the new user.
  - Fill in config/prod.secret.exs
+ - add MIX_ENV=prod to ~/.bashrc and reload
  - mix deps.get
- - MIX_ENV=prod mix phoenix.digest
+ - mix phoenix.digest
+ - mix ecto.create
+ - mix ecto.migrate
  - In screen, MIX_ENV=prod PORT=8000 iex -S mix
 
 ## Proper Deployment
@@ -160,6 +191,16 @@ $ mkdir nu_mart
 $ tar xzvf ../nu_mart.tar.gz
 $ PORT=8000 ./bin/dorp start
 ```
+
+Complication: 
+
+ * Can't run mix tasks like ecto.create or ecto.migrate from a release.
+ * Solution: Create DB by hand and use https://hexdocs.pm/distillery/running-migrations.html
+ 
+Compromise:
+
+ * On a single server deployment, it's not awful to check out the repo
+   to production, run mix tasks, and build the release there.
 
 ## SystemD
 
