@@ -189,7 +189,7 @@ $ scp _build/prod/rel/nu_mart/releases/0.0.1/nu_mart.tar.gz numar@production
 $ ssh numart@production
 $ mkdir nu_mart
 $ tar xzvf ../nu_mart.tar.gz
-$ PORT=8000 ./bin/dorp start
+$ PORT=8000 ./bin/nu_mart start
 ```
 
 Complication: 
@@ -201,6 +201,39 @@ Compromise:
 
  * On a single server deployment, it's not awful to check out the repo
    to production, run mix tasks, and build the release there.
+
+## Nginx Reverse Proxy
+
+Here's the config for webshop.ironbeard.com
+
+```
+server {
+	listen 80;
+	listen [::]:80;
+
+	# root /home/nat/www/webshop; 
+
+	# Add index.php to the list if you are using PHP
+	# index index.html index.htm index.nginx-debian.html;
+
+	server_name webshop.ironbeard.com;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		proxy_pass http://localhost:8000;
+		#try_files $uri $uri/ =404;
+		# autoindex on;
+	}
+
+	location ~* ^.+\.(css|cur|gif|gz|ico|jpg|jpeg|js|png|svg|woff|woff2)$ {
+		root /home/numart/src/nu_mart/priv/static;
+		etag off;
+		expires max;
+		add_header Cache-Control public;
+	}	 
+}
+```
 
 ## SystemD
 
