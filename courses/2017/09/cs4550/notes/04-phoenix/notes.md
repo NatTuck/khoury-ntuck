@@ -219,14 +219,12 @@ server {
 	server_name webshop.ironbeard.com;
 
 	location / {
-		# First attempt to serve request as file, then
-		# as directory, then fall back to displaying a 404.
+        # Send all requests on to the Phoenix server.
 		proxy_pass http://localhost:8000;
-		#try_files $uri $uri/ =404;
-		# autoindex on;
 	}
 
 	location ~* ^.+\.(css|cur|gif|gz|ico|jpg|jpeg|js|png|svg|woff|woff2)$ {
+        # Except static assets. Serve those directly.
 		root /home/numart/src/nu_mart/priv/static;
 		etag off;
 		expires max;
