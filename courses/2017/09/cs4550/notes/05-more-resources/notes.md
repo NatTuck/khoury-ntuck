@@ -21,8 +21,12 @@ Talk about contexts:
 
  - "Shop" is pretty generic.
  - We want more than one context per app.
- - 
-
+ - Alternate idea:
+   - Catalog: Products
+   - Carts: Cart, Cart Item
+   - Accounts: User
+   - etc
+ - For today, we'll just be lazy and stick with Shop.
 
 Edit the cart migration. Set type to default: "active", null: false.
 
