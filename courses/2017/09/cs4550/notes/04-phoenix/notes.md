@@ -173,14 +173,17 @@ Set up SSH login for new user.
 
 ```
 $ mix deps.get
-$ mix phx.digest
 $ mix ecto.create
 $ mix ecto.migrate
 ```
  
 ## Shortcut Deployment
 
- - In screen, MIX_ENV=prod PORT=8000 iex -S mix
+```
+$ screen
+$ mix phx.digest
+$ PORT=8000 iex -S mix
+```
 
 ## Proper Deployment
 
