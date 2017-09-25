@@ -164,16 +164,22 @@ Set up SSH login for new user.
 
 ```ssh-copy-id numart@host```
 
-Cheater deployment:
+## Pre-deployment setup
 
  - Install esl-erlang / elixir on production server.
  - Check out the git repo as the new user.
  - Fill in config/prod.secret.exs
  - add "export MIX_ENV=prod" to ~/.bashrc and reload
- - mix deps.get
- - mix phoenix.digest
- - mix ecto.create
- - mix ecto.migrate
+
+```
+$ mix deps.get
+$ mix phx.digest
+$ mix ecto.create
+$ mix ecto.migrate
+```
+ 
+## Shortcut Deployment
+
  - In screen, MIX_ENV=prod PORT=8000 iex -S mix
 
 ## Proper Deployment
@@ -190,7 +196,7 @@ Do the deployment:
 
 ```
 $ export MIX_ENV=prod
-$ mix phoenix.digest
+$ mix phx.digest
 $ mix release --env=prod
 $ scp _build/prod/rel/nu_mart/releases/0.0.1/nu_mart.tar.gz numar@production
 $ ssh numart@production
