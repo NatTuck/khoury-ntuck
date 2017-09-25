@@ -178,18 +178,25 @@ Cheater deployment:
 
 ## Proper Deployment
 
-Do the deployment:
+Setup the deployment:
 
 ```
 # Add to mix.exs: {:distillery, "~> 1.4"}
 $ mix deps.get
 $ mix release.init
-$ MIX_ENV=prod mix release --env=prod
+```
+
+Do the deployment:
+
+```
+$ export MIX_ENV=prod
+$ mix phoenix.digest
+$ mix release --env=prod
 $ scp _build/prod/rel/nu_mart/releases/0.0.1/nu_mart.tar.gz numar@production
 $ ssh numart@production
 $ mkdir nu_mart
 $ tar xzvf ../nu_mart.tar.gz
-$ PORT=8000 ./bin/nu_mart start
+$ PORT=8000 ./bin/nu_mart foreground # or start
 ```
 
 Complication: 
