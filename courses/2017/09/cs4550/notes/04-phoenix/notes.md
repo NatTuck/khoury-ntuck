@@ -169,7 +169,7 @@ Cheater deployment:
  - Install esl-erlang / elixir on production server.
  - Check out the git repo as the new user.
  - Fill in config/prod.secret.exs
- - add MIX_ENV=prod to ~/.bashrc and reload
+ - add "export MIX_ENV=prod" to ~/.bashrc and reload
  - mix deps.get
  - mix phoenix.digest
  - mix ecto.create
