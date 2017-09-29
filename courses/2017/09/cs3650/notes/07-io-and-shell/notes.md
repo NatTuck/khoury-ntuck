@@ -8,6 +8,15 @@ layout: default
 
  - Questions on the Homework?
  
+## Intro to Unix Shell
+
+ - Create text file (one, two, three, four)
+ - Sort it with 'sort'
+ - Operators: Pipe and redirect
+ - sort | tac
+ - All words with boat, no apostrophe, and the letter e, reversed.
+   - Write as multi-line shell script with temporaries.
+ 
 ## Copy Bytes
 
  - Value data can be copied by copying its bytes.
