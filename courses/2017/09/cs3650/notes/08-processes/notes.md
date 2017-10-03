@@ -27,9 +27,10 @@ layout: default
 
 ## System Calls in C
 
- - Hello -> Hello-fio -> Hello-sysio
+ - Hello -> Hello-stdio -> Hello-sysio
  - man 2 open
  - man 2 close
+ - File IO examples.
 
 ## Processes
 
@@ -83,5 +84,6 @@ layout: default
 
 ## Pipe Examples
 
- - If there's time.
+ - pipe 1..3
+ - sort-pipe
 
