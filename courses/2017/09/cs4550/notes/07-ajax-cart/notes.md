@@ -12,7 +12,7 @@ Branches:
  - oct1-after  - After some updates
  - prep-1002   - Prep for this class
 
-# Some changes to nu_mart
+# Some changes to nu\_mart
 
 I did some changes over the weekend that I
 don't want to live-code. Let's review those.
@@ -121,7 +121,7 @@ Update the products/show page:
   <div class="m-2">
     <h2>Reviews</h2>
 
-    {{#each data}}
+    { {#each data}}
     <div class="card w-75 m-2">
       <div class="card-body">
         <h6 class="">{{user_email}}</h6>
@@ -133,7 +133,7 @@ Update the products/show page:
     </div>
     {{else}}
     <p>No reviews yet.</p>
-    {{/each}}
+    { {/each}}
   </div>
 </script>
 
