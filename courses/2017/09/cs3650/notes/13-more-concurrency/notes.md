@@ -113,6 +113,71 @@ Generally blocking is faster than the alternative, since it gets processes with
 nothing to do out of the way, but it can get expensive to do it a million times
 a second.
 
+## Predicting CPU Performance
+
+My Destktop: Dual AMD Opteron 6234
+
+https://www.anandtech.com/show/5058/amds-opteron-interlagos-6200
+
+We've got 24 cores, all running at 2GHz = 0.5 ns/cycle.
+
+Each core can do an add every cycle, so code like this should
+run at about 2 billion adds / second:
+
+```
+for (;;) { a += 5; } 
+```
+
+To complicate things further, there are actually three ALUs that can
+each do an add per second if they don't depend on each other.
+
+Code like this can do 6 billion adds/second:
+
+```
+for (;;) { a += 5; b += 5; c += 5; }
+```
+
+Take a look at addzs.c
+
+ - We're adding 300M integers
+ - The adds themselves should take about 1/6th of a second.
+ - But we're loading them from memory.
+
+Let's consider the memory heirarchy.
+
+ - Main Memory:
+   - Size: 32GB
+   - Latency: 70ns = 140 cycles
+   - Throughput: 30 GB/s
+ - L3 Cache:
+   - Size: 8 MB
+   - Latency: 15ns = 30 cycles
+   - Throughput: 180 GB/s 
+ - L2 Cache:
+   - Size: 2 MB
+   - Latency: 5ns = 10 cycles
+   - Throughput: 350 GB/s
+ - L1 Data Cache:
+   - Size: 16k
+   - Latency: 2ns = 4 cycles
+   - Throughput: 800 GB/s
+
+600M ints = 2.4 GB, so the memory can easily ship that in 1 second.
+
+But if every int is requested separately, it'll take 70ns * 600M = 40s
+
+We know that cache requests loads from RAM in 64-byte cache lines, so
+we only have 600M/8 = 76M cache misses. So we can estimate 5 seconds
+to execute this code. Let's try it.
+
+...
+
+There's one more element in this story though. The processor has special
+hardware to detect sequential memory accesses and preload the data into
+cache to avoid unnessisary latency.
+
+Let's try running the program with optimizations.
+
 ## More on Semaphores
 
  - Sem-queue example
