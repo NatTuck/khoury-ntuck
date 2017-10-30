@@ -63,14 +63,21 @@ https://github.com/gperftools/gperftools
 > A large object size (> 32K) is rounded up to a page size (4K) and is handled
 > by a central page heap. The central page heap is again an array of free lists.
 
-* Extensive use of size-specific bins.
+Extensive use of size-specific bins:
 
   * Threads each have bins for sizes up to 32k
   * There's one global set of bins for 1..255 pages.
   * Per-thread bins are garbage collected back to the global page bins.
   * Memory is never unmapped.
 
-## jemalloc (Facebook)
+## jemalloc (Facebook / FreeBSD)
 
 http://jemalloc.net/
+
+All in with size specific bins:
+
+ * Small is up to 14KB (36 classes)
+ * Large is 16KB - 7 EB
+
+
 
