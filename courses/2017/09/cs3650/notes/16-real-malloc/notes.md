@@ -10,7 +10,22 @@ layout: default
 
 ## Challenge 02
 
+The assignment:
 
+ * Write an optimized, thread-safe allocator.
+ * With a partner.
+ * Like HW07, but with new test cases and a report.
+ 
+Two core optimizations:
+
+ * Binning allocations by size to allow O(1) allocation / free.
+ * Something like multiple arenas and/or thread caches to
+   reduce contention.
+
+## Useful Concept: Thread Local Storage
+
+ * Thread local storage allows us to have per-thread globals.
+ * Show two examples.
 
 ## Malloc in the Real Worlds
 
@@ -41,6 +56,11 @@ The GNU libc csouce code says:
 >    the best it can trying to meet both goals at once.
 >  * For very large requests (>= 128KB by default), it relies on system
 >    memory mapping facilities, if supported.
+
+* Multiple threads are handled by multiple arenas.
+* A bunch of different technqiues get used for different size allocations
+* There are doubly linked lists, singly linked lists, queues,
+  bins of non-constant size chunks, and stacks.
 
 ### tcmalloc (Google)
 
@@ -74,10 +94,42 @@ Extensive use of size-specific bins:
 
 http://jemalloc.net/
 
+https://www.youtube.com/watch?v=RcWp5vwGlYU
+
+Key idea is fragmentation avoidance. Want to be able to use all the RAM
+in the machine even for long-running processes.
+
 All in with size specific bins:
 
- * Small is up to 14KB (36 classes)
+ * Small is up to 4K
+ * Medium is up to 4M
  * Large is 16KB - 7 EB
 
+Multiple partially-shared arenas:
 
+ * Arenas are allocated to threads using next-fit.
+ * Memory is always freed to the source arena.
+ * Red-Black tree per size class.
+ * Dirty and clean pages are kept seperate
+   * Clean pages take up zero space
+   * Free dirty pages must be purged
+
+No async GC implemented as of Summer 2015.
+
+Each thread has a local cache per size up to 32K. This cache is used
+to avoid hitting an arena at all.
+
+Really neat stuff:
+
+ * Allows explicit mmaping of files on disk as source locations for
+   arenas.
+ * This allows malloc-to-SSD, or malloc-to-NVRAM, taking full advantage
+   of the kernel page cache and allowing datasets in the several TB
+   range on "cheap" servers.
+ * Allocates in 4MB chunks aligned to 4MB.
+
+Neat goal:
+
+ * One Arena per CPU core.
+ * This is actually what you want for both performance and contention.
 
