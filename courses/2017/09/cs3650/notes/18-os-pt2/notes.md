@@ -1,0 +1,137 @@
+---
+layout: default
+---
+
+# Computer Systems
+
+ - 09:50 – 11:30
+ - 13:35 – 15:15
+
+## First Thing
+
+ - Questions on the Homework?
+
+## Finish Slides
+
+ - Start at "Simple OS Example"
+
+## Linux Boot Process
+
+ - An initial RAM disk is loaded.
+ - Hardware is detected.
+ - The root filesystem is mounted.
+   - Show /dev/fstab
+   - Show "mount"
+     - /dev/sdb1 on / type ext4
+     - /dev/sdb5 on /home type btrfs
+     - /dev/sda1 on /data type ext4
+   - Show "cfdisk /dev/sda"
+   - Show "cfdisk /dev/sdb"
+ - Process 1 (init) is started.
+   - Init loads system services.
+ - Services include:
+   - sshd for remote logins
+   - logind for local logins
+   - A display manager for graphical logins
+   - Various servers
+   - Show /etc/rc2.d
+
+## xv6: An Operating System
+
+ - Clone the xv6 repo.
+ - git fetch --tags
+ - git checkout xv6-rev8
+ - git checkout -b xv6-rev8
+
+At this point, we have the same version as the NEU-local docs.
+
+References: 
+
+ - Repo clone: git clone git://github.com/mit-pdos/xv6-public.git
+ - Local docs: http://www.ccs.neu.edu/course/cs3650/unix-xv6/
+ 
+Building and running it:
+
+ - screen
+ - make
+ - Comment out the error line.
+ - make
+ - make qemu-nox
+ - ls
+ - cat README
+ - need to kill qemu to exit
+
+Boot process:
+
+ - bootasm.S
+ - bootman.c
+ - main.c
+   - main
+   - mpmain
+ - proc.c: scheduler
+ - stop here
+   
+Stuff we've already done:
+
+ - usermalloc.c
+   - start in morecore
+   - uses sbrk
+   - uses 4k chunk size
+   - look at malloc
+   - freep is free list
+   - note: return p+1
+   - look at free
+   - note: return p-1
+ - sh.c
+   - builds a parse tree
+   - executes it
+   - neat example of tagged polymorphic struct usage
+
+Stuff we will do:
+
+ - quick look at fs.c
+ - we'll have too many slides on this later
+
+Cool stuff:
+ - vectors.S
+ - trap.c
+   - Interrupts!
+   - Timer
+   - IDE (hard disk)
+   - Keyboard
+   - Serial port
+ - echo.c
+   - The echo command.
+
+## IPC: Sockets
+
+ - Pipes
+ - Named pipes.
+ - UNIX sockets.
+ - IP sockets: UDP or TCP
+   - UDP: Unreliable packets; basically just IP.
+   - TCP: Like a pipe, but might go to another machine.
+ - TCP server:
+   - socket() -> gives us an FD
+   - bind()   -> specifies address
+   - listen() -> marks us as a server
+   - accept() -> accepts connection, gives new FD
+   - now we can send / recv data like read / write to a pipe
+   - shutdown() -> signal end of data
+   - close()  -> clean up fd
+ - TCP client:
+   - socket()  -> gives us an FD
+   - connect() -> connect to a server
+   - now we can send / recv data like read / write to a pipe
+   - shutdown() -> signal end of data
+   - close()  -> clean up fd
+
+All of these mechanisms are slower than mmaping shared memory,
+because they require copying data and system calls to read/write
+messages. But... sockets are pretty fast. And socket code is
+way easier to get right than shared memory.
+
+ - Take a look at get.c
+
+
+
