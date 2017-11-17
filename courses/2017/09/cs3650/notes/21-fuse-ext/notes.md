@@ -129,7 +129,12 @@ Ext disadvantages:
  - Still slow on spinning disk.
  - Bad locality - inodes and data blocks are not near each other and need to be accessed
    alternatively in path traversals.
-   
+
+## Hints
+
+ - Look at hints folder.
+ - Talk about how the pieces map to an ext-style FS.
+
 ## Slides
 
  - Start the FS slides from ~slide 16
