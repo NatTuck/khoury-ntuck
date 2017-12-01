@@ -1,0 +1,22 @@
+
+OpenCL Notes:
+
+Kinds of hardware parallism:
+ - Multi-core CPUs
+ - Clusters
+ - Vector Units
+ - GPUs
+
+
+
+= Who?
+
+
+
+= What?
+
+= Where?
+
+= When?
+
+= Why?
