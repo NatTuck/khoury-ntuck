@@ -1,0 +1,501 @@
+---
+layout: default
+---
+
+<h1>CS 3650 - Computer Systems</h1>
+
+<p>Introduces the basic design of computing systems, computer operating systems,
+and assembly language using a RISC architecture. Describes caches and virtual
+memory. Covers the interface between assembly language and high-level
+languages, including call frames and pointers. Covers the use of system calls
+and systems programming to show the interaction with the operating system.
+Covers the basic structures of an operating system, including application
+interfaces, processes, threads, synchronization, interprocess communication,
+deadlock, memory management, file systems, and input/output control.
+
+<p>Details coming soon.
+
+<p>The spring course may be similar to: <a href="http://www.ccs.neu.edu/home/ntuck/courses/2017/09/cs3650/">Fall 2017 Syllabus</a>.
+
+<!--
+
+<h2>Interesting Links</h2>
+
+<ul>
+  <li><a href="http://jroweboy.github.io/c/asm/2015/01/26/when-is-main-not-a-function.html">main is usually a function</a></li>
+  <li><a href="http://www.phoronix.com/scan.php?page=news_item&px=Intel-5-Level-Paging">Intel 5-level Paging</a></li>
+  <li><a href="https://assets.bitbashing.io/papers/lockless.pdf">Lockless synchronization</a></li>
+</ul>
+
+<h2>Resources</h2>
+
+<ul>
+  <li><a href="https://bottlenose.ccs.neu.edu">Bottlenose</a> - Find and submit homework assignments.</li>
+  <li><a href="http://piazza.com/northeastern/fall2017/cs3650">Piazza</a> - Class discussion.</li>
+  <li><a href="http://www.ccs.neu.edu/course/cs3650/parent/MIPS-simulator/Mars4_5.jar">MARS 4.5</a>
+    - The MIPS simulator we'll be using.</li>
+  <li><a href="http://courses.missouristate.edu/KenVollmar/MARS/Help/SyscallHelp.html">MARS Syscalls</a>
+    - Also the rest of the MARS docs.
+  <li><a href="http://www.ostep.org">Operating Systems, Three Easy Pieces</a> - Online text.</li>
+  <li><a href="https://pdos.csail.mit.edu/6.828/2014/xv6.html">Xv6 Unix Source</a>
+    - Another online "text".</li>
+  <li><a href="http://www.ccs.neu.edu/course/cs3650/">Prof Cooperman's Course Page</a> 
+    - Lots of links to great resources.</li>
+  <li><a href="http://www.ccs.neu.edu/course/cs3650/parent/help/">Linux / Unix help</a>
+    - How to use standard *nix tools.</li>
+  <li><a href="http://www.ccis.northeastern.edu/current-students/undergraduate/resources/">Upper Class Tutoring</a></li>
+  <li><a href="notes">Nat's Lecture Notes</a> - Probably confusing, but includes most
+    code shown in class.</li>
+</ul>
+
+<h2>Lecture Sections</h2>
+
+<p>Feel free to come to either lecture as long as there is an available seat.</p>
+
+<table class="table table-striped">
+  <tr>
+    <td>3650-01</td>
+    <td>IV 019</td>
+    <td>Tu/Fr 9:50-11:30am</td>
+  </tr>
+  <tr>
+    <td>3650-02</td>
+    <td>IV 019</td>
+    <td>Tu/Fr 1:35-3:15pm</td>
+  </tr>
+</table>
+
+<h2>Office Hours</h2>
+
+<table class="table table-striped">
+  <tr>
+    <td>Nat Tuck</td>
+    <td>NI 132E</td>
+    <td>Mo 2pm-3pm, Fr noon-1pm</td>
+    <td>ntuck ⚓ ccs.neu.edu</td>
+  </tr>
+  <tr>
+    <td>Supraja Krishnan</td>
+    <td>Snell Library 45</td>
+    <td>Tu 3:30pm-5:30pm</td>
+    <td>krishnan.sup ⚓ husky.neu.edu</td>
+  </tr>
+  <tr>
+    <td>Nakul Camasamudram</td>
+    <td>WVH 362</td>
+    <td>We 10am-noon</td>
+    <td>camasamudram.n ⚓ husky.neu.edu</td>
+  </tr>
+  <tr>
+    <td>Tanmay Ulhas Budukh</td>
+    <td>WVH 462</td>
+    <td>Th 8-10am</td>
+    <td>budukh.t ⚓ husky.neu.edu</td>
+  </tr>
+  <tr>
+    <td>James Wu</td>
+    <td>WVH 362</td>
+    <td>Sa 6-7pm</td>
+    <td>wu.jame ⚓ husky.neu.edu</td>
+  </tr>
+  <tr>
+    <td>Samuel Vogel</td>
+    <td>SL 045</td>
+    <td>Tu noon-1pm</td>
+    <td>vogel.sa ⚓ husky.neu.edu</td>
+  </tr>
+  <tr>
+    <td>Jack Elliot</td>
+    <td>WVH 462</td>
+    <td>Fr 3-4pm</td>
+    <td>elliott.jame ⚓ husky.neu.edu</td>
+  </tr>
+</table>
+
+<h2>Textbook</h2>
+
+<p>Computer Organization and Design: The Hardware/Software Interface
+<br>Patterson &amp; Hennessy
+<br>Fifth Edition</p>
+
+<p>We'll also be using Operating Systems, Three Easy Pieces and the Xv6 Unix
+Source code, available online.
+
+<h2>Work For This Class</h2>
+
+<h3>Homework & Challenge Assignments</h3>
+
+<p>Assignments will be assigned and submitted through
+  <a href="https://bottlenose.ccs.neu.edu/">Bottlenose</a>.</p>
+
+<p>Late assignments will be penalized 1% for every hour late, except for the last assignment
+  which must be submitted on time for credit.</p>
+
+<p>Challenge assignments are just like homework assignments, except they're significantly
+  more difficult and will be graded more harshly.</p>
+
+<h3>Participation</h3>
+
+<p>Participation has several parts:
+<ul>
+  <li>Answering questions in class when randomly selected.</li>
+  <li>Asking good questions and giving good answers on Piazza.</li>
+  <li>Attending office hours with well prepared questions.</li>
+</ul>
+
+<h2>Grading</h2>
+
+<table class="table table-striped" style="width: 30em">
+  <tr>
+    <td>Homework</td>
+    <td>65%</td>
+  </tr>
+  <tr>
+    <td>Challenges</td>
+    <td>30%</td>
+  </tr>
+  <tr>
+    <td>Participation</td>
+    <td>5%</td>
+  </tr>
+</table>
+
+<h2>Schedule</h2>
+
+<p>Here's how the semester is likely to play out. Details subject to change.
+
+<table class="table table-striped" style="width: 60em">
+  <tr>
+    <th>Week</th>
+    <th>Dates</th>
+    <th>Topics &amp; Reading</th>
+    <th>Work Due</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>
+      Sep&nbsp;08<br>
+    </td>
+    <td>
+      <ul>
+        <li>Introduction</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: P&amp;H Ch 1, 2</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>
+      Sep 12<br>
+      Sep 15
+    </td>
+    <td>
+      <ul>
+        <li>ASM: Functions, Iteration, Recursion</li>
+        <li>ASM: "Design Recipe"</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>HW1: The CCIS Linux Server</li>
+        <li>Read: P&amp;H Appendix A6, A9, A10, Green Card</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>
+      Sep 19<br>
+      Sep 22
+    </td>
+    <td>
+      <ul>
+        <li>Processes &amp; Memory Layout</li>
+        <li>ASM: Syscalls, I/O, Memory Allocation</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>HW2: Simple ASM</li>
+        <li>Read: <a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">OSTEP</a> ch 4, 13</li>
+        <li>Read: P&amp;H ch 2</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>
+      Sep 26<br>
+      Sep 29
+    </td>
+    <td>
+      <ul>
+        <li>C: Functions, Pointers, Arrays, and The Stack</li>
+        <li>C: The Heap; A Simple Parser</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>HW3: Less Simple ASM</li>
+        <li>Read: OSTEP ch 14</li>
+        <li>Read: P&amp;H 2.14</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>
+      Oct 3<br>
+      Oct 6
+    </td>
+    <td>
+      <ul>
+        <li>UNIX Syscalls: fork, exec, waitpid</li>
+        <li>Building a Shell</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>HW4: Shell Command Parsing</li>
+        <li>Read: OSTEP ch 5</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>
+      Oct 10<br>
+      Oct 13
+    </td>
+    <td>
+      <ul>
+        <li>I/O with read &amp; write; Process table &amp; Virtual Memory</li>
+        <li>Shared Memory &amp; Semaphores</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Challenge 1: UNIX Shell</li>
+        <li>Read: OSTEP 15, 16, 18, 31</li>
+        <li>Read: P&amp;H 5.6, 5.7</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>
+      Oct 17<br>
+      Oct 20
+    </td>
+    <td>
+      <ul>
+        <li>Threads, mutexes, data races</li>
+        <li>Cond vars, atomics, deadlocks</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>HW5: Inter-Process Communication</li>
+        <li>Read: OSTEP 26, 27, 28, 30</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>
+      Oct 24<br>
+      Oct 27
+    </td>
+    <td>
+      <ul>
+        <li>Memory Allocation: Free List</li>
+        <li>Memory Allocation: Optimizations</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>HW6: Inter-Thread Communciation</li>
+        <li>Read: OSTEP ch 17</li>
+        <li>Read: P&amp;H ch 6.1 - 6.6</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>
+      Oct 31<br>
+      Nov 3
+    </td>
+    <td>
+      <ul>
+        <li>Memory Allocation w/ Threads</li>
+        <li>Existing Systems: Caches, Multiple Arenas</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>HW7: Memory Allocator</li>
+        <li>Read: P&amp;H ch 5.1 - 6.4</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>
+      Nov 7<br>
+      Nov 10
+    </td>
+    <td>
+      <ul>
+        <li>Operating Systems: Kernels</li>
+        <li>A Quick Look at xv6</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Challenge 2: Thread-safe Allocator</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>
+      Nov 14<br>
+      Nov 17
+    </td>
+    <td>
+      <ul>
+        <li>File Systems: FAT, vsfs</li>
+        <li>Intro to FUSE</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>HW8: Examining xv6</li>
+        <li>Read: OSTEP ch 39, 40</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>
+      Nov 21<br>
+    </td>
+    <td>
+      <ul>
+        <li>File Systems: ext*</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>HW9: Simple File System</li>
+        <li>Read: OSTEP ch 41, 42, 43</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>
+      Nov 28<br>
+      Dec 1
+    </td>
+    <td>
+      <ul>
+        <li>File Systems: log-based, COW</li>
+        <li>Solutions for Concurrency</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Read: OSTEP ch 32, 33</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>
+      Dec 5<br>
+    </td>
+    <td>
+      <ul>
+        <li>Wrap Up</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Challenge 3: Fancy File System</li>
+        <li>Read: OSTEP ch 47</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<h2>Policies</h2>
+
+<h3>Special Accomodations</h3>
+
+<p>Students needing disability accommodations should visit the
+  <a href="http://www.northeastern.edu/drc/about-the-drc/">Disability
+    Resource Center (DRC)</a>.</p>
+
+<p>If you have been granted special accomodations either through the DRC
+  or as a student athlete, let me know as soon as possible.</p>
+
+<h3>Code Copying &amp; Collabaration Policy</h3>
+
+<p>Copying code and submitting it without proper attribution is strictly
+prohibited in this class. This is plagiarism, which is completely unacceptable.
+
+<p><b>Details:</b>
+
+<ul>
+  <li>For all assignments, you should personally write your code either from
+    scratch or using only the starter code provided in the assignment.</li>
+  <li>For team assignments, you can share code with team mates.</li>
+  <li>Sharing your code with other students is not allowed.</li>
+  <li>Looking at code written by other students is not allowed.</li>
+  <li>You can read code from the internet or text books, but copying it - even
+    to use as a starting point for your code - is not allowed.</li>
+  <li>This includes code shown in lecture. Do not copy code without attribution.</li>
+</ul>
+
+<p><b>Collaboration and Attribution:</b>
+
+<p>Since it's not plagiarism if you provide attribution, as a special exception
+to these rules, any code sharing with <b>completely clear</b> attribution will not be
+treated as a major offense. Instead, credit will be split between the writers of
+the code.
+
+<p>In order to qualify for this exception, every collaborator must include a
+prominent notice either as a multi-line comment at the top of the submitted single
+source file or at the top of a submitted README file identifying all collaborators.
+
+<p>For example, if four students work together to do a homework, the submission
+will be graded as usual and then the points will be split evenly four ways as
+long as the collaboration is clearly indicated in the submissions.
+Alternatively, if a student copies half their work from Stack Overflow with
+proper credit, they'll get half the points.</p>
+
+<p><b>Penalities:</b></p>
+
+<p><strong>First Offense:</strong></p>
+<ul>
+  <li>Your final grade will be an F.</li>
+  <li>You will be reported to OSCCR and CCIS.</li>
+</ul>
+
+<h3>Posting Work Online</h3>
+
+<p>You want to post your work to Github. I want to re-use assignments next semester without
+  students submitting old homework.</p>
+
+<ol>
+  <li>Solutions to "Homework" assignments may not be posted publicly.</li>
+  <li>Solutions to "Challenge" assignments may be posted publicaly *after*
+      a late submission would be worth no points (4 days after due date).</li>
+</ol>
+-->

@@ -1,0 +1,42 @@
+RESTful Routes
+
+Key idea: resources, operations on resources:
+
+HTTP Methods: GET, PUT, PATCH, DELETE
+
+CRUD: Create, Retreieve, Update, Delete
+
+Two more: Index, New
+
+
+
+What resources?
+
+ * Products
+   * Name
+   * Description
+   * Picture
+   * Price
+ * Users
+   * Email
+   * Credit Card
+   * Name
+   * Shipping Address
+   * Billing Address
+ * Shopping Carts
+   * Reference to a User
+   * Has many cart items
+ * Cart Items
+   * Count
+   * Reference to a Product
+
+
+
+Order: A frozen shopping cart.
+Order History: Old shopping carts.
+
+
+
+
+
+

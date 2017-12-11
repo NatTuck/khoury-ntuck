@@ -1,0 +1,303 @@
+diff --git a/lib/nu_mart_web/controllers/review_controller.ex b/lib/nu_mart_web/controllers/review_controller.ex
+index a3dd9d0..d77d979 100644
+--- a/lib/nu_mart_web/controllers/review_controller.ex
++++ b/lib/nu_mart_web/controllers/review_controller.ex
+@@ -17,7 +17,6 @@ defmodule NuMartWeb.ReviewController do
+   end
+ 
+   def create(conn, %{"review" => review_params}) do
+-    IO.inspect(review_params)
+     with {:ok, %Review{} = review} <- Feedback.create_review(review_params) do
+       conn
+       |> put_status(:created)
+diff --git a/test/nu_mart/accounts/accounts_test.exs b/test/nu_mart/accounts/accounts_test.exs
+index 9f4baf3..0ba9d47 100644
+--- a/test/nu_mart/accounts/accounts_test.exs
++++ b/test/nu_mart/accounts/accounts_test.exs
+@@ -6,16 +6,15 @@ defmodule NuMart.AccountsTest do
+   describe "users" do
+     alias NuMart.Accounts.User
+ 
+-    @valid_attrs %{email: "some email"}
++    @valid_attrs %{email: "some email", is_admin?: false}
+     @update_attrs %{email: "some updated email"}
+-    @invalid_attrs %{email: nil}
++    @invalid_attrs %{email: "", is_admin?: nil}
+ 
+     def user_fixture(attrs \\ %{}) do
+       {:ok, user} =
+         attrs
+         |> Enum.into(@valid_attrs)
+         |> Accounts.create_user()
+-
+       user
+     end
+ 
+diff --git a/test/nu_mart/feedback/feedback_test.exs b/test/nu_mart/feedback/feedback_test.exs
+index c1bc1ad..ecb47d3 100644
+--- a/test/nu_mart/feedback/feedback_test.exs
++++ b/test/nu_mart/feedback/feedback_test.exs
+@@ -4,19 +4,26 @@ defmodule NuMart.FeedbackTest do
+   alias NuMart.Feedback
+ 
+   describe "reviews" do
++    alias NuMart.Accounts
++    alias NuMart.Shop
+     alias NuMart.Feedback.Review
+ 
+-    @valid_attrs %{comment: "some comment", stars: 42}
+     @update_attrs %{comment: "some updated comment", stars: 43}
+     @invalid_attrs %{comment: nil, stars: nil}
+ 
++    def valid_attrs() do
++      {:ok, prod} = Shop.create_product(%{name: "Foo", desc: "bar", price: Decimal.new("10")})
++      {:ok, user} = Accounts.create_user(%{email: "jake@example.com"})
++      %{comment: "some comment", stars: 42, user_id: user.id, product_id: prod.id}
++    end
++
+     def review_fixture(attrs \\ %{}) do
+       {:ok, review} =
+         attrs
+-        |> Enum.into(@valid_attrs)
++        |> Enum.into(valid_attrs())
+         |> Feedback.create_review()
+ 
+-      review
++      NuMart.Repo.preload(review, [:user])
+     end
+ 
+     test "list_reviews/0 returns all reviews" do
+@@ -30,7 +37,7 @@ defmodule NuMart.FeedbackTest do
+     end
+ 
+     test "create_review/1 with valid data creates a review" do
+-      assert {:ok, %Review{} = review} = Feedback.create_review(@valid_attrs)
++      assert {:ok, %Review{} = review} = Feedback.create_review(valid_attrs())
+       assert review.comment == "some comment"
+       assert review.stars == 42
+     end
+diff --git a/test/nu_mart/shop/shop_test.exs b/test/nu_mart/shop/shop_test.exs
+index eac035e..833cbf7 100644
+--- a/test/nu_mart/shop/shop_test.exs
++++ b/test/nu_mart/shop/shop_test.exs
+@@ -2,22 +2,51 @@ defmodule NuMart.ShopTest do
+   use NuMart.DataCase
+ 
+   alias NuMart.Shop
++  alias NuMart.Shop.Product
++  alias NuMart.Shop.Cart
++  alias NuMart.Shop.CartItem
+ 
+-  describe "products" do
+-    alias NuMart.Shop.Product
++  def valid_attrs(:product) do
++    %{desc: "some desc", name: "some name", price: "120.50"}
++  end
+ 
+-    @valid_attrs %{desc: "some desc", name: "some name", price: "120.5"}
+-    @update_attrs %{desc: "some updated desc", name: "some updated name", price: "456.7"}
+-    @invalid_attrs %{desc: nil, name: nil, price: nil}
++  def valid_attrs(:cart) do
++    %{cart_type: "active"}
++  end
++
++  def valid_attrs(:cart_item) do
++    cart = cart_fixture()
++    prod = product_fixture()
++    %{count: 2, product_id: prod.id, cart_id: cart.id}
++  end
+ 
+-    def product_fixture(attrs \\ %{}) do
+-      {:ok, product} =
+-        attrs
+-        |> Enum.into(@valid_attrs)
+-        |> Shop.create_product()
++  def product_fixture(attrs \\ %{}) do
++    {:ok, product} =
++      attrs
++      |> Enum.into(valid_attrs(:product))
++      |> Shop.create_product()
++    product
++  end
+ 
+-      product
+-    end
++  def cart_fixture(attrs \\ %{}) do
++    {:ok, cart} =
++      attrs
++      |> Enum.into(valid_attrs(:cart))
++      |> Shop.create_cart()
++    cart
++  end
++
++  def cart_item_fixture(attrs \\ %{}) do
++    {:ok, cart_item} =
++      attrs
++      |> Enum.into(valid_attrs(:cart_item))
++      |> Shop.create_cart_item()
++    cart_item
++  end
++
++  describe "products" do
++    @update_attrs %{desc: "some updated desc", name: "some updated name", price: "456.7"}
++    @invalid_attrs %{desc: nil, name: nil, price: nil}
+ 
+     test "list_products/0 returns all products" do
+       product = product_fixture()
+@@ -30,10 +59,10 @@ defmodule NuMart.ShopTest do
+     end
+ 
+     test "create_product/1 with valid data creates a product" do
+-      assert {:ok, %Product{} = product} = Shop.create_product(@valid_attrs)
++      assert {:ok, %Product{} = product} = Shop.create_product(valid_attrs(:product))
+       assert product.desc == "some desc"
+       assert product.name == "some name"
+-      assert product.price == Decimal.new("120.5")
++      assert product.price == Decimal.new("120.50")
+     end
+ 
+     test "create_product/1 with invalid data returns error changeset" do
+@@ -68,21 +97,10 @@ defmodule NuMart.ShopTest do
+   end
+ 
+   describe "carts" do
+-    alias NuMart.Shop.Cart
+-
+     @valid_attrs %{cart_type: "some cart_type"}
+     @update_attrs %{cart_type: "some updated cart_type"}
+     @invalid_attrs %{cart_type: nil}
+ 
+-    def cart_fixture(attrs \\ %{}) do
+-      {:ok, cart} =
+-        attrs
+-        |> Enum.into(@valid_attrs)
+-        |> Shop.create_cart()
+-
+-      cart
+-    end
+-
+     test "list_carts/0 returns all carts" do
+       cart = cart_fixture()
+       assert Shop.list_carts() == [cart]
+@@ -128,21 +146,9 @@ defmodule NuMart.ShopTest do
+   end
+ 
+   describe "cart_items" do
+-    alias NuMart.Shop.CartItem
+-
+-    @valid_attrs %{count: 42}
+     @update_attrs %{count: 43}
+     @invalid_attrs %{count: nil}
+ 
+-    def cart_item_fixture(attrs \\ %{}) do
+-      {:ok, cart_item} =
+-        attrs
+-        |> Enum.into(@valid_attrs)
+-        |> Shop.create_cart_item()
+-
+-      cart_item
+-    end
+-
+     test "list_cart_items/0 returns all cart_items" do
+       cart_item = cart_item_fixture()
+       assert Shop.list_cart_items() == [cart_item]
+@@ -154,8 +160,8 @@ defmodule NuMart.ShopTest do
+     end
+ 
+     test "create_cart_item/1 with valid data creates a cart_item" do
+-      assert {:ok, %CartItem{} = cart_item} = Shop.create_cart_item(@valid_attrs)
+-      assert cart_item.count == 42
++      assert {:ok, %CartItem{} = cart_item} = Shop.create_cart_item(valid_attrs(:cart_item))
++      assert cart_item.count == 2
+     end
+ 
+     test "create_cart_item/1 with invalid data returns error changeset" do
+diff --git a/test/nu_mart_web/controllers/cart_controller_test.exs b/test/nu_mart_web/controllers/cart_controller_test.exs
+index 21fd572..592a58a 100644
+--- a/test/nu_mart_web/controllers/cart_controller_test.exs
++++ b/test/nu_mart_web/controllers/cart_controller_test.exs
+@@ -34,7 +34,7 @@ defmodule NuMartWeb.CartControllerTest do
+       assert redirected_to(conn) == cart_path(conn, :show, id)
+ 
+       conn = get conn, cart_path(conn, :show, id)
+-      assert html_response(conn, 200) =~ "Show Cart"
++      assert html_response(conn, 200) =~ "Checkout"
+     end
+ 
+     test "renders errors when data is invalid", %{conn: conn} do
+@@ -60,7 +60,7 @@ defmodule NuMartWeb.CartControllerTest do
+       assert redirected_to(conn) == cart_path(conn, :show, cart)
+ 
+       conn = get conn, cart_path(conn, :show, cart)
+-      assert html_response(conn, 200) =~ "some updated cart_type"
++      assert html_response(conn, 200) =~ "Cart owner"
+     end
+ 
+     test "renders errors when data is invalid", %{conn: conn, cart: cart} do
+diff --git a/test/nu_mart_web/controllers/cart_item_controller_test.exs b/test/nu_mart_web/controllers/cart_item_controller_test.exs
+index 4f6aec1..42da4ac 100644
+--- a/test/nu_mart_web/controllers/cart_item_controller_test.exs
++++ b/test/nu_mart_web/controllers/cart_item_controller_test.exs
+@@ -3,12 +3,17 @@ defmodule NuMartWeb.CartItemControllerTest do
+ 
+   alias NuMart.Shop
+ 
+-  @create_attrs %{count: 42}
+   @update_attrs %{count: 43}
+   @invalid_attrs %{count: nil}
+ 
++  def valid_attrs do
++    {:ok, cart} = Shop.create_cart(%{cart_type: "active"})
++    {:ok, prod} = Shop.create_product(%{name: "foo", desc: "bar", price: Decimal.new("77")})
++    %{count: 2, product_id: prod.id, cart_id: cart.id}
++  end
++
+   def fixture(:cart_item) do
+-    {:ok, cart_item} = Shop.create_cart_item(@create_attrs)
++    {:ok, cart_item} = Shop.create_cart_item(valid_attrs())
+     cart_item
+   end
+ 
+@@ -27,14 +32,14 @@ defmodule NuMartWeb.CartItemControllerTest do
+   end
+ 
+   describe "create cart_item" do
+-    test "redirects to show when data is valid", %{conn: conn} do
+-      conn = post conn, cart_item_path(conn, :create), cart_item: @create_attrs
++    test "redirects to product when data is valid", %{conn: conn} do
++      conn = post conn, cart_item_path(conn, :create), cart_item: valid_attrs()
+ 
+-      assert %{id: id} = redirected_params(conn)
+-      assert redirected_to(conn) == cart_item_path(conn, :show, id)
++      assert %{id: _id} = redirected_params(conn)
++      assert redirected_to(conn) =~ "products"
+ 
+-      conn = get conn, cart_item_path(conn, :show, id)
+-      assert html_response(conn, 200) =~ "Show Cart item"
++      #conn = get conn, cart_item_path(conn, :show, id)
++      #assert html_response(conn, 200) =~ "Show Cart item"
+     end
+ 
+     test "renders errors when data is invalid", %{conn: conn} do
+@@ -74,7 +79,7 @@ defmodule NuMartWeb.CartItemControllerTest do
+ 
+     test "deletes chosen cart_item", %{conn: conn, cart_item: cart_item} do
+       conn = delete conn, cart_item_path(conn, :delete, cart_item)
+-      assert redirected_to(conn) == cart_item_path(conn, :index)
++      assert redirected_to(conn) == product_path(conn, :index)
+       assert_error_sent 404, fn ->
+         get conn, cart_item_path(conn, :show, cart_item)
+       end
+diff --git a/test/nu_mart_web/controllers/product_controller_test.exs b/test/nu_mart_web/controllers/product_controller_test.exs
+index a334c29..b8da745 100644
+--- a/test/nu_mart_web/controllers/product_controller_test.exs
++++ b/test/nu_mart_web/controllers/product_controller_test.exs
+@@ -34,7 +34,7 @@ defmodule NuMartWeb.ProductControllerTest do
+       assert redirected_to(conn) == product_path(conn, :show, id)
+ 
+       conn = get conn, product_path(conn, :show, id)
+-      assert html_response(conn, 200) =~ "Show Product"
++      assert html_response(conn, 200) =~ @create_attrs.name
+     end
+ 
+     test "renders errors when data is invalid", %{conn: conn} do
