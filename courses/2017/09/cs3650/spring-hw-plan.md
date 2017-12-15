@@ -1,3 +1,6 @@
+---
+layout: default
+---
 
 # Planned Homework Assignment for cs3650, Spring 2018.
 
