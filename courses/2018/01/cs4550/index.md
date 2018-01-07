@@ -15,7 +15,7 @@ decisions, accomplishments, and user guidelines.
 ## Essential Resources
 
   - [Bottlenose](https://bottlenose.ccs.neu.edu) - View and submit homework assignments.
-  - [Piazza](https://piazza.com/northeastern/spring2018/cs45505610) - Class discussion.
+  - [Piazza](https://piazza.com/northeastern/spring2018/cs45505610) - Class discussion & announcements.
   - [Undergrad Tutoring](http://www.ccis.northeastern.edu/current-students/undergraduate/resources/)
   - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in class.
 
@@ -96,6 +96,10 @@ registrar or your VPS provider should provide DNS hosting.
  - [React Library](https://reactjs.org/docs/hello-world.html)
  - [ReactStrap](https://github.com/reactstrap/reactstrap)
  - [React Konva](https://github.com/lavrton/react-konva)
+
+Prof Rasala's Web Dev Links:
+
+ - https://web.northeastern.edu/rasala/webdevlinks.htm
 
 ## Editors
 
@@ -219,12 +223,14 @@ to these rules, any code sharing with attribution will not be treated as a
 major offense.
 
 There is no penalty for copying small snippets of code (a couple of lines) with
-attribution. This should be in a comment above these lines clearly indicating
-the source (including author name and URL, if any).
+attribution as long as this code doesn't significantly remove the intended
+challenge of the assignment. This should be in a comment above these lines
+clearly indicating the source (including author name and URL, if any).
 
 If you copy a large amount of code with attribution, you won't recieve credit
-for having completed that portin of the assignment, but there will be no further
-penalty.
+for having completed that portion of the assignment, but there will be no further
+penalty. The attribution must be obvious and clearly indicate both which code it
+applies to and where it came from.
 
 **Penalty for Plagarism**
 
