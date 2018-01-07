@@ -216,6 +216,12 @@ Details:
 Obviously, written text for something like a project report can also be
 plagarized. The standard rules for writing apply.
 
+**Lecture Notes**
+
+Lecture notes are *not* starter code, and should not be copied without
+attribution. As long as attribution is provided, there is no penalty for using
+code from the lecture notes.
+
 **Collaboration and Attribution:**
 
 Since it's not plagiarism if you provide attribution, as a special exception
