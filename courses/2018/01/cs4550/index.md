@@ -32,7 +32,7 @@ decisions, accomplishments, and user guidelines.
 {: .table .table-striped }
  Name | Location | Hours | Email
 +-----|----------|-------|------+
-Nat Tuck | NI 132 E | TBA | ntuck ⚓ ccs.neu.edu
+Nat Tuck | NI 132 E | 2pm-3pm MoTh | ntuck ⚓ ccs.neu.edu
 Manognya Koduganti | TBA | TBA | manognya ⚓ ccs.neu.edu
 Navya Kuchibhotla | TBA | TBA |	navyakuchibhotla ⚓ ccs.neu.edu
 Benjamin Muschol | TBA | TBA | muschol.b ⚓ husky.neu.edu

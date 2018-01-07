@@ -36,7 +36,7 @@ See his course page here: https://course.ccs.neu.edu/cs3650/
 {: .table .table-striped }
  Name | Location | Hours | Email
 +-----|----------|-------|------+
-Nat Tuck | NI 132 E | TBA | ntuck ⚓ ccs.neu.edu
+Nat Tuck | NI 132 E | 2pm-3pm MoTh | ntuck ⚓ ccs.neu.edu
 +-----|----------|-------|------+
 Yifan Xing | TBA | TBA | xing.yif ⚓ husky.neu.edu
 Anirudh Katipally | TBA | TBA |katipally.a ⚓ husky.neu.edu
