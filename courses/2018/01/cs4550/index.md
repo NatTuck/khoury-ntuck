@@ -12,6 +12,10 @@ technologies and at least one major integrative Web site project. Each student
 or team must also create extensive documentation of their goals, plans, design
 decisions, accomplishments, and user guidelines.
 
+This is a dual-listed class providing both undergraduate and graduate level
+credit. Students taking this course for graduate credit will be expected to
+complete additional tasks on some assignments.
+
 ## Essential Resources
 
   - [Bottlenose](https://bottlenose.ccs.neu.edu) - View and submit homework assignments.
@@ -47,12 +51,12 @@ This is an initial schedule, subject to revision as the semester progresses.
  Week | Starts | Topics | Work Due
 +-----|--------|--------|---------+
  1 | Jan 8  | Intro: Development on the Web; Server Setup & Deployment | HW01: Setup, Server Index
- 2 | Jan 15 | MLK Day; HTML & CSS; JS & DOM | HW02: Frontend Exercises
+ 2 | Jan 15 | MLK Day*; (HTML & CSS); JS & DOM | HW02: Frontend Exercises
  3 | Jan 22 | Brunch, Assets, Bootstrap, & React | HW03: Client-Side Game
  4 | Jan 29 | Elixir Language; BEAM VM | HW04: Elixir Exercises
  5 | Feb 5  | Phoenix Framework; Sessions; Websockets | HW05: Server-Supported Game
  6 | Feb 12 | Resources, REST, Postgres, Ecto | HW06: CRUD A
- 7 | Feb 19 | Pres Day; Relations | HW07: CRUD B (Relations)
+ 7 | Feb 19 | Pres Day*; (NoSQL?); Relations | HW07: CRUD B (Relations)
  8 | Feb 26 | OTP: GenServers, Agents, & Supervisors | -
  - | Mar 5  | Spring Break | -
  9 | Mar 12 | Canvas, react-konva; Local Storage | -
@@ -60,7 +64,11 @@ This is an initial schedule, subject to revision as the semester progresses.
 11 | Mar 26 | SPAs, Client Side Routes, Client-Side State | HW08: CRUD C (SPA)
 12 | Apr 2  | Web APIs | -
 13 | Apr 9  | Web Assembly | -
-14 | Apr 16 | Tuesday Class is Project 2 Office Hours | Project 2
+14 | Apr 16 | Pats Day*; Tuesday Class = Office Hours | Project 2
+
+\* Monday holiday; no class for monday section. Tuesday lecture is optional.
+
+Assignments will frequently be due at 11:59pm Sunday.
 
 ## Required Supplies
 
