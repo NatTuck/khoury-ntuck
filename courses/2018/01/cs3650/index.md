@@ -38,12 +38,11 @@ See his course page here: https://course.ccs.neu.edu/cs3650/
 +-----|----------|-------|------+
 Nat Tuck | NI 132 E | 2pm-3pm MoTh | ntuck ⚓ ccs.neu.edu
 +-----|----------|-------|------+
-Yifan Xing | TBA | TBA | xing.yif ⚓ husky.neu.edu
 Anirudh Katipally | TBA | TBA |katipally.a ⚓ husky.neu.edu
 James Elliott | TBA | TBA | elliott.jame ⚓ husky.neu.edu
 Zamir Johl | TBA | TBA | Johl.z ⚓ husky.neu.edu
 +-----|----------|-------|------+
-Savan Patel | none | none | patel.sav ⚓ husky.neu.edu
+Savan Patel | TBA | TBA | patel.sav ⚓ husky.neu.edu
 Nakul Camasamudram | none | none | camasamudram.n ⚓ husky.neu.edu
 Rashmi Dwaraka | none | none | dwarakarashmi ⚓ ccs.neu.edu
 Akshay Tandel | none | none | akshaytandel09 ⚓ ccs.neu.edu
