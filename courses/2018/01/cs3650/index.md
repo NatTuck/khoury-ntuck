@@ -38,7 +38,7 @@ See his course page here: https://course.ccs.neu.edu/cs3650/
 +-----|----------|-------|------+
 Nat Tuck | NI 132 E | 2pm-3pm MoTh | ntuck ⚓ ccs.neu.edu
 +-----|----------|-------|------+
-Anirudh Katipally | TBA | TBA |katipally.a ⚓ husky.neu.edu
+Anirudh Katipally | WVH 462 | 3-4pm Mo | katipally.a ⚓ husky.neu.edu
 James Elliott | TBA | TBA | elliott.jame ⚓ husky.neu.edu
 Zamir Johl | TBA | TBA | Johl.z ⚓ husky.neu.edu
 +-----|----------|-------|------+
