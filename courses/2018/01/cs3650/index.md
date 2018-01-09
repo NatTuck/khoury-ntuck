@@ -19,6 +19,7 @@ deadlock, memory management, file systems, and input/output control.
  - [Piazza](https://piazza.com/northeastern/spring2018/cs3650) - Class discussion & announcements.
  - [Undergrad Tutoring](http://www.ccis.northeastern.edu/current-students/undergraduate/resources/)
  - [MIPS Reference Card](https://inst.eecs.berkeley.edu/~cs61c/resources/MIPS_help.html)
+ - [MARS Simulator JAR](./Mars4_5.jar)
  - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in class.
 
 ## Sections
