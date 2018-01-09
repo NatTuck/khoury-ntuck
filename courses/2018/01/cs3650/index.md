@@ -20,6 +20,8 @@ deadlock, memory management, file systems, and input/output control.
  - [Undergrad Tutoring](http://www.ccis.northeastern.edu/current-students/undergraduate/resources/)
  - [MIPS Reference Card](https://inst.eecs.berkeley.edu/~cs61c/resources/MIPS_help.html)
  - [MARS Simulator JAR](./Mars4_5.jar)
+ - [MARS System Calls](http://courses.missouristate.edu/KenVollmar/MARS/Help/SyscallHelp.html)
+ - [Linux / Unix Help](http://www.ccs.neu.edu/course/cs3650/parent/help/)
  - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in class.
 
 ## Sections
@@ -41,12 +43,13 @@ Nat Tuck | NI 132 E | 2pm-3pm MoTh | ntuck ⚓ ccs.neu.edu
 +-----|----------|-------|------+
 Anirudh Katipally | WVH 462 | 3-4pm Mo | katipally.a ⚓ husky.neu.edu
 James Elliott | TBA | TBA | elliott.jame ⚓ husky.neu.edu
-Zamir Johl | TBA | TBA | Johl.z ⚓ husky.neu.edu
+Zamir Johl | KA 204 | 7-8pm Tu | Johl.z ⚓ husky.neu.edu
 +-----|----------|-------|------+
 Savan Patel | TBA | TBA | patel.sav ⚓ husky.neu.edu
 Nakul Camasamudram | none | none | camasamudram.n ⚓ husky.neu.edu
 Rashmi Dwaraka | none | none | dwarakarashmi ⚓ ccs.neu.edu
 Akshay Tandel | none | none | akshaytandel09 ⚓ ccs.neu.edu
+
 
 ## Schedule
 
