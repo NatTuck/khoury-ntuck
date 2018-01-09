@@ -13,6 +13,11 @@ layout: default
 
 ## Syllabus
 
+- Web Site
+  - Mention Spectre / Meltdown
+  - Security patches should be out today.
+  - CPUs are broken, and it impacts software. I'll probably 
+    talk about this more later.
 - Grading
 - Schedule: Reading
 - Don't cheat
@@ -22,6 +27,7 @@ layout: default
 - Challenges
   - Like Homeworks, but harder. Start early. Really.
 - Textbook ; Readings
+- My notes.
 
 ## What We've Seen
 

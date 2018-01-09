@@ -13,6 +13,10 @@ Covers the basic structures of an operating system, including application
 interfaces, processes, threads, synchronization, interprocess communication,
 deadlock, memory management, file systems, and input/output control.
 
+## Interesting Stuff
+
+ - [Spectre & Meltdown](https://ds9a.nl/articles/posts/spectre-meltdown/)
+
 ## Essential Resources
 
  - [Bottlenose](https://bottlenose.ccs.neu.edu) - View and submit homework assignments.
@@ -29,17 +33,17 @@ deadlock, memory management, file systems, and input/output control.
 {: .table .table-striped }
  Section | Location | Time
 +--------|----------|--------+
-02 | BK  310 | 1:35pm-3:15pm TuFr
+02 | BK  310 | 1:35pm-3:15pm Tu/Fr
 
 Note: Prof. Gene Cooperman is running Section 01, which is structured differently. 
-See his course page here: https://course.ccs.neu.edu/cs3650/
+See his course page here: [https://course.ccs.neu.edu/cs3650/](https://course.ccs.neu.edu/cs3650/)
 
 ## Staff & Office Hours
 
 {: .table .table-striped }
  Name | Location | Hours | Email
 +-----|----------|-------|------+
-Nat Tuck | NI 132 E | 2pm-3pm MoTh | ntuck ⚓ ccs.neu.edu
+Nat Tuck | NI 132 E | 2pm-3pm Mo/Th | ntuck ⚓ ccs.neu.edu
 +-----|----------|-------|------+
 Anirudh Katipally | WVH 462 | 3-4pm Mo | katipally.a ⚓ husky.neu.edu
 James Elliott | TBA | TBA | elliott.jame ⚓ husky.neu.edu
