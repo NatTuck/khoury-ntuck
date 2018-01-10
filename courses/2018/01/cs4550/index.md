@@ -41,7 +41,7 @@ Manognya Koduganti | TBA | TBA | manognya ⚓ ccs.neu.edu
 Navya Kuchibhotla | TBA | TBA |	navyakuchibhotla ⚓ ccs.neu.edu
 Benjamin Muschol | TBA | TBA | muschol.b ⚓ husky.neu.edu
 Hoang Pham | TBA | TBA | pham.hoa ⚓ husky.neu.edu
-Arvin Sharma | TBA | TBA | sharma.arv ⚓ husky.neu.edu
+Arvin Sharma | WVH 362 | 5-6pm Mo | sharma.arv ⚓ husky.neu.edu
 
 ## Schedule
 
