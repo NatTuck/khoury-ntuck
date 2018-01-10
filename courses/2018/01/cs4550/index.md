@@ -39,7 +39,7 @@ complete additional tasks on some assignments.
 Nat Tuck | NI 132 E | 2pm-3pm MoTh | ntuck ⚓ ccs.neu.edu
 Manognya Koduganti | TBA | TBA | manognya ⚓ ccs.neu.edu
 Navya Kuchibhotla | TBA | TBA |	navyakuchibhotla ⚓ ccs.neu.edu
-Benjamin Muschol | TBA | TBA | muschol.b ⚓ husky.neu.edu
+Benjamin Muschol | KA 204 | 6-7pm Th | muschol.b ⚓ husky.neu.edu
 Hoang Pham | TBA | TBA | pham.hoa ⚓ husky.neu.edu
 Arvin Sharma | WVH 362 | 5-6pm Mo | sharma.arv ⚓ husky.neu.edu
 
