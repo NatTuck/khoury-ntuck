@@ -7,6 +7,8 @@ layout: default
  - I'm going to go over configuration of Nginx virtual hosts.
 
 
+# More on HW01
+
 ## Setting up Nginx Virtual Hosts
 
 ### Starting Point
@@ -71,26 +73,9 @@ server {
 }
 ```
 
+
+
 # Web Tech Overview
-
-## SomeHistorical Web Apps
-
- - WebCrawler (1994) (C / CGI)
- - UBB message board (perl / CGI)
- - Slashdot (Perl - embed interpreter)
- - phpBB (PHP - embed interpreter)
- - Reddit (LISP then Python - separate server) 
- 
- - OpenOffice Online
-   - Client Side: JavaScript that doesn't do much.
-   - Server Side: C++, including rendering
- - Gmail
-   - Client-side: Java
-   - Server-side: Java
- - Facebook
-   - Client-side: JavaScript and React.js
-   - Server-side, main application: PHP
-   - Server-side, secondary services: C++, Java, Python, Erlang
 
 ## HTTP
 
@@ -215,18 +200,35 @@ in other languages. It's common to compile to JavaScript.
    - No single format with 100% support. H.264 and WebM come closest.
  - Audio
    - MP3 should work everywhere.
-   
+  
+  
 ## Server-side Programming
 
 Client-side we run JavaScript.
 
 Server side, we just need a program that responds to HTTP requests.
 
-History:
+## Some Historical Web Apps
 
- - CGI (Perl)
- - Web Server Hooks (PHP)
- - Write a Web Server, reverse proxy to it.
+ - WebCrawler (1994) (C / CGI)
+ - UBB message board (perl / CGI)
+ - Slashdot (Perl - embed interpreter)
+ - phpBB (PHP - embed interpreter)
+ - Reddit (LISP then Python - separate server) 
+ - Final tech piece: Reverse proxy
+ 
+ - OpenOffice Online
+   - Client Side: JavaScript that doesn't do much.
+   - Server Side: C++, including rendering
+ - Gmail
+   - Client-side: Java
+   - Server-side: Java
+ - Facebook
+   - Client-side: JavaScript and React.js
+   - Server-side, main application: PHP
+   - Server-side, secondary services: C++, Java, Python, Erlang
+
+## Options
 
 Additional concerns:
 
