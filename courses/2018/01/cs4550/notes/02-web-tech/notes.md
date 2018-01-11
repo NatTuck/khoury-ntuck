@@ -2,6 +2,10 @@
 layout: default
 ---
 
+Thursday:  	EL 312 	11:45am - 1:25pm
+
+Friday:     WVG 102	3:25pm - 5:05pm
+
 ## First: HW Questions?
 
  - I'm going to go over configuration of Nginx virtual hosts.
@@ -181,7 +185,7 @@ are supported in which browsers at: http://caniuse.com
 JavaScript isn't a terrible language, but many developers prefer working
 in other languages. It's common to compile to JavaScript.
 
- - We'll get to use ES6 compiled to ES5 later.
+ - We'll get to use ES6 compiled to ES5 pretty soon.
  - CoffeeScript
  - TypeScript
  - ClojureScript
