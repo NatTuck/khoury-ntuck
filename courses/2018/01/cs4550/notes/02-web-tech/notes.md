@@ -10,6 +10,20 @@ Friday:     WVG 102	3:25pm - 5:05pm
 
  - I'm going to go over configuration of Nginx virtual hosts.
 
+## Prereqs
+
+This class mostly assumes you know the following stuff:
+
+ - How to use Git
+ - How to install Linux and do basic sysadmin tasks.
+ - HTML / CSS
+ - How to configure your editor of choice
+ - Probably other stuff too
+
+My guess is that most of you aren't 100% comfortable with at least one of those
+things. But... it's different for everyone. So if you're missing stuff, backfill
+now. You have time to spend 2 hours on a Git command line tutorial this week.
+You won't when we hit HW05.
 
 # More on HW01
 
