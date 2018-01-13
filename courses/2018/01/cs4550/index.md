@@ -37,8 +37,8 @@ complete additional tasks on some assignments.
  Name | Location | Hours | Email
 +-----|----------|-------|------+
 Nat Tuck | NI 132 E | 2pm-3pm MoTh | ntuck ⚓ ccs.neu.edu
-Manognya Koduganti | TBA | TBA | manognya ⚓ ccs.neu.edu
-Navya Kuchibhotla | TBA | TBA |	navyakuchibhotla ⚓ ccs.neu.edu
+Manognya Koduganti | BK 210 | noon-1pm Tu | manognya ⚓ ccs.neu.edu
+Navya Kuchibhotla | TBA | ?? Fr | navyakuchibhotla ⚓ ccs.neu.edu
 Benjamin Muschol | KA 204 | 6-7pm Th | muschol.b ⚓ husky.neu.edu
 Hoang Pham | WVH 362 | noon-1pm We | pham.hoa ⚓ husky.neu.edu
 Arvin Sharma | WVH 362 | 5-6pm Mo | sharma.arv ⚓ husky.neu.edu
