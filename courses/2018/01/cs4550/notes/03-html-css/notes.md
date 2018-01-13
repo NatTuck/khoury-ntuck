@@ -1,0 +1,63 @@
+---
+layout: default
+---
+
+Thursday:  	EL 312 	11:45am - 1:25pm
+
+Friday:     WVG 102	3:25pm - 5:05pm
+
+
+# HTML & CSS
+
+Initial HTML example:
+
+```html
+<!doctype html>
+<!-- simple doctype selects HTML 5 -->
+<html lang="en">
+  <!--
+       The lang attribute is important for font selection, especially
+       for non-European languages. 
+  -->
+  <head>
+    <meta charset="utf-8">
+    <!-- First line of head is meta charset="utf-8". This prevents annoying bugs later. -->
+
+    <title>Hello, Web</title>
+
+    <link rel="stylesheet" href="style.css">
+    <!--
+         external styles go in the head
+         styles should be external by default, leaving HTML for structure.
+    -->
+  </head>
+  <body>
+    <h1>Hello, Web</h1>
+
+    <p>This is a simple web page.</p>
+
+    <p class="red-text">This is red.</p>
+
+    <p id="data-dst">&nbsp;</p>
+
+    <p id="input-p">
+      <input type="text" id="data-src"">
+      <button id="click-me">Click Me</button>
+    </p>
+
+    <!--
+    <script src="code.js"></script>
+         By default, external scripts should come last in body and
+         all scripts should be external.
+
+         Script tags block loading of the page until the script is
+         executed, so this allows the page to render before the
+         script file is even downloaded.
+    -->
+  </body>
+</html>
+```
+
+
+
+
