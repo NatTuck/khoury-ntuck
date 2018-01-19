@@ -51,7 +51,7 @@ Jack Elliott | WVH 462 | 11-noon Fr | elliott.jame ⚓ husky.neu.edu
 Savan Patel | WVH 462 | 10-11am We | patel.sav ⚓ husky.neu.edu
 Nakul Camasamudram | none | none | camasamudram.n ⚓ husky.neu.edu
 Rashmi Dwaraka | none | none | dwarakarashmi ⚓ ccs.neu.edu
-Akshay Tandel | WVF 116 | 3-4pm Th | akshaytandel09 ⚓ ccs.neu.edu
+Akshay Tandel | BK 210 | 3-4pm Th | akshaytandel09 ⚓ ccs.neu.edu
 
 
 ## Schedule
