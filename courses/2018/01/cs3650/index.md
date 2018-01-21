@@ -141,6 +141,13 @@ Challenges are just like homework, except they're harder, worth more points, and
 they are graded more harshly. You'll want to start early and plan to spend a
 *lot* of time on them.
 
+### Late Work
+
+For all assignments except the last challenge, late submissions will be
+penalized by 1% for each hour late.
+
+For the final assignment, late submissions will not be accepted.
+
 ## Policies
 
 ### Grade Challenges

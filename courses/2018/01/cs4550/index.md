@@ -107,9 +107,7 @@ registrar or your VPS provider should provide DNS hosting.
  - [ReactStrap](https://github.com/reactstrap/reactstrap)
  - [React Konva](https://github.com/lavrton/react-konva)
 
-Prof Rasala's Web Dev Links:
-
- - https://web.northeastern.edu/rasala/webdevlinks.htm
+Prof Rasala's Web Dev Links: [Web Dev Links](https://web.northeastern.edu/rasala/webdevlinks.htm)
 
 ## Editors
 
@@ -169,6 +167,12 @@ GenServers.
 Project 2 will build a more traditional web application, and will take advantage
 of a relational database and a remote API. This project most likely will not
 require the use of websockets or heavy client-side logic.
+
+### Late Work
+
+For homework and Project 1, late submissions will be penalized by 1% per hour late.
+
+Late submissions will not be accepted for Project 2.
 
 ## Policies
 
