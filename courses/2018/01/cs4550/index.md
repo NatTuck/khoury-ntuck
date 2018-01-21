@@ -21,6 +21,7 @@ complete additional tasks on some assignments.
   - [Bottlenose](https://bottlenose.ccs.neu.edu) - View and submit homework assignments.
   - [Piazza](https://piazza.com/northeastern/spring2018/cs45505610) - Class discussion & announcements.
   - [Undergrad Tutoring](http://www.ccis.northeastern.edu/current-students/undergraduate/resources/)
+  - [Guides](./guides) - Instructions that might be useful.
   - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in class.
 
 ## Sections
