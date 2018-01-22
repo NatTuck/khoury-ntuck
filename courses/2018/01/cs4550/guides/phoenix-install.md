@@ -2,6 +2,8 @@
 layout: default
 ---
 
+[<= Go Back](../)
+
 # Setup: Phoenix Framework
 
 ## Installing the Software
@@ -21,13 +23,12 @@ these instructions and follow the directions:
 
  - [Elixir Install](https://elixir-lang.org/install.html)
  - [Phoenix Install](https://hexdocs.pm/phoenix/installation.html)
- - [NodeJS Install](https://github.com/creationix/nvm)
+ - [NodeJS Install](https://github.com/nodesource/distributions)
 
-For Ubuntu 16.04, up to date versions Erlang and Elixir are available as
-packages in a third party repository (Erlang Solutions). An up to date version
-of NodeJS is not available as an Ubuntu package, and should be installed through
-NVM. The versions of these packages available in the default Ubuntu repositories
-are too old - don't install them.
+For Ubuntu 16.04, up to date versions Erlang, Elixir, and NodeJS are available
+as packages in third party repositories. For Erlang / Elixir this is from Erlang
+Solutions.  For NodeJS this is from NodeSource. The versions of these packages
+in the stock Ubuntu repository are too old - don't install those versions.
 
 You should also install PostgreSQL. This can be installed normally from the
 Ubuntu repositories, packages are: postgresql postgresql-client libpq-dev
