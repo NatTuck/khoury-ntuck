@@ -23,17 +23,17 @@ fact:
 	#    else:
 	#    	a = fact(x - 1)
 	#       return x * a
-	# $t0 is x
-	# $t1 is a
+	# $s0 is x
+	# $s1 is a
 
 	subi $sp, $sp, 20
 	sw $ra, 0($sp)
-	sw $t0, 4($sp)
-	sw $t1, 8($sp)
+	sw $s0, 4($sp)
+	sw $s1, 8($sp)
 	
-	move $t0, $a0
-	li $t1, 1
-	bne $t0, $t1, fact_else
+	move $s0, $a0
+	li $s1, 1
+	bne $s0, $s1, fact_else
 	
 	# x == 1
 	li $v0, 1
@@ -41,16 +41,16 @@ fact:
 	
 fact_else:
 	# x != 1
-	subi $a0, $t0, 1
+	subi $a0, $s0, 1
 	jal fact
-	move $t1, $v0
+	move $s1, $v0
 	
-	mult $t0, $t1
+	mult $s0, $s1
 	mflo $v0	
 
 fact_return:
-	lw $t1, 8($sp)
-	lw $t0, 4($sp)
+	lw $s1, 8($sp)
+	lw $s0, 4($sp)
 	lw $ra, 0($sp)
 	addi $sp, $sp, 20
 	jr $ra

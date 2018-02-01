@@ -21,6 +21,7 @@ complete additional tasks on some assignments.
   - [Bottlenose](https://bottlenose.ccs.neu.edu) - View and submit homework assignments.
   - [Piazza](https://piazza.com/northeastern/spring2018/cs45505610) - Class discussion & announcements.
   - [Undergrad Tutoring](http://www.ccis.northeastern.edu/current-students/undergraduate/resources/)
+  - [Guides](./guides) - Instructions that might be useful.
   - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in class.
 
 ## Sections
@@ -40,7 +41,7 @@ Nat Tuck | NI 132 E | 2pm-3pm MoTh | ntuck ⚓ ccs.neu.edu
 Manognya Koduganti | BK 210 | noon-1pm Tu | manognya ⚓ ccs.neu.edu
 Navya Kuchibhotla | WVH 462 | noon-1pm Fr | navyakuchibhotla ⚓ ccs.neu.edu
 Hoang Pham | WVH 362 | noon-1pm We | pham.hoa ⚓ husky.neu.edu
-Arvin Sharma | WVH 362 | 5-6pm Mo | sharma.arv ⚓ husky.neu.edu
+Arvin Sharma | WVH 164 | 4-5pm Th | sharma.arv ⚓ husky.neu.edu
 
 <!-- Benjamin Muschol | KA 204 | 6-7pm Th | muschol.b ⚓ husky.neu.edu -->
 
@@ -106,9 +107,7 @@ registrar or your VPS provider should provide DNS hosting.
  - [ReactStrap](https://github.com/reactstrap/reactstrap)
  - [React Konva](https://github.com/lavrton/react-konva)
 
-Prof Rasala's Web Dev Links:
-
- - https://web.northeastern.edu/rasala/webdevlinks.htm
+Prof Rasala's Web Dev Links: [Web Dev Links](https://web.northeastern.edu/rasala/webdevlinks.htm)
 
 ## Editors
 
@@ -168,6 +167,12 @@ GenServers.
 Project 2 will build a more traditional web application, and will take advantage
 of a relational database and a remote API. This project most likely will not
 require the use of websockets or heavy client-side logic.
+
+### Late Work
+
+For homework and Project 1, late submissions will be penalized by 1% per hour late.
+
+Late submissions will not be accepted for Project 2.
 
 ## Policies
 
