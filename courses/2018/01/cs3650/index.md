@@ -48,7 +48,7 @@ Nat Tuck | NI 132 E | 2pm-3pm Mo/Th | ntuck ⚓ ccs.neu.edu
 Anirudh Katipally | WVH 462 | 3-4pm Mo | katipally.a ⚓ husky.neu.edu
 Anirudh Katipally | WVH 166 | 3-4pm We | katipally.a ⚓ husky.neu.edu
 Jack Elliott | WVH 462 | 11-noon Fr | elliott.jame ⚓ husky.neu.edu
-Evan White | none | none | white.eva ⚓ husky.neu.edu
+Evan White | WVH 362 | 9-10am Tu | white.eva ⚓ husky.neu.edu
 +-----|----------|-------|------+
 Savan Patel | WVH 462 | 10-11am We | patel.sav ⚓ husky.neu.edu
 Nakul Camasamudram | none | none | camasamudram.n ⚓ husky.neu.edu
