@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <assert.h>
 
+#include "sexp.h"
+
 sexp*
 make_numb(int nn)
 {
@@ -16,7 +18,7 @@ make_numb(int nn)
 sexp*
 make_oper(int cc)
 {
-    numb* yy = malloc(sizeof(oper));
+    oper* yy = malloc(sizeof(oper));
     yy->kind = KIND_OPER;
     yy->refs = 1;
     yy->oper = cc;
@@ -26,10 +28,7 @@ make_oper(int cc)
 sexp*
 cons(sexp* hd, sexp* tl)
 {
-    retain(hd);
-    retain(tl);
-
-    numb* yy = malloc(sizeof(cell));
+    cell* yy = malloc(sizeof(cell));
     yy->kind = KIND_CELL;
     yy->refs = 1;
     yy->head = hd;
@@ -47,6 +46,10 @@ clone(sexp* xx)
 void
 release(sexp* se)
 {
+    if (se == 0) {
+        return;
+    }
+
     se->refs -= 1;
     if (se->refs <= 0) {
         if (se->kind == KIND_CELL) {
@@ -61,13 +64,15 @@ release(sexp* se)
 void
 retain(sexp* se)
 {
-    se->refs += 1;
+    if (se) {
+        se->refs += 1;
+    }
 }
 
 sexp*
 car(sexp* se)
 {
-    assert(se->kind == KIND_CELL);
+    assert(se && se->kind == KIND_CELL);
     cell* xs = (cell*)se;
     retain(xs->head);
     return xs->head;
@@ -76,15 +81,56 @@ car(sexp* se)
 sexp*
 cdr(sexp* se)
 {
-    assert(se->kind == KIND_CELL);
+    assert(se && se->kind == KIND_CELL);
     cell* xs = (cell*)se;
-    retain(xs->tail);
     return xs->tail;
+}
+
+sexp*
+pop(sexp* se)
+{
+    assert(se && se->kind == KIND_CELL);
+    cell* xs = (cell*)se;
+    release(xs->head);
+    return xs->tail;
+}
+
+static
+sexp*
+reverse1(sexp* xs, sexp* ys)
+{
+    if (xs == 0) {
+        return ys;
+    }
+
+    return reverse1(cdr(xs), cons(car(xs), ys));
+}
+
+int
+length(sexp* se)
+{
+    if (se == 0) {
+        return 0;
+    }
+
+    assert(se && se->kind == KIND_CELL);
+    return 1 + length(cdr(se));
+}
+
+sexp*
+reverse(sexp* xs)
+{
+    return reverse1(xs, 0);
 }
 
 void
 print_sexp(sexp* se)
 {
+    if (se == 0) {
+        printf("()");
+        return;
+    }
+
     if (se->kind == KIND_NUMB) {
         numb* nn = (numb*)se;
         printf("%d", nn->numb);
@@ -97,8 +143,8 @@ print_sexp(sexp* se)
         cell* xs = (cell*)se;
         printf("(");
         while (xs) {
-            print_sexp(xs->first);
-            xs = (cell*)xs->rest;
+            print_sexp(xs->head);
+            xs = (cell*)xs->tail;
             if (xs) {
                 printf(" ");
             }

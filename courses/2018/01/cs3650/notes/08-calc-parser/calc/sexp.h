@@ -41,6 +41,10 @@ void retain(sexp* se);
 
 sexp* car(sexp* se);
 sexp* cdr(sexp* se);
+sexp* pop(sexp* se);
+
+sexp* reverse(sexp* se);
+int length(sexp* se);
 
 char* display(sexp* se);
 void print_sexp(sexp* se);
