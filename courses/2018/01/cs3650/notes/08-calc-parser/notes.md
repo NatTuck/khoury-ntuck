@@ -16,7 +16,7 @@ layout: default
  - Strategy is build and reverse.
  - ...
 
-## Transform to Suffix Form
+## Transform to RPN Form
 
  - Describe this on board.
  - Walk through example:
@@ -29,5 +29,14 @@ layout: default
      - Push operator to stack.
    - If open paren, push to stack.
    - If close paren, pop ops from stack until corresponding open paren.
+
+## RPN to sexp
+
+ - Reverse the list.
+ - Consume items from the front of the list:
+   - Operators are an interior node with two children
+     consumed from the list.
+   - Numbers are leaf nodes.
+
 
 
