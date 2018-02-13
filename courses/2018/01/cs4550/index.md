@@ -157,7 +157,7 @@ application that happens to use web technologies.
 
 Possible assignment:
 
-A multiplayer player game (e.g. Snake, Poker) with tables, lobbies, chat, and
+A multiplayer game (e.g. Snake, Poker) with tables, lobbies, chat, and
 challenges. Server is stateful, but there's no persistent state. Uses react or
 react-konva for rendering. Uses websocket for chat & game state comms. Uses
 GenServers.
@@ -233,8 +233,8 @@ plagarized. The standard rules for writing apply.
 **Lecture Notes**
 
 Lecture notes are *not* starter code, and should not be copied without
-attribution. As long as attribution is provided, there is no penalty for using
-code from the lecture notes.
+attribution. As long as attribution is provided, there is no penalty for
+appropriately using code from the lecture notes.
 
 **Collaboration and Attribution:**
 
@@ -248,9 +248,9 @@ challenge of the assignment. This should be in a comment above these lines
 clearly indicating the source (including author name and URL, if any).
 
 If you copy a large amount of code with attribution, you won't recieve credit
-for having completed that portion of the assignment, but there will be no further
-penalty. The attribution must be obvious and clearly indicate both which code it
-applies to and where it came from.
+for having completed that portion of the assignment, but there will be no
+further penalty. The attribution must be obvious and clearly indicate both
+which code it applies to and where it came from.
 
 **Penalty for Plagarism**
 
