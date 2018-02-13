@@ -9,7 +9,7 @@ layout: default
    - Con: Lecture before due date will be on new, unrelated material.
  - New Homework: Make an Time Tracker app
  - Project Prep: Swap / Confirm Partner, Select game to build
-
+ 
 # Building an App
 
 ## What we're building
