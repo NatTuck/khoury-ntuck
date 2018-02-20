@@ -19,6 +19,11 @@ Conditions for a data race:
  - Shared data that both processes access (read or write)
  - At least one process writes
 
+Barriers and data races:
+
+ - Review the barrier code.
+ - Figure out how it stops data races.
+
 ## Deadlocks
 
  - Real work example
