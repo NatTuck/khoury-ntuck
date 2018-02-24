@@ -59,12 +59,12 @@ This is an initial schedule, subject to revision as the semester progresses.
  5 | Feb 5  | Phoenix Framework; Sessions; Websockets | HW05: Server-Supported Game
  6 | Feb 12 | Resources, REST, Postgres, Ecto | HW06: CRUD A
  7 | Feb 19 | Pres Day*; (NoSQL?); Relations | HW07: CRUD B (Relations)
- 8 | Feb 26 | OTP: GenServers, Agents, & Supervisors | -
+ 8 | Feb 26 | JSON Resources; Canvas / React Konva | -
  - | Mar 5  | Spring Break | -
- 9 | Mar 12 | Canvas, react-konva; Local Storage | -
-10 | Mar 19 | Security & Passwords | Project 1
-11 | Mar 26 | SPAs, Client Side Routes, Client-Side State | HW08: CRUD C (SPA)
-12 | Apr 2  | Web APIs | -
+ 9 | Mar 12 | HTTPS; Security & Passwords | -
+10 | Mar 19 | SPAs, Client Side Routes, Client-Side State | Project 1
+11 | Mar 26 | Using Web APIs | HW08: CRUD C (SPA)
+12 | Apr 2  | ??? | -
 13 | Apr 9  | Web Assembly | -
 14 | Apr 16 | Pats Day*; Tuesday Class = Office Hours | Project 2
 
