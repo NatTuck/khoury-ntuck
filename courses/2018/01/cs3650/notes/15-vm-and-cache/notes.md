@@ -115,11 +115,11 @@ a second.
 
 ## Predicting CPU Performance
 
-My Destktop: Dual AMD Opteron 6234
+My Laptop: Intel Core i5-3320M
+The most boring laptop processor 2012 had to offer.
 
-https://www.anandtech.com/show/5058/amds-opteron-interlagos-6200
-
-We've got 24 cores, all running at 2GHz = 0.5 ns/cycle.
+We've got 2 cores, running at 2.6GHz
+For round numbers, let's call that 0.5 ns/cycle.
 
 Each core can do an add every cycle, so code like this should
 run at about 2 billion adds / second:
@@ -146,15 +146,15 @@ Take a look at addzs.c
 Let's consider the memory heirarchy.
 
  - Main Memory:
-   - Size: 32GB
+   - Size: 8GB of DDR3 1600
    - Latency: 70ns = 140 cycles
-   - Throughput: 30 GB/s
+   - Throughput: 20 GB/s
  - L3 Cache:
-   - Size: 8 MB
+   - Size: 3 MB
    - Latency: 15ns = 30 cycles
    - Throughput: 180 GB/s 
  - L2 Cache:
-   - Size: 2 MB
+   - Size: 256 KB
    - Latency: 5ns = 10 cycles
    - Throughput: 350 GB/s
  - L1 Data Cache:
