@@ -106,7 +106,7 @@ Look at package.json - Phoenix has pre-seeded some dependencies. We should pull
 in some more:
 
 ```
-assets$ npm install --save jquery bootstrap@4.0.0 popper.js react react-dom reactstrap@5.0.0-alpha.4 underscore
+assets$ npm install --save jquery bootstrap popper.js react react-dom reactstrap underscore
 assets$ npm install --save-dev babel-preset-env babel-preset-react sass-brunch
 ```
 
