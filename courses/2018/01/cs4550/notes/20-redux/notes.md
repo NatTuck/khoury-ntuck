@@ -401,6 +401,290 @@ Let's add a clear button for the post form. Steps:
 
 ## Secure Login & AJAX Security
 
+One annoyance of a SPA is that sessions don't work by default. To fix this, we
+have two basic options:
 
+1. Do sessions the same as before, and add the session plugs to our API scope.
+   This works, but it breaks other API consumers (e.g. the mobile app).
+2. Treat the whole thing as API authentication. This requires some more manual
+   effort, but will work to authenticate both other JSON API consumers and
+   your websocket connection.
 
+We're going to do it the hard way.
+
+First thing: Add passwords to the DB.
+
+Add deps for password hashes to mix.exs:
+
+```
+  # in deps
+  {:comeonin, "~> 4.0"},
+  {:argon2_elixir, "~> 1.2"},
+```
+
+```
+$ mix deps.get
+$ mix ecto.gen.migration AddPasswordHashes
+```
+
+The migration:
+```
+defmodule Microblog.Repo.Migrations.AddPasswordHashes do
+  use Ecto.Migration
+
+  def change do
+    alter table("users") do
+      add :password_hash, :string
+    end
+  end
+end
+```
+
+In the schema:
+```
+  field :password_hash, :string
+  field :password, :string, virtual: true
+```
+
+Now we'll update our seeds file to add passwords:
+
+```
+  def run do
+    p = Comeonin.Argon2.hashpwsalt("password1")
+
+    Repo.delete_all(User)
+    a = Repo.insert!(%User{ name: "alice", password_hash: p })
+    ...
+```
+
+```
+$ mix ecto.reset
+```
+
+Create a controller to sign in, token_controller.ex:
+
+```
+defmodule MicroblogWeb.TokenController do
+  use MicroblogWeb, :controller
+  alias Microblog.Users.User
+
+  action_fallback MicroblogWeb.FallbackController
+
+  def create(conn, %{"name" => name, "pass" => pass}) do
+    with {:ok, %User{} = user} <- Microblog.Users.get_and_auth_user(name, pass) do
+      token = Phoenix.Token.sign(conn, "auth token", user.id)
+      conn
+      |> put_status(:created)
+      |> render("token.json", user: user, token: token)
+    end
+  end
+end
+```
+
+in users.ex context module:
+
+```
+  def get_and_auth_user(name, pass) do
+    user = Repo.one(from u in User, where: u.name == ^name)
+    Comeonin.Argon2.check_pass(user, pass)
+  end
+```
+
+token_view.ex:
+
+```
+defmodule MicroblogWeb.TokenView do
+  use MicroblogWeb, :view
+
+  def render("token.json", %{user: user, token: token}) do
+    %{
+      user_id: user.id,
+      token: token,
+    }
+  end
+end
+```
+
+And in the router, api scope, add:
+
+```
+  post "/token", TokenController, :create
+```
+
+Now we need to deal with this on the front end:
+
+In the store:
+
+```
+function token(state = null, action) {
+  switch (action.type) {
+    case 'SET_TOKEN':
+      return action.token;
+    default:
+      return state;
+  }
+}
+
+let empty_login = {
+  name: "",
+  pass: "",
+};
+
+function login(state = empty_login, action) {
+  switch (action.type) {
+    case 'UPDATE_LOGIN_FORM':
+      return Object.assign({}, state, action.data);
+    default:
+      return state;
+  }
+}
+...
+
+  let reducer = combineReducers({posts, users, form, token, login});
+```
+
+Add to api.js:
+
+```
+  submit_login(data) {
+    $.ajax("/api/v1/token", {
+      method: "post",
+      dataType: "json",
+      contentType: "application/json; charset=UTF-8",
+      data: JSON.stringify(data),
+      success: (resp) => {
+        store.dispatch({
+          type: 'SET_TOKEN',
+          token: resp,
+        });
+      },
+    });
+  }
+```
+
+In the Nav component:
+
+```
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { Form, FormGroup, NavItem, Input, Button } from 'reactstrap';
+import { connect } from 'react-redux';
+import api from '../api';
+
+let LoginForm = connect(({login}) => {return {login};})((props) => {
+  function update(ev) {
+    let tgt = $(ev.target);
+    let data = {};
+    data[tgt.attr('name')] = tgt.val();
+    props.dispatch({
+      type: 'UPDATE_LOGIN_FORM',
+      data: data,
+    });
+  }
+
+  function create_token(ev) {
+    api.submit_login(props.login);
+    console.log(props.login);
+  }
+
+  return <div className="navbar-text">
+    <Form inline>
+      <FormGroup>
+        <Input type="text" name="name" placeholder="name"
+               value={props.login.name} onChange={update} />
+      </FormGroup>
+      <FormGroup>
+        <Input type="password" name="pass" placeholder="password"
+               value={props.login.pass} onChange={update} />
+      </FormGroup>
+      <Button onClick={create_token}>Log In</Button>
+    </Form>
+  </div>;
+});
+
+let Session = connect(({token}) => {return {token};})((props) => {
+  return <div className="navbar-text">
+    User id = { props.token.user_id }
+  </div>;
+});
+
+function Nav(props) {
+  let session_info;
+
+  if (props.token) {
+    session_info = <Session token={props.token} />;
+  }
+  else {
+    session_info = <LoginForm />
+  }
+
+  return (
+    <nav className="navbar navbar-dark bg-dark navbar-expand">
+      <span className="navbar-brand">
+        μBlog
+      </span>
+      <ul className="navbar-nav mr-auto">
+        <NavItem>
+          <NavLink to="/" exact={true} activeClassName="active" className="nav-link">Feed</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/users" href="#" className="nav-link">All Users</NavLink>
+        </NavItem>
+      </ul>
+      { session_info }
+    </nav>
+  );
+}
+
+function state2props(state) {
+  return {
+    token: state.token,
+  };
+}
+
+export default connect(state2props)(Nav);
+```
+
+Now we have the token in the state, so we can authenticate post submission requests.
+
+In store.js, let's update our post form data to include the token:
+```
+let empty_form = {
+  user_id: "",
+  body: "",
+  token: "",
+};
+
+function form(state = empty_form, action) {
+  switch (action.type) {
+    case 'UPDATE_FORM':
+      return Object.assign({}, state, action.data);
+    case 'CLEAR_FORM':
+      return empty_form;
+    case 'SET_TOKEN':
+      return Object.assign({}, state, action.token);
+    default:
+      return state;
+  }
+}
+```
+
+Update api:
+
+```
+  submit_post(data) {
+  ...
+      data: JSON.stringify({ token: data.token, post: data }),
+```
+
+In post_controller.ex:
+
+```
+  def create(conn, %{"post" => post_params, "token" => token}) do
+    {:ok, user_id} = Phoenix.Token.verify(conn, "auth token", token, max_age: 86400)
+    if post_params["user_id"] != user_id do
+      IO.inspect({:bad_match, post_params["user_id"], user_id})
+      raise "hax!"
+    end
+```
 
