@@ -26,7 +26,7 @@ import { Button, FormGroup, Label, Input } from 'reactstrap';
 
 export default function PostForm(params) {
   let users = _.map(params.users, (uu) => <option key={uu.id} value={uu.id}>{uu.name}</option>);
-  return <div style={{padding: "4ex"}}>
+  return <div style={ {padding: "4ex"} }>
     <h2>New Post</h2>
     <FormGroup>
       <Label for="user_id">User</Label>
@@ -212,8 +212,8 @@ function PostForm(params) {
     console.log(params.form);
   }
 
-  let users = _.map(params.users, (uu) => <option key={uu.id} value={uu.id}>{uu.name}</option>);
-  return <div style={{padding: "4ex"}}>
+  let users = \_.map(params.users, (uu) => <option key={uu.id} value={uu.id}>{uu.name}</option>);
+  return <div style={ {padding: "4ex"} }>
     <h2>New Post</h2>
     <FormGroup>
       <Label for="user_id">User</Label>
