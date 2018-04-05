@@ -4,7 +4,13 @@ layout: default
 
 ## First Thing
 
-Homework questions?
+Project questions?
+
+## Schedule
+
+ - Today: API Examples
+ - Next Week: Last two classes
+ - Week of the 16th: Holiday, Tuesday: Office Hours lecture, Thursday: Proj2 due.
 
 ## Web APIs
 
