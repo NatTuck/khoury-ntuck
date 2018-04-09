@@ -23,10 +23,13 @@ The idea of transactions is as follows:
    calls; but we can build a non-standard filesystem.
  - ...
 
+## Seperate open files: File Handles
+
 ## Implementing "Rollback"
 
 - ioctl docs: /usr/include/asm-generic/ioctl.h
  - For each ioctl, stuff is encoded in the 32-bit ioctl #.
    - Direction of argument: (none, input, or output)
    - Size of argument: 14 bits.
-
+- Rollback makes the FUSE cache no longer correct.
+  - Need to set fi->direct_io on open.

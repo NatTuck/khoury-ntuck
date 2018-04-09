@@ -7,16 +7,9 @@ layout: default
  - 09:50 – 11:30
  - 13:35 – 15:15
 
-## Challenge 3 Questions
+## Challenge 2 Questions
 
  - Questions?
-
-
-## Proprietary CoW File Systems
-
- - Apple's APFS (No volume management)
- - Microsoft's ReFS (Windows Server 2012+, standard ZFS/btrfs features)
-
 
 ## Solutions for Parallelism
 
