@@ -199,7 +199,7 @@ Here's the procedure:
    scratch.
  - If your new score is higher than the old score, you get your points back.
  - Challenges must be issued within two weeks of the grade being posted to
-   Bottlenose, and before finals week starts.
+   Bottlenose, and before the end (Friday) of finals week.
 
 ### Special Accomodations
 
