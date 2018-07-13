@@ -1,0 +1,43 @@
+HW07 Rubric:
+
+Students start with 50 points.
+
+Since the rubric includes correcting for autograder inaccuracy, the manual grading score may be below zero or above 50. The total
+score should stay in the range 0-100.
+
+Autograder refunds:
+
+If a student has lost a significant number of points on the autograder, check their code to see if we can give partial credit.
+
+ - There are two pieces here: successfully allocating memory and getting coalescing to work so the stats are right.
+ - Consider the tests that failed, and examine the code to see if they were "close".
+ - Give a refund of up to 1 point per failed test for being close.
+
+Common deductions:
+
+ - Stray dotfiles / binaries / etc: -1 each, max -3
+ - Inconsistent code formatting (-1 each, max -5).
+ - Clear logic errors, especially in regard to pointers / memory access: -5 each, max -20
+   Give a comment explaining the error.
+ - Subjectively bad code: -1 or -2 each, max -5
+   Give a comment explaining the error.
+
+Specific deductions:
+
+ - Didn't manage free memory as a linked list: -10
+ - Didn't manage free memory usefully at all: -20
+ - Didn't handle large vs. small allocations as specified:
+   - Didn't split properly: -5
+   - Didn't handle large allocations directly with mmap/munmap: -5
+ - Coalescing logic was wrong: -1
+   - Point out where
+
+Bonuses:
+
+ - Especially nice implementations of stuff: +1 each, max +3
+
+Plagiarism:
+
+ - For any code copying, check for attribution comments.
+   - No attribution at all, let me know.
+

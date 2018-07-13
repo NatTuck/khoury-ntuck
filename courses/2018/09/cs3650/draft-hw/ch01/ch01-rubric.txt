@@ -1,0 +1,45 @@
+CS3650-02, Spring 2018, CH01 Rubric
+
+Students start with 50 points. Max deduction is -50.
+
+The autograder should do a decent job on correctness, so the deductions
+for this assignment are mostly about good practice.
+
+Make sure to scan the submitted code and keep an eye out for 1.) really lame
+submissions (e.g. prints correct output based on script file name) or 2.)
+plagarism. In these cases, let Prof Tuck know.
+
+== Common deductions: ==
+
+- Inconsistent code formatting (-1 each, max -5).
+- Subjectively bad code (-1 each, max -5), clear comment about why it's bad.
+
+== Features: ==
+
+Expected features are: redirect in, redirect out, pipe, semicolon, and, or,
+background, exit, cd.
+
+Look at the code. For each feature:
+No attempt at the feature, -4.
+The implementation is very specific to the test case (e.g. && checks for “true” command), -2.
+Otherwise, no penalty for a bad attempt at the feature
+
+== Clear Errors ==
+
+It's an error if memory is leaked structurally (e.g. a pointer is reassigned
+without freeing the old value or the only reference is lost on function return).
+If there was still a reference on exit or exec, that’s fine. fork occurs, but
+there isn’t an associated wait in the right place to get deterministic ordering
+and this wasn’t supposed to be a background task Other similar errors that are
+objectively bugs.
+
+Memory leaks: -2 each max -10.
+
+When adjusting file descriptors, stray file descriptors shouldn't be left open.
+
+Stray file descriptor left open: -1
+Stray file descriptor in parent process: -2
+
+
+
+

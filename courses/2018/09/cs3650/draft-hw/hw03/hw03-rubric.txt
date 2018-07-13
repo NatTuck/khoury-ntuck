@@ -1,0 +1,21 @@
+Students start with 50 points.
+
+Possible deductions:
+
+ - The submission should be an implementation of Gnome Sort or Stooge Sort (20 pts)
+   - If they did insertion sort or quick sort, let me know - probably cheating.
+   - Close but incorrect implementation: (2, 5, or 10 pts off depending on how wrong)
+ - Two arrays should be heap-allocated with sbrk syscall (5 pts/array)
+ - Sorting should be accomplished by calling a sorting function (5pts)
+ - All non-trivial functions should use the stack correctly.
+   - Save return values. (5 pts)
+   - Save all used S registers in setup / restore in cleanup. (5 pts)
+ - Both arrays should be printed after sort function is called (5 pts)
+ - No stray files (mars jar, dotfiles) in submission (5 pts)
+ - Subjectively bad code (up to -5)
+
+Possible bonuses:
+
+ - If they have a correct implementation of Stooge Sort and got full credit
+   on the autograder, they get +10 pts. This can exceed the 50 pts for manual
+   grading.

@@ -1,0 +1,80 @@
+FIXME: This is the parser version I used in the spring. I think I like the
+classifying tokenizer version more for this semester:
+
+<pre>
+$ cat foo.txt | sort
+Got 4 tokens:
+command: "cat"
+argument: "foo.txt"
+operator: "|"
+command: "sort"
+</p>
+
+Implementation requirement: The tokens must be stored in an expandable sequence
+data structure like a dynamic array or linked list before printing.
+
+------------------------------
+
+<p>In this assignment you will parse unix shell commands into s-expressions.
+
+<h2>Simplified Shell Grammar</h2>
+
+<p>A shell command is one of the following things:
+
+<p>(1) A simple command.
+<br>command arg1 arg2 ...
+
+<pre>
+parse$ echo one two
+("echo" "one" "two")
+</pre>
+
+<p>(2) A combining operator
+<br>One of: ";", "&", "||", "&&", "|"
+<br>(shell command) C-OP (shell command)
+
+<pre>
+parse$ cat foo.txt | sort
+("|" ("cat" "foo.txt") ("sort"))
+</pre>
+
+<p>(3) A redirecting operator
+<br>One of: "<", ">"
+<br>(shell command) R-OP (file)
+
+<p>Redirecting ops bind tighter than combining ops.
+
+<pre>
+parse$ sort < foo.txt
+("<" ("sort") "foo.txt")
+</pre>
+
+<p>Note that a (shell command) represents any of the above, recursively.
+
+<p>Parens, Quotes, and Escaped Newlines:
+<br>The last test contains these more complex syntactic elements of the shell language. You'll have to do some research to see what these are supposed to do.
+
+<h2>Your Parse Program</h2>
+
+Write a program, parse, that reads in shell commands a line at a time and prints out the corresponding s-exp (see the tests and examples above for details).
+
+You should handle two scenarios differently:
+
+<ol>
+<li>With no command line arguments, you should print a "parse$ " propt and read from stdin.
+<li>With one command line argument, you print no prompt and should read from the file passed on the command line.
+</ol>
+
+<h2>Hints</h2>
+
+<p>Start with the easy cases.
+<p>Write a program that can pass the first four tests - and do it the easy way - before trying to solve the general case.
+
+<h2>To submit</h2>
+
+<ul>
+<li>One .tar.gz archive containing:
+<li>One top level directory containing:
+<li>Your C source code and Makefile
+<li>No dotfiles, object files, or binaries.
+</ul>

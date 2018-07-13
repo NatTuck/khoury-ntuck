@@ -1,0 +1,1 @@
+You can run the tests on a Linux machine with "perl test.pl".

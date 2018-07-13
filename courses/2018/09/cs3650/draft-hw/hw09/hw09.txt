@@ -1,0 +1,69 @@
+<p>In this assignment you will build a FUSE filesystem driver that will let you
+mount a 1MB disk image (data file) as a filesystem.
+
+<h2>Step 0: Check Your Challenge 2 Team</h2>
+
+<p>You have been assigned a partner for Challenge 2. Teams should be exactly two people unless you were randomly assigned to the one team of three.
+If you'd prefer to work with a specific person, both members of your proposed team should email one of the following TAs to request to be teamed:
+
+<ul>
+<li>Akshay Tandel - akshaytandel09 ⚓ ccs.neu.edu (if the given name of the older team member starts A-M)
+<li>Evan White - white.eva ⚓ husky.neu.edu (if the given name of the older team member starts N-Z)
+</ul>
+
+<p>Make sure to request any team changes and get into contact with your teammate this week (before March 31st). Once the assignment has started, the only remedy for team issues will be to split teams of two into teams of one.
+
+<p>Keep in mind that this team is for Challenge 2, and that this assignment (HW09) must be done without a partner.
+
+<h2>Step 1: Install FUSE</h2>
+
+<p>For this assignment you will need to use your local Ubuntu 16.04 VM. You'll
+need to install the libfuse-dev package.
+
+<h2>Step 2: Implement a basic filesystem</h2>
+
+<p>You should extend the provided starter code so that it lets you do the following:
+
+<ul>
+  <li>Create files.
+  <li>List the files in the filesystem root directory (where you mounted it).
+  <li>Write to small files (under 4k).
+  <li>Read from small files (under 4k).
+  <li>Delete files.
+  <li>Rename files. 
+</ul>
+
+<p>This will require that you come up with a structure for how the file system
+will store data in it's 1MB "disk". See the filesystem slides - especially the
+original ext filesystem - for inspiration.
+
+<p>Some additional code that might be useful is provided in the "hints"
+directory in the assignment download. You can use this if you want. Using a
+block structure and mmap to access the filesystem image file as shown in the
+"pages.c" file is recommended.
+
+<h2>To Submit</h2>
+
+<p>Submit your filesystem source code in a hw12 directory in a .tar.gz archive.
+
+<p>Don't submit your filesystem image data file or other binary files (run "make
+clean" before creating your tarball). Don't submit stray dotfiles.
+
+<h2>Hints & Tips</h2>
+
+<ul>
+  <li>There aren't man pages for FUSE. Instead, the documentation is in the
+  header file: /usr/include/fuse/fuse.h
+  <li>The basic development / testing strategy for this assignment is to run
+  your program in one terminal window and try FS operations on the mounted
+  filesystem in another separate terminal window.
+  <li>Read the manual pages for the system calls you're implementing.
+  <li>To return an error from a FUSE callback, you return it as a negative number
+  (e.g. return -ENOENT). Some things don't work if you don't return the right error codes.
+  <li>Read and write, on success, return the number of bytes they actually read or wrote.
+  <li><b>You need to implement getattr early and make sure it's correct.</b> Nothing works
+  without getaddr. The mode for the root directory and hello.txt in the starter code are
+  good default values.
+  <li>The functions "dirname" and "basename" exist, but may mutate their argument.
+  <li>https://www.cs.hmc.edu/~geoff/classes/hmc.cs135.201109/homework/fuse/fuse_doc.html 
+</ul>

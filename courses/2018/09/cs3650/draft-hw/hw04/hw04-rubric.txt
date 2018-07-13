@@ -1,0 +1,23 @@
+CS3650-02, Spring 2018, HW03 Rubric
+
+Students start with 50 points.
+
+The autograder should do a decent job on correctness, so the deductions
+for this assignment are mostly about good practice.
+
+Apply a penalty for each category of error once, and mark the other cases
+
+Deductions:
+
+ - Malloc without corresponding free: -2 each max -10
+ - Other clear memory error: -2 each max -10
+    - E.g. Return pointer to invalid stack frame
+    - E.g. Array index OOB
+ - Errors in using standard library functions: -2 each, max -10
+    - E.g. Didn't check return value of fgets.
+    - E.g. Used "gets".
+ - Inconsistent code formatting (-1 each, max -5).
+ - Subjectively bad code (-1 each, max -5), clear comment about why it's bad.
+ - No serious attempt at the problem at all: -20
+ - Code follows a plan that doesn't work and clearly couldn't work: -10
+   - Point out why.

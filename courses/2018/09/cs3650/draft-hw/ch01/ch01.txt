@@ -1,0 +1,89 @@
+FIXME: This is the s-expression version from last semster.
+
+This semester I want to do the normal version that takes standard-syntax
+commands and runs them.
+
+---------------------------------------------
+
+<p>In this assignment you will implement a Unix shell that handles commands in the form of s-expressions.
+
+<p>Combined with your parser from HW04, this could be used to build a traditional Unix shell.
+
+<p>Your shell will operate as follows:
+
+<ul>
+<li>(Always) accepts a script to run as the first command line argument.
+<li>Read one line of commands from the script.
+<li>Execute that command.
+<li>Repeat until EOF is reached or a top level exit command occurs.
+</ul>
+
+<p><b>Executing Programs</b>
+
+<pre>
+("head" "-n" "2" "/usr/share/dict/words")
+A
+A's
+</pre>
+
+<p>To run a program:
+
+<ol>
+<li>First, fork.
+<li>In the parent, wait for the child to finish.
+<li>In the child, exec the supplied command.
+</ol>
+
+<p><b>Built in commands</b>
+
+<p>There are two commands you'll need to handle as special, built-in operations. These commands should be handled *without* forking or executing any external program.
+<ul>
+<li>cd - Change directory, implement using chdir(3)
+<li>exit - Exit the current process, implement using exit(3)
+</ul>
+
+<p><b>Operators</b>
+
+<p>Operators either modify the behavior of one command or chain together multiple commands into a single command line.
+
+<p>Your shell should support seven operators:
+
+<ul>
+<li>Redirect input: ("<" ("sort") "foo.txt") - Take stdin from a file
+<li>Redirect output: (">" ("sort" "foo.txt") "output.txt") - Put stdout to a file
+<li>Pipe: ("|" ("sort" "foo.txt") ("uniq")) - The output of one command becomes the input of another.
+<li>Background: ("&" ("sleep" "10")) - Run a command in the background, without waiting for it to finish; can also take two arguments.
+<li>And: ("&&" ("true") ("echo" "one")) - Execute the second command only if the first suceeds.
+<li>Or: ("||" ("true") ("echo" "one")) - Execute the second command only if the first fails.
+<li>Semicolon: (";" ("echo" "one") ("echo" "two")) - Execute two commands in sequence. Can also occur with one argument.
+</ul>
+
+<p>The general strategy for running any operator is to
+
+<ul>
+<li>first fork()
+<li>In the parent, wait for the child
+<li>In the child do any manipulation of the file descriptor table and then A.) recursively run one command or B.) fork *again* and then recursively run two commands in the parent and child respectively.
+<li>Yes, this means that ("|" ("echo" "one") ("cat")) involves at least four forks.
+</ul>
+
+<p>This strategy may require refinement for the general case to eliminate some redundant fork calls.
+
+<h2>To submit:</h2>
+
+<ul>
+<li>C Source code.
+<li>A Makefile that builds your program.
+<li>In a gzipped tarball, with one top level directory. 
+<li>No stray dotfiles, binaries, or build / test artifacts.
+</ul>
+
+<p>Your source code should pass clang-check with no warnings.
+
+<p>Check your program with valgrind to make sure you have no memory allocation issues.
+
+<p>This is the first challenge assignment. It's not easy. Get a couple of tests to pass, and submit to make sure they pass the autograder. Then get a couple more tests to pass, etc.
+
+<p>The last couple tests are pretty hard. I expect less than half of the class to pass all the tests and get a 100%.
+
+<p>Expected time to complete this assignment with most test passing is 14 hours. 

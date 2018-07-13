@@ -1,0 +1,51 @@
+CS3650-02 Spring 2018 HW01 Rubric
+
+************
+
+Important:
+
+ - For grading in 3650-02 this semester we don't want to go light on the students.
+ - If you have any doubt about whether you should take off points, take off the points.
+   Students can recover points by challenging grades, but grades that are too good tend
+   not to get fixed.
+
+***********
+
+=== HW02 ===
+
+There are 50 points available for manual grading. This is in addition to autograding,
+so it's OK if there are cases where students are only penalized by the autograder for
+errors.
+
+Program 1: Calculator
+
+Deductions:
+
+ 1. Program doesn't have a separate function (jal to label, jr $ra to get back) for each
+    of the four operations: -5
+ 2. Didn't use the read-string system call: -5
+ 3. Read input numbers in main function: -5
+ 4. Program is wrong (explain why it's not working): up to -3
+ 5. Program is subjectively bad (explain what's bad): up to -2
+
+Program 2: Fibonacci
+
+See the slides here: "How to write an ASM program":
+http://www.ccs.neu.edu/home/ntuck/courses/2018/01/cs3650/notes/03-asm-recipe/
+
+ 1. Didn't use naive recursive strategy (two recursive calls): -10
+ 2. Didn't use stack following conventions shown in class: -5
+   (specifically, should have prologue and epilogue managing stack frames, should follow
+    register saving conventions for $s (callee save) and $t (caller save) registers).
+ 4. Program is wrong (explain why it's not working): up to -3
+ 5. Program is subjectively bad (explain what's bad): up to -2
+
+Following instructions:
+
+ 1. Not a gzipped tarball: -1
+ 2. No top level directory: -1
+ 3. Stray dotfiles: -1
+ 4. Submitted Mars JAR: -1
+ 5. Did something that broke the autograder: explain what's wrong: -1
+
+

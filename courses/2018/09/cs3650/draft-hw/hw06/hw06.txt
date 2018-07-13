@@ -1,0 +1,76 @@
+<h2>Sample Sort</h2>
+
+<p>In this assignment, you'll rewrite your sample sort program to use:
+<ul>
+<li>Threads instead of processes
+<li>Mutexes/cond vars instead of semaphores
+<li>Read/write/lseek syscalls instead of mmap for IO.
+<li>Don't sort in place, write the results to an output file.
+</ul>
+
+<p>See assignment.txt in the download for the updated algorithm description.
+
+<p>This time, a barrier primitive is not provided. Write your own barrier primitive using mutexes and cond vars. The general idea of a barrier goes as follows:
+
+<ul>
+  <li>A barrier is initialized with N, the number of threads that need to reach the barrier before any can continue.
+  <li>It maintains a count of the number of processes that have reached the barrier.
+  <li>The first N-1 threads to reach the barrier block.
+  <li>Once the N'th thread reaches the barrier, all the threads are allowed to continue.
+  <li>It's OK if your barrier can't be reused.
+</ul>
+
+<p>Each worker thread should print out some text, showing that it's actually participating in sample sort:
+
+<pre>
+ {p}: start {start}, count {length of local array}  
+</pre>
+
+<p>This should be the only output of your finished program.
+
+<h2>Homework Tasks</h2>
+
+<p>For this assignment you should avoid using the CCIS Linux server. Work on your local machine, a local Linux VM or container, or use a lab machine in WVH.</p>
+<p>This is a good opportunity to install a local Linux VM. I suggest VirtualBox and Xubuntu 16.04. You'll need local Linux for HW09 and CH03 anyway.</p>
+
+<ol>
+  <li>Write a your program.
+  <li>Collect execution times for 1, 4, and 8 threads.
+  <li>Generate a graph.png and write a report.txt
+</ol>
+
+<h3>Task 2: Measure Parallel Speedup</h3>
+
+<ul>
+ <li>Time your tests using the "/usr/bin/time -p" command. (You're interested in "real" time)
+ <li>Repeat each test three times, taking the median.
+ <li>Make a graph (graph.png) showing the measured time for each case.
+ </ul>
+
+<h3>Task 3: report.txt</h3>
+
+<p>Create a file, report.txt, containing the following information:
+
+<ul>
+ <li>The operating system and number of processor cores of your test machine (which should not be login.ccs.neu.edu).
+ <li>A table of measured time and parallel speedup for each test.
+   <ul>
+     <li>Parallel speedup is calculated as (time for 1 thread / time for N threads)
+     <li>Optimal parallel speedup is N.
+   </ul>
+ <li>A paragraph or two discussing what results you got and why you got them.
+ <li>If you're testing on a different machine than for HW05, rerun your HW05 tests on the new machine for comparison.
+ <li>How do you results compare to the process / mmap version? Why?
+</ul>
+
+<h2>To Submit</h2>
+
+<ul>
+<li>A .tar.gz archive with <b>exactly one top level directory</b> containing:
+<li>Your source code, including a Makefile that builds the ssort binary.
+<li>Either the tools directory, source and Makefile only, unmodified, or no tools directory.
+<li>A report.txt (which should be plain Unix text, line wrapped to 70 columns)
+<li>A graph.png (which should be a PNG image)
+<li>No binaries, object files, or input/output data files.
+<li>No stray dotfiles.
+</ul>

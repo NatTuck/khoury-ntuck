@@ -1,0 +1,30 @@
+CS3650-02, Spring 2018, HW06 Rubric
+
+Students start with 50 points.
+
+Correctness Deductions:
+
+ - Code doesn't properly spawn P child threads: -5
+ - Code doesn't correctly join P child processes: -5
+ - Program is sequential -20
+ - Code uses mmap instead of io syscalls: -10
+ - Code mutates input file instead of writing separate output properly: -5
+ - Algorithm is incorrect: up to -10
+ - Malloc without any corresponding free: -1 each, max -5
+ - Other clear memory error: -2 each max -6
+    - E.g. Return pointer to invalid stack frame
+    - E.g. Array index OOB
+ - Didn't check return value of syscall: -1 each max -2
+ - Inconsistent code formatting (-1 each, max -5).
+ - Subjectively bad code (-1 each, max -5), clear comment about why it's bad.
+ - No serious attempt at the problem at all: -30
+
+Report Deductions:
+
+ - No report: -15
+ - No / bad graph: up to -5
+   - Graph isn't a PNG: -1
+ - No / bad table: up to -5
+ - No / bad discussion: up to -5
+
+

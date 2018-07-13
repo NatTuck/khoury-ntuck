@@ -1,0 +1,48 @@
+<h2>Write two MIPS Assembly Programs:</h2>
+
+<p>For these programs you are expected to follow some approximation of standard conventions (e.g. pass arguments in $aX) and to have decent code formatting. There are style points to lose.
+
+<h3>Program 1: 4-function Calculator: (calculator.asm)</h3>
+
+<p>Sample interaction:
+
+<pre>
+    Select operation (+, -, *, or /): -
+    First number: 5
+    Second number: 2
+    answer = 3
+    -- program terminated successfully --
+</pre>
+
+<ul>
+    <li>First, read in the operator as a string.</li>
+    <li>Then call one of four functions, to add subtract, multiply or divide as appropriate.</li>
+    <li>Each function should read in two integers (possibly using a helper function) and then return the result of the calcuation.</li>
+    <li>The main function should then print out the answer and exit.</li>
+</ul>
+
+<h3>Program 2: Fibonacci (fib.asm)</h3>
+
+<p>This program should read in an integer and print the corresponding Fibonacci number.
+
+<p>Your program should use the naive recursion strategy (a fib function that calls itself twice).
+
+<p>The Fibonacci function is defined as:
+<br>fib(0) = 0
+<br>fib(1) = 1
+<br>fib(x) = fib(x-1) + fib(x-2) when x > 1
+
+
+<p><strong>What to submit</strong>
+
+<ul>
+    <li>A gzipped tarball.</li>
+    <li>Containing a directory named "hw02".</li>
+    <li>That directory should contain "calculator.asm" and "fib.asm".</li>
+    <li>Your submission should not contain the Mars JAR file.</li>
+    <li>Your submission should not contain extra directories or stray hidden files.</li>
+</ul>
+
+<p>This assignment will be graded both automatically and by humans. Your automatic grading results should be available a few minutes after submission, and you are free to submit multiple times. In general, your last submission will be used for your grade.
+
+

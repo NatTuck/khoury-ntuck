@@ -1,0 +1,24 @@
+<p><strong>The Assignment</strong>
+
+<p>Extend your file system from HW09 to support more functionality:
+
+<ul>
+<li>Subdirectories and nested directories.
+<li>Read and write from files larger than one block. For example, you should be able to support one hundred 1k files or five 100k files.
+<li>Create directories and nested directories. Directory depth should only be limited by space. 
+<li>Remove directories.
+<li>Hard links.
+<li>Symlinks
+<li>Support metadata (permissions and timestamps) for files and directories. 
+<li>Anything else that's covered in the tests.
+</ul>
+
+<p>This is a team assignment. You have two HW09's as starter code, and your team only needs to make one submission for this assignment.
+
+<p>The TAs will be manually testing your submission for requested functionality that isn't fully covered by the automated tests. 
+
+<p><strong>To Submit</strong>
+
+<p>A .tar.gz archive containing source code and no stray files.
+
+

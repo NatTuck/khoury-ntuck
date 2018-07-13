@@ -16,6 +16,7 @@ deadlock, memory management, file systems, and input/output control.
 ## Interesting Stuff
 
  - [Spectre & Meltdown](https://ds9a.nl/articles/posts/spectre-meltdown/)
+ - [Spectre 1.1 and 1.2](https://www.bleepingcomputer.com/news/security/new-spectre-11-and-spectre-12-cpu-flaws-disclosed/)
 
 ## Essential Resources
 

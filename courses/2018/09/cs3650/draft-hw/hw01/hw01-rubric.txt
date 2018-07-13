@@ -1,0 +1,29 @@
+CS3650-02 Spring 2018 HW01 Rubric
+
+************
+
+Important:
+
+ - For grading in 36502 this semester we don't want to go light on the students.
+ - If you have any doubt about whether you should take off points, take off the points.
+   Students can recover points by challenging grades, but grades that are too good tend
+   not to get fixed.
+
+***********
+
+=== HW01 ===
+
+There are 50 points available for manual grading.
+
+Apply deductions as follows:
+
+ 1. No screenfetch image submitted: -20
+   1a. Image doesn't show a terminal running in a Linux graphical session: -10
+   2b. Not an Ubuntu 16.04 amd64 variant (Ubuntu / Xubuntu / etc): -10
+ 2. No or bad ps-output.txt: -10
+ 3. Didn't touch a file in the appropriate directory on the CCIS server: -10
+ 4. Didn't follow directions for archive file:
+   4a. Not a gzipped tarball (e.g. a zip file) -3
+   4b. Stray dotfiles: -3
+   4c. Doesn't contain exactly one top-level directory: -3
+

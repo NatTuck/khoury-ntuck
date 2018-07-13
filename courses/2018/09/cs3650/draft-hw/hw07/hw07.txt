@@ -1,0 +1,83 @@
+<h2>Husky Malloc</h2>
+
+<p>In this assignment you will build a free-list based memory allocator, Husky Malloc.
+
+<p>Your allocator must provide three functions:
+
+<ul>
+<li>void* hmalloc(size_t size); // Allocate "size" bytes of memory.
+<li>void hfree(void* item);       // Free the memory pointed to by "item".
+<li>void hprintstats(); // Print allocator stats to stderr in a specific format.
+</ul>
+
+<p>Your allocator should maintain a free list of available blocks of memory. This should be a singly linked list sorted by block address.
+
+<h3>hmalloc</h3>
+
+<p>To allocate memory B bytes of memory, you should first add sizeof(size_t) to B to make space to
+track the size of the block, and then:
+
+<p>For requests with (B < 1 page = 4096 bytes):
+
+<ol>
+<li>See if there's a big enough block on the free list. If so, select the first one and remove it from the list.
+<li>If you don't have a block, mmap a new block (1 page = 4096).
+<li>If the block is bigger than the request, and the leftover is big enough to store a free list cell, return the extra
+to the free list.
+<li>Use the start of the block to store its size.
+<li>Return a pointer to the block *after* the size field.
+</ol>
+
+<p>For requests with (B >= 1 page = 4096 bytes):
+
+<ol>
+<li>Calculate the number of pages needed for this block.
+<li>Allocate that many pages with mmap.
+<li>Fill in the size of the block as (# of pages * 4096).
+<li>Return a pointer to the block *after* the size field.
+</ol>
+
+<h3>hfree</h3>
+
+<p>To free a block of memory, first find the beginning of the block by subtracting sizeof(size_t) from the provided pointer.
+
+<p>If the block is < 1 page then stick it on the free list.
+
+<p>If the block is >= 1 page, then munmap it.
+
+<h3>Tracking stats</h3>
+
+<p>Your memory allocator should track 5 stats:
+
+<ul>
+<li>pages_mapped: How many pages total has your allocator requested with mmap?
+<li>pages_unmapped: How many pages total has your allocator given back with munmap?
+<li>chunks_allocated: How many hmalloc calls have happened?
+<li>chunks_freed: How many hfree calls have happend?
+<li>free_length: How long is your free list currently? (this can be calculated when stats are requested)
+</ul>
+
+<h3>Coalescing your free list</h3>
+
+<p>When inserting items into your free list, you should maintain two invariants:
+
+<ol>
+  <li>The free list is sorted by memory address of the blocks.
+  <li>Any two adjacent blocks on the free list get coalesced (joined together) into one bigger block.
+</ol>
+
+<p>Since you insert into the free list and need to handle this in two different places, a helper function is a good idea.
+
+<h3>Hints</h3>
+
+<p>If you haven't figured out GDB yet, this is a good time to read a GDB tutorial.
+<p>You're going to be GDBing through the test code. You should probably read the code for the test programs and figure out what they're doing.
+
+<h2>To Submit</h2>
+
+<ul>
+<li>A .tar.gz archive with <b>exactly one top level directory</b> containing:
+<li>Your source code, including a Makefile that runs make in the tools directory.
+<li>Either the tests directory, source and Makefile only, unmodified, or no tests directory (which should actually work this time).
+<li>No binaries, object files, or other stray files.
+</ul>

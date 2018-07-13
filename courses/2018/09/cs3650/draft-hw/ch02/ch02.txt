@@ -1,0 +1,28 @@
+
+FIXME: This is incomplete text.
+
+Working on a team of up to two students:
+
+Build two memory allocators:
+
+ - hw07+mutex - Starting from either partner's hw07 solution, add a mutex protecting 
+   the global freelist. Make no other changes.
+ - optimized - Write a new memory allocator optimized for the included test cases.
+   Use advanced technques as discussed in class. You may unreasonably optimize for
+   these specific cases, but your allocator should still work for other cases.
+
+Benchmark three allocators:
+
+ - The system allocator.
+ - Your hw07+mutex allocator.
+ - Your optimized allocator.
+
+Provide a report and graph describing your results.
+
+Peformance expectations:
+
+ - Your optimized allocator should definitely be faster than hw07+mutex.
+ - For full credit, you should beat the system allocator.
+
+
+

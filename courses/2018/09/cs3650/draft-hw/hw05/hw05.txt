@@ -1,0 +1,123 @@
+<h2>Concept: Sample Sort</h2>
+
+<p>Sample sort is a parallel version of quicksort.
+
+<p>It works as follows:
+
+<p>Input:
+<br>- An array of N items
+<br>- An integer P for number of processes to use.
+<p>Result:
+<br>- The input array has been sorted.
+
+<ol>
+<li>Sample
+ <ul>
+ <li>Randomly select 3*(P-1) items from the array.
+ <li>Sort those items.
+ <li>Take the median of each group of three in the sorted array,
+   producing an array (samples) of (P-1) items.
+ <li>Add 0 at the start and +inf at the end (or the min and max values of the type
+   being sorted) of the samples array so it has (P+1) items numbered (0 to P).
+</ul>
+<li>Partition
+<ul>
+ <li>Spawn P processes, numbered p in (0 to P-1).
+ <li>Each process builds a local array of items to be sorted by scanning the
+   full input and taking items between samples[p] and samples[p+1].
+ <li>Write the number of items (n) taken to a shared array sizes at slot p.
+</ul>
+<li>Sort locally
+<ul>
+ <li>Each process uses quicksort to sort the local array.
+</ul>
+<li>Copy local arrays to input.
+<ul>
+ <li>Each process calculates where to put its result array as follows:
+   <br>- start = sum(sizes[0 to p - 1])    # that's sum(zero items) = 0 for p = 0
+   <br>- end   = sum(sizes[0 to p])        # that's sum(1 item) for p = 0
+ <li>Warning: Data race if you don't synchronize here.
+ <li>Each process copies its sorted array to input[start..end]
+</ul>
+<li>Cleanup
+ <ul>
+  <li>Terminate the P subprocesses. Array has been sorted "in place".
+ </ul>
+</ol>
+
+<h2>Homework Tasks</h2>
+
+<h3>Task 1: Write a Program</h3>
+
+<ul>
+ <li>Your program, ssort, should take two arguments:
+   <br>- An integer specifying the number of processes to sort with
+   <br>- The file to sort
+ <li>The input file is structured as follows:
+   <br>- First 8 bytes: long size - number of floats in the file
+   <br>- Next 4*size bytes: An array of doubles
+ <li>Use mmap for I/O on the file to be sorted.
+ <li>Use mmap to share data between processes.
+ <li>Use sample sort to sort the input file, in place.
+</ul>
+
+<p>
+In addition, each subprocess should print out some text, showing that
+it's actually participating in sample sort:
+
+<pre>
+ {p}: start {start}, count {length of local array}  
+</pre>
+
+<p>Example session:
+
+<pre>
+$ ./tools/gen-input 20 data.dat
+$ ./ssort 4 data.dat
+0: start 0.0000, count 3
+1: start 7.5690, count 5
+2: start 27.1280, count 11
+3: start 95.5110, count 1
+$ ./tools/check-sorted data.dat
+$
+</pre>
+
+<h3>Task 2: Measure Parallel Speedup</h3>
+
+<p> Test your sample sort program in three scenarios, each with a newly generated input file of 50 million floats (or enough to take over 10 seconds for 1 process on your machine):
+<ul>
+<li>1 process
+<li>4 processes
+<li>8 processes
+</ul>
+<p>Time these tests using the "/usr/bin/time -p" command. (You're interested in "real" time)
+<p>Repeat each test three times, taking the median.
+ <p>Make a graph (graph.png) showing the measured time for each case.
+
+<h3>Task 3: report.txt</h3>
+
+<p>Create a file, report.txt, containing the following information:
+
+<ul>
+ <li>The operating system, processor model, number of processor cores, and amount of RAM for your test machine.
+ <li>A table of measured time and parallel speedup for each test (use ASCII art).
+<ul>
+   <li>Parallel speedup is calculated as (time for 1 process / time for N processes)
+   <li>Optimal parallel speedup is N.
+</ul>
+ <li>A paragraph or two discussing what results you got and why you got them.
+ <li>Look up "Amdahl's Law" and "Gustafson's Law" on Wikipedia. Is sample sort a good
+   parallel sorting algorithm?
+</ul>
+
+<h2>To Submit</h2>
+
+<ul>
+<li>A .tar.gz archive with exactly one top level directory containing:
+<li>Your source code, including a Makefile that builds the ssort binary.
+<li>Either the tools directory, source and Makefile only, unmodified, or no tools directory.
+<li>A report.txt (which should be plain Unix text, line wrapped to 70 columns)
+<li>A graph.png (which should be a PNG image)
+<li>No binaries, object files, or input/output data files.
+</ul>
+

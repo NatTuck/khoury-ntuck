@@ -1,0 +1,16 @@
+<p>Here's the sourcecode for xv6, a simplified Unix kernel:
+
+<ul> 
+<li><a href="https://pdos.csail.mit.edu/6.828/2017/xv6/xv6-rev8.pdf">PDF with
+global line numbers</a> 
+<li><a href="https://pdos.csail.mit.edu/6.828/2017/xv6.html">Web Site, with git
+repo</a> 
+</ul>
+
+<p>For this assignment you will examine the xv6 source code and figure out how it works.
+
+<p>The assignment file is a text file with some questions in it. Download the file and answer the questions.
+
+<p>Submit a text file with the questions and your answers. Make sure your lines are wrapped at < 80 characters so the TAs can easily read / grade your submission.
+
+<p>There's no autograder for this one.

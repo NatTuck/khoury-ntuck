@@ -1,0 +1,60 @@
+== HW09 Rubric ==
+
+The grade is broken down into three categories:
+
+ - 50 autograder points
+ - 20 manual testing points
+ - 30 code review points
+
+== Step 1: Manual Testing
+
+ - Verify that the “make mount” command will mount the filesystem to “mnt”. If not, fix it.
+ - Build the program and mount the filesystem.
+ - If this fails, the student earns zero manual testing points.
+
+= Run the following minimal test process:
+
+ $ echo goat > mnt/farm.txt
+ expect: No output
+ $ cat mnt/farm.txt
+ expect: goat
+ $ ls mnt
+ expect: farm.txt
+ $ unmount and ls mnt
+ expect: farm.txt is gone (if not, figure out what broke about mounting and go back to step 1)
+
+Each of these that fails is a 5 point penalty.
+
+== Step 2: Verify Autograder
+If the autograder crashed early and gave a bad score, apply a correction so that the effective autograder score is (tests passed) / 18.
+
+Explicitly check the autograder output to make sure these three tests don’t fail:
+
+  not ok 12 - one.txt doesn't exist after umount
+  not ok 13 - one.txt is not in the directory
+  not ok 14 - two.txt is not in the directory
+
+This indicates that the filesystem didn’t properly mount, and the other passing tests are probably testing the default Linux filesystem rather than the student submission. Check for that case and apply an appropriate correction.
+
+== Step 3: Code review
+
+Look at the submitted code and check the following syscalls:
+
+ - mknod
+ - read
+ - write
+ - readdir
+ - unlink
+
+For each syscall:
+
+ - No attempt: -3
+ - Clear bug: -2
+ - Subjectively bad code: -1
+ - Nice implementation: +1
+
+Scan the rest of the code looking for code quality issues. Maximum total penalty -15.
+
+Additionally, find something noteworthy in the code to comment on with a +0.
+
+-- Nat

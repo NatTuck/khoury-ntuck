@@ -1,0 +1,26 @@
+<p>In this assignment you will get set up for development on Linux and perform your initial ASM programming.
+
+<p>Part 1: Install a local Linux VM
+
+<ul>
+    <li>Google for and download VirtualBox and a 64-bit Xubuntu 18.04 install ISO.
+    <li>Install Xubuntu in virtualbox.
+    <li>Install and run the "screenfetch" command in a terminal window in your Ubuntu VM; take a screenshot.
+</ul>
+
+<p>Part 2: Connect to the CCIS Linux Server
+
+<ul>
+    <li>Get a CCIS Linux account if you don't already have one.
+    <li>Figure out how to SSH into the server on your platform. (Linux / Mac: ssh yourname@login.ccs.neu.edu ; Windows: PuTTY)
+    <li>Run the command "less /course/cs3650/help/unix-help.txt" and read the help file. The "q" key quits.
+    <li>Run "mkdir -p ~/cs3650/hw01".
+    <li>Run "ps -ef" and redirect the output to a file named "ps-output.txt" in your new hw01 directory.
+    <li>Use scp to copy your screenshot from part 1 to the hw01 directory on the server. (Linux: scp command; Mac: scp or Cyberduck; Windows: WinSCP)
+    <li>Create a gzipped tarball of the hw01 directory (containing exactly the hw01 directory, the screenshot, and the ps output file).
+    <li>Your tarball should not contain any extra hidden files (dotfiles). 
+    <li>Copy that tarball to your local machine with scp.
+    <li>Submit the tarball here.
+    <li>Finally, run the "touch" command to create a file in /course/cs3650f16/s18 named [your-user-name].txt
+</ul>
+

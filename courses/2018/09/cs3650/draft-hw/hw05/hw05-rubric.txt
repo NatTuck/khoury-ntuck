@@ -1,0 +1,31 @@
+CS3650-02, Spring 2018, HW05 Rubric
+
+Students start with 50 points.
+
+Correctness Deductions:
+
+ - Code doesn't properly spawn P child processes: -5
+ - Code doesn't correctly wait for P child processes: -5
+ - Code is doesn't attempt to spawn children sequential -20
+ - Code uses I/O syscalls instead of mmap: -10
+ - Code doesn't mutate the input file properly: -5
+ - Algorithm is incorrect: up to -10
+ - Malloc/mmap without any corresponding free/munmap: -1 each, max -5
+ - Malloc or munmap not freed on child process exit: -1, max -1, mark others as -0
+ - Other clear memory error: -2 each max -6
+    - E.g. Return pointer to invalid stack frame
+    - E.g. Array index OOB
+ - Didn't check return value of syscall: -1 each max -2
+ - Inconsistent code formatting (-1 each, max -5).
+ - Subjectively bad code (-1 each, max -5), clear comment about why it's bad.
+ - No serious attempt at the problem at all: -30
+
+Report Deductions:
+
+ - No report: -15
+ - No / bad graph: up to -5
+   - Graph isn't a PNG: -1
+ - No / bad table: up to -5
+ - No / bad discussion: up to -5
+
+

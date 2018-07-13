@@ -1,9 +1,18 @@
+---
+layout: default
+---
 
 # Core Course Concepts
 
  * Learning how to figure out an API is more important than learning an API.
  * Linux has man pages and it's possible to use them to figure out how
    the POSIX API works.
+
+Homework vs. Challenges:
+
+ * A student who doesn't complete a homework 100% should have done better.
+ * A student who doesn't complete a challenge 100%, especially if they fail
+   the "challenge goal", is still on track.
 
 # Homework Schedule
 
@@ -127,5 +136,6 @@ Goal: Build a more complex FS.
  * Create and remove directories.
  * Symbolic and hard links.
  * Set metadata (permissions, timestamps)
+ * Challenge goal: Get everything working
 
  

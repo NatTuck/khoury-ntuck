@@ -1,0 +1,35 @@
+
+<p>Write an assembly program that sorts an array of integers.</p>
+
+<p>The program should:</p>
+
+<ul>
+  <li>Input the size of the array.</li>
+  <li>Allocate space for the array on the heap.</li>
+  <li>Input the numbers in the array, one per line.</li>
+  <li>Call a sorting function, which returns a sorted version of the input array.</li>
+  <li>The sort function should allocate a new array for its output, and not mutate the input array.</li>
+  <li>Output the original array.</li>
+  <li>Output the sorted array.</li>
+  <li>The arrays you print must be a sequence of numbers on one line separated
+      by a single space.</li>
+</ul>
+
+<p>For normal credit, implement <a href="https://en.wikipedia.org/wiki/Bubble_sort">Bubble Sort</a></p>
+<p>For extra credit (+10 out of 100 points), instead implement
+  <a href="https://en.wikipedia.org/wiki/Stooge_sort">Stooge Sort</a>.
+To claim your extra credit, make sure to note that you're attempting extra credit in the submission notes.</p>
+
+<p>To submit:
+
+<ul>
+  <li>A .tar.gz archive containing:
+  <li>a "hw02" directory, containing:
+  <li>a "sort.asm" file with your solution
+  <li>Don't submit the Mars jar 
+  <li>Don't submit any stray dotfiles.
+</ul>
+
+<p>Follow the ASM conventions described in class. Make sure your sorting function allocates a stack frame and uses it appropriately.
+
+
