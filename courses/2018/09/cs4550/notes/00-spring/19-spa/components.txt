@@ -1,0 +1,179 @@
+// microblog.jsx
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import Nav from './nav';
+import Feed from './feed';
+import Users from './users';
+import PostForm from './post-form';
+
+export default function microblog_init() {
+  let root = document.getElementById('root');
+  ReactDOM.render(<Microblog />, root);
+}
+
+class Microblog extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      posts: [],
+      users: [],
+    };
+
+    this.request_posts();
+    this.request_users();
+  }
+
+  request_posts() {
+    $.ajax("/api/v1/posts", {
+      method: "get",
+      dataType: "json",
+      contentType: "application/json; charset=UTF-8",
+      success: (resp) => {
+        this.setState(_.extend(this.state, { posts: resp.data }));
+      },
+    });
+  }
+
+  request_users() {
+    $.ajax("/api/v1/users", {
+      method: "get",
+      dataType: "json",
+      contentType: "application/json; charset=UTF-8",
+      success: (resp) => {
+        this.setState(_.extend(this.state, { users: resp.data }));
+      },
+    });
+  }
+
+  render() {
+    return (
+      <Router>
+        <div>
+          <Nav />
+          <Route path="/" exact={true} render={() => 
+            <div>
+              <PostForm users={this.state.users} />
+              <Feed posts={this.state.posts} />
+            </div>
+          } />
+          <Route path="/users" exact={true} render={() =>
+            <Users users={this.state.users} />
+          } />
+          <Route path="/users/:user_id" render={({match}) =>
+            <Feed posts={_.filter(this.state.posts, (pp) =>
+              match.params.user_id == pp.user.id )
+            } />
+          } />
+        </div>
+      </Router>
+    );
+  }
+}
+
+
+// feed.jsx
+
+import React from 'react';
+import Post from './post';
+
+export default function Feed(params) {
+  let posts = _.map(params.posts, (pp) => <Post key={pp.id} post={pp} />);
+  return <div>
+    { posts }
+  </div>;
+}
+
+// nav.jsx
+
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { NavItem } from 'reactstrap';
+
+export default function Nav(props) {
+  return (
+    <nav className="navbar navbar-dark bg-dark navbar-expand">
+      <span className="navbar-brand">
+        μBlog
+      </span>
+      <ul className="navbar-nav mr-auto">
+        <NavItem>
+          <NavLink to="/" exact={true} activeClassName="active" className="nav-link">Feed</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/users" href="#" className="nav-link">All Users</NavLink>
+        </NavItem>
+      </ul>
+      <span className="navbar-text">
+        user@host
+      </span>
+    </nav>
+  );
+}
+
+
+// post-form.jsx
+
+
+import React from 'react';
+import { Button, FormGroup, Label, Input } from 'reactstrap';
+
+export default function PostForm(params) {
+  let users = _.map(params.users, (uu) => <option key={uu.id} value={uu.id}>{uu.name}</option>);
+  return <div style={{padding: "4ex"}}>
+    <h2>New Post</h2>
+    <FormGroup>
+      <Label for="user_id">User</Label>
+      <Input type="select" name="user_id">
+        { users }
+      </Input>
+    </FormGroup>
+    <FormGroup>
+      <Label for="body">Body</Label>
+      <Input type="textarea" name="body" />
+    </FormGroup>
+    <Button onClick={() => alert("TODO: Manage State")}>Post</Button>
+  </div>;
+}
+
+// post.jsx
+
+import React from 'react';
+import { Card, CardBody } from 'reactstrap';
+
+export default function Post(params) {
+  let post = params.post;
+  return <Card>
+    <CardBody>
+      <div>
+        <p>Posted by <b>{ post.user.name }</b></p>
+        <p>{ post.body }</p>
+      </div>
+    </CardBody>
+  </Card>;
+}
+
+// users.jsx
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+function User(params) {
+  return <p>{params.user.name} - <Link to={"/users/" + params.user.id}>posts</Link></p>;
+}
+
+export default function Users(params) {
+  let users = _.map(params.users, (uu) => <User key={uu.id} user={uu} />);
+  return <div>
+    { users }
+  </div>;
+}
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+
+Example function:
+
+f(a, b, c) = a + b / c
+
+ - mov %rsi, %rax
+ - idiv %rdx
+ - add %rdi, %rax
+
+no
+
+ - mov %rsi, %rax
+ - cqo
+ - idiv %rdx
+ - add %rdi, %rax
+
+no
+

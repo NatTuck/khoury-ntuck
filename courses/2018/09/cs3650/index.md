@@ -4,6 +4,8 @@ layout: default
 
 # CS 3650 - Computer Systems
 
+Fall 2018
+
 Introduces the basic design of computing systems, computer operating systems,
 and assembly language using a RISC architecture. Describes caches and virtual
 memory. Covers the interface between assembly language and high-level
@@ -30,21 +32,22 @@ deadlock, memory management, file systems, and input/output control.
 ## Sections
 
 {: .table .table-striped }
- Section | Location | Time
-+--------|----------|--------+
-03 | BK  310 | 1:35pm-3:15pm Tu/Fr
+| Section | Location | Time                |
+|---------|----------|---------------------|
+|      03 | BK  310  | 1:35pm-3:15pm Tu/Fr |
 
 Note: Prof. Michael Shah is running Sections 01 and 02, which may be structured
-slightly differently. See his course page here: FIXME ADD LINK
+slightly differently. See [his course
+page](http://www.mshah.io/comp/Fall18/Systems/index.html) for details.
 
 ## Staff & Office Hours
 
 {: .table .table-striped }
- Name    | Location | Hours | Email
-+--------|----------|-------|----------------------+
-Nat Tuck | NI 132 E | TBA   | ntuck ⚓ ccs.neu.edu
-+--------|----------|-------|----------------------+
-
+| Name     | Location | Hours | Email                |
+|----------|----------|-------|----------------------|
+| Nat Tuck | NI 132 E | TBA   | ntuck ⚓ ccs.neu.edu  |
+|----------|----------|-------|----------------------|
+| more     | TBA      | ...   | ...                  |
 
 ## Schedule
 
@@ -53,40 +56,36 @@ This is an initial schedule, subject to revision as the semester progresses.
 Assignments will frequently be due at 11:59pm on Wednesday.
 
 {: .table .table-striped }
- Week | Starts | Topics | Work Due
-+-----|--------|--------|---------+
- 1+ | Sep 3  | Intro: Systems, C, and ASM | -
- 2  | Sep 10 | AMD64 Assembly; ASM: "Design Recipe" | HW01: Linux Setup & Hello Worlds
- 3  | Sep 17 | Processes & Memory; ASM: Syscalls, I/O, the heap | HW02: ASM Calculator, Fib
- 4  | Sep 24 | C: Basics, Arrays, Pointers; A Simple Tokenizer | HW03: ASM: Merge Sort w/ Dynamic Allocation
- 5  | Oct 1  | Syscalls: fork, exec, waitpid; Building a Shell & pipe | HW04: Shell Tokenizer 
- 6  | Oct 8  | read, write, process table, vmem; shared memory & data races | CH1: Unix Shell
- 7  | Oct 15 | semaphore locks & deadlock; threads and mutexes | HW05: Parallel Sort (Processes)
- 8  | Oct 22 | cond vars and atomics; malloc: free lists | HW06: Parallel Sort (Threads)
- 9  | Oct 29 | malloc: optimizations & threads; modern allocators | HW07: Simple Memory Allocator
-10  | Nov 5  | OS Kernels; Looking at xv6 | CH2: Advanced Memory Allocator
-11  | Nov 12 | File Systems: FAT; File Systems: ext | HW08: Examining xv6
-12+ | Nov 19 | The FUSE API | HW09: Simple FS
-13  | Nov 26 | Modern File Systems; Solutions for Concurrency | -
-14+ | Dec 3  | Wrap-Up + A Transactional Filesystem | CH3: Advanced FS
-
+|   Week | Starts   | Topics                                                 | Work Due                                    |
+| +----- | -------- | --------                                               | ---------+                                  |
+|     1+ | Sep 3    | Intro: Systems, C, and ASM                             | -                                           |
+|      2 | Sep 10   | AMD64 Assembly; ASM: "Design Recipe"                   | HW01: Linux Setup & Hello Worlds            |
+|      3 | Sep 17   | Processes & Memory; ASM: Syscalls, I/O, the heap       | HW02: ASM Calculator, Fib                   |
+|      4 | Sep 24   | C: Basics, Arrays, Pointers; A Simple Tokenizer        | HW03: ASM: Merge Sort w/ Dynamic Allocation |
+|      5 | Oct 1    | Syscalls: fork, exec, waitpid; Building a Shell & pipe | HW04: Shell Tokenizer                       |
+|      6 | Oct 8    | read, write, proc table, vmem; shared mem & data races | CH1: Unix Shell                             |
+|      7 | Oct 15   | semaphore locks & deadlock; threads and mutexes        | HW05: Parallel Sort (Processes)             |
+|      8 | Oct 22   | cond vars and atomics; malloc: free lists              | HW06: Parallel Sort (Threads)               |
+|      9 | Oct 29   | malloc: optimizations & threads; modern allocators     | HW07: Simple Memory Allocator               |
+|     10 | Nov 5    | OS Kernels; Looking at xv6                             | CH2: Advanced Memory Allocator              |
+|     11 | Nov 12   | File Systems: FAT; File Systems: ext                   | HW08: Examining xv6                         |
+|    12+ | Nov 19   | The FUSE API                                           | HW09: Simple FS                             |
+|     13 | Nov 26   | Modern File Systems; Solutions for Concurrency         | -                                           |
+|    14+ | Dec 3    | Wrap-Up + A Transactional Filesystem                   | CH3: Advanced FS                            |
+|        |          |                                                        |                                             |
 (+) One Lecture Weeks: Start, Thanksgiving, End
 
 Recommended Readings by Week:
 
-FIXME: Double check readings.
-
-FIXME: Replace P&H Readings with B&O readings.
-
- 1. P&H Ch 1, 2, Appendix A6, A9, A10, Green Card
- 2. OSTEP ch 4, 13; P&H ch 2
- 3. P&H 2.14
- 4. OSTEP ch 14
- 5. OSTEP ch 5
- 6. OSTEP 15, 16, 18, 31; P&H 5.6, 5.7
- 7. OSTEP 26, 27
+ 1. CS:APP 1
+ 2. CS:APP 3.1 - 3.7; OSTEP 4 
+ 3. CS:APP 9.1, 9.2; OSTEP 13
+ 4. CS:APP 3.8; OSTEP 14
+ 5. OSTEP 5
+ 6. OSTEP 15, 16, 18, 31
+ 7. CS:APP 12; OSTEP 26, 27
  8. OSTEP 28, 30
- 9. P&H ch 5.1 - 6.4
+ 9. CS:APP 9; OSTEP 17
 10. OSTEP 37, 44
 11. OSTEP 39, 40, 41
 12. OSTEP 43
@@ -99,10 +98,12 @@ There is no required textbook for this course.
 
 Recommended reading:
 
-  Computer Systems: A Programmer's Perspective
-  Randal E. Bryant and David R. O'Hallaron
-  Third Edition
+    Computer Systems: A Programmer's Perspective
+    Randal E. Bryant and David R. O'Hallaron
+    Third Edition
 
+[Book Website](http://csapp.cs.cmu.edu/3e/students.html)
+  
 We'll also be using these online resources:
 
  - [Operating Systems, Three Easy Pieces](http://ostep.org)
@@ -110,8 +111,8 @@ We'll also be using these online resources:
 
 ## Grading
 
- * Homework:   63% (7% each)
- * Challenges: 36% (12% each)
+ * Homework:   63% (about 7% each)
+ * Challenges: 36% (about 12% each)
  
 ### Letter Grades
 
@@ -146,7 +147,7 @@ For the final assignment, late submissions will not be accepted.
 
 ## Policies
 
-### Grade Challenges
+### Contesting Grades
 
 Homework and project grades will be posted on Bottlenose. If you think your work
 was graded incorrectly, you can challenge your grade through the following
@@ -162,7 +163,7 @@ used in the NFL.
 
 Here's the procedure: 
 
- - There's a virtual "challenges" homework worth 1% of your final grade. 
+ - There's a virtual "contested grades" homework worth 1% of your final grade. 
  - When you issue a challenge, you lose 50% of your score on that assignemnt.
  - If you have no points left, you can't issue a challenge.
  - When a challenge is issued, the instructor will regrade your assignment from
