@@ -17,7 +17,7 @@ If you'd prefer to work with a specific person, both members of your proposed te
 
 <h2>Step 1: Install FUSE</h2>
 
-<p>For this assignment you will need to use your local Ubuntu 16.04 VM. You'll
+<p>For this assignment you will need to use your local Ubuntu 18.04 VM. You'll
 need to install the libfuse-dev package.
 
 <h2>Step 2: Implement a basic filesystem</h2>

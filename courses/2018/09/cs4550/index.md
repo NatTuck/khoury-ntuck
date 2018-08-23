@@ -81,7 +81,7 @@ Domain Registrars: [joker](https://joker.com/), [gandi](https://www.gandi.net),
 VPS Providers: [vultr](https://www.vultr.com/), [linode](https://www.linode.com/),
 [prgmr](https://www.prgmr.com/).
  
-Your VPS should have Ubuntu 16.04 and at least 1 GB of RAM. Either your domain
+Your VPS should have Ubuntu 18.04 and at least 1 GB of RAM. Either your domain
 registrar or your VPS provider should provide DNS hosting.
 
 ## Library, Framework, Tool, and Language Documentation

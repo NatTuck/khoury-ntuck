@@ -19,7 +19,7 @@ Apply deductions as follows:
 
  1. No screenfetch image submitted: -20
    1a. Image doesn't show a terminal running in a Linux graphical session: -10
-   2b. Not an Ubuntu 16.04 amd64 variant (Ubuntu / Xubuntu / etc): -10
+   2b. Not an Ubuntu 18.04 amd64 variant (Ubuntu / Xubuntu / etc): -10
  2. No or bad ps-output.txt: -10
  3. Didn't touch a file in the appropriate directory on the CCIS server: -10
  4. Didn't follow directions for archive file:
