@@ -72,7 +72,7 @@ Assignments will frequently be due at 11:59pm on Wednesday.
 |    12+ | Nov 19   | The FUSE API                                           | HW09: Simple FS                             |
 |     13 | Nov 26   | Modern File Systems; Solutions for Concurrency         | -                                           |
 |    14+ | Dec 3    | Wrap-Up + A Transactional Filesystem                   | CH3: Advanced FS                            |
-|        |          |                                                        |                                             |
+
 (+) One Lecture Weeks: Start, Thanksgiving, End
 
 Recommended Readings by Week:
