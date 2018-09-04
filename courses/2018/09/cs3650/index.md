@@ -36,9 +36,12 @@ deadlock, memory management, file systems, and input/output control.
 |---------|----------|---------------------|
 |      03 | BK  310  | 1:35pm-3:15pm Tu/Fr |
 
-Note: Prof. Michael Shah is running Sections 01 and 02, which may be structured
-slightly differently. See [his course
-page](http://www.mshah.io/comp/Fall18/Systems/index.html) for details.
+Note: Profs. Michael Shah and Alden Jackson are running other sections of the
+course, which may be structured slightly differently: See their course pages
+for details:
+
+ * [Prof Shah's sections](http://www.mshah.io/comp/Fall18/Systems/index.html)
+ * [Prof Jackson's section](http://www.ccs.neu.edu/home/awjacks/cs3650f18/)
 
 ## Staff & Office Hours
 
