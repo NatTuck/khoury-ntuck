@@ -34,10 +34,12 @@ decisions, accomplishments, and user guidelines.
 ## Office Hours
 
 {: .table .table-striped }
-| Name     | Location | Hours | Email                |
-|----------|----------|-------|----------------------|
-| Nat Tuck | NI 132 E | TBA   | ntuck ⚓ ccs.neu.edu  |
-| ...      | ...      | TBA   | ...                  |
+| Name             | Location | Hours | Email                        |
+|------------------|----------|-------|------------------------------|
+| Nat Tuck         | NI 132 E | TBA   | ntuck ⚓ ccs.neu.edu         |
+|------------------|----------|-------|------------------------------|
+| Benjamin Muschol | TBA      | TBA   | muschol.b ⚓ husky.neu.edu |
+| Vipul Sharma     | TBA      | TBA   | sharma.vip ⚓ husky.neu.edu |
 
 ## Schedule
 

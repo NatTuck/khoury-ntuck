@@ -46,11 +46,21 @@ for details:
 ## Staff & Office Hours
 
 {: .table .table-striped }
-| Name     | Location | Hours | Email                |
-|----------|----------|-------|----------------------|
-| Nat Tuck | NI 132 E | TBA   | ntuck ⚓ ccs.neu.edu  |
-|----------|----------|-------|----------------------|
-| more     | TBA      | ...   | ...                  |
+| Name                       | Location | Hours | Email                              |
+|----------------------------|----------|-------|------------------------------------|
+| Nat Tuck                   | NI 132 E | TBA   | ntuck ⚓ ccs.neu.edu               |
+|----------------------------|----------|-------|------------------------------------|
+| Charmik Sheth(+)           | TBA      | TBA   | sheth.c ⚓ husky.neu.edu           |
+| Shraddha Shriram Mhatre(+) | TBA      | TBA   | mhatre.shr ⚓ husky.neu.edu        |
+|----------------------------|----------|-------|------------------------------------|
+| Durwasa Chakraborty        | TBA      | TBA   | chakraborty.d ⚓ husky.neu.edu     |
+| James Elliott              | TBA      | TBA   | elliott.jame ⚓ husky.neu.edu      |
+| Akash Parikh               | TBA      | TBA   | parikh.ak ⚓ husky.neu.edu         |
+| Savan Patel                | TBA      | TBA   | patel.sav ⚓ husky.neu.edu         |
+| A. Trihatmaja              | TBA      | TBA   | trihatmaja.a ⚓ husky.neu.edu      |
+| Nakul Ramesh               | TBA      | TBA   | vankadariramesh.n ⚓ husky.neu.edu |
+
+(+) Will be grading for this section.
 
 ## Schedule
 
