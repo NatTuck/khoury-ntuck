@@ -25,7 +25,8 @@ deadlock, memory management, file systems, and input/output control.
  - [Bottlenose](https://bottlenose.ccs.neu.edu) - View and submit homework assignments.
  - [Piazza](https://piazza.com/northeastern/spring2018/cs3650) - Class discussion & announcements.
  - [Undergrad Tutoring](http://www.ccis.northeastern.edu/current-students/undergraduate/resources/)
- - [AMD64 Assembly Resources](./amd64-info.html) - Help with assembly programming.
+ - [AMD64 Assembly Notes](./amd64_asm.html) - Help with assembly programming.
+ - [Assembly Recipie](./asm_recipe.html) - Help with assembly programming.
  - [Linux / Unix Help](http://www.ccs.neu.edu/course/cs3650/parent/help/)
  - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in class.
 
@@ -127,6 +128,8 @@ We'll also be using these online resources:
  * Homework:   63% (about 7% each)
  * Challenges: 36% (about 12% each)
  
+Percentages are approximate.
+
 ### Letter Grades
 
 The number to letter mapping will be as follows:
@@ -183,7 +186,7 @@ Here's the procedure:
    scratch.
  - If your new score is higher than the old score, you get your points back.
  - Challenges must be issued within two weeks of the grade being posted to
-   Bottlenose, and before finals week starts.
+   Bottlenose, and no later than Tuesday of finals week.
 
 ### Special Accomodations
 

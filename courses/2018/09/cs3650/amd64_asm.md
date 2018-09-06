@@ -35,6 +35,7 @@ the Intel 8086, while Group 3 was added specifically for AMD64.
 
 Shorter parts of these registers are also accessible by the hisorical names:
 
+{: .table .table-striped }
 | 64-bit register | Low 32-bits | Low 16 bits | Low 8 bits | Byte 7* |
 |-----------------|-------------|-------------|------------|---------|
 | %rax            | %eax        | %ax         | %al        | %ah     |
@@ -55,6 +56,7 @@ There are a couple of other registers worth remembering:
 
 ### Arithmetic Instructions
 
+{: .table .table-striped }
 | Instruction     | Description                               |
 |-----------------|-------------------------------------------|
 | mov %rxx, %ryy  | Copy data from register %rxx to %ryy      |
@@ -83,6 +85,7 @@ Note: The argument order for "cmp" is backwards here.
   jg rbx_is_bigger
 ```
 
+{: .table .table-striped }
 | Instruction    | Description                                                  |
 |----------------|--------------------------------------------------------------|
 | cmp %rxx, %ryy | Compares the two registers, updating the flags register      |
@@ -100,6 +103,7 @@ Note: The argument order for "cmp" is backwards here.
 
 ### Function Call and Stack
 
+{: .table .table-striped }
 | Instruction   | Description                                               |
 |---------------|-----------------------------------------------------------|
 | push %rxx     | Copy %rxx to stack @ %rsp, move down %rsp                 |
@@ -113,6 +117,7 @@ Note: The argument order for "cmp" is backwards here.
 In addition to operating on registers, many instructions can accept alternate
 modes that operate on data in memory or on constant values.
 
+{: .table .table-striped }
 | Example Instruction        | Description                                        |
 |----------------------------|----------------------------------------------------|
 | add (%rcx), %rdx           | %rdx = %rdx + (value at address in %rcx)           |
@@ -123,6 +128,7 @@ modes that operate on data in memory or on constant values.
 There's a special instruction, `lea`, that calcuates an address as if it were
 going to access an argument in memory but gives you the address as its output.
 
+{: .table .table-striped }
 | Example Instruction | Description      |
 |---------------------|------------------|
 | lea -16($rsp), %rax | %rax = %rsp - 16 |
@@ -130,6 +136,7 @@ going to access an argument in memory but gives you the address as its output.
 Instruction suffixes: Instructions can have a single letter suffix added to
 indicate hte size of the value operated on: b, w, l, q for 1, 2, 4, 8 bytes.
 
+{: .table .table-striped }
 | Example Instruction | Description                                              |
 |---------------------|----------------------------------------------------------|
 | movw $10, (%rdx)    | Move a 16-bit (2 byte, short) int to the address in %rdx |
