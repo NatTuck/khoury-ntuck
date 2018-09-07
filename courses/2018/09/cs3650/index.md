@@ -49,7 +49,7 @@ for details:
 {: .table .table-striped }
 | Name                       | Location | Hours | Email                              |
 |----------------------------|----------|-------|------------------------------------|
-| Nat Tuck                   | NI 132 E | TBA   | ntuck ⚓ ccs.neu.edu               |
+| Nat Tuck    | NI 132 E | We 3-4pm; Fr noon-1pm | ntuck ⚓ ccs.neu.edu               |
 |----------------------------|----------|-------|------------------------------------|
 | Charmik Sheth(+)           | TBA      | TBA   | sheth.c ⚓ husky.neu.edu           |
 | Shraddha Shriram Mhatre(+) | TBA      | TBA   | mhatre.shr ⚓ husky.neu.edu        |

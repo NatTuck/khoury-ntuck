@@ -15,7 +15,7 @@ deployment machine (VPS).
  - Erlang / OTP version 21
  - Elixir version 1.7
  - Phoenix version 1.4
- - NodeJS version 8.10 (e.g. the Ubuntu nodejs package)
+ - NodeJS version 8.10 (e.g. the Ubuntu packages: nodejs npm)
  - Standard C/C++ dev tools (e.g. the Ubuntu build-essential package)
 
 Here's the relevent installation instructions / resources. You will need to read
