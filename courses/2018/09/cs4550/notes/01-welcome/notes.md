@@ -149,6 +149,13 @@ ufw allow 4000/tcp    # allow the Phoenix dev server
 ufw enable
 ```
 
+Enable automatic upgrades (for security patches):
+
+```
+dpkg-reconfigure --priority=low unattended-upgrades
+```
+
+
 Next we need to create a non-root user. When working with a Linux server, the
 root account is for administering the *server itself*. We want a non-root
 account for working with web sites / applications.
