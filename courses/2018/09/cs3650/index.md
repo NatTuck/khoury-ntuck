@@ -23,7 +23,7 @@ deadlock, memory management, file systems, and input/output control.
 ## Essential Resources
 
  - [Bottlenose](https://bottlenose.ccs.neu.edu) - View and submit homework assignments.
- - [Piazza](https://piazza.com/northeastern/spring2018/cs3650) - Class discussion & announcements.
+ - [Piazza](https://piazza.com/northeastern/fall2018/cs365003) - Class discussion & announcements.
  - [Undergrad Tutoring](http://www.ccis.northeastern.edu/current-students/undergraduate/resources/)
  - [AMD64 Assembly Notes](./amd64_asm.html) - Help with assembly programming.
  - [Assembly Recipie](./asm_recipe.html) - Help with assembly programming.
