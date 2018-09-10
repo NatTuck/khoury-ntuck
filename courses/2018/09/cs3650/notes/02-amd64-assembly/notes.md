@@ -2,6 +2,11 @@
 layout: default
 ---
 
+## First: HW Questions
+
+ - Homework questions?
+ - HW02 is available.
+
 ## Course Resources
 
  - In case you missed it: http://ccs.neu.edu/home/ntuck/
@@ -20,7 +25,7 @@ The 8086 was a 16-bit microproessor. That means:
  - In addtion to RAM, this system gives us another place to put stuff called
    registers. For a 16-bit processor, each register is 16 bits.
  - The 8086 had 9-ish registers:
-   - "general purpose": ax, cx, dx, bx, si, di, bp, sp,
+   - "general purpose": ax, cx, dx, bx, si, di, bp, sp
    - "special purpose": ip, (segment registers, status register)
  - What processors do is execute instructions. Kinds of instructions:
    - Arithmetic: Example: add $5, %cx
@@ -68,17 +73,50 @@ ASM Example: cond_br
 $ gcc -no-pie -o cond_br cond_br.s
 ```
 
+## idiv example
+
+```
+.global main
+.text
+main:
+  enter $0, $0
+  
+  mov $40, %rax
+  mov $30, %rbx
+  mov $20, %rcx
+  mov $10, %rdx
+  
+  # cqo 
+  idiv %rdx
+ 
+  # mov %rdx, %rdi
+  # cqo 
+  # idiv  %rdi
+  
+  mov $longfmt, %rdi
+  mov %rax, %rsi
+  mov $0, %al
+  call printf
+ 
+  leave
+  ret
+.data
+longfmt: .string "%ld\n"
+```
+
 More Examples:
 
 TODO: Finish this part
 
- - area
- - fact
+ - fact (iter)
+ - fact (recursive)
  - strlen
 
  - fact hits the recursion problem, talk about register conventions
  - Talk about the ABI: https://github.com/hjl-tools/x86-psABI/wiki/X86-psABI
-
-
+ - Programmer Manual: https://support.amd.com/TechDocs/24594.pdf
+ 
+ 
+ 
 
 
