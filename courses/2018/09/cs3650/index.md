@@ -25,13 +25,13 @@ deadlock, memory management, file systems, and input/output control.
  - [Bottlenose](https://bottlenose.ccs.neu.edu) - View and submit homework assignments.
  - [Piazza](https://piazza.com/northeastern/fall2018/cs365003) - Class discussion & announcements.
  - [Undergrad Tutoring](http://www.ccis.northeastern.edu/current-students/undergraduate/resources/)
- - [AMD64 Assembly Notes](./amd64_asm.html) - Help with assembly programming.
+ - [Linux / Unix Help](http://www.ccs.neu.edu/course/cs3650/parent/help/)
  - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in class.
 
 ## AMD64 ASM resources
  
- - [Assembly Recipie](./asm_recipe.html) - Help with assembly programming.
- - [Linux / Unix Help](http://www.ccs.neu.edu/course/cs3650/parent/help/)
+ - [AMD64 Assembly Notes](./amd64_asm.html) - ASM vocab
+ - [Assembly Recipie](./asm_recipe.html) - ASM programming strategy
  - [x86-64 SysV API](https://github.com/hjl-tools/x86-psABI/wiki/X86-psABI)
  - [AMD Programmer's Manual, Volume 3](https://support.amd.com/TechDocs/24594.pdf)
 

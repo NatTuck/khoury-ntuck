@@ -179,8 +179,18 @@ handled by the standard use of "enter" and "leave" calls.
  * Temporary registers: %r10, %r11, (argument registers)
  * Safe registers: %r12, %r13, %r14, %r15, %rbx
 
-TODO: Moderately sophisticated register allocation.
+How to map variables / values to locations:
 
+ * Local variables that get their address taken should go on the stack.
+ * Local variables that get used before and after a function call should
+   go in a safe (callee-saved) register.
+ * Local variables that don't need to survive a function call can go
+   in temporary registers.
+ * Temporary values should go in temporary registers.
+
+The caller-save strategy, where temporary registers are pushed/popped around
+a function call to preserve them can be used but tends to be more annoying
+than using safe registers.
 
 ## Compiling ASM with GCC
 

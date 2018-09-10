@@ -2,99 +2,122 @@
 layout: default
 ---
 
-# Design Recipe for an AMD64 ASM Program
+## First: HW Questions
 
-## A Program is a Bunch of Functions
+ - Homework questions?
 
- * Execution starts at "main".
- * We build functions to be independent.
- * To design a program, design its functions.
+## How to write an ASM program
 
-## Design Recipe for a Function
+Getting started with writing assembly programs can be tricky. The language
+forces you to deal with individual instructions, which can make it easy to lose
+track of the bigger picture.
 
- * Signature
- * Pseudocode
- * Variable mappings
- * Skeleton
- * Write the body
+## Design Recipe for Assembly Programs
 
-## Signature and Pseudocode
+ 1. An assembly (or C) program is a bunch of functions.
+ 2. Figure out at least some of the functions you need.
+   - Hint: You need a "main" function. You can start there.
+ 3. Apply the recipe for functions below to write them.
+ 4. As you discover new functions you need, write those too.
 
- * Thinking in assembly is a bit fiddly. Better to think at a
-   higher level of abstraction.
- * Translating pseudocode to assembly is resonably straightforward.
- * The design recipie, in any language, suggests signature first.
-   * What are our arguments?
-   * What will we return?
- * Pseudocode is useful to determine how we will compute our function.
-   * Something like C makes good pseudocode here.
+## Design Recipe for An Assembly Function
 
-## Variable Mappings
+### 1. Signature
 
- * In assembly we don't get to use named variables.
- * Instead, we need to figure out where to put each value used in our function.
- * Values either go in registers or on the stack.
- * It's worth actually figuring this out and writing it down.
+This is a good place to start in any language. You need to know what arguments
+the function will take and what it returns.
 
-We're going to write our programs so they actually work the way that C pretends
-to work: all local variables live on the stack.
+### 2. Pseudocode
 
- * Using the ENTER instruction, we allocate a slot for each local variable and
-   function argument.
- * The first stack slot is -8(%rbp), the next -16(%rbp), etc.
- * Function arguments come in in registers - note which ones.
- * Local variables may also want to inhabit registers - consider using 
+Thinking in assembly to figure out the overall strategy for a function doesn't
+help solve the problem. It's better to figure out what you're doing at a higher
+level before thinking about CPU instructions. Something about like C makes a
+good pseudocode to design an assembly function.
 
-We also should decide which temporary values we produce and where those will be
-stored. These can be allocated to temporary registers: %r11, %r10, %r9, %r8.
+### 3. Variable Mappings
 
-### Thinking
+Your pseudocode has named variables, but your assembly code won't. For each
+variable, decide where that data lives. It could be in a register (which one?),
+on the stack (where?), or maybe it's a global variable (what label?).
 
-Strategies:
+You should explicitly write down this mapping as a comment in your assembly code.
 
- * Everything in registers, save to registers, pre-save to stack.
- * Everything on the stack.
+Which registers?
 
-## Function Skeleton
+ * There are two pure temporary registers: %r10 and %r11.
+   * Temporary registers go bad when you call a function.
+ * There are five available callee-saved registers: %rbx, %r12-%r15
+   * These are safe across function calls, but if you use them in
+     your function you need to save them in your prologue and restore
+     them in your epilogue before returning.
+ * The first six function arguments go in: %rdi, %rsi, %rdx, %rcx, %r8, %r9
+   * These are temporary registers and can be re-used as such.
+   * Remember that %rdx is sometimes written to by instructions (e.g. idiv)
+ * The value returned by a function goes in %rax.
+   * This is also a temporary, but some instructions (e.g. idiv) write to it.
+
+### 4. Skeleton
 
 ```
 label:
-    # Prologue:
-    #   Set up stack frame.
-    # Body:
-    #   Just say "TODO"
-    # Epilogue:
-    #   Clean up stack frame.
+  /* Prologue: */
+  /* save callee-save registers */
+  enter $??, $0
+  /* end of prologue */
+ 
+  /* TODO: function body */
+
+  /* Epilogue: */
+  leave
+  /* restore (pop) callee-save registers */
+  /* pops must be in reverse order from pushes */
+  /* end of epilogue */
+  ret
 ```
 
-## Function Prologue
+ * Every function starts with a label and ends with a "ret" instruction.
+ * Every function has a prologue and an epilogue to manage the function's
+   use of the stack.
+ * The prologue saves any callee-save registers to the stack and allocates
+   a stack frame for use by the function.
+ * The epilogue restores callee-save registers and "frees" the stack frame.
+ * Your variable mapping tells you which registers to save: any callee-save
+   registers that you're using for anything.
+ * Stack alignment: To call further functions, your stack pointer must be
+   on a 16-byte boundary.
+   - (Stack frame size / 8) + (# of callee-save pushes should be even)
+   - If you think you have an exception, explain in a comment.
 
- * Save (push) any callee-save registers we use.
- * ENTER: Allocate stack space for local variables.
- * Save any arguments that we want to use after making function calls.
-   * Plan A: Push to stack
-   * Plan B: Copy to callee-save registers
- * Make sure stack pointer aligned to 16-byte boundary before doing
-   any further function calls.
+What do the enter and leave instructions do?
 
-## Function Epilogue
+```
+  /* enter allocates a stack frame */
+  /* the enter $X, $0 instruction acts like: */
+  push %ebp
+  mov %esp, %ebp
+  sub $X, %esp
+  /* waste 8 clock cycles */
 
- * Make sure the return value is in %rax
- * LEAVE: Deallocate the entire stack frame.
- * Restore (pop) any callee-save registers we used.
- * RET: Return to caller.
 
-## Writing the Function Body
+  /* leave deallocates a stack frame */
+  /* the leave instruction acts like: */
+  mov %ebp, %esp
+  pop %ebp
+```
 
- * Translate the pseudocode to assembly, line by line.
- * Use the variable mapping you already figured out.
+### 5. Write the body of the functions
 
-# Translating Pseudocode to ASM
+In this step, you translate your pseudocode to assembly.
+
+
+## Translating C to ASM
 
  * C can translate to ASM nearly 1:1.
  * Every C statement can be used to fill in a corresponding
    ASM "template".
  * The resulting ASM will perform the same computation.
+ * There are multiple possible templates - these are only
+   examples.
 
 ## Variables, Temporaries, and Assignment
 
@@ -647,5 +670,4 @@ main:
   leave
   ret
 ```
-
 
