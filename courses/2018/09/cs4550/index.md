@@ -38,8 +38,8 @@ decisions, accomplishments, and user guidelines.
 |------------------|----------|-----------------------|-----------------------------|
 | Nat Tuck         | NI 132 E | We 3-4pm; Fr noon-1pm | ntuck ⚓ ccs.neu.edu        |
 |------------------|----------|-----------------------|-----------------------------|
-| Benjamin Muschol | WVH      | Thu 2-4pm             | muschol.b ⚓ husky.neu.edu  |
-| Vipul Sharma     | TBA      | TBA                   | sharma.vip ⚓ husky.neu.edu |
+| Benjamin Muschol | WVH      | Th 2-4pm              | muschol.b ⚓ husky.neu.edu  |
+| Vipul Sharma     | TBA      | Mo 3-5pm              | sharma.vip ⚓ husky.neu.edu |
 
 ## Schedule
 
