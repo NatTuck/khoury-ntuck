@@ -365,6 +365,13 @@ for_done:
   ...
 ```
 
+
+# Example Functions
+
+ - ifact
+ - rfact
+ - strlen
+
 # Example Program
 
 ```
