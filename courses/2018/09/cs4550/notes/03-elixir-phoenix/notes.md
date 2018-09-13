@@ -75,7 +75,7 @@ But with some extra features not in ISL:
  - Seperate function / variable namespaces
  - Modules
  - Pattern matching
- - Multiple expressions per block
+ 
  - Side effects (like I/O)
  - Maps (associative arrays) are a core data type
  - Lightweight processes
@@ -98,8 +98,19 @@ But with some extra features not in ISL:
 
 ## Phoenix Framework / Practice App
 
- - Clone git repo: https://github.com/NatTuck/elixir-practice.git
- - Run it: ```mix phx.server```
+```
+# clone git repo
+$ git clone https://github.com/NatTuck/elixir-practice.git
+$ cd elixir-practice
+
+# fetch deps
+$ mix deps.get
+$ (cd assets && npm install)
+
+# run local dev server
+$ mix phx.server
+```
+
  - Double a number.
 
 HTTP story for doubling a number.
