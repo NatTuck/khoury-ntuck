@@ -106,8 +106,6 @@ longfmt: .string "%ld\n"
 
 More Examples:
 
-TODO: Finish this part
-
  - fact (iter)
  - fact (recursive)
  - strlen
