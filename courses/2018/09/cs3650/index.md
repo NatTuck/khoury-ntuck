@@ -52,22 +52,23 @@ for details:
 ## Staff & Office Hours
 
 {: .table .table-striped }
-| Name                  | Location | Hours            | Email                              |
-|-----------------------+----------+------------------+------------------------------------|
-| Nat Tuck              | NI 132 E | We 3-4pm         | ntuck ⚓ ccs.neu.edu               |
-| Nat Tuck              | NI 132 E | Fr noon-1pm      | ntuck ⚓ ccs.neu.edu               |
-|-----------------------+----------+------------------+------------------------------------|
-| Charmik Sheth(+)      | ???      | We 1-3pm         | sheth.c ⚓ husky.neu.edu           |
-| Shraddha S. Mhatre(+) | ???      | Mo 10:30am-12:30 | mhatre.shr ⚓ husky.neu.edu        |
-|-----------------------+----------+------------------+------------------------------------|
-| Durwasa Chakraborty   | TBA      | TBA              | chakraborty.d ⚓ husky.neu.edu     |
-| James Elliott         | TBA      | TBA              | elliott.jame ⚓ husky.neu.edu      |
-| Akash Parikh          | TBA      | TBA              | parikh.ak ⚓ husky.neu.edu         |
-| Savan Patel           | TBA      | TBA              | patel.sav ⚓ husky.neu.edu         |
-| A. Trihatmaja         | TBA      | TBA              | trihatmaja.a ⚓ husky.neu.edu      |
-| Nakul Ramesh          | TBA      | TBA              | vankadariramesh.n ⚓ husky.neu.edu |
+| Name                  | Location | Hours                 | Email                              |
+|-----------------------|----------|-----------------------|------------------------------------|
+| Nat Tuck              | NI 132 E | We 3-4pm; Fr noon-1pm | ntuck ⚓ ccs.neu.edu               |
+|-----------------------|----------|-----------------------|------------------------------------|
+| Charmik Sheth(+)      | ??? (++) | We 1-3pm              | sheth.c ⚓ husky.neu.edu           |
+| Shraddha S. Mhatre(+) | ??? (++) | Mo 10:30am-12:30      | mhatre.shr ⚓ husky.neu.edu        |
+|-----------------------|----------|-----------------------|------------------------------------|
+| Durwasa Chakraborty   | TBA      | TBA                   | chakraborty.d ⚓ husky.neu.edu     |
+| James Elliott         | TBA      | TBA                   | elliott.jame ⚓ husky.neu.edu      |
+| Akash Parikh          | TBA      | TBA                   | parikh.ak ⚓ husky.neu.edu         |
+| Savan Patel           | TBA      | TBA                   | patel.sav ⚓ husky.neu.edu         |
+| A. Trihatmaja         | TBA      | TBA                   | trihatmaja.a ⚓ husky.neu.edu      |
+| Nakul Ramesh          | TBA      | TBA                   | vankadariramesh.n ⚓ husky.neu.edu |
 
 (+) Will be grading for this section.
+
+(++) Check Pizza for location.
 
 ## Schedule
 
