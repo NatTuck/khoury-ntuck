@@ -1,8 +1,6 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
-#include <string.h>
 
 char**
 reverse_string_array(char** xs, int nn)
@@ -18,8 +16,7 @@ void
 print_string_array(char** xs, int nn)
 {
     for (int ii = 0; ii < nn; ++ii) {
-        write(1, xs[ii], strlen(xs[ii]));
-        write(1, "\n", 1);
+        printf("%s\n", xs[ii]);
     }
 }
 
@@ -35,7 +32,6 @@ main(int argc, char* argv[])
 
     char** bb = reverse_string_array(aa, 5);
     print_string_array(bb, 5);
-    free(bb);
     return 0;
 }
 

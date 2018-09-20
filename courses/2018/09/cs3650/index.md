@@ -34,6 +34,7 @@ deadlock, memory management, file systems, and input/output control.
  - [Assembly Recipie](./asm_recipe.html) - ASM programming strategy
  - [x86-64 SysV API](https://github.com/hjl-tools/x86-psABI/wiki/X86-psABI)
  - [AMD Programmer's Manual, Volume 3](https://support.amd.com/TechDocs/24594.pdf)
+ - [AMD64 Linux Syscalls](https://filippo.io/linux-syscall-table/)
 
 ## Sections
 
@@ -52,23 +53,27 @@ for details:
 ## Staff & Office Hours
 
 {: .table .table-striped }
-| Name                  | Location | Hours                 | Email                              |
-|-----------------------|----------|-----------------------|------------------------------------|
-| Nat Tuck              | NI 132 E | We 3-4pm; Fr noon-1pm | ntuck ⚓ ccs.neu.edu               |
-|-----------------------|----------|-----------------------|------------------------------------|
-| Charmik Sheth(+)      | ??? (++) | We 1-3pm              | sheth.c ⚓ husky.neu.edu           |
-| Shraddha S. Mhatre(+) | ??? (++) | Mo 10:30am-12:30      | mhatre.shr ⚓ husky.neu.edu        |
-|-----------------------|----------|-----------------------|------------------------------------|
-| Durwasa Chakraborty   | TBA      | TBA                   | chakraborty.d ⚓ husky.neu.edu     |
-| James Elliott         | TBA      | TBA                   | elliott.jame ⚓ husky.neu.edu      |
-| Akash Parikh          | TBA      | TBA                   | parikh.ak ⚓ husky.neu.edu         |
-| Savan Patel           | TBA      | TBA                   | patel.sav ⚓ husky.neu.edu         |
-| A. Trihatmaja         | TBA      | TBA                   | trihatmaja.a ⚓ husky.neu.edu      |
-| Nakul Ramesh          | TBA      | TBA                   | vankadariramesh.n ⚓ husky.neu.edu |
+| Name                  | Location     | Hours                 | Email                              |   |
+|-----------------------|--------------|-----------------------|------------------------------------|---|
+| Nat Tuck              | NI 132 E     | We 3-4pm; Fr noon-1pm | ntuck ⚓ ccs.neu.edu               |   |
+|-----------------------|--------------|-----------------------|------------------------------------|---|
+| Charmik Sheth(+)      | WVH 102 (++) | We 1-3pm              | sheth.c ⚓ husky.neu.edu           |   |
+| Shraddha S. Mhatre(+) | WVH 102 (++) | Mo 10:30am-12:30      | mhatre.shr ⚓ husky.neu.edu        |   |
+|-----------------------|--------------|-----------------------|------------------------------------|---|
+| Durwasa Chakraborty   | (+++)        | (+++)                 | chakraborty.d ⚓ husky.neu.edu     | ) |
+| James Elliott         | (+++)        | (+++)                 | elliott.jame ⚓ husky.neu.edu      |   |
+| Akash Parikh          | (+++)        | (+++)                 | parikh.ak ⚓ husky.neu.edu         |   |
+| Savan Patel           | (+++)        | (+++)                 | patel.sav ⚓ husky.neu.edu         |   |
+| A. Trihatmaja         | (+++)        | (+++)                 | trihatmaja.a ⚓ husky.neu.edu      |   |
+| Nakul Ramesh          | (+++)        | (+++)                 | vankadariramesh.n ⚓ husky.neu.edu |   |
 
 (+) Will be grading for this section.
 
-(++) Check Pizza for location.
+(++) Single instance locaiton changes may be posted to Piazza.
+
+(+++) See the course page for the other sections for these office hours. Tell
+the TA you're in Tuck's section and show them your assignment for minimum
+confusion.
 
 ## Schedule
 

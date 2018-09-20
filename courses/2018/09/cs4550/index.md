@@ -116,6 +116,7 @@ box. Elixir is supported less broadly - these editors should work well:
  - Emacs with elixir-mode.
  - [Spacemacs](http://spacemacs.org) with the elixir layer.
  - [Atom](https://atom.io/) with the packages language-elixir and auto-ident.
+ - [VS Code](https://github.com/VSCodium/vscodium)
 
 Submitted code with indentation that shows that you aren't using an editor with
 automatic indentation support (and using it successfully) will be penalized
