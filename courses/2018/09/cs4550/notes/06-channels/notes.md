@@ -30,10 +30,9 @@ Websockets simulate TCP over HTTP.
 
 ```
 $ mix phx.gen.channel games
-# Go ahead and put line in user_socket.ex
 ```
   
-Add to .../user_socket.ex:
+Add to .../channels/user_socket.ex:
 
 ```
   channel "games:*", HangmanWeb.GamesChannel
@@ -43,6 +42,7 @@ Open .../js/socket.js - scan through.
 
  - userToken for transferring session from cookie -> websocket.
  - Move the channel join stuff over to app.js
+ - Set the channel to join as "games:default"
 
 Add to head in .../layout/app.html.eex
 
@@ -72,36 +72,47 @@ Edit index.html.eex to this:
 
 ```
 <div class="row">
-  <div class="col">
+  <div class="column">
     <h1>Join a Game</h1>
     <p><input type="text" id="game-input"></p>
-    <p><button id="game-button"></button></p>
+    <p><button id="game-button">Double</button></p>
     <p id="game-output"></p>
   </div>
 </div>
+```
+
+Let's look at this socket thing. First, install jQuery and lodash.
+
+```
+assets$ npm install --save jquery lodash
 ```
 
 Edit app.js:
 
 
 ```
+import $ from 'jquery';
+
+//...
+
 import socket from "./socket";
+import game_init from "./hangman";
 
+let channel = socket.channel("games:demo", {});
+channel.join()
+  .receive("ok", resp => { console.log("Joined successfully", resp) })
+  .receive("error", resp => { console.log("Unable to join", resp) });
+  
 function form_init() {
-  let channel = socket.channel("games:demo", {});
-  channel.join()
-         .receive("ok", resp => { console.log("Joined successfully", resp) })
-         .receive("error", resp => { console.log("Unable to join", resp) });
-
   $('#game-button').click(() => {
     let xx = $('#game-input').val();
+    console.log("double", xx);
     channel.push("double", { xx: xx }).receive("doubled", msg => {
+      console.log("doubled", msg);
       $('#game-output').text(msg.yy);
     });
   });
 }
-
-import game_init from "./hangman";
 
 function start() {
   let root = document.getElementById('root');
@@ -109,7 +120,7 @@ function start() {
     game_init(root);
   }
 
-  if (document.getElementById('index-page')) {
+  if (document.getElementById('game-input')) {
     form_init();
   }
 }
@@ -144,9 +155,9 @@ Update index.html.eex:
 
 ```
 <div class="row">
-  <div class="col">
+  <div class="column">
     <h1 id="index-page">Join a Game</h1>
-    <p><a href="/game/demo">Join</a></p>
+    <p><a href="/game/demo">Join "demo"</a></p>
   </div>
 </div>
 ```
@@ -154,12 +165,13 @@ Update index.html.eex:
 game.html.eex:
 
 ```
+<script>
+ window.gameName = "<%= @game %>";
+</script>
+
 <div class="row">
-  <div class="col">
+  <div class="column">
     <h1>Hangman Game: <%= @game %></h1>
-    <script>
-      window.gameName = "<%= @game %>";
-    </script>
     <div id="root">
       <p>React app not loaded...</p>
     </div>
@@ -171,22 +183,14 @@ app.js
 
 ```
 import socket from "./socket";
-
 import game_init from "./hangman";
 
 function start() {
   let root = document.getElementById('root');
   if (root) {
     let channel = socket.channel("games:" + window.gameName, {});
-    channel.join()
-           .receive("ok", resp => { console.log("Joined successfully", resp) })
-           .receive("error", resp => { console.log("Unable to join", resp) });
-
+    // We want to join in the react component.
     game_init(root, channel);
-  }
-
-  if (document.getElementById('index-page')) {
-    form_init();
   }
 }
 
@@ -195,8 +199,8 @@ $(start);
 
 Write attached code:
 
- - Hangman.Game (games.ex)
- - GamesChannel 
- - hangman.jsx
+ - First, the abstract game: Hangman.Game (games.ex)
+ - Communicate with browser: GamesChannel 
+ - JSX code because pure UI: hangman.jsx
 
 
