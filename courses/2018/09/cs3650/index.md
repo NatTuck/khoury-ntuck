@@ -57,8 +57,8 @@ for details:
 |-----------------------|--------------|-----------------------|------------------------------------|---|
 | Nat Tuck              | NI 132 E     | We 3-4pm; Fr noon-1pm | ntuck ⚓ ccs.neu.edu               |   |
 |-----------------------|--------------|-----------------------|------------------------------------|---|
-| Charmik Sheth(+)      | WVH 102 (++) | We 1-3pm              | sheth.c ⚓ husky.neu.edu           |   |
-| Shraddha S. Mhatre(+) | WVH 102 (++) | Mo 10:30am-12:30      | mhatre.shr ⚓ husky.neu.edu        |   |
+| Charmik Sheth(+)      | WVH 102 (++) | We 1-3pm; We 4-6pm    | sheth.c ⚓ husky.neu.edu           |   |
+| Shraddha S. Mhatre(+) | WVH 102 (++) | Mo 10:30am-12:30; Mo 2-4pm | mhatre.shr ⚓ husky.neu.edu        |   |
 |-----------------------|--------------|-----------------------|------------------------------------|---|
 | Durwasa Chakraborty   | (+++)        | (+++)                 | chakraborty.d ⚓ husky.neu.edu     | ) |
 | James Elliott         | (+++)        | (+++)                 | elliott.jame ⚓ husky.neu.edu      |   |
