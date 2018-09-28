@@ -69,7 +69,7 @@ for details:
 
 (+) Will be grading for this section.
 
-(++) Single instance locaiton changes may be posted to Piazza.
+(++) Single instance location changes may be posted to Piazza.
 
 (+++) See the course page for the other sections for these office hours. Tell
 the TA you're in Tuck's section and show them your assignment for minimum
