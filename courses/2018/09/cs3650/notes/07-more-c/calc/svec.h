@@ -1,3 +1,6 @@
+/* This file is lecture notes from CS 3650, Fall 2018 */
+/* Author: Nat Tuck */
+
 #ifndef SVEC_H
 #define SVEC_H
 

@@ -23,4 +23,8 @@ defmodule OtpDemo.Stack2 do
       {hd(state), tl(state)}
     end
   end
+
+  def print(id) do
+    IO.inspect(Agent.get(reg(id), &(&1)))
+  end
 end
