@@ -1,38 +1,60 @@
-defmodule OtpDemo.Stack do
-  # From the GenServer docs.
-  use GenServer
+defmodule Stack0 do
+  # Client Interface
 
-  # Client
-
-  def start_link(default) do
-    GenServer.start_link(__MODULE__, default)
+  def start_link(_arg) do
+    state0 = [3]
+    spawn(__MODULE__, :init, [state0])
   end
 
   def push(pid, item) do
-    GenServer.cast(pid, {:push, item})
+    send(pid, {:push, item, self()})
+    receive do
+      {:ok, :push} -> :ok
+    end
   end
 
   def pop(pid) do
-    GenServer.call(pid, :pop)
+    send(pid, {:pop, self()})
+    receive do
+      {:ok, :pop, num} -> {:ok, num}
+    end
   end
 
-  # Server (callbacks)
-
-  def handle_call(:pop, _from, [h | t]) do
-    {:reply, h, t}
+  def print(pid) do
+    send(pid, {:get, self()})
+    receive do
+      {:ok, :get, st} -> IO.inspect(st)
+    end
+    :ok
   end
 
-  def handle_call(request, from, state) do
-    # Call the default implementation from GenServer
-    super(request, from, state)
+  # "Server" Process Callbacks
+
+  def init(state) do
+    Process.send_after(self(), :next_odd, 5_000)
+    loop(state)
   end
 
-  def handle_cast({:push, item}, state) do
-    {:noreply, [item | state]}
-  end
-
-  def handle_cast(request, state) do
-    super(request, state)
+  def loop(state) do
+    receive do
+      {:push, item, cpid} ->
+        send cpid, {:ok, :push}
+        loop([item | state])
+      {:pop, cpid} ->
+        send cpid, {:ok, :pop, hd(state)}
+        loop(tl(state))
+      {:get, cpid} ->
+        send cpid, {:ok, :get, state}
+        loop(state)
+      :next_odd ->
+        Process.send_after(self(), :next_odd, 5_000)
+        [head | tail] = state
+        if rem(head, 2) == 0 do
+          loop(state)
+        else
+          loop([head + 2 | tail])
+        end
+    end
   end
 end
 

@@ -1,30 +1,22 @@
-defmodule Stack2 do
+defmodule Stack1 do
   use GenServer
-
-  def start_registry do
-    Registry.start_link(keys: :unique, name: Stack2.Registry)
-  end
-
-  def reg(id) do
-    {:via, Registry, {Stack2.Registry, id}}
-  end
 
   # Client
 
-  def start_link(id) do
-    GenServer.start_link(__MODULE__, [3], name: reg(id))
+  def start_link(default) do
+    GenServer.start_link(__MODULE__, default)
   end
 
-  def push(id, item) do
-    GenServer.cast(reg(id), {:push, item})
+  def push(pid, item) do
+    GenServer.cast(pid, {:push, item})
   end
 
-  def pop(id) do
-    GenServer.call(reg(id), :pop)
+  def pop(pid) do
+    GenServer.call(pid, :pop)
   end
 
-  def print(id) do
-    state = GenServer.call(reg(id), :get)
+  def print(pid) do
+    state = GenServer.call(pid, :get)
     IO.inspect(state)
     :ok
   end
