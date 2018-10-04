@@ -8,15 +8,30 @@ layout: default
 
 ## Shell Operators
 
+Demonstrate each of these in a shell:
+
  - Redirect input: sort < foo.txt
  - Redirect output: sort foo.txt > output.txt
  - Pipe: sort foo.txt | uniq
+   - man 2 pipe
  - Background: sleep 10 &
  - And: true && echo one
+   - Return value from main
+   - Success (rv = 0) is true
+   - Return val of last command in $?
  - Or: true || echo one
  - Semicolon: echo one; echo two
 
-Evaluation plans:
+## Redirect Example
+
+ - redir.c
+
+## Pipe Examples
+
+ - pipe0, pipe1
+ - sort-pipe
+
+## Shell Evaluation Plan
 
  - Base case: "command arg1 arg2"
    - fork
@@ -49,12 +64,10 @@ Evaluation plans:
    - in child:
      - pipe syscall
      - fork
-       - in child/child: hook pipe to stdout, close other side
-       - in child/child: execute command1 (r)
-       - in child/parent: hook pipe to stdin, close other side
-       - in child/parent: execute command2 (r)
-       - in child/parent: wait on child/child
-     - in parent:
-       - wait on child
-     
+     - in child/child: hook pipe to stdout, close other side
+     - in child/child: execute command1 (r)
+     - in child/parent: hook pipe to stdin, close other side
+     - in child/parent: execute command2 (r)
+     - in child/parent: wait on child/child
+   - in parent: wait on child
 
