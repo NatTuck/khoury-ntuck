@@ -41,7 +41,7 @@ Player View:
  - bads
  - max
  - players: %{ name => guesses }
- - cooldown: nil or milliseconds left
+ - cooldown: millisecond left, 0 is no cooldown
 
 ## Hangman: App Code
 
@@ -135,7 +135,7 @@ lib/hangman\_web/channels/user\_socket.ex
       {:ok, user} ->
         IO.puts("socket connect from user = #{user}")
         {:ok, assign(socket, :user, user)}
-      {:error, reason} ->
+      {:error, _reason} ->
         :error
     end
   end
