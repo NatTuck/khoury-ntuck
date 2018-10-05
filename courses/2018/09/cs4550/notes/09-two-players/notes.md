@@ -172,11 +172,18 @@ lib/hangman/application.ex
  * in supervisor children, replace BackupAgent with Hangman.GameServer
 
 
-More updates to:
+Broadcast to channel:
 
- * games channel
- * game
- * game server
+```
+# in channel
+broadcast_from! socket, "new_msg", %{uid: uid, body: body}
 
+# outside of channel
+MyApp.Endpoint.broadcast! "room:" <> rid, "new_msg", %{uid: uid, body: body}
+```
 
+Changes to JSX:
+
+ * Show cooldown, if any.
+ * Show player scores maybe.
 
