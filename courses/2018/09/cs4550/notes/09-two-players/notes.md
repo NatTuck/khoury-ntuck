@@ -120,7 +120,7 @@ defmodule HangmanWeb.Plugs.PutUserToken do
       token = Phoenix.Token.sign(conn, "user socket", user)
       assign(conn, :user_token, token)
     else
-      conn
+      assign(conn, :user_token, "")
     end
   end
 end
@@ -169,7 +169,7 @@ $ rm lib/hangman/backup_agent.ex
 
 lib/hangman/application.ex
 
- * in children, replace BackupAgent with Hangman.GameServer
+ * in supervisor children, replace BackupAgent with Hangman.GameServer
 
 
 More updates to:
