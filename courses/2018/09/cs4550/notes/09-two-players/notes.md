@@ -171,8 +171,9 @@ lib/hangman/application.ex
 
  * in supervisor children, replace BackupAgent with Hangman.GameServer
 
-
 Broadcast to channel:
+
+ * On guess.
 
 ```
 # in channel
@@ -186,4 +187,12 @@ Changes to JSX:
 
  * Show cooldown, if any.
  * Show player scores maybe.
+
+
+### Deploy?
+
+ * Pull down code on server.
+ * Run on high port.
+ * Make sure to open FW.
+ * Try it out.
 
