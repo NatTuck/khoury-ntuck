@@ -43,4 +43,9 @@ layout: default
 
  - show save-array
  - show print-array
+ 
+## Shared Memory
+
+ - Show shared1 / shared2.
+ - Show barrier/shared
 
