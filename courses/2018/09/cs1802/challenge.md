@@ -33,7 +33,7 @@ Means:
 (x0 ∨ x1) ∧ (x1 ∨ ¬x2 ∨ x3) ∧ (x0 ∨ ¬x1) ∧ (x4 ∨ x5 ∨ ¬x3)
 ```
 
-Visit https://toughsat.appspot.com/ to get test cases.
+Visit [ToughSAT](https://toughsat.appspot.com/) to get test cases.
 
 Try:
 
