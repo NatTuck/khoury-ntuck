@@ -6,6 +6,14 @@ layout: default
 
 ## HW Questions?
 
+## New Homework
+
+ - Sample Sort 
+ - Parallel Quick Sort
+   - Draw quick sort.
+   - Easy to parallelize, but first partition is sequential.
+   - Can avoid sequential code by sampling instead.
+
 ## Data Races
 
  - Count example

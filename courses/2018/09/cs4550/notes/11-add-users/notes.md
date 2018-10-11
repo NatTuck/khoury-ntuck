@@ -9,7 +9,7 @@ layout: default
  * Code available at: https://github.com/NatTuck/husky_shop
  * Today starts at: 1-bootstrap
  * Prep for deploy: 2-deploy
- * ...
+ * Add users: 3-users
 
 ## Prepare for Deployment
 
@@ -243,7 +243,20 @@ Test out the release.
  * Run the foreground command.
  * Visit http://shop.ironbeard.com/
 
-TODO: More steps.
 
+## Problem 3: Add Users
+
+Before we can do much with our online store, we need user accounts.
+
+```
+mix phx.gen Users User users email:string admin:boolean
+```
+
+ * Add resource to router.
+ * Run migration.
+ * Show the new scaffold.
+ * Add "table table-striped" to the index.
+ * Add "form-group", "form-control", and "btn btn-primary" to the form.
+ 
 
 
