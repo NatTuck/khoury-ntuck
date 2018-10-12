@@ -10,6 +10,7 @@ layout: default
  * Today starts at: 1-bootstrap
  * Prep for deploy: 2-deploy
  * Add users: 3-users
+ * Shopping cart: 4-cart (partial)
 
 ## Prepare for Deployment
 
@@ -257,6 +258,205 @@ mix phx.gen Users User users email:string admin:boolean
  * Show the new scaffold.
  * Add "table table-striped" to the index.
  * Add "form-group", "form-control", and "btn btn-primary" to the form.
- 
 
+We want users to be able to log into our app. One way to think about this is as
+a resource: sessions.
 
+The sessions resource is kind of weird. It doesn't have a DB table or even a
+context, because the data is stored in a cookie. But it does have two basic
+operations that can be handled as REST methods: create and delete.
+
+Add our new resource to the router:
+
+```
+scope "/", HuskyShopWeb do
+  ...
+  resources "/sessions", SessionController, only: [:create, :delete], singleton: true
+```
+
+Create our controller module:
+
+lib/husky\_shop\_web/controllers/session_controller.ex
+
+```
+defmodule HuskyShopWeb.SessionController do
+  use HuskyShopWeb, :controller
+
+  def create(conn, %{"email" => email}) do
+    user = HuskyShop.Users.get_user_by_email(email)
+    if user do
+      conn
+      |> put_session(:user_id, user.id)
+      |> put_flash(:info, "Welcome back #{user.email}")
+      |> redirect(to: Routes.page_path(conn, :index))
+    else
+      conn
+      |> put_flash(:error, "Login failed.")
+      |> redirect(to: Routes.page_path(conn, :index))
+    end
+  end
+
+  def delete(conn, _params) do
+    conn
+    |> delete_session(:user_id)
+    |> put_flash(:info, "Logged out.")
+    |> redirect(to: Routes.page_path(conn, :index))
+  end
+end
+```
+
+Add a form to the layout:
+
+.../templates/layout/app.html.eex
+
+```
+<!-- in the navbar, make the previous column col-4 too -->
+    <div class="col-4">
+      <%= if @current_user do %>
+        <p class="my-3">
+          User: <%= @current_user.email %> |
+          <%= link("Logout", to: Routes.session_path(@conn, :delete),
+            method: :delete) %>
+        </p>
+      <% else %>
+        <%= form_for @conn, Routes.session_path(@conn, :create),
+                [class: "form-inline"], fn f -> %>
+          <%= text_input f, :email, class: "form-control" %>
+          <%= submit "Login", class: "btn btn-secondary" %>
+        <% end %>
+      <% end %>
+    </div>
+```
+
+Create a fetch_session plug:
+
+lib/husky\_shop\_web/plugs/fetch_session.ex
+
+```
+defmodule HuskyShopWeb.Plugs.FetchSession do
+  import Plug.Conn
+
+  def init(args), do: args
+
+  def call(conn, _args) do
+    user = HuskyShop.Users.get_user(get_session(conn, :user_id) || -1)
+    if user do
+      assign(conn, :current_user, user)
+    else
+      assign(conn, :current_user, nil)
+    end
+  end
+end
+```
+
+Add the plug to our router:
+
+```
+pipeline :browser do
+  ...
+  plug HuskyShopWeb.Plugs.FetchSession
+end
+```
+
+Add two more accessors to our context:
+
+lib/husky\_shop/users/users.ex
+
+```
+...
+  # below get_user!
+  def get_user(id), do: Repo.get(User, id)
+  
+  def get_user_by_email(email) do
+    Repo.get_by(User, email: email)
+  end
+```
+
+Add default accounts for testing:
+
+priv/repo/seeds.ex
+
+```
+alias HuskyShop.Repo
+alias HuskyShop.Users.User
+
+Repo.insert!(%User{email: "alice@example.com", admin: true})
+Repo.insert!(%User{email: "bob@example.com", admin: false})
+```
+
+Recreate a clean DB with:
+
+```
+mix ecto.reset
+```
+
+Create a registration page:
+
+ * On page/index, add ```<%= link "Register", to: Routes.user_path(@conn, new) %>```
+ * On user/form, remove the "admin" checkbox.
+ * On user/form, change the button to say "Register".
+ * In user_controller, make create set session[:user-id] and redirect to products/index
+
+```
+# user_controller
+    ...
+    |> put_session(:user_id, user.id)
+    |> redirect(to: Routes.product_path(conn, :index))
+```
+
+(current code in branch: 3-users)
+
+## Add Cart
+
+A couple of design questions:
+
+ * Where to put cart? Session or database.
+   * Session scales better...
+   * But DB means a user can log in from a different browser and still have their cart.
+ * One cart per user or many?
+   * Carts, orders, and wish lists look pretty similar.
+   * But one cart per user is lazier.
+
+So each user has one cart, which has many cart items.
+
+```
+$ mix phx.gen.html Carts CartItem cart_items user_id:references:users product_id:references:products count:integer
+```
+
+Before we run the migration, let's edit it:
+
+priv/repo/migrations/*\_create\_cart\_items.exs
+
+```
+  ...
+  create table(:cart_items) do
+    add :count, :integer, null: false
+    add :user_id, references(:users, on_delete: :delete_all)
+    add :product_id, references(:products, on_delete: :delete_all)
+
+    timestamps()
+  end
+  ...
+```
+
+ * Add resource line to router
+ * Run migration
+
+Add some default products to our seeds file:
+
+```
+# below users
+alias HuskyShop.Products.Product
+Repo.insert!(%Product{name: "Rubber Duck", desc: "Yellow", price: Decimal.new("4.99"), inventory: 5})
+Repo.insert!(%Product{name: "Bear", desc: "500lbs; angry", price: Decimal.new("44.99"), inventory: 2})
+```
+
+ * Add an "add to cart" form to product page.
+   * Copy form from cart item.
+   * Use current user id to fill that field.
+ * Add a cart column to the main layout.
+   * If logged in, cart.
+   * If not logged in, link to login form.
+   * Need a cart partial - similar to inclusion of form on new page.
+   * Need a list cart function.
+   * Cart display is like cart items/index except specific to a user.
