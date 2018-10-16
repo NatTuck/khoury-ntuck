@@ -53,19 +53,19 @@ for details:
 ## Staff & Office Hours
 
 {: .table .table-striped }
-| Name                  | Location     | Hours                 | Email                              |   |
-|-----------------------|--------------|-----------------------|------------------------------------|---|
-| Nat Tuck              | NI 132 E     | We 3-4pm; Fr noon-1pm | ntuck ⚓ ccs.neu.edu               |   |
-|-----------------------|--------------|-----------------------|------------------------------------|---|
-| Charmik Sheth(+)      | WVH 102 (++) | We 1-3pm; We 4-6pm    | sheth.c ⚓ husky.neu.edu           |   |
+| Name                  | Location     | Hours                      | Email                              |   |
+|-----------------------|--------------|----------------------------|------------------------------------|---|
+| Nat Tuck              | NI 132 E     | We 3-4pm; Fr noon-1pm      | ntuck ⚓ ccs.neu.edu               |   |
+|-----------------------|--------------|----------------------------|------------------------------------|---|
+| Charmik Sheth(+)      | WVH 102 (++) | We 10am-2pm                | sheth.c ⚓ husky.neu.edu           |   |
 | Shraddha S. Mhatre(+) | WVH 102 (++) | Mo 10:30am-12:30; Mo 2-4pm | mhatre.shr ⚓ husky.neu.edu        |   |
-|-----------------------|--------------|-----------------------|------------------------------------|---|
-| Durwasa Chakraborty   | (+++)        | (+++)                 | chakraborty.d ⚓ husky.neu.edu     | ) |
-| James Elliott         | (+++)        | (+++)                 | elliott.jame ⚓ husky.neu.edu      |   |
-| Akash Parikh          | (+++)        | (+++)                 | parikh.ak ⚓ husky.neu.edu         |   |
-| Savan Patel           | (+++)        | (+++)                 | patel.sav ⚓ husky.neu.edu         |   |
-| A. Trihatmaja         | (+++)        | (+++)                 | trihatmaja.a ⚓ husky.neu.edu      |   |
-| Nakul Ramesh          | (+++)        | (+++)                 | vankadariramesh.n ⚓ husky.neu.edu |   |
+|-----------------------|--------------|----------------------------|------------------------------------|---|
+| Durwasa Chakraborty   | (+++)        | (+++)                      | chakraborty.d ⚓ husky.neu.edu     | ) |
+| James Elliott         | (+++)        | (+++)                      | elliott.jame ⚓ husky.neu.edu      |   |
+| Akash Parikh          | (+++)        | (+++)                      | parikh.ak ⚓ husky.neu.edu         |   |
+| Savan Patel           | (+++)        | (+++)                      | patel.sav ⚓ husky.neu.edu         |   |
+| A. Trihatmaja         | (+++)        | (+++)                      | trihatmaja.a ⚓ husky.neu.edu      |   |
+| Nakul Ramesh          | (+++)        | (+++)                      | vankadariramesh.n ⚓ husky.neu.edu |   |
 
 (+) Will be grading for this section.
 
