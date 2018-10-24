@@ -210,6 +210,8 @@ NIST password guidelines: https://pages.nist.gov/800-63-3/sp800-63b.html
 
 ## Example: Adding Passwords to HuskyShop
 
+(didn't get to this part - it's in the next lecture)
+
 start branch: 7-suggested; end branch: 8-passwords
 
 Add the comeonin library and Argon2 password hash algo:
