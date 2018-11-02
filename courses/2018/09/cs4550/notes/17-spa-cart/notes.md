@@ -1,4 +1,4 @@
---
+---
 layout: default
 ---
 
@@ -305,21 +305,95 @@ Remove cart item method in root:
   }
 ```
 
+### Forms as State
+
 Problem: If we enter a count for an item in the add to cart form, change pages,
 and change back, we lose the state.
 
 Solution: Explicitly add the value of all forms to the React state.
 
+Our state for add-to-cart forms should be a map of (product_id => count).
+
+JavaScript objects don't support integer keys, so we can't use them. ES6 adds a
+Map type, which supports integer keys.
+
+```
+   constructor(...
+     // New addition to state
+     add_cart_forms: new Map(),
+     ...
+  
+     // Fetch products in constructor 
+     this.fetch_products();
+     ...
+ 
+   fetch_products() {
+    this.fetch_path(
+      "/api/v1/products",
+      (resp) => {
+        // Shallow copy old map.
+        let counts1 = new Map(this.state.add_cart_forms);
+        
+        _.each(resp.data, (product) => {
+          if (!counts1.has(product.id)) {
+            counts1.set(product.id, 1);
+          }
+        });
+
+        let state1 = _.assign({}, this.state, {
+          products: resp.data,
+          add_cart_forms: counts1,
+        });
+        this.setState(state1);
+      }
+    );
+  }
+  
+  update_add_cart_count(product_id, count) {
+    let counts1 = new Map(this.state.add_cart_forms);
+    counts1.set(product_id, count);
+    let state1 = _.assign({}, this.state, { add_cart_forms: counts1 });
+    this.setState(state1);
+  }
+```
+
+Move product list over to product_list.jsx
+
+ * Export default
+ * Import from root
+ * Pass through add_cart\_forms as counts to ProductList
+
+Thread through counts:
+
+```
+export default function ProductList(props) {
+  let {root, products, counts} = props;
+  let prods = _.map(products, (pp) =>
+    <Product key={pp.id} product={pp} root={root} count={counts.get(pp.id)||1} />);
 ...
+  
+function Product(props) {
+  let {root, product, count} = props;
+  let changed = (ev) => {
+    root.update_add_cart_count(product.id, ev.target.value);
+  };
+  
+  ...
+  <input className="form-control" style={{width: "8ex"}}
+         type="number" value={count} onChange={changed} />
+```
+
+
+### More Features
 
  * Finish login
    - Form, which is part of state.
    - If there's a session, show user's email (add to resp).
    - Require session token for add to cart.
-
-Overflow features:
-
  * Show single item.
+   - Pull up react-router-dom docs for Route
+   - ```<Route path="/products/:id" ... ```
+
 
 ## Next Time: Redux
 
