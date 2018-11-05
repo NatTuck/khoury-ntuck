@@ -186,7 +186,7 @@ function Product(props) {
       </p>
       <p className="form-inline">
         <input className="form-control" value={count||1} type="number"
-               style={{width: "8ex"}} onChange={count_changed} />
+               style={\{width: "8ex"}} onChange={count_changed} />
         <button className="btn btn-primary"
                 onClick={() => root.add_to_cart(product.id)}>
           Add to Cart

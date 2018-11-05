@@ -164,7 +164,7 @@ Add to cart button
   // root, Product:
   // need to thread through root
       <p className="form-inline">
-        <input className="form-control" style={{width: "8ex"}}
+        <input className="form-control" style={\{width: "8ex"}}
                type="number" defaultValue="1" id={"item-count-" + product.id} />
         <button className="btn btn-primary"
                 onClick={() => root.add_to_cart(product.id)}>
@@ -379,7 +379,7 @@ function Product(props) {
   };
   
   ...
-  <input className="form-control" style={{width: "8ex"}}
+  <input className="form-control" style={\{width: "8ex"}}
          type="number" value={count} onChange={changed} />
 ```
 
