@@ -158,7 +158,7 @@ Examples:
 
  - Show Vultr API docs.
  - Show Buzzard app. Look at lib/buzzard/vultr.ex
- - Modify page_controller to show subdomains on web page.
+ - Modify page\_controller to show subdomains on web page.
 
 ## Web API Formats
 

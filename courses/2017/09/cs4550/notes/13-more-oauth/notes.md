@@ -10,14 +10,14 @@ Project questions?
 
 We're going to look at an OAuth Example app.
 
-https://github.com/NatTuck/oauth2_example
+https://github.com/NatTuck/oauth2\_example
 
 Phoenix 1.2 directory layout:
 
 New layout is better, but we just hit an example where knowing the
 old layout is useful - there may be more such examples.
 
- - ./lib/*_web was ./web
+ - ./lib/\*_web was ./web
  - there was a ./web/models directory for schemas
  - ./assets was ./web/static/assets
    - package.json and brunch-config.js just lived in the app root
@@ -70,15 +70,15 @@ web/router.ex
  - get "/:provider/callback" is the callback URL
    - This is where the provider redirects when authenticating.
 
-web/controllers/auth_controller.ex
+web/controllers/auth\_controller.ex
 
  - Index page redirects to external authentication provider.
-   - authorize_url! asks the provider module
+   - authorize\_url! asks the provider module
    - We pass in a "scope" parameter to request access to repos.
  - Delete is the standard log out plan.
    - This just drops the session rather than leaving a cookie with user=nil
- - get_token! does a HTTP post to trade the code for an auth token (see below)
- - get_user! does an API call using the shiny new token (see below)
+ - get\_token! does a HTTP post to trade the code for an auth token (see below)
+ - get\_user! does an API call using the shiny new token (see below)
  - The OAuth2.Client module lets us do authenticated HTTP reqs.
 
 web/oauth/github.ex
