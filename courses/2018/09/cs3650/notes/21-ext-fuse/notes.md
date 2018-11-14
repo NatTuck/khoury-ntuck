@@ -64,6 +64,8 @@ Example:
 
 ## FUSE API / Starter Code
 
+Pull down and unpack the starter code.
+
 The idea:
 
  - Normally file systems are kernel code.
@@ -87,6 +89,6 @@ What happens:
 
 ## Slides
 
-...
+[Christo's FS Slides](http://www.ccs.neu.edu/home/ntuck/courses/2018/09/cs3650/notes/00-Spring/20-file-systems/10_File_Systems.pptx)
 
 

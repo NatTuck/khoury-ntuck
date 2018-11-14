@@ -180,7 +180,7 @@ For MSDOS, a directory is just a table with
 The file system is layed out in three sections:
 
  - Superblock (1 block)
-   - # of clusters
+   - number of clusters
    - cluster size
    - root directory ptr
 - File Allocation Table
