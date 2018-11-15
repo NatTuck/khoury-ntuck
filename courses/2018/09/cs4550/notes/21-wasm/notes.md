@@ -228,7 +228,7 @@ Look at src/lib.rs:
  - Need to explicitly declare JS functions we can call.
  - Need to explicitly mark functions for export to JS.
 
-
+TODO: Demo rust wasm-bindgen
 
 
 
