@@ -84,6 +84,13 @@ Two more things to consider:
  - Web app frontends don't need to be in JavaScript.
  - Web app frontends don't need to be in HTML/CSS either.
 
+## Performance
+
+https://takahirox.github.io/WebAssembly-benchmark/
+
+In practice, small tests in JavaScript tend to be pretty fast, so it can be hard
+to see the performance benefit.
+
 ## Fib Example
 
 Prereqs:
@@ -199,7 +206,7 @@ $ wasm2wat main.wasm -o main.wat
 $ view main.wat
 ```
 
-## POW: JS vs Rust
+## WASM with Rust
 
 Let's create a new Rust WASM project.
 
@@ -213,145 +220,15 @@ Prereqs:
 
 ```
 $ cargo generate --git https://github.com/rustwasm/wasm-pack-template
-Project Name: hash-bench
+Project Name: stooge-sort-wasm
 ```
 
-Add to Cargo.toml:
+Look at src/lib.rs:
 
-```
-[dependencies]
-sha2 = "0.8.0"
-```
+ - Need to explicitly declare JS functions we can call.
+ - Need to explicitly mark functions for export to JS.
 
 
 
-## POW Example
-
-Bitcoin Proof of Work:
-
- - Double SHA256
- - Goal: Find a seed that, when hashed, has a bunch of leading 0's.
- - That requires brute force, so we can measure performance in hashes/sec.
-
-Setup:
-
- - Clone repo https://github.com/NatTuck/simple-wasm-pow
- - Delete main.js, csha/{Makefile, wrap.cc}
-
-### Plan A: JavaScript
-
- - There's a library called js-sha256
- - We're going to skip npm for now.
-
-```
-function bench(op, id) {
-  console.log("Start bench: " + id);
-  let t0 = performance.now();
-  let jj = 0;
-
-  while (performance.now() - t0 < 5000) {
-    for (let ii = 0; ii < 50; ++ii) {
-      let _foo = op("" + ii);
-      jj += 1;
-    }
-  }
-
-  let ips = jj / 5;
-
-  $(id).text("" + ips);
-}
-
-$(function() {
-  bench(sha256, '#js-rate');
-});
-```
-
-Result: Some number.
-
-Let's try speeding it up with WASM.
-
-### Plan B: Rewrite it in C++
-
- - There's a single file C implementation of sha256
- - To compile it to WASM, we need emscripten: emscripten.org
- - We need to get the sdk, and follow the install instructions.
- - Once we have emcc, we want a C++ wrapper for the lib - that'll
-   let us do it the easy way.
 
 
-```
-#include <string>
-#include <cstdint>
-#include <sstream>
-#include <iostream>
-#include <iomanip>
-
-// emscripten is easier if we modify our C++
-// to be aware of it.
-#include <emscripten/bind.h>
-#include <emscripten.h>
-
-#include "sha-256.h"
-
-std::string
-to_hex(uint8_t* data, size_t nn)
-{
-    std::ostringstream tmp;
-    tmp << std::setw(2) << std::setfill('0') << std::hex;
-    for (int ii = 0; ii < nn; ++ii) {
-        tmp << (int) data[ii];
-    }
-    return tmp.str();
-}
-
-// This macro prevents dead code elimination.
-EMSCRIPTEN_KEEPALIVE
-std::string
-sha256(std::string input)
-{
-    uint8_t hash[32];
-    calc_sha_256(hash, (void*) input.c_str(), input.size());
-    return to_hex(hash, 32);
-}
-
-// This exports the function to JS.
-EMSCRIPTEN_BINDINGS(csha) {
-    emscripten::function("sha256", &sha256);
-}
-```
-
-Then we need a Makefile to build it.
-
-```
-OUTPUT := csha.js csha.wasm
-
-$(OUTPUT): sha-256.cc sha-256.h wrap.cc
-	emcc --bind -o csha.js -O3 -s WASM=1 *.cc
-
-clean:
-	rm -f $(OUTPUT)
-	rm -f ../csha.js ../csha.wasm
-
-copy:
-	cp $(OUTPUT) ../
-
-.PHONY: clean copy
-```
-
-Then we can just ```make && make copy```, and we have wasm.
-
-
-## This will get easier.
-
-Currently, tools like emscripten are built for the "port a C++ program to the
-web" use case, which is neat but isn't really what we want for new programs.
-
-There are already tools that let you "import" C, C++, or Rust files directly in
-your JavaScript - if you have a dev env setup just right.
-
-
-## C WASM Example
-
- - clang + WASM: https://github.com/yurydelendik/wasmception
- - wasm tools: https://github.com/WebAssembly/wabt
- 
