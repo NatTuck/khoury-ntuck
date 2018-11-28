@@ -218,6 +218,8 @@ Prereqs:
  - https://rustwasm.github.io/book/introduction.html
  - Might require updated node/npm with nvm.
 
+This app is going to use Stooge Sort to sort a list of numbers.
+
 ```
 $ cargo generate --git https://github.com/rustwasm/wasm-pack-template
 Project Name: stooge-sort-wasm
@@ -228,7 +230,121 @@ Look at src/lib.rs:
  - Need to explicitly declare JS functions we can call.
  - Need to explicitly mark functions for export to JS.
 
-TODO: Demo rust wasm-bindgen
+Let's implement Stooge Sort. It works like this:
+
+ - Take an array.
+ - If the start and end elements of the array are in the wrong order, swap them.
+ - If there are more than two elements in the array:
+   * Sort the first two thirds, recursively.
+   * Sort the last two thirds, recursively.
+   * Sort the first two thirds, recursively.
+ - Note: All "two thirds" calculations round *up*.
+
+So here's the Rust function:
+
+```
+#[wasm_bindgen]
+pub fn stoogesort(xs: &mut [f64]) {
+    let nn = xs.len();
+    let jj = nn - 1;
+
+    if jj > 0 && xs[0] > xs[jj] {
+        xs.swap(0, jj);
+    }
+
+    if jj < 2 {
+        return;
+    }
+
+    let mut kk = (2 * nn) / 3;
+    if (2 * nn) % 3 != 0 {
+        kk += 1;
+    }
+
+    stoogesort(&mut xs[0..kk]);
+    stoogesort(&mut xs[(nn - kk)..nn]);
+    stoogesort(&mut xs[0..kk]);
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_sorts() {
+        let mut xs = vec![35.0,-4.1,2.5,1.0,4.0,8.0,1.0,1.0,7.0];
+        let mut ys = xs.clone();
+
+        stoogesort(&mut xs[..]);
+        ys.sort_by(|aa, bb| aa.partial_cmp(bb).unwrap());
+
+        assert_eq!(xs, ys);
+    }
+}
+```
+
+We can test this like any Rust library, with:
+
+```
+$ cargo test
+```
+
+Now to use it, we want to turn our Rust library into a JS module, and
+publish it as a local NPM module.
+
+```
+$ wasm-pack build
+$ cd pkg
+$ npm link
+$ cd ..
+```
+
+Now we can call this module from JS. Let's just make a stand-alone JS app:
+
+```
+$ npm init wasm-app www
+$ cd www
+$ npm install
+$ npm link stooge-sort-wasm
+```
+
+Here's our index.js:
+
+```
+import { stoogesort } from 'stooge-sort-wasm';
+let xs = new Float64Array([8,1,7,2,6,3,5,4]);
+stoogesort(xs);
+console.log(xs);
+```
+
+Now we can run this with:
+
+```
+npm run start
+```
+
+Let's make this fancier:
 
 
+Add to index.html
+
+```
+    <input type="text" id="inp">
+    <p id="outp"></p>
+```
+
+And new content for index.js
+
+```
+import { stoogesort } from 'stooge-sort-wasm';
+
+function inp_change(_ev) {
+  let text = document.getElementById('inp').value;
+  let xs = new Float64Array(text.split(/[^\d\.]+/).map(parseFloat));
+  stoogesort(xs);
+  document.getElementById('outp').innerText = xs.join(' ');
+}
+
+document.getElementById('btn').addEventListener('click', inp_change);
+```
 
