@@ -11,9 +11,9 @@ layout: default
 
  - Questions?
 
-## Solutions for Parallelism
+## Solutions for Concurrency and Parallelism
 
-The problem:
+The problem (parallelism):
 
  - Modern computer have multiple cores.
  - To take advantage, we need to write parallel programs.
@@ -21,6 +21,18 @@ The problem:
  - By default, that means threads => shared memory => data races.
  - So by default, all parallel programs are wrong.
 
+The problem (concurrency):
+
+ - Some problems are logically concurrent even though there may not
+   need parallelism for performance.
+ - Example: Network chat server.
+ - Alice and Bob connect to the server. The server doesn't know which
+   user will send a message first, so it needs to listen to both.
+ - Having a thread for each connection allows the program to be written
+   in a straightforward way, but threads => shared memory => data races.
+ - And when we have a *lot* of connections, performance matters again,
+   and it seems reasonable that a concurrent program can get a parallel
+   speedup.
 
 ## Primitives & Abstractions
 
@@ -52,7 +64,7 @@ Conditions for a data race:
 If we eliminate any of those conditions, we can avoid the problems.
 
 
-## Plan A: Eliminate Paralleism 
+## Plan A: Concurrency without Parallelism
 
 Example Platform: JavaScript
 
