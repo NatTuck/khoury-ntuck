@@ -18,7 +18,7 @@ deadlock, memory management, file systems, and input/output control.
 ## Essential Resources
 
  - [Bottlenose](https://bottlenose.ccs.neu.edu) - View and submit homework assignments.
- - [Piazza](https://piazza.com/northeastern/fall2018/cs365003) - Class discussion & announcements.
+ - [Piazza](https://piazza.com/northeastern/spring2019/cs3650) - Class discussion & announcements.
  - [Undergrad Tutoring](http://www.ccis.northeastern.edu/current-students/undergraduate/resources/)
  - [Linux / Unix Help](http://www.ccs.neu.edu/course/cs3650/parent/help/)
  - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in class.

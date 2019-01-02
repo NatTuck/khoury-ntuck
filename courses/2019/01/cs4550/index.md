@@ -49,14 +49,14 @@ semester starts.
 | Week | Starts | Topics                                | Work Due                   |
 |------|--------|---------------------------------------|----------------------------|
 |    1 | Jan 07 | Intro: Dev on the Web; Server Setup   | HW01: Dev & Server Setup   |
-|    2 | Jan 14 | JS & DOM ; Elixir & Phoenix Intro     | HW02: Warm Up              |
-|   3+ | Jan 21 | (MLK) Webpack & React                 | HW03: ??                   |
+|    2 | Jan 14 | JS & DOM ; Elixir & Phoenix Intro     | HW02: Browser Warm Up      |
+|   3+ | Jan 21 | (MLK) Webpack & React                 | HW03: Server Warm Up     |
 |    4 | Jan 28 | Sockets / Channels; Server-side State | HW04: Client-Side Game     |
 |    5 | Feb 04 | OTP: GenServers, Agents, Supervisors  | HW05: Client-Server Game   |
 |    6 | Feb 11 | Resources, REST, Ecto                 | -                          |
 |   7+ | Feb 17 | (Pres) Relations, Relational DB       | Proj1: Multi-Player Game   |
 |    8 | Feb 25 | JSON Resources & AJAX                 | HW06: CRUD - One Model     |
-|    - | Mar 03 | (spring break)                        |                            |
+|    - | Mar 03 | (spring break)                        | -                          |
 |    9 | Mar 11 | SPAs, Redux, Password Security        | HW07: CRUD - Relations     |
 |   10 | Mar 18 | Using Web APIs; OAuth2                | HW08: CRUD - SPA + PW Auth |
 |   11 | Mar 25 | Canvas, WebGL, Web Assembly           | -                          |
