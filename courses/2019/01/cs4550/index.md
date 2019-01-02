@@ -34,11 +34,11 @@ decisions, accomplishments, and user guidelines.
 ## Office Hours
 
 {: .table .table-striped }
-| Name             | Location | Hours | Email                      |
-|------------------|----------|-------|----------------------------|
-| Nat Tuck         | NI 132 E | TBA   | ntuck ⚓ ccs.neu.edu       |
-|------------------|----------|-------|----------------------------|
-| Benjamin Muschol | TBA      | TBA   | muschol.b ⚓ husky.neu.edu |
+| Name             | Location | Hours                    | Email                      |
+|------------------|----------|--------------------------|----------------------------|
+| Nat Tuck         | NI 132 E | Tu 5:30-6:30pm; Th 2-3pm | ntuck ⚓ ccs.neu.edu       |
+|------------------|----------|--------------------------|----------------------------|
+| Benjamin Muschol | RY 285   | Th 6-8pm                 | muschol.b ⚓ husky.neu.edu |
 
 ## Schedule
 
