@@ -36,16 +36,16 @@ deadlock, memory management, file systems, and input/output control.
 {: .table .table-striped }
 | Section | Location | Time                |
 |---------|----------|---------------------|
-|      01 | BK  310  | 1:35pm-3:15pm Tu/Fr |
-|      02 | BK  310  | 3:25pm-5:05pm Tu/Fr |
+|      01 | BK 310   | 1:35pm-3:15pm Tu/Fr |
+|      02 | BK 310   | 3:25pm-5:05pm Tu/Fr |
 
 ## Staff & Office Hours
 
 {: .table .table-striped }
-| Name           | Location | Hours                    | Email                        |
-|----------------|----------|--------------------------|------------------------------|
-| Nat Tuck       | NI 132 E | Tu 5:30-6:30pm; Th 2-3pm | ntuck ⚓ ccs.neu.edu         |
-|----------------|----------|--------------------------|------------------------------|
+| Name           | Location | Hours                    | Email                           |
+|----------------|----------|--------------------------|---------------------------------|
+| Nat Tuck       | NI 132 E | Tu 5:30-6:30pm; Th 2-3pm | ntuck ⚓ ccs.neu.edu            |
+|----------------|----------|--------------------------|---------------------------------|
 | Ankita Ankita  | SH 415   | Mo 6-8pm                 | ankita.a ⚓ husky.neu.edu       |
 | Julian Hirn    | RY 285   | We 3:05-3:50pm; Th 3-4pm | hirn.j ⚓ husky.neu.edu         |
 | Indranil Jana  | SH 415   | Mo 5:30-8:30pm           | jana.i ⚓ husky.neu.edu         |
@@ -87,7 +87,7 @@ Assignments will frequently be due at 11:59pm on Monday.
 
 Recommended Readings by Week:
 
- 1. http://linuxcommand.org/
+ 1. [Linux Command Line Tutorial](http://linuxcommand.org/)
  2. OSTEP 4
  3. OSTEP 13
  4. OSTEP 13
