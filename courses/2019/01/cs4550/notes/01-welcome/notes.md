@@ -8,6 +8,7 @@ layout: default
 
  - That's a web application
  - This is the sort of thing that we'll be building
+ - [If stuck: w.correct_word]
 
 ## The Web
 
@@ -22,7 +23,7 @@ What is web development?
 Key Element: HTTP
 
 (Note: You might say that a browser was the key element. I'd claim that
-having a program on a server contact a remote HTTP API is still web dev.)
+laving a program on a server contact a remote HTTP API is still web dev.)
 
 
 ## Web Devlopment
@@ -84,31 +85,25 @@ The overall plan:
 
 ## The Syllabus
 
- - Course web site / syllabus: http://ccs.neu.edu/home/ntuck/ & click 
- - Dual Listed, Grad & Undergrad
-   - Grad students will get a bit of extra work.
+ - Course web site / syllabus: http://khoury.neu.edu/~ntuck & click 
  - Bottlenose / Piazza
  - My lecture notes
- - TA office hours: TBA
+ - TA office hours
  - Schedule: 
-   - HW or Project Work Every Week, likely due Sunday.
-   - Monday holidays: Tuesday lecture is optional.
+   - HW or Project Work Every Week, due Thursday
+   - First hw due *this Thursday*.
  - Assigments only: No Exams
  - No text book
  - Domain Name & VPS
    - We're doing ops ourselves...
-   - HERE
-   - log in to Vultr and spawn a new VPS to run through demo
-   - HERE
  - Our primary resource for the semester is online documentation.
    - The official documentation is your best source.
    - If you have trouble understanding the official documentation,
      that means you need to practice that skill.
  - A properly configured editor with language support for syntax
    highlighting and indentation is mandatory.
- - Grading: Homework, one project, no exams.
-   - People usually lose points on exams.
-   - Grading on homework / projects will be harsher than you may be used to.
+ - Grading: Homework, two projects, no exams.
+ - Assignments required: Three zeros is an F.
  - Grade Challenges
  - Plagarism
 
@@ -127,19 +122,19 @@ First, pull up the assignment on Bottlenose.
 ### Initial stuff
 
 - Set up a VPS
-  - Walk through the process on vultr
+  - Show screen process on vultr
+  - Vultr affiliate links
   - Set an SSH key
   - (you can generate a key with "ssh-keygen -t rsa")
-- Register a domain (use ironbeard.com)
+- I've already registered a domain and set up a server.
   - Point it (including www.) to the VPS's IP addr
   
 ### Set up the server
  
 **First, secure the server.**
 
-- Log in to the server (ssh root@ip)
+- Log in to the server (ssh root@ironbeard.com)
 - Enable the software firewall
-
 
 ```
 ufw allow 22/tcp      # important, this allows ssh
@@ -229,20 +224,10 @@ As root on your server:
 # dd if=/dev/zero of=/swap bs=1M count=2048
 # chmod 0600 /swap
 # mkswap /swap
-# cat > /etc/rc.local
-#!/bin/bash
-swapon /swap
-exit 0
-^D
-# chmod a+x /etc/rc.local
-# service rc-local restart
-# systemctl status rc-local
+# vi /etc/fstab
+/swap		swap		swap	defaults	0	0
+# swapon -a
 ```
-
-## HW2: Practice
-
- - The second homework involves a lot of stuff. It'll be posted before HW1
-   is due and I suggest starting early.
 
 # Web Tech Overview
 

@@ -81,9 +81,7 @@ assignment. This will cost around $30 for the semester.
 Domain Registrars: [joker](https://joker.com/), [gandi](https://www.gandi.net), 
 [namecheap](http://www.namecheap.com).
 
-VPS Providers: 
-
- * [vultr](https://www.vultr.com/), [linode](https://www.linode.com/), 
+VPS Providers: [vultr](https://www.vultr.com/), [linode](https://www.linode.com/), 
    [digital ocean](https://www.digitalocean.com/)
  
 Your VPS should have Ubuntu 18.04 and at least 1 GB of RAM. Either your domain
@@ -100,7 +98,7 @@ of a VPS.
  - [New ES6 Features](http://es6-features.org/)
  - [jQuery](http://api.jquery.com/)
  - [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
- - [Elixir Language & Stdlib](https://elixir-lang.org/docs.html)
+ - [Elixir Language and Stdlib](https://elixir-lang.org/docs.html)
  - [Phoenix Framework](https://hexdocs.pm/phoenix/overview.html)
  - [Ecto Library](https://hexdocs.pm/ecto/Ecto.html)
  - [PostgreSQL Database](https://www.postgresql.org/docs/9.5/static/index.html)

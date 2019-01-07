@@ -155,6 +155,11 @@ penalized by 1% for each hour late.
 For the final assignment, late submissions will not be accepted after the sun
 comes up and the TAs start grading.
 
+**Late Registration**
+
+If you register for the course late, you will have three days to complete each
+assignment until you are caught up with the rest of the class.
+
 ## Policies
 
 ### Contesting Grades
