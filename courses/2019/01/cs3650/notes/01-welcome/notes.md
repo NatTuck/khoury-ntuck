@@ -31,7 +31,7 @@ The plot:
 
 ## Course Resources
 
- - My site: http://khoury.neu.edu/home/ntuck/
+ - My site: http://khoury.neu.edu/~ntuck
  - Course Site / Syllabus
  - Piazza
    - If you get stuck, you can ask questions here.
