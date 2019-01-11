@@ -54,7 +54,7 @@ loop_done:
 
   leave
   /* leave restores stack pointer to before enter */
-  /*   mov %rbp, %rsp; pop %rbp
+  /*   mov %rbp, %rsp; pop %rbp */
   ret
   /* ret pops the return address */
 

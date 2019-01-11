@@ -9,9 +9,12 @@ layout: default
 
 ## Course Resources
 
- - In case you missed it: http://khoury.neu.edu/home/ntuck/
+ - In case you missed it: http://khoury.neu.edu/~ntuck/
 
 ## AMD64: ISA and ASM
+
+Last time we compiled a simple program and the assembly didn't make much sense.
+To explain what's going on, we need some history:
 
 Intel released the 8086 processor in 1978. It was based on the earlier 8008
 processor from 1972, but...
@@ -19,7 +22,7 @@ processor from 1972, but...
 The 8086 was a 16-bit microproessor. That means:
 
  - It had a 16-bit data bus connecting it to memory and maybe other stuff.
-   - That means a processor and RAM connected by 16 wires.
+   - That means a processor and RAM connected by 16 wires. (18 wires?)
    - ++++++ DRAW PICTURE ++++++
  - How much RAM can we address with 16 bits?
  - In addtion to RAM, this system gives us another place to put stuff called
@@ -49,8 +52,9 @@ the 8086. This was the first "Intel x86" processor:
      the full 32 bit "extended" register:
      - eax, ecx, edx, ...
 
-The AMD Athlon 64 was a 64-bit microprocessor, backwards compatible with the Intel
-8086 and i386. This was the first "AMD64" processor:
+The AMD Athlon 64 was a 64-bit microprocessor, backwards compatible with the
+Intel 8086 and i386. This was the first "AMD64" (x86\_64, x64, Intel 64; not
+ia64 even though x86 is sometimes called ia32) processor:
 
  - It had a 48-bit data bus, designed to be extended up to 64-bit later.
    - How much RAM can we address with 64 bits?
@@ -62,12 +66,67 @@ The AMD Athlon 64 was a 64-bit microprocessor, backwards compatible with the Int
      the full 64 bit register.
      - rax, rcx, rdx, ...
    - 8 new general purpose registers were added: %r9, %r10, ..., %r15
- 
+
+## add1 again
+
+(grab the asm from last class)
+
+Argument registers: The convention for AMD64 Linux assembly is to pass
+arguments in registers: %rdi, %rsi, %rdx, %rcx, %r8, %r9, ...stack
+
+Functions return a value in the %rax register.
+
 ## Another Assembly Example
 
 First, Scan through the AMD64 instruction list on course site.
 
 ASM Example: cond_br
+
+```
+.global main
+.text
+
+main:
+  enter $0, $0
+
+  # print prompt
+  mov $prompt, %rdi
+  call puts
+
+  mov $long_fmt, %rdi
+  mov $num, %rsi
+  mov $0, %al
+  call scanf
+
+  # copy value at address
+  # with dollar sign, copy literal address
+  mov num, %rax
+
+  # if (%rax <= 10)
+  cmp $10, %rax
+  jle smaller_than_ten
+
+bigger_than_ten:
+  mov $bigger, %rdi
+  jmp main_done
+
+smaller_than_ten:
+  mov $smaller, %rdi
+
+main_done:
+  call puts
+
+  leave
+  ret
+
+.data
+num: .string "12345678" # 8 bytes, to fit a long
+prompt: .string "enter a number"
+long_fmt: .string "%ld"
+eol: .string "\n"
+bigger: .string "bigger than ten"
+smaller: .string "smaller than ten"
+```
 
 ```
 $ gcc -no-pie -o cond_br cond_br.s
