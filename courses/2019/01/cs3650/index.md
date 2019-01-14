@@ -51,7 +51,7 @@ deadlock, memory management, file systems, and input/output control.
 | Indranil Jana  | SH 415   | Mo 5:30-8:30pm           | jana.i ⚓ husky.neu.edu         |
 | Samarth Parikh | WVF 114  | Fr 12:05-2:05pm          | parikh.sam ⚓ husky.neu.edu	 |
 | Charmik Sheth  | INV 014  | We 3:40-5:50pm (+)       | sheth.c ⚓ husky.neu.edu        |
-| Ian Smith      | RI 168   | Mo 12-2pm                | smith.ian ⚓ husky.neu.edu	  |
+| Ian Smith      | RI 160   | Mo 12-2pm                | smith.ian ⚓ husky.neu.edu	  |
 | Brian Vullo    | KA 102   | Fr 6-8pm                 | vullo.b ⚓ husky.neu.edu        |
 
  * Office hours start January 10th. (+) Charmik's office hours start Jan 23.
