@@ -10,152 +10,18 @@ layout: default
 
  - In case you missed it: http://khoury.neu.edu/~ntuck/
 
+## Bigger
+
+ * bigger.S
+
 ## Factorial
- 
- * n! = n * (n-1) * (n-2) * ... * 1
-
-Iterative solution:
 
 ```
-.global main
-.text
-main:
-  /* calling a function pushes return address */
-  enter $16, $0
-  /* enter $16, ...:
-      - push %rbp, mov %rsp, %rbp
-      - moves %rsp down 16 bytes
-      - so we have 16 bytes starting at %rsp */
-
-  /*
-  Pseudocode:
-
-  long x;
-  scanf("%ld", &x);
-  long y = 1;
-  for (int ii = x; ii > 0; ii--) {
-    y = y * ii;
-  }
-  printf("fact(%ld) = %ld\n", x, y);
-  */
-
-  /*
-  Where are we storing what?
-
-   - x is the 8 bytes in memory starting at %rsp
-   - y is %rbx (no... %rax)
-   - ii is %rcx
-  */
-
-  mov $scanfmt, %rdi
-  lea (%rsp), %rsi
-  mov $0, %al
-  call scanf
-
-  mov $1, %rax
-
-  mov (%rsp), %rcx
-loop_cond:
-  cmp $0, %rcx
-  jle loop_done
-
-  imul %rcx
-
-  dec %rcx
-  jmp loop_cond
-
-loop_done:
-  mov $printfmt, %rdi
-  mov (%rsp), %rsi
-  mov %rax, %rdx
-  mov $0, %al
-  call printf
-
-  leave
-  /* leave restores stack pointer to before enter */
-  /*   mov %rbp, %rsp; pop %rbp
-  ret
-  /* ret pops the return address */
-
-.data
-scanfmt: .string "%ld"
-printfmt: .string "fact(%ld) = %ld\n"
+n! = n * (n-1) * (n-2) * ... * 1
 ```
 
-Recursive solution:
-
-```
-.global main
-.text
-main:
-  /* allocate 16 bytes on stack */
-  enter $16, $0
-  /* enter moves %rsp down 16 bytes,
-     so we have 16 bytes starting at %rsp */
-
-  /*
-  Pseudocode:
-
-  main() {
-    long x;             // x is 0(%rsp)
-    scanf("%ld", &x);
-    long y = fact(x);
-    printf("fact(%ld) = %ld\n", x, y);
-  }
-
-  */
-
-  mov $scanfmt, %rdi
-  lea (%rsp), %rsi
-  mov $0, %al
-  call scanf
-
-  mov (%rsp), %rdi
-  call fact
-
-  mov $printfmt, %rdi
-  mov (%rsp), %rsi
-  mov %rax, %rdx
-  mov $0, %al
-  call printf
-
-  leave
-  ret
-
-fact:
-  /* 8 is padding, skip initially */
-  enter $8, $0
-
-  /*
-  	fact(x) {
-	    if (x <= 1) return 1;
-	    return x * fact(x-1);
-	  }
-  */
-
-  mov $1, %rax
-  cmp $1, %rdi
-  jle fact_done
-
-  push %rdi /* skip initially */
-  dec %rdi
-  call fact
-
-  pop %rdi /* skip initially */
-  imul %rdi /* wait, we lost x */
-
-  /* after doing caller-save,
-     try callee-save with %rbx */
-
-fact_done:
-  leave
-  ret
-
-
-.data
-scanfmt: .string "%ld"
-printfmt: .string "fact(%ld) = %ld\n"
-```
+ * Iterative solution
+ * Recursive solution
 
 ## How to write an ASM program
 
@@ -357,6 +223,9 @@ baz:
   .int 40
 ```
 
+# More Examples
 
-
+ * Use the recipe to build a "too low / too high" guessing game.
+   * main calls play_game in a loop.
+   * play\_game calls get\_guess and check\_guess in a loop
 
