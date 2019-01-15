@@ -88,7 +88,7 @@ Note: The argument order for "cmp" is backwards here.
 {: .table .table-striped }
 | Instruction    | Description                                                  |
 |----------------|--------------------------------------------------------------|
-| cmp %rxx, %ryy | Compares the two registers, updating the flags register      |
+| cmp %ryy, %rxx | Compares the two registers, updating the flags register (note: order seems backwards) |
 |----------------|--------------------------------------------------------------|
 | je label       | Jump if equal (if previous cmp set equal flag; %rxx == %ryy) |
 | jne label      | Jump if not equal (%rxx != %ryy)                             |
