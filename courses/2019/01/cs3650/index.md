@@ -65,23 +65,23 @@ This is an initial schedule, subject to revision as the semester progresses.
 Assignments will frequently be due at 11:59pm on Monday.
 
 {: .table .table-striped }
-|   Week | Starts   | Topics                                                 | Work Due                                    |
-| +----- | -------- | --------                                               | ---------+                                  |
-|      1 | Jan 7    | Intro: Systems; C and ASM                              | -                                           |
-|      2 | Jan 14   | AMD64 Assembly;  ASM: "Design Recipe"                  | HW01: Linux Setup & Hello Worlds            |
-|      3 | Jan 21   | Large ASM Example; Debugging ASM;                      | HW02: ASM, Pointers, Fun                    |
-|      4 | Jan 28   | Processes & Memory; ASM: Syscalls, I/O, the heap       | HW03: Extra ASM                             |
-|      5 | Feb 4    | C: Basics, Arrays, Pointers; A Simple Tokenizer        | HW04: ASM: Merge Sort w/ Dynamic Allocation |
-|      6 | Feb 11   | Syscalls: fork, exec, waitpid; Building a Shell & pipe | HW05: Shell Tokenizer                       |
-|      7 | Feb 18   | read, write, proc table, vmem; shared mem & data races | CH1: Unix Shell                             |
-|      8 | Feb 25   | semaphore locks & deadlock; threads and mutexes        | HW06: Parallel Sort (Processes)             |
-|      - | Mar 4    | spring break                                           | -                                           |
-|      9 | Mar 11   | cond vars and atomics; malloc: free lists              | HW07: Parallel Sort (Threads)               |
-|     10 | Mar 18   | malloc: optimizations & threads; modern allocators     | HW08: Simple Memory Allocator               |
-|     11 | Mar 25   | OS Kernels; Looking at xv6                             | CH2: Advanced Memory Allocator              |
-|     12 | Apr 1    | File Systems: FAT; File Systems: ext                   | HW09: Examining xv6                         |
-|     13 | Apr 7    | The FUSE API; Solutions for Concurrency                | HW10: Simple FS                             |
-|     14 | Apr 14   | Wrap Up                                                | CH3: Advanced FS                            |
+|   Week | Starts   | Topics                                                 | Work Due                         |
+| +----- | -------- | --------                                               | ---------+                       |
+|      1 | Jan 7    | Intro: Systems; C and ASM                              | -                                |
+|      2 | Jan 14   | AMD64 Assembly;  ASM: "Design Recipe"                  | HW01: Linux Setup & Hello Worlds |
+|      3 | Jan 21   | Large ASM Example; Debugging ASM;                      | HW02: ASM, Pointers, Fun         |
+|      4 | Jan 28   | Processes & Memory; ASM: Syscalls, I/O, the heap       | HW03: ASM Quicksort              |
+|      5 | Feb 4    | C: Basics, Arrays, Pointers; A Simple Tokenizer        | HW04: ASM Matrix Transpose       |
+|      6 | Feb 11   | Syscalls: fork, exec, waitpid; Building a Shell & pipe | HW05: Shell Tokenizer            |
+|      7 | Feb 18   | read, write, proc table, vmem; shared mem & data races | CH1: Unix Shell                  |
+|      8 | Feb 25   | semaphore locks & deadlock; threads and mutexes        | HW06: Parallel Sort (Processes)  |
+|      - | Mar 4    | spring break                                           | -                                |
+|      9 | Mar 11   | cond vars and atomics; malloc: free lists              | HW07: Parallel Sort (Threads)    |
+|     10 | Mar 18   | malloc: optimizations & threads; modern allocators     | HW08: Simple Memory Allocator    |
+|     11 | Mar 25   | OS Kernels; Looking at xv6                             | CH2: Advanced Memory Allocator   |
+|     12 | Apr 1    | File Systems: FAT; File Systems: ext                   | HW09: Examining xv6              |
+|     13 | Apr 7    | The FUSE API; Solutions for Concurrency                | HW10: Simple FS                  |
+|     14 | Apr 14   | Wrap Up                                                | CH3: Advanced FS                 |
 
 (+) One Lecture Weeks: Start, Thanksgiving, End
 
