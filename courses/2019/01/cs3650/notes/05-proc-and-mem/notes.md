@@ -63,17 +63,6 @@ function "malloc" from the standard C library.
 Any memory allocated with "malloc" should be returned to the system
 (exactly once) with "free" when it's no longer needed.
 
-## Command Line Args
-
-```
-int
-main(int argc, char* argv[]) 
-{
-    ...
-    %rdi: a 32-bit int with # of arguments
-    %rsi: The address of an array of addresses of strings.
-```
-
 ## Examples
 
  - Sum-array stack
