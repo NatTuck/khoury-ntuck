@@ -13,7 +13,7 @@ following software packages installed on both your development machine and your
 deployment machine (VPS).
 
  - Erlang / OTP version 21
- - Elixir version 1.7
+ - Elixir version 1.8
  - Phoenix version 1.4
  - NodeJS version 8.10 (e.g. the Ubuntu packages: nodejs npm)
  - Standard C/C++ dev tools (e.g. the Ubuntu build-essential package)

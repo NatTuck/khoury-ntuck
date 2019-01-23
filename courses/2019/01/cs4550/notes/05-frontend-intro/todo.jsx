@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Button } from 'reactstrap';
+import _ from 'lodash';
+import $ from 'jquery';
 
 export default function todo_init(root) {
   ReactDOM.render(<Todo />, root);
@@ -70,7 +71,7 @@ function TodoItem(props) {
     return <li>{item.name} (done)</li>;
   }
   else {
-    return <li>{item.name} <Button onClick={() => props.markItem(item.name)}>mark</Button></li>
+    return <li>{item.name} <button onClick={() => props.markItem(item.name)}>mark</button></li>
   }
 }
 
@@ -86,7 +87,7 @@ function AddForm(props) {
   return (
     <div>
       <input type="text" id="add-item-box" onKeyPress={keyPress}/>
-      <Button onClick={props.add}>Add Item</Button>
+      <button onClick={props.add}>Add Item</button>
     </div>
   );
 }

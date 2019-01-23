@@ -6,6 +6,15 @@ layout: default
 
 ## Review: Phoenix Framework / Practice App
 
+Install Elixir and Erlang (see guides page)
+
+
+```
+sudo apt install elixir=1.8.0-1 esl-erlang=1:21.2.3-1
+```
+
+Clone repo:
+
 ```
 # clone git repo
 $ git clone https://github.com/NatTuck/elixir-practice.git
@@ -242,22 +251,23 @@ embed XML directly in JavaScript code. Luckly, babel can handle JSX.
 (in assets)
 
 ```
-$ npm install --save-dev babel-preset-env babel-preset-react
+$ npm install --save-dev @babel/preset-env @babel/preset-react
 $ npm install --save react react-dom
+$ npm install --save lodash jquery # common libraries
 ```
 
 Add react preset to babel in webpack config:
 
 ```
-  module: {
+ module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,   /// HERE
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'react'], // HERE
+            presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         }
       },
