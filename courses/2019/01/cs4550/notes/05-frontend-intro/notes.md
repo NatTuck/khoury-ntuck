@@ -4,6 +4,57 @@ layout: default
 
 ## Homework questions?
 
+## Review: Phoenix Framework / Practice App
+
+```
+# clone git repo
+$ git clone https://github.com/NatTuck/elixir-practice.git
+$ cd elixir-practice
+
+# fetch deps
+$ mix deps.get
+$ (cd assets && npm install)
+
+# run local dev server
+$ mix phx.server
+```
+
+ - Double a number.
+
+HTTP story for doubling a number.
+
+ - HTTP GET /
+   - Reply: Index page.
+ - HTTP POST /double
+   - Request: Send value to double
+   - Response: Show result page.
+
+We can think of a HTTP request as being like a function call. The server
+needs to take inputs (request path, query string, post data) and produce an
+output (the response).
+
+We can think of Phoenix as being a tool that helps us define those functions.
+
+The basic flow in Phoenix is:
+
+```
+request
+ |> router 
+ |> pipeline
+ |> controller action 
+ |> view
+ |> template
+```
+
+Let's walk through that for doubling a number.
+
+Note that most of the logic is in lib/pratice_web, where
+the web-specific stuff lives, but that we eventually call
+out to a file outside that directory to actually double
+the number. Our app could conceptually end up having,
+e.g., a command line interface that doesn't use HTTP
+and the code to double a number would still be used.
+
 ## Deployment Example
 
  - Deployment is important.
@@ -106,9 +157,7 @@ Let's build it.
 
  - First, make sure erlang / elixir / nodejs are installed
    on your dev machine.
- - Then, Phoenix Framework Github, master branch.
- - Look in the "installer" directory for README.
- - To install, clone the repo and follow the instructions.
+ - Follow the installation guide in the Phoenix docs.
 
 ### Creating our App
 
