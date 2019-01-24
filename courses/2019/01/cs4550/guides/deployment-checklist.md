@@ -30,6 +30,14 @@ Deployment process:
  - The release can then be run either in place or by copying the
    release file to another identical machine.
 
+Setting up a systemd service:
+
+ - Make sure you have a working start script using "foreground"
+ - Create a service file (see template in memory repo)
+ - Copy it to /etc/systemd/system/yourapp.service
+ - Enable it with: systemctl enable yourapp.service
+ - Start it with: service yourapp start
+
 # The Actual Documentation
 
 Elixir/Phoenix Deployment:
