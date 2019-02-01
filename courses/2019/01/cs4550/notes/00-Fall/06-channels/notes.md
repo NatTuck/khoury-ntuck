@@ -201,6 +201,6 @@ Write attached code:
 
  - First, the abstract game: Hangman.Game (games.ex)
  - Communicate with browser: GamesChannel 
- - JSX code because pure UI: hangman.jsx
+ - JSX code becomes pure UI: hangman.jsx
 
 
