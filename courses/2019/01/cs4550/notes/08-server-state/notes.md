@@ -16,6 +16,8 @@ https://github.com/NatTuck/hangman-2019-01 (branch: 01-31-channel-hangman)
 ### Setup for Deployment
 
  - Add elixir module: distillery.
+   - in mix.exs: {:distillery, "~> 2.0"}
+   - mix release.init
  - Follow deploy guide to create a deploy script.
  - Worry about secrets.
    - config/prod.secret.exs - Copy manually from dev machine.

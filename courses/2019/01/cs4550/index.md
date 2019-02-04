@@ -40,6 +40,7 @@ decisions, accomplishments, and user guidelines.
 |-------------------------|----------|--------------------------|--------------------------------------|
 | Benjamin Muschol        | RY 285   | Th 6-8pm                 | muschol.b ⚓ husky.neu.edu           |
 | Sangeetha Chandrashekar | SL 013   | Fr 12:05-2:05pm          | chandrashekar.s ⚓ husky.neu.edu	 |
+| Sangeetha Chandrashekar | BK 307   | We 11am-1pm              | chandrashekar.s ⚓ husky.neu.edu	 |
 
 ## Schedule
 
