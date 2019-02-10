@@ -4,6 +4,11 @@ layout: default
 
 ## First: Homework Questions
 
+## From Last Time: Multiplayer Hangman
+
+ - pull down the 02-06-multiplayer branch
+ - walk through game\_server.ex and game\_sup.ex
+
 ## Today: Less Exciting Apps
 
 Memory Game has:
