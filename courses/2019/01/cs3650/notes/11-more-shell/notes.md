@@ -50,5 +50,17 @@ layout: default
      - in child/parent: wait on child/child
    - in parent: wait on child
 
-## Virtual Memory, I guess?
+## Accessing Files and Directories
+
+ - ls.c
+ - Make sure to show manpages for readdir and stat.
+ - Write a single program that, based on its argv[0], will do
+   any of: mv, rm, cp, or chmod.
+ - (rename, unlink, fread/fwrite, chmod)
+
+## How does fgets / scanf work?
+
+ - What if you mix read and fgets?
+ - getc / ungetc
+ - How do you actually build a buffer?
 
