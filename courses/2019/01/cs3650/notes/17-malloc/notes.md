@@ -122,7 +122,7 @@ You will need to implement "malloc" and "free" functions.
 Design tradeoffs:
 
  - Singly or doubly linked list?
- - Ordered or unordered list?
+ - Ordered or unordered list? (both are O(n) when optimized)
  - Merge adjacent list items every time or only occasionally?
  - How big is the "big allocation" cutoff?
    - At least 4k
