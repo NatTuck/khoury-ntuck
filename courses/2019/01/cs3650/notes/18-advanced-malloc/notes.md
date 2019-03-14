@@ -315,3 +315,4 @@ There is also support for 1GB pages, but those are too big for most use cases
 currently. Maybe for machines with TB of RAM...
 
 Unfortunatly, MADV_DONTNEED doesn't work with huge pages.
+
