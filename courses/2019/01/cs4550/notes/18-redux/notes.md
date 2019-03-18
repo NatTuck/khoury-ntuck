@@ -21,7 +21,7 @@ easier to navigate program with some more stuff in it.
  - Components are split out into multiple modules.
  - I've added "add to cart" functionality.
  - Add to cart forms are part of the state, and we need to store
-   # of items in a (product\_id => count) map so we don't lose it
+   \# of items in a (product\_id => count) map so we don't lose it
    on page changes.
  - Note that we're shallow-copying the map on update with new Map(old_map).
  - We always log in as Alice on load (this is ugly - should optimize sending
