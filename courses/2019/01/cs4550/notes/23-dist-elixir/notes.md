@@ -40,6 +40,12 @@ Simplest example, in two terminal windows:
    iex> Node.spawn(:bar@greyarea, fn -> IO.puts(node()) end) # Really on other node.
 ```
 
+# Let's build a replicated Key-Value Store
+
+```
+$ git clone https://github.com/NatTuck/kv_store
+$ git checkout 0-empty
+```
 
 
 
