@@ -376,3 +376,19 @@ And let's give it a try:
  iex> KvStore.get(:c)
 ```
 
+## What more could we add?
+
+ - This app can store data, but there's no external interface. Maybe we could
+   add a REST API with Phoenix.
+   - Should every node be a web server?
+   - Should the web server be one or more additional nodes?
+   - We can use a load balancer to let this web service have one address that works
+     even if a web server node goes down.
+ - This should be deployed with a release and a systemd service so it's built in
+   production mode and comes back when a server reboots.
+ - There should be better automation than my simple scripts to deploy the app.
+ - The current logic (data stored in a single genserver, writes to all, reads
+   from one, resync only on start, no versioning) isn't an especially good
+   datastore. If we want something better we could figure out the logic we want
+   and build it.
+
