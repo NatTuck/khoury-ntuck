@@ -130,23 +130,249 @@ Add libcluster supervisor to application.ex
 
 Create a start script, local-start.sh
 
-        FIXME: This doesn't quite work.
+```
+#!/bin/bash
+
+export WD=`pwd`
+
+cat > /tmp/tabs.$$ <<"EOF"
+title: node0;; workdir: $WD;; command: iex --sname node0@localhost -S mix
+title: node1;; workdir: $WD;; command: iex --sname node1@localhost -S mix
+title: node2;; workdir: $WD;; command: iex --sname node2@localhost -S mix
+EOF
+
+konsole --hold --tabs-from-file /tmp/tabs.$$
+```
+
+Let's try this out:
+
+```
+ $ bash local-start.sh
+ 
+ # In node0 tab:
+ iex> Node.self()
+ iex> Node.list()
+ iex> KvStore.MapServer.put(:node2@localhost, :a, 5)
+ 
+ # In node1 tab:
+ iex> Node.self()
+ iex> Node.list()
+ iex> KvStore.MapServer.get(:node2@localhost, :a)
+```
+
+## Let's distribute the data.
+
+We'll go with the simplest plan:
+
+ - Writes go to all nodes.
+ - Reads happen on any node.
+
+Add get and put methods to lib/kv_store.ex:
+
+```
+defmodule KvStore do
+  def get(k) do
+    # Need one node, so grab the local copy.
+    KvStore.MapServer.get(k)
+  end
+
+  def put(k, v) do
+    nodes = [Node.self() | Node.list()]
+    results = Enum.map nodes, fn node ->
+      KvStore.MapServer.put(node, k, v)
+    end
+    if Enum.all?(results, &(&1 == :ok)) do
+      :ok
+    else
+      {:error, "didn't write to all replicas"}
+    end
+  end
+end
+```
+
+Let's try this version:
+
+```
+ $ bash local-start.sh
+
+ # node0
+ iex> KvStore.put(:a, 5)
+ 
+ # node1
+ iex> KvStore.get(:a)
+ 
+ # node2
+ iex> KvStore.get(:a)
+
+ # Ctrl+C node0
+ # node1
+ iex> KvStore.get(:a)
+ iex> KvStore.put(:a, 8)
+ 
+ # node2
+ iex> KvStore.get(:a)
+ 
+ # restart node0 in new tab
+ $  iex --sname node0@localhost -S mix
+ iex> KvStore.get(:a)
+ ... wrong answer
+```
+
+## Resync on recovery
+
+ - We're replicating to increase reliability.
+ - Good: When a node goes down, the other nodes still have the data.
+ - Bad: When a node comes back up, it doesn't have the data.
+
+Clearly, when a node comes back up, it should get the current state of the map.
+
+Let's do that.
+
+First, let's make our MapServer handle a :get_map message. This has no
+public interface function since it's only used internally.
+
+```
+  @impl true
+  def handle_call(:get_map, _from, state) do
+    {:reply, state, state}
+  end
+```
+
+Then, let's use that from the init function to sync state from any
+existing node.
+
+```
+  @impl true
+  def init(default) do
+    # Get the map from all remote nodes.
+    {replies, _} = GenServer.multi_call(Node.list(), __MODULE__, :get_map, 1000)
+    if Enum.empty?(replies) do
+      {:ok, default}
+    else
+      # All nodes have the current state, so we just take the first one.
+      {_node, map} = hd(replies)
+      {:ok, map}
+    end
+  end
+```
+
+The GenServer.multi_call function makes the same call to the same registered process
+list of nodes. It returns the list of replies and the list of failures. Note that
+we explicitly specify a timeout because there's no need to wait for slow nodes.
+
+Let's try it:
+
+```
+ $ bash local-start.sh
+
+ # node0
+ iex> KvStore.put(:a, 5)
+ iex> Ctrl+C Ctrl+C
+ 
+ # node1
+ iex> KvStore.get(:a)
+ 
+ # new tab
+ $  iex --sname node0@localhost -S mix
+ iex> KvStore.get(:a)
+```
+
+So now we have a distributed key-value store that's resilient to node failure and
+will behave correctly when a node leaves and rejoins.
+
+## Running on a cluster.
+
+Let's actually run it on a cluster of (virtual) machines.
+
+I've got five virtual machines running remotely, named bot00 .. bot04.
+
+First, we need to change our cluster topology in application.ex:
+
+```
+    topologies = [
+      bots: [
+        strategy: Cluster.Strategy.Epmd,
+        config: [
+          hosts: [:kv@bot00, :kv@bot01, :kv@bot02, :kv@bot03, :kv@bot04]
+        ],
+      ],
+    ]
+```
+
+We've got the start of a script to push our code to the servers, but we need to
+add one thing:
+
+ - Show push.sh
+ - Add the following lines:
+ 
+```
+# Erlang nodes must share a secret cookie in order to connect, to prevent
+# distributed Erlang from having *no* security.
+# This is not sufficient security to connect nodes over the public internet.
+parallel -i ssh nat@{} rm ~/.erlang.cookie -- $HOSTS
+parallel -i scp ~/.erlang.cookie nat@{}:~ -- $HOSTS
+```
+
+For testing, we can use the same strategy to start remote notes as local nodes.
+Copy local-start.sh to remote-start.sh and edit it to:
+
+```
+#!/bin/bash
+
+cat > /tmp/tabs.$$ <<"EOF"
+title: bot00;; command: ssh nat@bot00 bash ~/kv_store/start.sh
+title: bot01;; command: ssh nat@bot01 bash ~/kv_store/start.sh
+title: bot02;; command: ssh nat@bot02 bash ~/kv_store/start.sh
+title: bot03;; command: ssh nat@bot03 bash ~/kv_store/start.sh
+title: bot04;; command: ssh nat@bot04 bash ~/kv_store/start.sh
+EOF
+
+konsole --hold --tabs-from-file /tmp/tabs.$$
+```
+
+Let's create that start.sh:
 
 ```
 #!/bin/bash
 killall beam.smp
-elixir --no-halt --sname node0@localhost -S mix &
-elixir --no-halt --sname node1@localhost -S mix &
-iex --sname node2@localhost -S mix
+(cd ~/kv_store && iex --sname kv -S mix)
 ```
 
-Run this by sourcing it in bash so we keep job #'s.
+Now push and run.
 
 ```
- $ . local-start.sh
- iex> Node.self()
+$ ./push.sh
+$ ./remote-start.sh
+```
+
+And let's give it a try:
+
+```
+ # bot00
+ iex> KvStore.put(:a, 1)
+ iex> KvStore.put(:b, 2)
+ 
+ # bot01
  iex> Node.list()
+ iex> KvStore.get(:a)
+ iex> KvStore.get(:b)
+ 
+ # New terminal tab
+ $ ssh nat@bot00
+ bot00$ sudo reboot
+ 
+ # bot01
+ iex> Node.list()
+ ... bot00 is gone
+ iex> KvStore.put(:c, 3)
+ 
+ # bot02
+ iex> KvStore.get(:c)
+ 
+ # New terminal tab
+ $ ssh nat@bot00
+ $ cd kv_store
+ $ ./start.sh
+ iex> KvStore.get(:c)
 ```
-
-
 
