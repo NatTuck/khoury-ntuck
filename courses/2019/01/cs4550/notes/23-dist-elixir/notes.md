@@ -130,20 +130,26 @@ Add libcluster supervisor to application.ex
 
 Create a start script, local-start.sh
 
-        FIXME: This doesn't quite work.
-
 ```
 #!/bin/bash
-killall beam.smp
-elixir --no-halt --sname node0@localhost -S mix &
-elixir --no-halt --sname node1@localhost -S mix &
-iex --sname node2@localhost -S mix
+
+export WD=`pwd`
+
+cat > /tmp/tabs.$$ <<"EOF"
+title: node0;; workdir: $WD;; command: iex --sname node0@localhost -S mix
+title: node1;; workdir: $WD;; command: iex --sname node1@localhost -S mix
+title: node2;; workdir: $WD;; command: iex --sname node2@localhost -S mix
+EOF
+
+konsole --hold --tabs-from-file /tmp/tabs.$$
 ```
 
 Run this by sourcing it in bash so we keep job #'s.
 
 ```
- $ . local-start.sh
+ $ bash local-start.sh
+ 
+ # In new node0 tab:
  iex> Node.self()
  iex> Node.list()
 ```
