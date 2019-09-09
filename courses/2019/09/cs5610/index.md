@@ -23,6 +23,8 @@ decisions, accomplishments, and user guidelines.
  - [Undergrad Tutoring](http://www.ccis.northeastern.edu/current-students/undergraduate/resources/)
  - [Guides](./guides) - Instructions that might be useful.
  - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in class.
+ - [scratch](https://github.com/NatTuck/scratch-2019-09) - A git repo of stuff
+   that may have happened in lecture.
 
 ## Sections
 

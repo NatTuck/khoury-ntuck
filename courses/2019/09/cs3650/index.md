@@ -20,7 +20,11 @@ deadlock, memory management, file systems, and input/output control.
  - [Bottlenose](https://bottlenose.ccs.neu.edu) - View and submit homework assignments.
  - [Piazza](https://piazza.com/northeastern/fall2019/cs36500405) - Class discussion & announcements.
  - [Linux / Unix Help](http://www.ccs.neu.edu/course/cs3650/parent/help/)
- - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in class.
+ - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in
+   class.
+ - [scratch](https://github.com/NatTuck/scratch-2019-09) - A git repo of stuff
+   that may have happened in lecture.
+   
 
 ## AMD64 ASM resources
  
