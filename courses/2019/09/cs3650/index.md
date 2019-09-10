@@ -42,9 +42,9 @@ deadlock, memory management, file systems, and input/output control.
 |      05 | SL 031   | 1:35pm-3:15pm Tu/Fr |
 |      04 | FR 201   | 3:25pm-5:05pm Tu/Fr |
 
-Profs [Ranganathan](https://aanjhan.com/teaching/courses/fall19/index.html) 
-and [Shah](http://www.mshah.io/) are also teaching sections of 3650 this
-semester.
+Profs [Ranganathan](https://aanjhan.com/teaching/courses/fall19/index.html) and
+[Shah](http://www.mshah.io/comp/Fall19/Systems/index.html) are also teaching
+sections of 3650 this semester.
 
 ## Staff & Office Hours
 

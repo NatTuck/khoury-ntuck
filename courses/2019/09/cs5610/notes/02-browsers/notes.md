@@ -17,10 +17,12 @@ layout: default
    - That should be long enough to make something serious.
    - Projects will include written report.
  - Project 1: Multi-player game.
+   - Probably teams of 2.
  - After project 1: Traditional business apps
    - Add a database for persistent state.
    - Traditional "web site" structure.
  - Project 2: Final Project
+   - Probably teams of 4.
    - Whatever you want to do as long as:
    - It uses a database
    - It uses an authenticated remote API
@@ -122,10 +124,10 @@ JavaScript is:
 
 Examples:
 
+ - We can type examples in "node" in a terminal.
  - var thing = {a: 5, b: 7};
  - thing.b
  - thing["b"]
- - We can type examples in "node" in a terminal.
  - Does type coersions:
    - 5 == "5"
    - [] == ![]
@@ -254,8 +256,8 @@ var para2 = document.querySelector("#hello"); // Gets first matching element
 ## Namespaces and Strict Mode
 
  - Traditional JavaScript doesn't have a module system.
- - That means any names that are declared at the top level of your code - which is especially
-   common for fuctions - are global.
+ - That means any names that are declared at the top level of your code - which
+   is especially common for fuctions - are global.
  - Luckily, JavaScript provides lexical scoping, which can be used to simulate modules.
  - (See code.js)
  - JavaScript also has a great feature: assignment to an unknown variable name declares a
