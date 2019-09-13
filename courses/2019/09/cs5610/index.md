@@ -59,8 +59,8 @@ Assignments will frequently be due at 11:59pm Thursday.
 |  1 (+) | Sep 2    | Intro: Dev on the Web, Server Setup   | -                        |
 |      2 | Sep 9    | JS & DOM; Elixir & Phoenix Intro      | HW01: Dev & Server Setup |
 |      3 | Sep 16   | Webpack & React; In-browser State     | HW02,HW03: Warm Up       |
-|      4 | Sep 23   | Sockets & Channels; Server-side State | HW03: Client-Side Game   |
-|      5 | Sep 30   | OTP: GenServers, Agents, Supervisors  | HW04: Client-Server Game |
+|      4 | Sep 23   | Sockets & Channels; Server-side State | HW04: Client-Side Game   |
+|      5 | Sep 30   | OTP: GenServers, Agents, Supervisors  | HW05: Client-Server Game |
 |      6 | Oct 7    | Canvas, WebGL, Web Assembly           | -                        |
 |      7 | Oct 14   | Resources, REST, Ecto; Rels & RDBMSes | -                        |
 |      8 | Oct 21   | JSON Resources & AJAX ; Passwords     | Proj1: Multi-Player Game |
