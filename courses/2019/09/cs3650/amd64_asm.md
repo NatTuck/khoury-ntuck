@@ -73,7 +73,7 @@ There are a couple of other registers worth remembering:
 |-----------------|-------------------------------------------|
 | imul %rxx       | %rdx:%rax = %rax * %rxx                   |
 | imul %rxx, %ryy | %ryy = %ryy * %rxx (truncated to 64-bits) |
-| idiv %rxx       | %rax = %rdx:%rax / %rxx; %rdx = quot      |
+| idiv %rxx       | %rax = %rdx:%rax / %rxx; %rdx = remainder |
 
 ### Flow Control and Logic
 
