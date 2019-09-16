@@ -23,6 +23,8 @@ layout: default
 
 ## Elixir Language
 
+(revision note: shorten this; we want to get to Phoenix)
+
 Why would you pick a specific language?
 
  - You know it.
@@ -116,6 +118,8 @@ But with some extra features not in ISL:
    - Pipelines
 
 ## Phoenix Framework / Practice App
+
+(revision note: we don't get here)
 
 ```
 # clone git repo
