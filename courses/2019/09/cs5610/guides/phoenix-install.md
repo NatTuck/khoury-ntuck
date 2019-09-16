@@ -30,5 +30,5 @@ these packages in the stock Debian repository are too old - don't install those
 versions.
 
 You should also install PostgreSQL. This can be installed normally from the
-Ubuntu repositories, packages are: postgresql postgresql-client libpq-dev
+Debian repositories, packages are: postgresql postgresql-client libpq-dev
 
