@@ -12,10 +12,10 @@ To get set up for web app development and deployment, you want to get the
 following software packages installed on both your development machine and your
 deployment machine (VPS).
 
- - Erlang / OTP version 21
- - Elixir version 1.8
- - Phoenix version 1.4
- - NodeJS version 8.10 (e.g. the Debian packages: nodejs npm)
+ - Erlang / OTP version >= 21
+ - Elixir version => 1.8
+ - Phoenix version => 1.4
+ - NodeJS version >= 10.0 (e.g. the Debian packages: nodejs npm)
  - Standard C/C++ dev tools (e.g. the Debian build-essential package)
 
 Here's the relevent installation instructions / resources. You will need to read
