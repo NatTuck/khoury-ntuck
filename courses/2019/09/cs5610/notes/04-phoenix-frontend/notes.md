@@ -18,15 +18,15 @@ Install Elixir and Erlang (see guides page)
 Clone repo:
 
 ```
-# clone git repo
+(clone git repo)
 $ git clone https://github.com/NatTuck/elixir-practice.git
 $ cd elixir-practice
 
-# fetch deps
+(fetch deps)
 $ mix deps.get
 $ (cd assets && npm install)
 
-# run local dev server
+(run local dev server)
 $ mix phx.server
 ```
 
@@ -40,11 +40,12 @@ HTTP story for doubling a number.
    - Request: Send value to double
    - Response: Show result page.
 
-We can think of a HTTP request as being like a function call. The server
-needs to take inputs (request path, query string, post data) and produce an
-output (the response).
+We can think of a HTTP request as being like a function call. The
+server needs to take inputs (request path, query string, post data) and
+produce an output (the response).
 
-We can think of Phoenix as being a tool that helps us define those functions.
+We can think of Phoenix as being a tool that helps us define those
+functions.
 
 The basic flow in Phoenix is:
 
@@ -59,7 +60,7 @@ request
 
 Let's walk through that for doubling a number.
 
-Note that most of the logic is in lib/pratice_web, where
+Note that most of the logic is in lib/pratice\_web, where
 the web-specific stuff lives, but that we eventually call
 out to a file outside that directory to actually double
 the number. Our app could conceptually end up having,
