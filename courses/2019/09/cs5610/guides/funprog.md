@@ -8,6 +8,10 @@ Basic functional programming technique in Elixir and JavaScript.
  - Structs
  - Lists
  - Maps
+ 
+# Other Resources
+
+[Medium post on Functional Programming in JS](https://medium.com/the-renaissance-developer/concepts-of-functional-programming-in-javascript-6bc84220d2aa)
 
 # Intro
 
