@@ -148,11 +148,11 @@ To call a function with the "call" instruction, you must first:
 
  * Put arguments in the appropriate registers / stack.
    * %rdi, %rsi, %rdx, %rcx, %r8, %r9, then the stack
- * Think about "callee save" registers.
+ * Think about "caller save"/"temporary" registers.
    * That's all the data registers *except* %rbx and %r12-%r15.
    * Assume calling any function corrupts them.
    * You can push these before the call and pop after, but a different
-     allocation with stack / caller-save might work better.
+     allocation with stack / callee-save might work better.
  * Make sure %rsp points to an address divisible by 16 bytes.
    * This is not true when you enter a function, because call pushes a
      return address.

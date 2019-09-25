@@ -36,14 +36,21 @@ layout: default
  * Values either go in registers or on the stack.
  * It's worth actually figuring this out and writing it down.
 
-We're going to write our programs so they actually work the way that C pretends
-to work: all local variables live on the stack.
+The normal strategy:
+
+ * Try to allocate values to the registers they already need to be in (arguments
+   in argument registers, result in result register).
+ * If that won't work, move values to safe registers.
+ * For variables where you need to take their address, put them on the
+   stack in space allocated by the enter instruction.
+
+Another way to write functions is the way C pretends to work: all local variables
+live on the stack. In that plan:
 
  * Using the ENTER instruction, we allocate a slot for each local variable and
    function argument.
  * The first stack slot is -8(%rbp), the next -16(%rbp), etc.
  * Function arguments come in in registers - note which ones.
- * Local variables may also want to inhabit registers - consider using 
 
 We also should decide which temporary values we produce and where those will be
 stored. These can be allocated to temporary registers: %r11, %r10, %r9, %r8.
