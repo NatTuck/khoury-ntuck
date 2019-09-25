@@ -8,8 +8,6 @@ layout: default
 
  - Git repo: https://github.com/NatTuck/hangman-2019-01/
  - This lecture goes from branch "master" to "01-31-channel-hangman"
- - Remove the TODO header from lib/hangman\_web/templates/page
- - Move todo.jsx to hangman.jsx
  - Fix app.js
  - Work in hangman.jsx
 
@@ -39,6 +37,62 @@ The game state:
  - Start branch "01-31-channel-hangman"
  - End branch "01-31-browser-hangman"
 
+## Server-side Logic: Why, How, and Complications
+
+ - We're going to spend a lot of time focusing on the idea of Application State.
+ - React makes this concept really clear:
+   - We have some structured data.
+   - What we display to users depends on the current value of that data.
+   - We want to modify that data in response to events - in fact, that's the
+     core thing our application does is change its state.
+ - State seems really simple, and in local sequential applications it can be. In
+   simple OO programming it's just fields on objects.
+ - State gets more complicated with concurrency and distribution. There are two
+   main problems that come up:
+   - Data races, when there are two conflicting updates to data "at the same
+     time".
+   - Inconsistency, when an update to one part of the overall state isn't
+     reflected in duplicate copies or saved derived values.
+ - I'll repeat this point, but keep it in mind going forward.
+
+Issues with in-browser Hangman.
+
+ - Right now our state lives in the state field of of our root react component.
+ - That's great for a single-user app with no hidden information.
+ - Problem: We want hidden information.
+   - In hangman, the user shouldn't know the secret word.
+   - We send that right to them in our JS code.
+   - We'd rather not do that.
+ - Problem: Cheating
+   - The game rules are enforced in JS code.
+   - Users can modify JS code running on their own machine.
+ - Problem: What about multiple users?
+   - Hangman isn't the greatest example for a multi-player game, but...
+   - We can imagine two-player hangman where either player can guess at any
+     time.
+   - Having the state in one user's browser doesn't work here. Both players
+     need to be able to view the up-to-date game display, and both players need
+     to be able to guess letters (thus modifying the state).
+ - This isn't just Hangman
+   - Games in general are a good example for wanting hidden information.
+   - Most web application are likely to want multiple users.
+
+New design: State on the server
+
+ - First, we move the state from the react component to code running on
+   our server machine.
+ - We can hide information by simply not sending it.
+ - Instead, we send the minimum information nessiary for the display to be
+   rendered and users to be able to interact.
+ - User actions are sent to the server, and the updated minimum information
+   (the user's "view" of the current state) is sent back.
+ - The server code is now responsible for handling the game rules, so cheating
+   is harder.
+ - The server code is responsibile for maintaining data consistency - that's
+   still a problem in a multi-user app, but the server code is in a position to
+   try to solve it in some reasonable way.
+ - We're not going to do multiplayer quite yet.
+
 ### Concept: Websockets & Phoenix Channels
 
 Traditional HTTP provides request-response semantics. 
@@ -46,7 +100,7 @@ Traditional HTTP provides request-response semantics.
   - The browser makes a request
   - The server sends back response.
 
-One problems:
+One problem:
 
  - Server can't initiate a message to browser.
 
@@ -137,8 +191,6 @@ $(() => {
 ```
 
 Edit games_channel.ex:
-
-Edit games_channel.ex
 
 ```
   def join("games:" <> name, payload, socket) do
@@ -239,13 +291,5 @@ games\_channel.ex:
 Then update the JSX code:
 
  - JSX code becomes pure UI: hangman-server.jsx
-
-
-
-
-
-
-
-
 
 
