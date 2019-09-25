@@ -1,3 +1,6 @@
+---
+layout: default
+---
 
 # Functional Programming Review
 
