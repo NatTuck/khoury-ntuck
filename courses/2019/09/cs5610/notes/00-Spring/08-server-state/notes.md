@@ -2,224 +2,232 @@
 layout: default
 ---
 
-## Homework Questions?
+# Delay homework questions
 
-## Server-side Hangman
+## Functional Programming + React
 
-https://github.com/NatTuck/hangman-2019-01 (branch: 01-31-channel-hangman)
+Some people seem to be having trouble with programming in a functional style, so
+I'm going to review some of those key ideas both in general and specicifcally
+for React.
+
+## Functional Programming: Key Idea (at least for us)
+
+ - Is a programming style, like procedural, OO, or logic programming.
+ - Some languages expect this style, others support it, others make it hard.
+   - Like how OO is expected in Java and well supported but optional in
+     Python.
+ - Languages expecting functional code: Haskell, OCaml, Clojure, Elixir.
+ - Languages supporting functional code: Most modern languages.
+ - Languages that make it hard: Java, C, FORTRAN
+ - 10 years ago functional programming was esoteric, now it's something that
+   any practicing developer will run into and should be comfortable with.
+
+Constraints in programming;
+
+ - When you're writing assembly code, or C, you can conceptually do anything.
+   You can get a pointer to any memory location and write there, you can "goto"
+   memory addresses and start executing code, etc.
+ - Sometimes those things are useful, but in most code we want to have some
+   constraints to make reasoning about things easier.
+ - In most languages there are some built-in constraints:
+   - Only a function can access its own local variables.
+   - You can't jump to code outside of the current function except by calling
+     another function or returning.
+
+```
+function foo() {
+  let xs = [1,2,3,4];
+  bar();
+  // xs is still [1,2,3,4] - it's a local variable, so bar
+  // can't mess with it.
+  
+  // In assemby this wouldn't be true.
+  // Also not true in Emacs LISP.
+```
+
+ - Languages and programming styles add constraints to make specific patterns
+   easier while avoiding specific kinds of bugs.
+ - Consider "private" in Java:
+   - We can make fields, methods, and classes only accessible from "local" code.
+   - This prevents non-local code from doing things we don't expect.
+   - With this, we can guarantee invariants about the state of objects while
+     only needing to reason about the local code.
+   - One key problem this solves is unexpected mutation - if external code could
+     access and modify private fields, we could no longer tell of our invariants
+     held across the whole program just by looking at the current class.
+
+Constraints in functional programming:
+
+ - The functional programming style is all about a constraint on one thing: side
+   effects.
+   - A function has a side effect if it does anything that can be externally
+     observed other than returning a value.
+     - ex: Mutating a global variable
+     - ex: Printing to the screen
+     - ex: Sending an HTTP request.
+     - ex: document.getElementById('foo').text = "hello"
+   - A function with no side effects that returns a value based entirely on the
+     values of its parameters is called a "pure" function.
+     - Pure functions don't access global / external state.
+     - Not accessing global state isn't a functionality constraint - that state
+       can simply be passed as an argument.
+ - It's impossible to avoid side effects. Programs with no side effects don't do
+   anything.
+ - Pure functions are extremely easy to reason about because they don't do anything.
+ - But, side effects can be isolated.
+ - The purpose of this is just like "private" in Java: to allow us to reason
+   about our code, especially our invariants.
+   - Every pure function can be reasoned about seperately.
+   - A pure function can't possibly break anything anywhere else.
+   - Pure functions can be easily tested, since if you check that you get
+     the right outputs for the right inputs that's the whole story.
+
+```
+// we start with a global variable
+var numbers = [1,3,2,4];
+
+// procedural style
+function append_sort_and_print(int vv) {
+    numbers.push(vv); // side effect: mutate global
+    numbers.sort(); // side effect: mutate global
+    console.log(numbers); // side effect: I/O
+}
+
+// functional style
+
+// pure function does the computation
+function append_and_sort(xs, vv) {
+    let ys = xs.concat([vv]); // xs is unchanged
+    ys.sort(); // side effect: mutate local variable
+               // This is not externally visible, so function is still pure.
+    return ys;
+}
+
+// side effects are isolated so we can keep an eye on them
+function append_sort_and_print(int vv) {
+    let ys = append_and_sort(numbers, vv);
+    
+    // We still need to actually do the task,
+    // but we've isolated the side effects from the computation.
+    numbers = ys;
+    console.log(numbers);
+}
+```
+
+With a functional language like Elixir, we go a step further: completely
+eliminating object mutation. This prevents us from writing side effects by
+mistake by mutating shared references.
+
+## Functional Programming and React
+
+React is a display framework - currently getting overhyped, but still a good
+tool - that's based on an idea from Academia called "Functional Reactive
+Programming".
+
+The research question was: How do we render graphics while constraining side
+effects? Initally, this was mostly a game engine thing.
+
+The solution:
+
+ - Seperate logical "state" data from the rendering logic.
+ - Have a pure function that transforms the current state - and possibly the
+   time stamp - into one display frame.
+ - When events occur, have a pure function that transforms (state, event) =>
+   state, then re-render.
+ - Isolate side effects (actually collecting user input and other events,
+   drawing the rendered frame) into an engine component seperate from the
+   application code.
+
+"But the DOM API is imperative, and we don't want to change it every frame like a
+game engine, so this makes no sense."
+
+ - If we really did a full re-render at 60 Hz, game engine style, it wouldn't be
+   great.
+ - Optimization: Only re-render when the state changes.
+ - Optimization: Don't just delete and reinsert the whole DOM sub-tree,
+   calculate the changes and make the minimum nessisary changes.
+ - DOM changes are comparatively slow, so even regenerating the full "shadow
+   DOM" tree on every change and then calculating changes is faster than a
+   template solution that would require reparsing the full HTML.
+
+More recently some other solutions are similar performance to React, but the
+initial speed boost was enough to convince people to try an FRP style solution,
+and FRP turns out to be pretty nice in this application.
+
+What that means:
+
+ - When writing a stateful React componet, your job is to write a handful of
+   pure functions:
+   - The render() method.
+   - One event handler function per type of event (e.g. mouse click on a type of
+     button, setTimeout happened, got network packet, etc).
+   - To get real pure functions:
+     - render() { return pureRender(deepCopy(this.state)); }
+     - onEvent(ev) { this.setState(pureOnEvent(deepCopy(this.state), deepCopy(ev.data))) }
+ - React relies on the state field containing an immutable value that is never
+   changed, only replaced with a new value by setState in event handlers.
+
+## Homework questions?
+
+## Hangman with Server-side State
+
+ - Git repo: https://github.com/NatTuck/hangman-2019-01/
+ - This lecture goes through "01-31-channel-hangman"
+ - Remove the TODO header from lib/hangman\_web/templates/page
+ - Move todo.jsx to hangman.jsx
+ - Fix app.js
+ - Work in hangman.jsx
+
+game.html.eex:
+
+```
+<script>
+ window.gameName = "<%= @name %>";
+</script>
+
+<div class="row">
+  <div class="column">
+    <h1>Hangman Game: <%= @name %></h1>
+    <div id="root">
+      <p>React app not loaded...</p>
+    </div>
+  </div>
+</div>
+```
+
+app.js:
+
+```
+import socket from "./socket";
+import game_init from "./hangman";
+
+function start() {
+  let root = document.getElementById('root');
+  if (root) {
+    let channel = socket.channel("games:" + window.gameName, {});
+    // We want to join in the react component.
+    game_init(root, channel);
+  }
+}
+
+$(start);
+```
+
+Write attached code:
+
+ - We have the Hangman.Game module; review that.
  
- - We completed the server-side code for Hangman.
- - Review: Game module.
- - Review: GamesChannel
- - Complete Hangman with hangman-server.jsx
-
-### Setup for Deployment
-
- - Add elixir module: distillery.
-   - in mix.exs: {:distillery, "~> 2.0"}
-   - mix release.init
- - Follow deploy guide to create a deploy script.
- - Worry about secrets.
-   - config/prod.secret.exs - Copy manually from dev machine.
-   - rel/config.exs - Random cookie code; will break if we try
-         to run in a cluster.
- - There should *never* be secrets in your git repo.
-
-### Generate Secrets at Deploy Time
-
-This snippet of code is useful for managing secrets in config/prod.exs and
-rel/config.exs
-
-Feel free to use this in your projects with the attribution comment. This
-assumes that your build machine and your production server are the same. That
-may not be a good idea for larger deployments and stops working once you have
-two web servers.
+games\_channel.ex:
 
 ```
-get_secret = fn name ->
-  # Secret generation hack by Nat Tuck for CS4550
-  # This function is dedicated to the public domain.
-  base = Path.expand("~/.config/phx-secrets")
-  File.mkdir_p!(base)
-  path = Path.join(base, name)
-  unless File.exists?(path) do
-    secret = Base.encode16(:crypto.strong_rand_bytes(32))
-    File.write!(path, secret)
-  end
-  String.trim(File.read!(path))
-end
+  alias Hangman.Game
 
-## In config/prod.exs
-secret_key_base: get_secret.("key_base");
-...
-password: get_secret.("db_pass") # Manually make file match password
-
-## In rel/config.exs
-set cookie: String.to_atom(get_secret.("dev_cookie"))
-```
-
-## Problem: State loss on crash
-
-### Show 'z' crashes
-
- - iex -S mix phx.server
- - 'z' crashes
- - :observer.start()
- - Just look at process tree.
- - See if we can figure out which process is crashing.
-   - (Maybe not).
-
-### Browser-Only
-
-e.g. Hangman from last week.
-
-A single-page / single component React app.
-
- - One state as value object.
- - Pure function renders state to web page.
- - In last week's version, update logic was in browser.
-
-- Client-Side Only like this is plan A for state.
-
- - Pro: Pure JS
- - Pro: Free for Server
- - Con: User actually controls what the code does
- - Con: State is stuck in one user's browser
- - Con: State is lost if user navigates away from page.
-
-### Move State to Server
-
-Plan B: Server-Side
-
- - Pro: We have access to the data
- - Pro: We control the app logic
- - Pro: Can have multiple user sessions interact
- - Con: More complex
- - Con: Computation is on server
-
-But how to manage the state on the server?
-
-Can't easily use HTTP requests.
-
- - HTTP is stateless.
- - Cookies add state, but stored client-side.
- - Traditionally we can have cookie index into a
-   database. That works, but is not great for heavy 
-   interactivity like a game.
-
-Plan B.1: Store State in Channel
-
-e.g. Hangman from Tuesday
-
-   - Simple concept
-   - Specific to that connection
-   - Lost on disconnect
-   - Problem: Homework says don't lose it on disconnect
-
-Plan B.2: Outside of Channel
-
-   - Where do we put it?
-   - Unfortunately, this is a hard problem in general.
-   - Fortunately, this is a problem that has a bunch of good
-     solutions in Erlang / Elixir.
-
-Let's start looking at strategies for managing state.
-
-## Shared State with Procs
-
- - shared-state.ex
-
-## Built-in Mechanism: Agent
-
- - Spawn a process to hold our state.
- - Agent is a built-in module.
- - It holds the state and we send it messages:
-   - Get current state
-   - Update state by applying function
- - All access is serialized, but any process can send it message.
- - Logically kind of like a single object protected by a mutex
-   in C or Java.
- - No data races or deadlock, but no parallel speedup either.
-
-## Back to Hangman
-
-Where are we?
-
-- We have a Phoenix app with a channel.
-   - Server maintains game state.
-   - Sends a "view object" to client.
-   - Browser makes "view object" its local state, which triggers
-     react re-render.
-   - Events on browser send message to server, server updates state,
-     sends new "view object", browser rerenders.
-   - Visiting page causes browser to connect to channel.
-   - Channel connection is process on server that surivives until
-     the browser disconnects.
-   - Game state is associated with channel process.
-
-Keep going:
-
- - Currently crashes when you press "z"
- - State is stored in channel, so we lose it.
-
-## Hangman with Backup Agent
-
- - https://github.com/NatTuck/hangman-2019-01
- - Start branch: 01-31-channel-hangman
- - End branch: 02-04-backup-agent
-
-We're going to add an agent to our hangman game to back up the
-game state.
-
-lib/hangman/backup_agent.ex:
-
-```
-defmodule Hangman.BackupAgent do
-  use Agent
-
-  # This is basically just a global mutable map.
-  # TODO: Add timestamps and expiration.
-
-  def start_link(_args) do
-    Agent.start_link(fn -> %{} end, name: __MODULE__)
-  end
-
-  def put(name, val) do
-    Agent.update __MODULE__, fn state ->
-      Map.put(state, name, val)
-    end
-  end
-
-  def get(name) do
-    Agent.get __MODULE__, fn state ->
-      Map.get(state, name)
-    end
-  end
-end
-```
-
-Start this process with the app.
-
-lib/hangman/application.ex, in children list:
-
-```
-   ...
-   # Starts a worker by calling: Hangman.Worker.start_link(arg)
-   # {Hangman.Worker, arg},
-   Hangman.BackupAgent,
-   ... 
-```
-
-Modify the channel to make backups:
-
-```
   def join("games:" <> name, payload, socket) do
     if authorized?(payload) do
-      game = BackupAgent.get(name) || Game.new()
+      game = Game.new()
       socket = socket
       |> assign(:game, game)
       |> assign(:name, name)
-      BackupAgent.put(name, game)
       {:ok, %{"join" => name, "game" => Game.client_view(game)}, socket}
     else
       {:error, %{reason: "unauthorized"}}
@@ -227,32 +235,13 @@ Modify the channel to make backups:
   end
 
   def handle_in("guess", %{"letter" => ll}, socket) do
-    name = socket.assigns[:name]
     game = Game.guess(socket.assigns[:game], ll)
     socket = assign(socket, :game, game)
-    BackupAgent.put(name, game)
     {:reply, {:ok, %{ "game" => Game.client_view(game)}}, socket}
   end
 ```
 
- - iex -S mix phx.server
- - :observer.start()
- - Look at state for the BackupAgent process.
+Then update the JSX code:
 
- - New problem: No way to get rid of z word.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ - JSX code becomes pure UI: hangman-server.jsx
 
