@@ -2,25 +2,8 @@
 layout: default
 ---
 
-# First: Homework Questions
+# First: Project Questions
  
- - Memory Game with Server-Side State is due today.
-
-## Project 1
-
- - Project 1: Make a multi-player game.
- - You can pick what game you want to make.
-   - Turn based games should be at least as complex as Connect4.
-   - Real-time games should be at least as complex as a 2-player
-     breakout (think Pong with blocks in the middle).
- - You'll work with a partner.
- - Make sure you've talked to your partner for Project 1 - you want
-   to be on a team by tomorrow.
- - Project 1 is due in 2 weeks.
-   - If homeworks normally take 8 hours, that means your team has
-     at least 36 hours to spend on this project.
-   - For students who claim that homework takes 23 hours...
-
 ## OTP: Processes & State
 
 ```
@@ -38,7 +21,7 @@ The problem:
 
 **stack0.ex**
 
- - Manual state process.
+ - Review manual state process.
  
 **stack1.ex**
 
