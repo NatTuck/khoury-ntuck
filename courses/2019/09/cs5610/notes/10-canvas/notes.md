@@ -241,7 +241,7 @@ export default function start(node) {
 class Shapes extends React.Component {
   render() {
     return (
-      <Canvas style={{height: "800px"}}>
+      <Canvas style=\{\{height: "800px"\}\}>
         <Spinner x={-1} />
         <Spinner x={+1} />
       </Canvas>

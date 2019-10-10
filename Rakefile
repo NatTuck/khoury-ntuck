@@ -9,8 +9,8 @@ task :sync do
   flags = "-vrlxzich --safe-links --stats --del"
   #flags = "-iacz"
 
-  system("rsync #{flags}  --exclude='/courses/2017' --exclude='/courses/2016' --exclude='/courses/2015' _site/ ntuck@login-faculty.ccs.neu.edu:~/www")
-  system("ssh ntuck@login-faculty.ccs.neu.edu ./fix-perms.sh")
+  system("rsync #{flags}  --exclude='/courses/2017' --exclude='/courses/2016' --exclude='/courses/2015' _site/ ntuck@login.ccs.neu.edu:~/www")
+  system("ssh ntuck@login.ccs.neu.edu ./fix-perms.sh")
 end
 
 task :ship do
