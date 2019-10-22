@@ -10,6 +10,37 @@ layout: default
 
  - Show example.
 
+## (New) Assignment Strategy
+
+Grading on most assignments in this class follow a consistent structure:
+
+ - Half the points are automated tests.
+   - You gain points for passing tests.
+   - If you pass half the tests, you get half the points.
+ - The other half is manual grading.
+   - You lose points for mistakes
+   - On the shell, you lose points for not attepting features
+
+It's very difficult to predict in advance how long it will take to complete an
+assignment. To minimize the potential points lost due to not finishing on time,
+the best strategy is to submit early and often, and to work one automated test
+at a time.
+
+ - Submit the starter code. It might pass tests.
+ - Implement enough logic to pass the first test. Submit that.
+ - Repeat for each test, or each couple of tests.
+ 
+It can be *faster* to start with a simple design and then rewrite to handle more
+complex cases than worrying about the best design up front and getting stuck
+thinking about design. For example, it may be worth writing a non-recursive
+evaluation function that doesn't handle deep nesting even though that can't
+possibly pass some of the later tests. This strategy allows you to get
+everything else working.
+
+And finally, my #1 recommendation for writing software: Never write more than 20
+lines of code without running your program and testing that your existing code
+works - even if your program just prints out some intermediate value.
+
 ## Shell Evaluation Plan
 
  - Base case: "command arg1 arg2"
