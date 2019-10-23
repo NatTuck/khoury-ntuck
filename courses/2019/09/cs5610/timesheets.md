@@ -1,3 +1,6 @@
+---
+layout: default
+---
 
 # Timesheets App: Requirements
 
@@ -110,12 +113,12 @@ A user is either a Worker or a Manager, but not both.
 
 Users
 
-| Name           | Email          | Manager? |
-|----------------|----------------|----------|
-| Alice Anderson | alice@acme.com | t        |
-| Bob Anderson   | bob@acme.com   | t        |
-| Carol Anderson | carol@acme.com | f        |
-| Dave Anderson  | dave@acme.com  | f        |
+| Name           | Email          | Manager? | Password     |
+|----------------|----------------|----------|--------------|
+| Alice Anderson | alice@acme.com | t        | password1234 |
+| Bob Anderson   | bob@acme.com   | t        | password1234 |
+| Carol Anderson | carol@acme.com | f        | password1234 |
+| Dave Anderson  | dave@acme.com  | f        | password1234 |
 
 Jobs
 
@@ -127,6 +130,4 @@ Jobs
 
 (1) Should support at least three paragraphs of 
 [Lorem Ipsem](https://www.lipsum.com/).
-
-
 
