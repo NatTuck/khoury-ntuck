@@ -13,7 +13,7 @@ We're going to look at application performance from three directions:
  - User Experience: Slow websites are awful.
  - Hosting Cost: Once your application is hardware-constrained, cost optimally
    scales linearly. If you want to have twice as much CPU or RAM, you pay twice
-   as much money.
+   as much money. Paying less money is usually preferable.
  - Scaling: Once you get beyond what one server can do, you want to 
    scale linearly by adding more servers. This takes effort.
 
@@ -77,8 +77,9 @@ Alternate tools:
    - This sounds annoying, but would be worthwhile if performance
      mattered more.
 
-Even with those changes, it looks like we're not going to reliably get 100ms on first page load with
-nothing cached. But we still want to keep it under a few seconds.
+Even with those changes, it looks like we're not going to reliably get 100ms on
+first page load with nothing cached. But we still want to keep it under a few
+seconds.
 
 Following the standard structure for a modern application using an up-front
 JavaScript bundle, our first page load is going to be dominated by downloading
@@ -98,13 +99,41 @@ considerations matter more.
  - Phoenix is pretty fast - usually bottlnecked by the database - but it's still
    possible to write slow code.
  - You can see page generation times in your log output.
+ 
+We still have the same specific targets:
+
+ * We want a response to user actions within 100ms.
+ * If we can't hit 100ms, we at least want to hit 500ms.
+ * If it's going to take longer than that, we probably want to
+   show a progress indicator.
+ * First page load can probably get away with taking as much as three seconds,
+   but even then we'd prefer to show a progress indicator within 500ms.
 
 Let's look at a slow example:
 
  - Pull up the production Inkfish logs.
  - Load the grading page for my HW03.
- - Most page loads take under 10ms, but this one takes 300+ ms.
+ - Most page loads take under 10ms of server time, but this one takes 300+ ms.
  - Why? Reading several dozen files from disk.
+ - If this gets any slower, I'll want to make the file loading asynchronous
+   and add a loading bar.
+
+### How to optimize programs
+
+Premature optimization causes problems. Try to write your programs in the
+simplest way that works and isn't obviously bad. Only move to more complicated
+solutions for performance when it's obviously nessisary.
+
+ - When you're writing the program, try not to do anything that's obviously
+   going to be really slow / waste resources. Pick reasonable algorithms.
+ - Then wait for it to actually use more resources (e.g. time, RAM, disk space,
+   network bandwidth) than you want.
+ - Once you know it's inefficient, measure to find out *what* is inefficient.
+ - If your code is slow, *profile* it to find out which part of the
+   code is actually slow.
+ - Once you know the problem, try to solve it by optimizing that component.
+ - Finally, measure to make sure your optimization actually improves what
+   you were trying to fix.
 
 ### CDNs
 
@@ -138,7 +167,63 @@ files at no charge. This is frequently the primary method documented for using
 those libraries, since it allows the communities to avoid technical support
 issues from people having trouble with their hosting setup.
 
+CDN providers will also provide proxy service, where you don't need to
+explicitly seperate out your dynamic and static content. They'll figure out
+what's static automatically (if your app is sending proper headers) and cache
+it.
 
+If a CDN is already proxying your site, it can also provide protection against
+bandwidth-based denial of service attacks, including DDOS.
+
+### Denial of Service
+
+(didn't get to this section last time)
+
+There are different levels of bad when it comes to security holes:
+
+ - RCE flaws allow attackers run arbitrary code on our servers.
+ - Some security holes let attackers modify private data.
+ - Others let attackers access private data.
+ - But simply preventing users from accessing our application will cause us
+   trouble too.
+
+Attacks that prevent our application from working are called Denial of Service
+attacks.
+
+It's difficult to defend against these attacks in general. Attackers with a lot
+of bandwidth (or a botnet) can simply send us so much traffic that it saturates
+our network connection. There are ways to avoid this, but they are network
+management techniques rather than stuff we do with our application.
+
+If you need to worry about traffic based DOS attacks such as classic DDOS,
+you'll want to get a DDOS protection service from some network provider (such as
+a CDN).
+
+But flaws in our application can make this sort of attack much easier.
+
+For example, if every request to a certain path causes us to emit 100k of text
+to a log file and we never clean up the log file, our server will eventually run
+out of disk space. If an attacker knows about this issue, they can send a lot of
+requests and make it happen in a couple hours.
+
+If we tune our password hashing algorithm to take 5 seconds of CPU time to
+verify a password, an attacker can simply send us one login attempt per second
+per CPU and we'll have a really hard time doing anything but rejecting bad
+passwords.
+
+There are three basic steps to take to defend against these kind of attacks:
+
+ - First, we should avoid doing a lot of work or using up a lot of resources for
+   simple requests. This ends up being the same as performance tuning, just we
+   need to worry about it sooner when considering DOS attacks.
+ - Second, we should make sure we clean up after ourselves. Rotating log files
+   and limiting user file uploads / cleaning up old files is nesissary for
+   reliability anyway, but DOS attacks mean we shouldn't delay these
+   considerations.
+ - Finally, we need to explicitly build our applications to stop these attacks.
+   We should detect excess requests and simply block potential attackers. For
+   example, we should only allow K login requests per source IP per hour and not
+   even try to validate requests beyond the limit.
 
 
 ## Performance: Hosting Costs
@@ -184,7 +269,7 @@ This is an interesting tradeoff.
  - Once you have more than 10 servers, spending a developer-month on a 10%
    optimization is a good deal.
 
-This produces an interesting outcome when it comes to tool choices. Startup
+This produces a predictable outcome when it comes to tool choices. Startup
 companies tend to focus on tools that allow rapid application development at the
 cost of performance - Ruby on Rails is my favorite example here. This makes
 sense - performance only matters when you run out of it and computers are pretty
@@ -316,7 +401,72 @@ So they could probably run Stack Overflow fine on 6 servers:
  - One Redis + Tags server.
  - One MSSQL DB server.
 
-Why Microsoft? Jeff Atwood likes Microsoft, so they use it.
+Why Microsoft? Jeff Atwood likes Microsoft, so they use it. This could equally
+have been Java + Postgres, node.js + MySQL, or the stack we've been using. Ruby,
+Python, or PHP might require twice the web servers - but maybe not because this
+setup is probably I/O limited rather than CPU/RAM limited.
+
+If this were a custom C++ or Rust (maybe Go, OCaml, or Haskell) app they could
+probabably host the whole thing on one server. They don't because buying and
+hosting a couple racks of servers isn't a problem.
+
+## Multi-Homing
+
+StackOverflow's basic server archetecture fits in a single rack in a datacenter
+in New Jersey, but they have two backup racks: One right next to the first, and
+a second one in Colorado.
+
+The primary reason for this sort of replication is reliability. 
+
+ * If someone trips over the power cord to rack 1, the service is still up. It
+   fails over to rack 2.
+ * If a meteor hits the datacenter in New Jersey, the service is still up. It
+   fails over to Colorado.
+ * For StackOverflow, that's probably good enough. They don't need to stay
+   online in the face of two meteors - although they probably also have offsite
+   backups to a third location so even with two meteors they can come back
+   online as soon as they buy more servers.
+
+But for bigger or more performance critical applications, multi-homing can also
+be used for performance.
+
+ * ping stanford.edu
+ * ping google.com
+
+The google.com server we're hitting isn't in California - it's in New York - but
+if we were at Stanford it would be.
+
+For applications like Google Search and Amazon.com, it's worth having local
+replicas for performance. This isn't just local caching, they need to be able to
+service complete requests from multiple data centers.
+
+This produces a problem: they can no longer have a single authorative version of
+their application state. Straightforward use of SQL databases no longer works.
+Here's a simple example to illustrate the problem:
+
+ - You're logged in to Amazon here in Boston.
+ - You gave a friend your Amazon password, and they're logged in from Sydney,
+   Australia.
+ - You submit the form to set a default shipping address.
+ - Within 50ms, your friend does the same.
+ - Amazon's servers are fast and distributed to be faster. We'll say the
+   servers are also in Boston and Sydney.
+ - You each get a response ("success") within 50ms of submitting the form.
+ - Network latency from Sydney to Boston is ~200ms.
+ - What's your default shipping address now?
+
+We'll talk about this problem and how it can be handled more next week, but for
+now I'll just say it's a hard problem with no perfect answer.
+
+Solving the problem is hard, but there are some good ways to avoid it:
+
+ * Plan A: Don't do replicas for performance.
+   - Your app probably isn't acutally used globally, so put the servers
+     near the users.
+ * Plan B: Have your replicas be independent.
+   - Game servers frequently do this. If someone from the US wants to play with
+     someone from Australia, they need to pick the US server or the Austrlia
+     server and one of them is going to get a ton of lag.
 
 ## Links
 
