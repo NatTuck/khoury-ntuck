@@ -44,6 +44,7 @@ First, let's clone the Inkfish repository:
 
 ```
 $ git clone https://github.com/NatTuck/inkfish
+$ git checkout integration-tests
 ```
 
 Then let's run the tests:
@@ -329,6 +330,187 @@ Looking through the test code, there's a bunch going on:
    integration test - we navigate through the site like a user until we get to
    the point where we've demonstrated that the workflow seems to work.
 
+## Testing JavaScript code
+
+For this section:
+
+ * App is lens: https://github.com/NatTuck/lens
+ * Branch: spa5-jest-tests
+
+With selenium popping up Firefox instances we can test all of our code,
+including our JavaScript. But that's expensive both in effort and test runtime,
+so we'd like to be able to test our JS code directly.
+
+That means pulling in a JavaScript testing library.
+
+I'm going to show examples using Jest, which seems to be reasonably popular.
+
+Steps to get testing set up:
+
+ - Install Jest and whatever testing libraries (with npm --save-dev).
+ - Create a test command in our package.json (show package.json).
+
+Then we can run our JS tests with:
+
+```
+(from our assets directory)
+$ npm test
+```
+
+We've written a lot of our app in a functional style, which makes unit tests for
+those parts of our app pretty easy. Our tests can just call functions and verify
+that they return reasonable results.
+
+This applies to:
+
+ * Stateless React components.
+ * Redux reducers.
+ * Pure helper functions.
+
+### Example: Testing a React Component
+
+Take a look at:
+
+ * .../js/photos/card.jsx
+ * .../js/photos/card.test.jsx
+
+For a simple test, we can check:
+
+ * Does this function run without errors?
+ * Is the description for a photo we pass in really included in the rendered
+   output?
+ * This case is covered in 'photo card shows desc'
+
+For testing react components specifically, the Jest devs made an interesting
+observation: In many cases we don't want to hardcode result we're testing for.
+
+ * Components change over time
+ * What they're rendering naturally changes too.
+ * Testing for a specific output just means needing to change things in two
+   places.
+ * It's useful to simply catch the case where the output changes when we didn't
+   expect it to.
+   
+To handle this, Jest has "snapshot tests". You simply render a component and
+then test that it matches a snapshot. On the first, run, it'll generate output
+and you can double check that the output make sense. Subsequent runs will fail
+if they produce different output. If the different output was intended, you can
+just regenerate the snapshot to pin the new output.
+
+Using a snapshot is shown in 'render photo card snapshot', and the snapshot
+itself is stored in .../js/photos/\_\_snapshots\_\_/card.test.jsx.snap
+
+ * Run the test
+ * Change the test to render a different desc
+ * Run the test again
+ * We can fix this either by deleting the old snapshot or running:
+ 
+```
+$ npm test -- --updateSnapshot
+```
+
+### Testing the Redux Store
+
+There are a couple approaches to testing the store:
+
+ * Unit test the reducers individually.
+ * Make a store and test dispatching on it.
+
+Testing the reducers indivdually is simpler and can be a good idea, but it's
+also pretty easy to test the whole reducer chain at once.
+
+We just need to:
+
+ * Instantiate a store
+ * Dispatch some events
+ * Check the resulting states
+
+Let's take a look at .../js/store.test.js
+
+ * We create a new store to test with for this one test.
+ * We check its initial state.
+ * We add a photo.
+ * We check that we have one photo.
+
+There's one complication here. We cheated a bit in building the store, and so
+the reducer isn't a pure function: it's initialized by reading from
+localStorage. We're not in a browser, so there's no localStorage object.
+
+We can handle these issues of missing global state and even side effects using a
+technique called mock objects: we create our own localStorage object that always
+does what we expect.
+
+In this case we pulled in a library called 'jest-localstorage-mock' that does it
+for us, adding a fake localStorage object to the global state.
+
+One thing to keep in mind is that if our test *changes* the mocked localStorage we
+need to clean it up so that other tests looking at it don't get confused later.
+
+### Handling Side Effects with Mocks
+
+This idea of mock objects can be extended further to test all kinds of things
+that normally would have side effects.
+
+For example, we could test our code that creates or downloads Photos by mocking
+the "fetch" function. We're not going to do that now, but we can go pretty far
+with this strategy.
+
+### Testing JavaScript: Summary
+
+Overall we want to use the same basic strategy for testing JS in a as we used for
+testing Elixir:
+
+ * Write unit tests for small pieces.
+ * Write whole-page tests for testing bigger features.
+ * Make sure we test all of our user actions.
+ * Use Selenium to test Browser <=> Server integration on full workflows.
+
+## Continous Integration with Travis-CI
+
+Tests are great, but they only work if people run them.
+
+As I mentioned before, one of the key benefits to tests is to make sure that
+many developers working together don't break each other's code.
+
+One way to enforce this is to require that all proposed changes pass the tests
+before they're accepted. This can be accomplished as a simple workflow rule, but
+it's made simpler if you can have the tests run automatically for git pull
+requests. Then you can follow the standard process for making any change to a
+git app:
+
+ * First, make a branch for the new change.
+ * Make your changes in the branch.
+ * Submit a pull request for the change.
+ * Have someone else merge your pull request, optimally doing some code review
+   in the process.
+ * If you run the tests automatically, they can not pull changes that break
+   the tests.
+
+For apps hosted on Github, a really easy tool for this is Travis-CI. They're a
+commercial service, but they're free for open source projects.
+
+ - Show the integration-tests pull request to inkfish.
+ - Clearly I shouldn't merge this pull request yet.
+
+Show the .travis.yml file for the *master* branch on Inkfish.
+
+ * Travis runs your tests in a VM.
+ * We need to select what VM: In this case it runs on Ubuntu 18.04
+ * We need to specify what language and runtime version.
+ * Need to install some extra deps.
+ * Set up the test environment (e.g. db, here we've got an LDAP server)
+ * Travis knows that the command to test an Elixir app is "mix test", but
+   we could change that if we wanted.
+ * There's a couple different ways to run both Elixir and JS tests.
+ * Running selenium requires some extra steps. I haven't fixed that yet, which
+   is why the PR is broken.
+
+There are some alternatives to Travis:
+
+ * Gitlab has CI built in.
+ * A common self-hosted CI solution is Jenkins, but it requires more complicated
+   config.
+ * ... lots of others
 
 
 ## Resources
@@ -337,6 +519,9 @@ Looking through the test code, there's a bunch going on:
  - https://github.com/HashNuke/hound
  - https://github.com/boydm/phoenix_integration
  - https://jestjs.io/
+ - https://github.com/testing-library/react-testing-library
+ - https://reactjs.org/docs/test-renderer.html
+ - https://travis-ci.com/
 
 
 

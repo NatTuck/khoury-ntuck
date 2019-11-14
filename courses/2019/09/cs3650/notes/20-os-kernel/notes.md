@@ -4,6 +4,7 @@ layout: default
 
  - Questions on the Challenge?
  
+ 
 ## Start with Christo's slides
 
 [Arch and Kernels Slides](http://www.ccs.neu.edu/home/ntuck/courses/2017/09/cs3650/notes/17-kernel-boot/3_Arch_and_Kernels.pptx)
