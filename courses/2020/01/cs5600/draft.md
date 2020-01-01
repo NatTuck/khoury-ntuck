@@ -2,55 +2,62 @@
 layout: default
 ---
 
-# CS 3650 - Computer Systems
+# CS 5600 - Computer Systems
 
 Spring 2020
 
-Introduces the basic design of computing systems, computer operating systems,
-and assembly language using a RISC architecture. Describes caches and virtual
-memory. Covers the interface between assembly language and high-level
-languages, including call frames and pointers. Covers the use of system calls
-and systems programming to show the interaction with the operating system.
-Covers the basic structures of an operating system, including application
-interfaces, processes, threads, synchronization, interprocess communication,
-deadlock, memory management, file systems, and input/output control.
+The course catalog says:
+
+Studies the structure, components, design, implementation, and internal
+operation of computer systems, focusing mainly on the operating system level.
+Covers current operating system components and construction techniques system
+calls, I/O, memory management, and file system structures. Discusses issues
+arising from concurrency and distribution, such as scheduling of concurrent
+processes, interprocess communication and synchronization, resource sharing and
+allocation, and deadlock management and resolution. Includes examples from real
+operating systems. Exposes students to the system concepts through programming
+exercises. Requires admission to MS program or completion of all transition
+courses.
+
+This course will explore operating system implementation through programming
+assignments. This is a programming heavy course; students are expected to be
+proficient at programming.
 
 ## Essential Resources
 
  - [Inkfish](https://inkfish.ccs.neu.edu) - View and submit homework assignments.
- - [Piazza](piazza.com/northeastern/spring2020/cs3650) - Class discussion & announcements.
- - [Linux / Unix Help](http://www.ccs.neu.edu/course/cs3650/parent/help/)
+ - [Piazza](piazza.com/northeastern/spring2020/cs5600) - Class discussion & announcements.
  - [scratch](https://github.com/NatTuck/scratch-2020-01) - A git repo of stuff
    that may have happened in lecture.
  - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in
    class.
 
-## AMD64 ASM resources
+## References
 
  - [x86-64 SysV API](https://github.com/hjl-tools/x86-psABI/wiki/X86-psABI)
  - [AMD Programmer's Manual, Volume 3](https://support.amd.com/TechDocs/24594.pdf)
  - [AMD64 Linux
    Syscalls](https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/)
-   
+ - [xv6 source code](https://github.com/NatTuck/xv6-public)
+
 ## Sections
 
 {: .table .table-striped }
-| Section | Location | Time                |
-|---------|----------|---------------------|
-|      02 | SH 105   | 1:35pm-3:15pm Tu/Fr |
-|      03 | INV 019  | 3:25pm-5:05pm Tu/Fr |
+| Section | Location | Time               |
+|---------|----------|--------------------|
+|      01 | CH 103   | 2:50pm-4:30 Mo/We  |
 
-[Prof Alden Jackson](http://www.ccs.neu.edu/home/awjacks/) is also offering a
-section of the course. His section will vary somewhat in assignments and topics.
+This page is about the section offered in-person on the Boston campus. There are
+other sections of the course offered at other campuses and/or online.
 
 ## Staff & Office Hours
 
 {: .table .table-striped }
-| Name           | Location | Hours                    | Email                           |
-|----------------|----------|--------------------------|---------------------------------|
-| Nat Tuck       | NI 132 E | We 1:30-2:30pm; Fr 5:30-6:30pm | ntuck ⚓ ccs.neu.edu             |
-|----------------|----------|--------------------------|---------------------------------|
-| .... TBA       | ...      | ...                      | ...                             |
+| Name           | Location | Hours                          | Email                  |
+|----------------|----------|--------------------------------|------------------------|
+| Nat Tuck       | NI 132 E | We 1:30-2:30pm; Fr 5:30-6:30pm | ntuck ⚓ ccs.neu.edu    |
+|----------------|----------|--------------------------------|------------------------|
+| .... TBA       | ...      | ...                            | ...                    |
 
 
  * Office hours end April 14
@@ -60,26 +67,47 @@ section of the course. His section will vary somewhat in assignments and topics.
 
 This is an initial schedule, subject to revision as the semester progresses.
 
-Assignments will frequently be due at 11:59pm on Monday.
+Assignments will frequently be due at 11:59pm on Thursday.
 
 {: .table .table-striped }
-|Week| Starts   | Topics                                                 | Work Due                         |
-|----| -------- | --------                                               | ---------+                       |
-|  1 | Jan 6    | Intro: Systems; Intro: Assembly                        | -                                |
-|  2 | Jan 13   | ASM: "Design Recipe"; Large ASM Example;               | HW01: Linux Setup & Hello Worlds |
-|  3 | Jan 20   | ASM: Syscalls, I/O, the heap; Processes & Memory       | HW02: ASM, Pointers, Funs        |
-|  4 | Jan 27   | C: Arrays & Pointers; C: Data Structures;              | HW03: ASM Sort                   |
-|  5 | Feb 3    | A Simple Tokenizer; Syscalls: fork, exec, waitpid;     | HW04: C Data Structures          |
-|  6 | Feb 10   | Building a Shell & pipe; read, write, proc table, vmem;| HW05: Shell Tokenizer            |
-|  7 | Feb 17   | shared mem & data races; semaphore locks & deadlock;   | CH1: Unix Shell                  |
-|  8 | Feb 24   | threads and mutexes; cond vars and atomics             | HW06: Parallel Sort (Processes)  |
-|  - | Mar 2    | Spring Break                                           | -                                |
-|  9 | Mar 9    | malloc: free lists;  malloc: optimizations & threads;  | HW07: Parallel Sort (Threads)    |
-| 10 | Mar 4    | Garbage Collection; OS Kernels                         | HW08: Simple Memory Allocator  |
-| 11 | Mar 11   | Looking at xv6; Disk Hardware                          | CH2: Advanced Memory Allocator   |
-| 12 | Mar 18   | File Systems: FAT; File Systems: ext                   | HW09: Examining xv6              |
-| 13 | Apr 25   | The FUSE API;  Concurrency solutions                   | HW10: Simple FS                  |
-| 14 | Apr 2    | Wrap Up; Last class Tuesday                            | CH3: Advanced FS                 |
+|Week| Starts   | Topics                          | Possible Due Dates               |
+|----| -------- | --------                        | ---------+                       |
+|  1 | Jan 6    | Intro; ASM                      | HW01: Linux Setup & Hello Worlds |
+|  2 | Jan 13   | ASM Syscalls; Kernel            | HW02: Assembly Practice          |
+|  3 | Jan 20   | [MLK Day] Syscalls: Kernel      | -                                |
+|  4 | Jan 27   | Processes                       | HW03: Syscall                    |
+|  5 | Feb 3    | Virtual memory; paging          | HW04: Processes                  |
+|  6 | Feb 10   | kernel paging                   | HW05: mmap                       |
+|  7 | Feb 17   | [Pres Day] allocators           | HW06: mprotect                   |
+|  8 | Feb 24   | allocators; garbage collection  | HW07: allocator                  |
+|  - | Mar 2    | Spring Break                    | -                                |
+|  9 | Mar 9    | threads                         | HW08: garbage collector          |
+| 10 | Mar 4    | deadlocks                       | -                                |
+| 11 | Mar 11   | userspace threads               | HW09: threads 1                  |
+| 12 | Mar 18   | file systems                    | -                                |
+| 13 | Apr 25   | virtual machines                | HW10: threads 2                  |
+| 14 | Apr 2    | Wrap Up; Last class Monday      | -                                |
+
+
+## Assignments
+
+ 1. Linux setup - Create a VM, write hello worlds in C, amd64 asm, and i386 asm
+ 2. Assembly practice (amd64 and i386) - Simple Syscalls
+ 3. Syscalls: Kernel
+ 4. Processes, Threads - Usage
+ 5. Virtual Memory 1 - Some use of mmap
+ 6. Virtual Memory 2 - Implement mprotect
+ 7. Threaded Allocator
+ 8. Garbage Collector
+ 9. Kernel Threads
+10. Userspace Hybrid Threads
+
+FIXME: Extra ideas:
+
+ - Building locks
+ - Locks with deadlock detection
+ - SIMD instructions
+ - Interprocess communication (kernel message queue? implement pipes?)
 
 ## Textbook
 
@@ -87,34 +115,13 @@ The textbook for this course is online:
 
  - [Operating Systems, Three Easy Pieces](http://ostep.org)
 
-Recommended Readings by Week:
-
- 1. [Linux Command Line Tutorial](http://linuxcommand.org/)
- 2. OSTEP 4
- 3. OSTEP 13
- 4. OSTEP 13
- 5. OSTEP 14
- 6. OSTEP 5
- 7. OSTEP 15, 16, 18, 31
- 8. OSTEP 26, 27
- 9. OSTEP 28, 30
-10. OSTEP 17
-11. OSTEP 37, 44
-12. OSTEP 39, 40, 41
-13. OSTEP 43
-14. OSTEP 46, 32, 33
-
-We will also be referring to:
-
- - [The Xv6 Unix Source code](https://pdos.csail.mit.edu/6.828/2017/xv6.html)
-
 ## Grading
 
- * Homework:   70% (about 7% each)
- * Challenges: 27% (about 9% each)
- * Misc:        3% (participation, grade challenges, rounding errors, etc)
+ * Homework:         95%
+ * Participation:    4%
+ * Grade Challenges: 1%
  
-Percentages are approximate.
+FIXME: Participation encourage attendence?
 
 ### Letter Grades
 
@@ -126,15 +133,10 @@ The number to letter mapping will be as follows:
 There may be a curve or scale applied to any assignment or the final grades, in
 either direction.
 
-### Homework and Challenges
+### Homework
 
-There's a homework or challenge assignment due nearly every week. Assignments in
-this class is difficult and you are *expected* to get stuck. Start early so you
-have time to get unstuck.
-
-Challenges are just like homework, except they're harder, worth more points, and
-they are graded more harshly. You'll want to start early and plan to spend a
-*lot* of time on them.
+There's a homework due most weeks. Assignments in this class is difficult and
+you are *expected* to get stuck. Start early so you have time to get unstuck.
 
 In order to learn the material in this class you must submit the assignments. If
 at any point you have three unexcused zero grades for assignments that have been
@@ -155,6 +157,14 @@ comes up and the TAs start grading.
 
 If you register for the course late, you will have three days to complete each
 assignment until you are caught up with the rest of the class.
+
+### Participation
+
+Participation on Piazza gives you points if you ask good questions, give good
+answers, or post interesting notes related to the course topics.
+
+Participation in in class activities earns points for being there and
+participating.
 
 ## Policies
 
@@ -233,13 +243,8 @@ applies to and where it came from.
 
  * You may not post solutions to Homework assignments on the public internet.
    This will be treated as "Providing Solution Code".
- * Solutions to Challenge assignments in this class can be interesting enough
-   that there's a benefit to posting them publicly (e.g. on Github). You *may*
-   post solutions to the Challenge assignments on the public internet after
-   your solution has been graded.
- * Some Challenge assignments are also solutions to earlier Homework
-   assignments. Posting solutions to those challenges is OK as long as your code
-   implements a significant portion of the challenge functionality.
+ * There may be exceptions to this, which will be listed in the assignemnt
+   description.
 
 **Penalty for Plagarism or Providing Solution Code**
 
