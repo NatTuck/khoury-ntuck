@@ -151,7 +151,7 @@ participating.
 
 ### Contesting Grades
 
-Homework and project grades will be posted on Bottlenose. If you think your work
+Homework and project grades will be posted on Inkfish. If you think your work
 was graded incorrectly, you can challenge your grade through the following
 process:
 
@@ -173,7 +173,7 @@ Here's the formal challenge procedure:
  - The new grade is applied to your assignment.
  - If your new score is higher than the old score, you get your token back.
  - Scores must be contested within two weeks of the grade being posted to
-   Bottlenose, and no later than Wednesday of finals week.
+   Inkfish, and no later than Wednesday of finals week.
  - Leftover tokens give you a small bonus to your final grade.
 
 ### Special Accomodations
