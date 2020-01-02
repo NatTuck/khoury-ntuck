@@ -82,11 +82,11 @@ Assignments will frequently be due at 11:59pm on Thursday.
 |  8 | Feb 24   | allocators; garbage collection  | HW07: allocator                  |
 |  - | Mar 2    | Spring Break                    | -                                |
 |  9 | Mar 9    | threads                         | HW08: garbage collector          |
-| 10 | Mar 4    | deadlocks                       | -                                |
-| 11 | Mar 11   | userspace threads               | HW09: threads 1                  |
-| 12 | Mar 18   | file systems                    | -                                |
-| 13 | Apr 25   | virtual machines                | HW10: threads 2                  |
-| 14 | Apr 2    | Wrap Up; Last class Monday      | -                                |
+| 10 | Mar 16   | deadlocks                       | -                                |
+| 11 | Mar 23   | userspace threads               | HW09: threads 1                  |
+| 12 | Mar 30   | file systems                    | -                                |
+| 13 | Apr 6    | virtual machines                | HW10: threads 2                  |
+| 14 | Apr 13   | Wrap Up; Last Class Wednesday   | -                                |
 
 
 ## Assignments

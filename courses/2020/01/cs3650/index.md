@@ -40,7 +40,7 @@ deadlock, memory management, file systems, and input/output control.
 |      02 | SH 105   | 1:35pm-3:15pm Tu/Fr |
 |      03 | INV 019  | 3:25pm-5:05pm Tu/Fr |
 
-[Prof Alden Jackson](http://www.ccs.neu.edu/home/awjacks/) is also offering a
+[Prof Alden Jackson](https://course.ccs.neu.edu/cs3650sp20/) is also offering a
 section of the course. His section will vary somewhat in assignments and topics.
 
 ## Staff & Office Hours
@@ -60,7 +60,7 @@ section of the course. His section will vary somewhat in assignments and topics.
 
 This is an initial schedule, subject to revision as the semester progresses.
 
-Assignments will frequently be due at 11:59pm on Monday.
+Assignments will frequently be due at 11:59pm on Tuesday.
 
 {: .table .table-striped }
 |Week| Starts   | Topics                                                 | Work Due                         |
@@ -75,11 +75,11 @@ Assignments will frequently be due at 11:59pm on Monday.
 |  8 | Feb 24   | threads and mutexes; cond vars and atomics             | HW06: Parallel Sort (Processes)  |
 |  - | Mar 2    | Spring Break                                           | -                                |
 |  9 | Mar 9    | malloc: free lists;  malloc: optimizations & threads;  | HW07: Parallel Sort (Threads)    |
-| 10 | Mar 4    | Garbage Collection; OS Kernels                         | HW08: Simple Memory Allocator  |
-| 11 | Mar 11   | Looking at xv6; Disk Hardware                          | CH2: Advanced Memory Allocator   |
-| 12 | Mar 18   | File Systems: FAT; File Systems: ext                   | HW09: Examining xv6              |
-| 13 | Apr 25   | The FUSE API;  Concurrency solutions                   | HW10: Simple FS                  |
-| 14 | Apr 2    | Wrap Up; Last class Tuesday                            | CH3: Advanced FS                 |
+| 10 | Mar 16   | Garbage Collection; OS Kernels                         | HW08: Simple Memory Allocator  |
+| 11 | Mar 23   | Looking at xv6; Disk Hardware                          | CH2: Advanced Memory Allocator   |
+| 12 | Mar 30   | File Systems: FAT; File Systems: ext                   | HW09: Examining xv6              |
+| 13 | Apr 6    | The FUSE API;  Concurrency solutions                   | HW10: Simple FS                  |
+| 14 | Apr 13   | Wrap Up; Last class Tuesday                            | CH3: Advanced FS                 |
 
 ## Textbook
 
