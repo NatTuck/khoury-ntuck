@@ -46,14 +46,18 @@ section of the course. His section will vary somewhat in assignments and topics.
 ## Staff & Office Hours
 
 {: .table .table-striped }
-| Name           | Location | Hours                    | Email                           |
-|----------------|----------|--------------------------|---------------------------------|
-| Nat Tuck       | NI 132 E | We 1:30-2:30pm; Fr 5:30-6:30pm | ntuck ⚓ ccs.neu.edu             |
-|----------------|----------|--------------------------|---------------------------------|
-| .... TBA       | ...      | ...                      | ...                             |
+| Name            | Location | Hours                    | Email                           |
+|-----------------|----------|--------------------------|---------------------------------|
+| Nat Tuck        | NI 132 E | We 1:30-2:30pm; Fr 5:30-6:30pm | ntuck ⚓ ccs.neu.edu             |
+|-----------------|----------|--------------------------|---------------------------------|
+| Kaylin Devchand | HS 118   | Mo 6-8pm                 | devchand.k ⚓ husky.neu.edu |
+| Alec Ge         | RY 153*  | Su 10am-noon             | ge.a ⚓ husky.neu.edu |
+| Sneh Gurdasani  | SL 009*  | Mo 11am-1pm              | gurdasani.s ⚓ husky.neu.edu |
+| Madhur Jain**   | RY 154*  | Sa 10am-noon             | jain.madh ⚓ husky.neu.edu |
 
-
- * Office hours end April 14
+ * (*) Rooms not confirmed as of January 6th.
+ * (**) Madhur Jain's office hours don't start until January 18.
+ * Office hours run from January 6 to April 14.
  * Cancellations and changes may be posted to Piazza.
 
 ## Schedule
