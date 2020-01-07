@@ -57,14 +57,13 @@ other sections of the course offered at other campuses and/or online.
 |----------------|----------|--------------------------------|-------------------------|
 | Nat Tuck       | NI 132 E | We 1:30-2:30pm; Fr 5:30-6:30pm | ntuck ⚓ ccs.neu.edu     |
 |----------------|----------|--------------------------------|-------------------------|
-| Kashif Bagdadi | RY 159*  | We 5-7pm                     | bagdadi.k ⚓ husky.neu.edu |
+| Kashif Bagdadi | RY 159   | We 5-7pm                     | bagdadi.k ⚓ husky.neu.edu |
 | Harman Singh   | HS 101   | Th 3-5pm                    | singh.harm ⚓ husky.neu.edu |
 | Meesam Syed    | HS 103   | Tu 9-11am                     | meesam.s ⚓ husky.neu.edu |
 | Jaison Titus   | RY 207   | Th 9-11am                     | titus.ja ⚓ husky.neu.edu |
 
  * Office hours run from January 8 to April 14
  * Cancellations and changes may be posted to Piazza.
- * (*) RY 159 not confirmed as of Monday Jan 6.
 
 ## Course Topics
 
