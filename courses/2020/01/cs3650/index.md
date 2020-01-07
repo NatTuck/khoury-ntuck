@@ -55,7 +55,8 @@ section of the course. His section will vary somewhat in assignments and topics.
 | Sneh Gurdasani  | SL 009   | Mo 11am-1pm              | gurdasani.s ⚓ husky.neu.edu |
 | Madhur Jain**   | RY 154*  | Sa 10am-noon             | jain.madh ⚓ husky.neu.edu |
 
- * (*) Rooms not confirmed as of January 6th.
+ * (*) RY154 not available on March 14. Alternate location will be announced
+   on Piazza.
  * (**) Madhur Jain's office hours don't start until January 18.
  * Office hours run from January 6 to April 14.
  * Cancellations and changes may be posted to Piazza.
