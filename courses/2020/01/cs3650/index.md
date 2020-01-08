@@ -27,10 +27,11 @@ deadlock, memory management, file systems, and input/output control.
 
 ## AMD64 ASM resources
 
- - [x86-64 SysV API](https://github.com/hjl-tools/x86-psABI/wiki/X86-psABI)
+ - [x86-64 SysV ABI](https://github.com/hjl-tools/x86-psABI/wiki/X86-psABI)
  - [AMD Programmer's Manual, Volume 3](https://support.amd.com/TechDocs/24594.pdf)
  - [AMD64 Linux
    Syscalls](https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/)
+ - [AMD64 ASM Cheat Sheet](./amd64_asm.html)
    
 ## Sections
 
@@ -58,7 +59,7 @@ section of the course. His section will vary somewhat in assignments and topics.
  * (*) RY154 not available on March 14. Alternate location will be announced
    on Piazza.
  * (**) Madhur Jain's office hours don't start until January 18.
- * Office hours run from January 6 to April 14.
+ * Office hours run from January 8 to April 14.
  * Cancellations and changes may be posted to Piazza.
 
 ## Schedule

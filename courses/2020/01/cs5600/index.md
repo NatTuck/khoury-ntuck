@@ -34,10 +34,12 @@ proficient at programming.
 
 ## References
 
- - [x86-64 SysV API](https://github.com/hjl-tools/x86-psABI/wiki/X86-psABI)
+ - [x86-64 SysV ABI](https://github.com/hjl-tools/x86-psABI/wiki/X86-psABI)
+ - [i386 SysV ABI](https://refspecs.linuxfoundation.org/elf/abi386-4.pdf)
  - [AMD Programmer's Manual, Volume 3](https://support.amd.com/TechDocs/24594.pdf)
  - [AMD64 Linux
    Syscalls](https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/)
+ - [AMD64 ASM Cheat Sheet](./amd64_asm.html)
  - [xv6 source code](https://github.com/NatTuck/xv6-public)
 
 ## Sections
