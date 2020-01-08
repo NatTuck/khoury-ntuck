@@ -12,9 +12,6 @@ layout: default
 
 ## AMD64: ISA and ASM
 
-Last time we compiled a simple program and the assembly didn't make much sense.
-To explain what's going on, we need some history:
-
 Intel released the 8086 processor in 1978. It was based on the earlier 8008
 processor from 1972, which was based on the 4004.
 
@@ -23,7 +20,7 @@ At some point there must have been an 8 bit microprocessor.
  - It had a 8-bit data bus connecting it to memory and maybe other stuff.
    - That means a processor and RAM connected by 8 wires. (10 wires?)
    - ++++++ DRAW PICTURE ++++++
- - How much RAM can we address with 8 bits?
+ - With an 8 bit memory address, you can have up to 256 bytes of RAM.
  - In addtion to RAM, this system gives us another place to put stuff called
    registers. For an 8-bit processor, each register is 8 bits.
    * CPU instructions can operate directly on registers without needing to
@@ -65,54 +62,6 @@ the 8086. This was the first "Intel x86" processor:
    - Each register got a new name with an "e" at the front to refer to
      the full 32 bit "extended" register:
      - eax, ecx, edx, ...
-
-```
-# double.s
-# compile with: gcc -m32 -o dub double.s
-  .global main
-
-  .text
-# long double(long x)
-#   - the argument comes in on the stack at 8(%ebp)
-#   - there's some other stuff below it we'll talk about later
-#   - we return the result by putting it in %eax
-dub:
-  enter $0, $0
-
-  # long y = x;
-  mov 8(%ebp), %eax
-
-  # y = y + y;
-  add %eax, %eax
-
-  # return y;
-  leave
-  ret
-
-main:
-  enter $0, $0
-
-  # long x = 5;
-  mov $5, %edi
-
-  # y = double(x)
-  push %edi
-  call dub
-  # result in %eax
-
-  # printf("%ld\n", y)
-  # arguments are pushed to the stack in reverse order
-  mov $long_fmt, %edi
-  push %eax
-  push %edi
-  call printf
-
-  leave
-  ret
-
-  .data
-long_fmt: .string "%ld\n"
-```
 
 The AMD Athlon 64 was a 64-bit microprocessor, backwards compatible with the
 Intel 8086 and i386. This was the first "AMD64" (x86\_64, x64, Intel 64; not
@@ -221,59 +170,17 @@ Here are the main differences:
 
 First, Scan through the AMD64 instruction list on course site.
 
-ASM Example: cond_br
+(it's in .../amd64_asm.html)
 
-```
-.global main
-.text
+Note specific groups of instructions:
 
-main:
-  enter $0, $0
+ * Arithmetic
+ * Flow control
+ * Stack
+ * Memory access
+ * Function calls
 
-  # print prompt
-  mov $prompt, %rdi
-  call puts
-
-  mov $long_fmt, %rdi
-  mov $num, %rsi
-  mov $0, %al
-  call scanf
-
-  # copy value at address
-  # with dollar sign, copy literal address
-  mov num, %rax
-
-  # if (%rax <= 10)
-  cmp $10, %rax
-  jle smaller_than_ten
-
-bigger_than_ten:
-  mov $bigger, %rdi
-  jmp main_done
-
-smaller_than_ten:
-  mov $smaller, %rdi
-
-main_done:
-  call puts
-
-  leave
-  ret
-
-.data
-num: .string "12345678" # 8 bytes, to fit a long
-prompt: .string "enter a number"
-long_fmt: .string "%ld"
-eol: .string "\n"
-bigger: .string "bigger than ten"
-smaller: .string "smaller than ten"
-```
-
-```
-$ gcc -no-pie -o cond_br cond_br.s
-```
-
-## idiv example
+Intel assembly has some weirdness.
 
 ```
 .global main
@@ -292,7 +199,10 @@ main:
   # mov %rdx, %rdi
   # cqo 
   # idiv  %rdi
-  
+ 
+  # Calling convention:
+  #  - Args go in %rdi, %rsi, %rdx, ...
+  #  - For variable argument functions, we put 0 in %al
   mov $longfmt, %rdi
   mov %rax, %rsi
   mov $0, %al
@@ -304,15 +214,65 @@ main:
 longfmt: .string "%ld\n"
 ```
 
-More Examples:
+
+## Register usage conventions and the stack
+
+ * Our #1 place to put stuff is registers.
+ * They're the easiest and fastest place to store numbers.
+ * Two problems:
+   * Not everything is a number. e.g. Strings don't fit in registers.
+   * We only have one set of registers.
+ * In C (and most languages) we have local variables that are only availble
+   in a single function and don't interfere with our code in other functions.
+ * We don't have those in assembly - so we follow some conventions to let
+   us pretend that we do.
+
+Register conventions:
+
+ * Temporary registers: %rax, %rcx, %rdx, %rsi, %rdi, %r8..%r11 
+ * Any function call is assumed to overwrite temporaries.
+ * If you want to keep them through a function call, it's your resposibility
+   to "caller save" them before the function call and restore them after.
+ * Safe registers: %rbx, %r12..%r15
+ * These registers won't be overwritten if you call a function.
+ * That means if you want to use them, you need to "caller save" them at
+   the start of your function and restore them at the end.
+
+The stack:
+
+ * Aside from registers, our other place to store data is memory.
+ * For each function call there's some data we'd like to store that's
+   specific to that function call.
+ * We get a special region of memory - the stack - for storing that stuff.
+ * When the program starts up, our %rsp register points to the top of the
+   stack.
+ * The stack grows down.
+ * This is going to need some examples and pictures.
+
+## More Examples
 
  - fact (iter)
+   - Draw a memory diagram: stack, text, data
+   - Variable mapping. No register needs to surivive a function call.
+   - Enter instruction. The stack grows.
+     - %rsp starts at the top
+     - We call "enter \$0, \$0"
+     - Base pointer at top of frame, stack pointer at bottom.
+   - We don't have loops - they translate to branches with labels.
  - fact (recursive)
- - strlen
-
- - fact hits the recursion problem, talk about register conventions
+   - Stack alignment. Need to be on a 16 byte boundary when you issue "call".
+   - Type it ignoring conventions. It fails.
+ - fact 32-bit (recursive)
+   - The alignment requirement is still technically 16 bytes, but nothing
+     should break if you're not passing vector values.
+   - 32-bit safe registers: %ebx, %edi, %esi (and the stack stuff)
+   - Temporaries are: %eax, %ecx, %edx
  - Talk about the ABI: https://github.com/hjl-tools/x86-psABI/wiki/X86-psABI
+ - Talk about the 32-bit ABI: https://www.uclibc.org/docs/psABI-i386.pdf
  - Programmer Manual: https://support.amd.com/TechDocs/24594.pdf
  
+## Bonus example
 
+ - fives.S
+ - This is how we get command line args.
 
