@@ -31,7 +31,7 @@ main:
   # y = double(x)
   push %edi
   call dub
-  sub $4, %esp
+  add $4, %esp
   # result in %eax
 
   # printf("%ld\n", y)
@@ -40,7 +40,7 @@ main:
   push %eax
   push %edi
   call printf
-  sub $8, %esp
+  add $8, %esp
 
   leave
   ret
