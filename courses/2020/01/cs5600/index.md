@@ -39,6 +39,7 @@ proficient at programming.
  - [AMD Programmer's Manual, Volume 3](https://support.amd.com/TechDocs/24594.pdf)
  - [AMD64 Linux
    Syscalls](https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/)
+ - [i386 Linux Syscalls](https://syscalls.kernelgrok.com/)
  - [AMD64 ASM Cheat Sheet](./amd64_asm.html)
  - [xv6 source code](https://github.com/NatTuck/xv6-public)
 
