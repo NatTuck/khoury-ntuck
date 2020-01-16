@@ -123,7 +123,7 @@ modes that operate on data in memory or on constant values.
 | add (%rcx), %rdx           | %rdx = %rdx + (value at address in %rcx)           |
 | add $10, %rdx              | %rdx = %rdx + 10                                   |
 | addq $10, 2(%e10, %e11, 2) | (the value at %e10+2*%e11) += 10                   |
-| add -16($rsp), %rax        | %rax += the value 16 bytes below where %rsp points |
+| add -16(%rsp), %rax        | %rax += the value 16 bytes below where %rsp points |
 
 There's a special instruction, `lea`, that calcuates an address as if it were
 going to access an argument in memory but gives you the address as its output.
@@ -131,7 +131,7 @@ going to access an argument in memory but gives you the address as its output.
 {: .table .table-striped }
 | Example Instruction | Description      |
 |---------------------|------------------|
-| lea -16($rsp), %rax | %rax = %rsp - 16 |
+| lea -16(%rsp), %rax | %rax = %rsp - 16 |
 
 Instruction suffixes: Instructions can have a single letter suffix added to
 indicate hte size of the value operated on: b, w, l, q for 1, 2, 4, 8 bytes.
