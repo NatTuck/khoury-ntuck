@@ -63,7 +63,6 @@ other sections of the course offered at other campuses and/or online.
 | Kashif Bagdadi | RY 159   | We 4:50-6:50pm                 | bagdadi.k ⚓ husky.neu.edu |
 | Harman Singh   | HS 101   | Th 3-5pm                    | singh.harm ⚓ husky.neu.edu |
 | Meesam Syed    | HS 103   | Tu 9-11am                     | meesam.s ⚓ husky.neu.edu |
-| Jaison Titus   | RY 207   | Th 9-11am                     | titus.ja ⚓ husky.neu.edu |
 
  * Office hours run from January 8 to April 14
  * Cancellations and changes may be posted to Piazza.
