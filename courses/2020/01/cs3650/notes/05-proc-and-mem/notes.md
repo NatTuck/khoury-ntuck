@@ -69,3 +69,9 @@ Any memory allocated with "malloc" should be returned to the system
  - Sum-array heap
  - Assembly linked list.
 
+## Bonus Example
+
+ - prime.c
+ - The point is to explain array <=> pointer relation in C.
+ - Remember to show all four variants: arrray, pointer, swap pointer, swap array.
+
