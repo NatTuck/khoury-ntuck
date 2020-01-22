@@ -26,7 +26,7 @@ proficient at programming.
 ## Essential Resources
 
  - [Inkfish](https://inkfish.ccs.neu.edu) - View and submit homework assignments.
- - [Piazza](piazza.com/northeastern/spring2020/cs5600) - Class discussion & announcements.
+ - [Piazza](https://piazza.com/northeastern/spring2020/cs5600) - Class discussion & announcements.
  - [scratch](https://github.com/NatTuck/scratch-2020-01) - A git repo of stuff
    that may have happened in lecture.
  - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in
