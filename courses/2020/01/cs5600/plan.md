@@ -1,23 +1,28 @@
 
 # Week 5: Initial xv6 syscall
 
- - Finish threads slides
- - Start Sync & Deadlock slides
+(Feb 3)
+
+ - Slides: Threads, Sync & Deadlock
+ - Slides: Sync & Deadlock, Scheduler
 
 # Week 6: xv6 shell
 
- - Talk about shell assignment
- - Finish sync & deadlock
- - Threads example lecture
+(Feb 10)
+
+ - Finish Scheduling; Introduce mmap I/O
+ - Threads example
 
 # Week 7: Parallel Sort
 
- - Start scheduling slides
- - Start virtual memory slides
+(Feb 17)
+
+ - Start and finish virtual memory slides
 
 # Week 8: xv6 threads
 
- - Finish VM slides
+(Feb 
+
  - Start malloc slides
 
 https://github.com/remzi-arpacidusseau/ostep-projects/tree/master/concurrency-xv6-threads

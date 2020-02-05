@@ -14,7 +14,7 @@ Geneneral flow:
 
  - Read a line of text: fgets (*never* "gets")
  - Split the line into tokens.
- - Parse the tokens into an abstract syntax tree
+- Parse the tokens into an abstract syntax tree
  - Evaluate the AST
 
 Draw a diagram on the board, with an example.
