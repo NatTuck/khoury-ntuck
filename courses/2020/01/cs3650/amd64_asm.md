@@ -140,7 +140,7 @@ indicate hte size of the value operated on: b, w, l, q for 1, 2, 4, 8 bytes.
 | Example Instruction | Description                                              |
 |---------------------|----------------------------------------------------------|
 | movw $10, (%rdx)    | Move a 16-bit (2 byte, short) int to the address in %rdx |
-| movq %10, (%rdx)    | Move a 64-bit (8 byte, long) int to the address in %rdx  |
+| movq $10, (%rdx)    | Move a 64-bit (8 byte, long) int to the address in %rdx  |
 
 ## Calling a Function
 
