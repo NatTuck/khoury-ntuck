@@ -11,7 +11,7 @@
 (Feb 10)
 
  - Finish Scheduling; Introduce mmap I/O
- - Threads example
+ - Processes & Deadlock Example
 
 # Week 7: Parallel Sort
 
