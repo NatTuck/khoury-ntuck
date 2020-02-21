@@ -19,18 +19,22 @@
 
  - Start and finish virtual memory slides
 
-# Week 8: xv6 threads
+# Week 8: xv6 shared memory
 
 (Feb 24)
 
  - Start malloc slides
 
-https://github.com/remzi-arpacidusseau/ostep-projects/tree/master/concurrency-xv6-threads
-
 # Spring Break
 
-# Week 9: xv6 parallel allocator
+# Week 9: Memory allocator
+
+ - Port the xv6 allocator to Linux, with mutex
+ - Optimize the allocator for better performance
 
 # Week 10: C Garbage Collector
 
+Notes for future semesters:
+
+https://github.com/remzi-arpacidusseau/ostep-projects/tree/master/concurrency-xv6-threads
 
