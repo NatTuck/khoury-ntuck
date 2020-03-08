@@ -4,8 +4,6 @@ layout: default
 
 # CS 5600 - Computer Systems
 
-(Revised 2020/03/07; [2020/01 Version](./index-v1.md))
-
 Spring 2020
 
 The course catalog says:
@@ -69,30 +67,28 @@ other sections of the course offered at other campuses and/or online.
  * Office hours run from January 8 to April 14
  * Cancellations and changes may be posted to Piazza.
 
-## Schedule
+## Course Topics
 
-This is the projected schedule as of March 7th; it may change.
+This is an initial topic list, subject to revision as the semester progresses.
 
 Assignments will frequently be due at 11:59pm on Thursday.
 
-{: .table .table-striped }
-|Week| Starts   | Topics                          | Possible Due Dates               |
-|----| -------- | --------                        | ---------+                       |
-|  1 | Jan 6    | Intro; ASM 1                    | HW01: Linux Dev Environment      |
-|  2 | Jan 13   | ASM 2; ASM syscalls             | HW02: Simple ASM Programs        |
-|  3 | Jan 20   | [MLK Day] Kernel Intro          | -                                |
-|  4 | Jan 27   | procs; fork/dup                 | HW03: Syscalls                   |
-|  5 | Feb 3    | threads                         | HW04: xv6 syscall                |
-|  6 | Feb 10   | mmap; data races                | HW05: xv6 shell                  |
-|  7 | Feb 17   | [Pres Day] virtual memory       | HW06: parallel sort              |
-|  8 | Feb 24   | allocators                      | HW07: xv6 shared memory          |
-|  - | Mar 2    | Spring Break                    | -                                |
-|  9 | Mar 9    | garbage collection              | HW08: memory allocator           |
-| 10 | Mar 16   | concurrency; rust               | HW09: garbage collector          |
-| 11 | Mar 23   | virtual machines; disks         | HW10: rust parallel sort         |
-| 12 | Mar 30   | FAT/ext; FUSE                   | HW11: makeup                     |
-| 13 | Apr 6    | modern FS; dist pt1             | -                                |
-| 14 | Apr 13   | dist pt2; wrap-up               | HW12: file system                |
+Course Topics:
+
+ * Dev Env
+ * Assembly
+ * Making Syscalls
+ * Implementing Syscalls
+ * Processes
+ * Virtual Memory
+ * Memory Allocation
+ * Threads
+ * Interprocess Communication
+ * Deadlock Detection
+ * Concurrency vs. Parallellism
+ 
+There will be about 10 homework assignments related to to the above topics.
+Homework will be posted to Inkfish.
 
 Holidays and Breaks:
 

@@ -34,6 +34,22 @@
 
 # Week 10: C Garbage Collector
 
+ - Write a very simple GC to run the test program
+   in a limited VM space.
+
+# Week 11: 
+
+ - Rust assignment
+
+# Week 12 - 13 (due Monday):
+ 
+ - Filesystem (challenge 2 starting from fs solution)
+
+# Week 13 - 14:
+
+ - Make up Homework
+ 
+
 Notes for future semesters:
 
 https://github.com/remzi-arpacidusseau/ostep-projects/tree/master/concurrency-xv6-threads
