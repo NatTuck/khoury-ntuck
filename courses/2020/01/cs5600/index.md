@@ -4,7 +4,7 @@ layout: default
 
 # CS 5600 - Computer Systems
 
-(Revised 2020/03/07; [2020/01 Version](./index-v1.md))
+(Revised 2020/03/07; [2020/01 Version](./index-v1.html))
 
 Spring 2020
 
