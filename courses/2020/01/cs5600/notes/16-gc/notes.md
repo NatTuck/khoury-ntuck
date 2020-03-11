@@ -8,7 +8,18 @@ layout: default
 
  - HW08 Questions?
  
-## Updated schedule
+## Online Teaching
+
+Apparently we're moving online starting tomorrow.
+
+Full details will be posted to piazza, but the general idea
+is:
+
+ - Lectures will be videos and/or livestreams.
+ - Office hours and some lecture discussion will occur - at
+   least initially - using Microsoft Teams.
+
+## Updated Schedule
 
  - After this week, there are five weeks left in the semester.
  - The updated schedule is posted on the course site.
@@ -222,7 +233,75 @@ java -XX:+UseParNewGC -jar Application.java
 
 ## Erlang GC
 
- ...
+Erlang does a couple of really neat things with memory
+management.
+
+The language and it's programs have a couple of interesting
+properties that matter here:
+
+ - It's a functional language, so data can't be modified
+   after it's created.
+ - That lack of mutability means there's no way to
+   distinguish between a reference to an object and a copy
+   of an object.
+ - Erlang programs are made up of many small "processes".
+   These are lighter weight than threads, execute logically
+   concurrently, and logically don't share memory.
+ - Communication in Erlang is done by message passing, and
+   logically messages are copied from the sending process to
+   the recieving process.
+
+Since memory for each process is separate, Erlang gives each
+process its own garbage collected heap. This garbage
+collector is a reasonably simple copying / generational
+collector. There are three spaces: From, To, and Old.
+
+Erlang does it's garbage collection sequentially within each
+process. Concurrency and parallelism comes from having many
+processes.
+
+Garbage collection in Erlang is really fast and tends to
+have small pauses. This is for two reasons:
+
+ - Since each process has a separate stack, stacks tend to
+   be small. This makes the GC process fast and means that
+   GC in one process doesn't need to delay work in another
+   process.
+ - Some processes are very short lived. They may never need
+   to garbage collect at all - instead the whole heap can be
+   freed when the process terminates.
+
+More memory management optimizations:
+
+ - Copying large objects between heaps sounds expensive, so
+   Erlang doesn't actually do it.
+ - Large objects are allocated to a separate global heap,
+   are shared between processes, and are tracked using
+   refcounting.
+ - That does require some extra work to decrement refcounts
+   when dropping a whole heap, but they do that.
+
+We'll talk a bit more about Erlang later. They built an
+archetecture in the late 80's that happens to solve a lot of
+today's problems 
+
+## C/C++ - Boehm-Demers-Weiser collector
+
+As we're exploring in HW09, you can write C and C++ with a
+garbage collector.
+
+The common library for this is called "libgc", and provides
+a conservative, parallel, incremental collector for C++.
+
+The idea of incremental collection is to only run the GC for
+a little while until you have freed enough memory to keep
+going with the hope of minimizing GC pauses.
+
+
+# Overflow
+
+http://ccs.neu.edu/home/ntuck/courses/2015/01/cs5600/slides/12_Auth_and_Access.pptx
+
 
 ## Links
 

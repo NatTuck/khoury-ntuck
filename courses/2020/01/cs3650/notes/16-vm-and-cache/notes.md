@@ -75,6 +75,27 @@ Solution:
    from 400% to 0.7%
  - This cache is called the Translation Lookaside Buffer. Every core has one.
 
+## TLB Example
+
+```
+int* xs = // two pages of stuff;
+int sum = 0;
+for (int ii = 0; ii < 2048; ++ii) {
+    sum += xs[iii];
+}
+```
+
+Without TLB, with four level table:
+
+ 2048 * 5 = 10k
+
+With TLB, with four level table:
+
+ 2048 + 2\*4 = 2056
+
+ - Two pages, so two TLB misses, so we traverse the table twice.
+ - Other 2046 translations handled from the TLB.
+
 ## Context Switches
 
  - Consider a one-core processor running two processes.
