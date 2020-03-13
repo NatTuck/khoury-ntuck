@@ -2,5 +2,6 @@ _site
 .sass-cache
 .*.swp
 *~
+*.~
 .#*
 .jekyll-cache/

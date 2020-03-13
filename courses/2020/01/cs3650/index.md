@@ -24,6 +24,8 @@ deadlock, memory management, file systems, and input/output control.
    that may have happened in lecture.
  - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in
    class.
+ - [Online Lectures](./lectures) - This is where you can find the lectures after
+   the course moved online.
 
 ## AMD64 ASM resources
 
