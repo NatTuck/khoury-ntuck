@@ -33,6 +33,8 @@ proficient at programming.
    that may have happened in lecture.
  - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in
    class.
+ - [Online Lectures](./lectures) - Now that we're online, lectures will be
+   posted here.
 
 ## References
 
