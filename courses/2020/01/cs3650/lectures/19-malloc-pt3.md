@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Lecture #18: Allocators Part 2
+# Lecture #19: Allocators Part 3
 
 ## Core Lecture Content
 
@@ -24,4 +24,4 @@ review this content when convenient.
  
 ### Additional Info
 
- - Garbage Collectors (maybe; check again tomorrow)
+ - [Garbage Collectors](https://youtu.be/XNAY2aqOhVU)
