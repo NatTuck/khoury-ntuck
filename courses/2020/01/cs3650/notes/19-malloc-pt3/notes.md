@@ -20,5 +20,9 @@ layout: default
 ## Shared for 3650 / 5600
 
  - Four lectures on disks / filesystems
+   - Disks; RAID
+   - Cristo's Slides; stop before LFS
+   - ext review; FUSE
+   - Modern Filesystems; LFS -> ZFS -> BTRFS
  - Concurrency solutions lecture 
  - Wrap Up lecture
