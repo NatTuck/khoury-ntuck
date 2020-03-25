@@ -54,7 +54,7 @@ section of the course. His section will vary somewhat in assignments and topics.
 | Nat Tuck        | NI 132 E | We 1:30-2:30pm; Fr 5:30-6:30pm | ntuck ⚓ ccs.neu.edu             |
 |-----------------|----------|--------------------------|---------------------------------|
 | Kaylin Devchand | HS 118   | Mo 6-8pm                 | devchand.k ⚓ husky.neu.edu |
-| Alec Ge         | RY 153   | Su 10am-noon             | ge.a ⚓ husky.neu.edu |
+| Alec Ge         | RY 153   | Su 1-3pm                 | ge.a ⚓ husky.neu.edu |
 | Sneh Gurdasani  | SL 009   | Mo 11am-1pm              | gurdasani.s ⚓ husky.neu.edu |
 | Madhur Jain**   | RY 154*  | Sa 10am-noon             | jain.madh ⚓ husky.neu.edu |
 
