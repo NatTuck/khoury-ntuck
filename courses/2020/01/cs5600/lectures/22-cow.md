@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Lecture #21: FS Homework and FUSE
+# Lecture #22: Copy on Write
 
 ## Core Lecture Content
 
