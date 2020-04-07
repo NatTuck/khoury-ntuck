@@ -19,12 +19,12 @@ This material is also part of this lecture, but not essential for the Q&A. Pleas
 review this content when convenient.
 
 There's a good set of lectures on distributed systems posted online at
-http://www.distributedsystemscourse.com/
+[http://www.distributedsystemscourse.com/](http://www.distributedsystemscourse.com/)
 
 The videos are about 10 minutes each. The following two videos give an overview
 and more detail on an example (and interesting) topic in distributed systems, so
 they are the secondary lecture content for today:
 
- - What is a Distributed System? https://www.youtube.com/watch?v=7VbL89mKK3M
- - CAP Theorem: https://www.youtube.com/watch?v=k-Yaq8AHlFA
+ - [What is a Distributed System?](https://www.youtube.com/watch?v=7VbL89mKK3M)
+ - [CAP Theorem](https://www.youtube.com/watch?v=k-Yaq8AHlFA)
 
