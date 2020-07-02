@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Lecture #19: Allocators Part 3
+# Lecture #20: OS Kernel
 
 ## Core Lecture Content
 
