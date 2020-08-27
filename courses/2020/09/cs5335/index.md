@@ -6,6 +6,8 @@ layout: default
 
 Fall 2020
 
+**This is an EARLY draft. Information subject to change.**
+
 The course catalog says:
 
 Introduces autonomous mobile robots with a focus on algorithms and software
@@ -24,102 +26,120 @@ the course with a selected topic in the current robotics research literature.
  - [Piazza](https://piazza.com/northeastern/fall2020/cs4610cs5335) - Class discussion & announcements.
  - [scratch](https://github.com/NatTuck/scratch-2020-09) - A git repo of stuff
    that may have happened in lecture.
+ - Check Canvas for Microsoft Teams link.
  - [Nat's Notes](https://www.ntuck-neu.site/2020-09/cs5335/notes/) - Probably
-   confusing, but includes most code shown in class.
+   confusing, but includes most material shown in class.
  - [Online Lectures](https://www.ntuck-neu.site/2020-09/cs5335/lectures/)
 
 ## Sections
 
 {: .table .table-striped }
-| Section | Location | Time               |
-|---------|----------|--------------------|
-| 4610-01 | ...      | ...                |
-| 5335-01 | ...      | ...                |
+| Section | Location | Time                                |
+|---------|----------|--------------------                 |
+| 4610-01 | RB 109   | Tu 11:45am-1:25pm; Th 2:50pm-4:30pm |
+| 5335-01 | RB 109   | Tu 11:45am-1:25pm; Th 2:50pm-4:30pm |
 
 
 ## Staff & Office Hours
 
 {: .table .table-striped }
-| Name           | Location | Hours                          | Email                   |
-|----------------|----------|--------------------------------|-------------------------|
-| Nat Tuck       | NI 132 E | We 1:30-2:30pm; Fr 5:30-6:30pm | ntuck ⚓ ccs.neu.edu     |
-|----------------|----------|--------------------------------|-------------------------|
-| Kashif Bagdadi | RY 159   | We 4:50-6:50pm                 | bagdadi.k ⚓ husky.neu.edu |
-| Harman Singh   | HS 101   | Th 3-5pm                    | singh.harm ⚓ husky.neu.edu |
-| Meesam Syed    | HS 103   | Tu 9-11am                     | meesam.s ⚓ husky.neu.edu |
+| Name            | Location | Hours                    | Email                           |
+|-----------------|----------|--------------------------|---------------------------------|
+| Nat Tuck        | TBA      | TBA                      | ntuck ⚓ ccs.neu.edu             |
+| More TBA        | ...      | ...                      | ...                             |
 
- * Office hours run from the beginning of classes to the end of finals week.
+ * Office hours run from September 14th to Dec 16th.
  * Cancellations and changes may be posted to Piazza.
 
 ## Schedule
 
-...
+(DRAFT!)
+
+Assignments will frequently be due at 11:59pm on Thursday.
+
+{: .table .table-striped }
+|Week| Starts    | Topics                               | Work Due  |
+|----| --------  | --------                             | --------- |
+| 1  | Sep 7  (α)| Intro; Sim Demo                      | -         |
+| 2  | Sep 14    | Gazebo Simulator; Reactive Control   | HW1: Hello Sim |
+| 3  | Sep 21    | Kerbal Space Program; Kerboscript    | HW2: Hello Rocket |
+| 4  | Sep 28    |                                      | HW3: Launching |
+| 5  | Oct 5     | ...                                  | HW4: Landing |
+| 6  | Oct 12    | ...                                  | HW5: Planning |
+| 7  | Oct 19    | ...             | HW6: Sim - Wall Follow |
+| 8  | Oct 26    | ...             | HW7: Robot - Wall Follow |
+| 9  | Nov 2     | ...             | HW8: Sim - Maze |
+| 10 | Nov 9     | ...             | HW9: Robot - Maze |
+| 11 | Nov 16    | Ethics          | ... |
+| 12 | Nov 23 (β)|                 | ... |
+| 13 | Nov 30    | Presentations   | Final Project Due Monday |
+| 14 | Dec 7  (γ)| Wrap-Up         | ... |
+
+FIXME: Preproject? Two assignments? Points?
+
+
+ * α. First class Thursday
+ * β. No class Thursday: Thanksgiving Vacation
+ * γ. Last class Tuesday
 
 ## Required Materials
 
- - Kerbal Space Program
+(DRAFT, don't buy anything)
+
+ - Kerbal Space Program on Steam
  - A Robot Kit
 
-## Assignments and Grading
+## Tasks and Grading
 
-This course will be broken up into three chapters and a final project.
+ - Completing tasks gets you points.
+ - Each task is worth some number of points.
+ - Some tasks are extra credit, which don't count towards the total number of
+   points offered.
 
-The three chapters will be:
+Final grades:
 
- - 1. Simulated Robot
- - 2. Robot Kit
- - 3. Robot in Space
-
-Each chapter will involve three assignments. 
-
- - Setup (10pts) - Get your dev environment set up and do something simple. This
-   will be graded all or nothing.
- - Practice (2 pt) - Complete some assigned tasks. Mediocre submissions will earn only 1 pt.
- - Explore (2 pt) - Explore the robot setup for the chapter. Mediocre
-   submissions will earn only 1 pt.
-
-The final project will involve some more complex task involving one of the robot
-setups from the three chapters.
-
- - Submitting an acceptable final project is worth 2 points.
- - Having the course staff think it's excellent is worth +1 point.
- - Being in the top half of the class as rated by your fellow students is worth +1 point.
-
-| Min Points | Letter Grade |
-|------------|--------------|
-| 0          | F            |
-| 30         | D            |
-| 34         | C            |
-| 37         | B-           |
-| 39         | B            | 
-| 41         | B+           |
-| 43         | A-           |
-| 45         | A            |
-
+ - If you get all the regular points, you get an A.
+ - Every two points missed reduces your grade by one level (A, A-, B+, B, B-, C, D, F)
 
 To be clear:
 
  - If you don't submit anything, you get no points.
  - If it doesn't work, you get no points.
- - If it's not excellent, you get minimum points.
+ - If it's not excellent, you lose a point.
+
+## Tasks
+
+(DRAFT, don't buy anything)
+
+ - Homeworks: 3-4 of them, 10 points each
+ - Small Projects: 2-3 of them, 2 points each
+ - Final Project:
+   - Proposal, 2 points
+   - Functionality, 4 points
+   - Presentation, 2 points
 
 ### Late Work
 
 Work submitted late is worth one point less.
 
+Work submitted more than 48 hours late, or submitted late on or after December
+1st, will not be accepted for credit.
+
 **Late Registration**
 
-If you register for this class late please submit any outstanding assignments as
-quickly as possible.
+If you register late for the course please contact the professor for extended
+homework due dates as soon as possible. In general you will be expected to
+complete all of your assignments in order, and you will recieve an extension on
+at most one assignment due after your registration date.
 
-To be excused from any late penalty for work submitted more than a week after
-you registered for the class, you *must* get written approval to submit late
-from the instructor. That approval should be requested within a week of your
-registration date.
+Late submissions will be penalized per the normal policy without an explicit
+written extension from the instructor.
 
 ### Participation
 
-FIXME: Participation;  point?
+ - Participating on Piazza and Teams is a task worth two points.
+ - Excellent participation means asking good questions, providing good answers,
+   and actively participating in discussion in the Teams General channel.
 
 ## Policies
 

@@ -6,6 +6,8 @@ layout: default
 
 Fall 2020
 
+**This is draft. Information subject to change.**
+
 Introduces the basic design of computing systems, computer operating systems,
 and assembly language using a RISC architecture. Describes caches and virtual
 memory. Covers the interface between assembly language and high-level
@@ -19,11 +21,12 @@ deadlock, memory management, file systems, and input/output control.
 
  - [Inkfish](https://inkfish.ccs.neu.edu) - View and submit homework assignments.
  - [Piazza](https://piazza.com/northeastern/fall2020/cs3650) - Class discussion and annoucements.
+ - Check Canvas for Microsoft Teams link.
  - [Linux / Unix Help](http://www.ccs.neu.edu/course/cs3650/parent/help/)
  - [scratch](https://github.com/NatTuck/scratch-2020-09) - A git repo of stuff
    that may have happened in lecture.
- - [Nat's Notes](./notes) - Probably confusing, but includes most code shown in
-   class.
+ - [Nat's Notes](https://www.ntuck-neu.site/2020-09/cs3650/notes/) - Probably
+   confusing, but includes most material shown in class.
  - [Online Lectures](https://www.ntuck-neu.site/2020-09/cs3650/lectures/)
 
 ## AMD64 ASM resources
@@ -164,9 +167,12 @@ either direction.
 
 ### Homework and Challenges
 
-There's a homework or challenge assignment due nearly every week. Assignments in
-this class is difficult and you are *expected* to get stuck. Start early so you
-have time to get unstuck.
+There's a homework or challenge assignment due nearly every week. These
+assignments will be posted and submitted on Inkfish - make sure to check there
+for accurate assignment info and due dates.
+
+Assignments in this class is difficult and you are *expected* to get stuck.
+Start early so you have time to get unstuck.
 
 Challenges are just like homework, except they're harder, worth more points, and
 they are graded more harshly. You'll want to start early and plan to spend a
@@ -193,6 +199,9 @@ If you register late for the course please contact the professor for extended
 homework due dates as soon as possible. In general you will be expected to
 complete all of your assignments in order, and you will recieve an extension on
 at most one assignment due after your registration date.
+
+Late submissions will be penalized per the normal policy without an explicit
+written extension from the instructor.
 
 ## Policies
 
