@@ -37,56 +37,85 @@ deadlock, memory management, file systems, and input/output control.
 ## Sections
 
 {: .table .table-striped }
-| Section | Location | Time                |
-|---------|----------|---------------------|
-|      02 | SH 105   | 1:35pm-3:15pm Tu/Fr |
-|      03 | INV 019  | 3:25pm-5:05pm Tu/Fr |
+| Section | Location | Time                 |
+|---------|----------|----------------------|
+|      01 | SH 425   | 11:45am-1:25pm Mo/Th |
+|      03 | SH 335   | 2:50pm-4:30pm Mo/We  |
 
-[Prof Alden Jackson](https://course.ccs.neu.edu/cs3650sp20/) is also offering a
-section of the course. His section will vary somewhat in assignments and topics.
+Profs Alden Jackson and Gene Cooperman are also offering sections of the course.
+These sections will vary somewhat in assignments and topics.
 
 ## Staff & Office Hours
 
 {: .table .table-striped }
 | Name            | Location | Hours                    | Email                           |
 |-----------------|----------|--------------------------|---------------------------------|
-| Nat Tuck        | NI 132 E | We 1:30-2:30pm; Fr 5:30-6:30pm | ntuck ⚓ ccs.neu.edu             |
-|-----------------|----------|--------------------------|---------------------------------|
-| Kaylin Devchand | HS 118   | Mo 6-8pm                 | devchand.k ⚓ husky.neu.edu |
-| Alec Ge         | RY 153   | Su 1-3pm                 | ge.a ⚓ husky.neu.edu |
-| Sneh Gurdasani  | SL 009   | Mo 11am-1pm              | gurdasani.s ⚓ husky.neu.edu |
-| Madhur Jain**   | RY 154*  | Sa 10am-noon             | jain.madh ⚓ husky.neu.edu |
+| Nat Tuck        | TBA      | TBA                      | ntuck ⚓ ccs.neu.edu             |
+| More TBA        | ...      | ...                      | ...                             |
 
- * (*) RY154 not available on March 14. Alternate location will be announced
-   on Piazza.
- * (**) Madhur Jain's office hours don't start until January 18.
- * Office hours run from January 8 to April 14.
+ * Office hours run from September 14th to Dec 16th.
  * Cancellations and changes may be posted to Piazza.
+
+## Pandemic Adaptations / Policies
+
+Due to the ongoing pandemic, we'll be using an altered course structure this
+semester as well as following the Northeastern policies.
+
+Course structure changes:
+
+ * Primary lecture content will be provided as pre-recorded videos at the
+   beginning of each week.
+ * Our scheduled in person meetings are optional, and will consist of live demos
+   of material related to the week's lecture topic as well as live Q&A.
+ * In person meetings may end early if we run out of questions.
+ * Each student will be expected to attend at most one in person meeting per week.
+ * It may be possible to view the in person meetings and ask questions remotely
+   live using video chat software, but they will not be recorded due to privacy
+   concerns.
+ * There will not be scheduled in-person office hours. Instead there will be
+   online office hours only.
+
+Make sure you are familar with the [university
+policies](https://news.northeastern.edu/coronavirus/) for being on campus and
+attending classes during the COVID-19 pandemic.
+
+Specifically, keep in mind the following for our in-person meetings:
+
+ * Everyone is expected to wear a mask.
+ * Everyone is expected to maintain six foot social distancing.
+ * Keeping masks on means no food in class.
+ * Maintaining six foot distancing will mean that entering and leaving the
+   classroom takes extra time. Make sure to arrive on time.
 
 ## Schedule
 
 This is an initial schedule, subject to revision as the semester progresses.
 
-Assignments will frequently be due at 11:59pm on Tuesday.
+Assignments will frequently be due at 11:59pm on Monday.
 
 {: .table .table-striped }
-|Week| Starts   | Topics                                                 | Work Due                         |
-|----| -------- | --------                                               | ---------+                       |
-|  1 | Jan 6    | Intro: Systems; Intro: Assembly                        | -                                |
-|  2 | Jan 13   | ASM: "Design Recipe"; Large ASM Example;               | HW01: Linux Setup & Hello Worlds |
-|  3 | Jan 20   | ASM: Syscalls, I/O, the heap; Processes & Memory       | HW02: ASM, Pointers, Funs        |
-|  4 | Jan 27   | C: Arrays & Pointers; C: Data Structures;              | HW03: ASM Sort                   |
-|  5 | Feb 3    | A Simple Tokenizer; Syscalls: fork, exec, waitpid;     | HW04: C Data Structures          |
-|  6 | Feb 10   | Building a Shell & pipe; read, write, proc table, vmem;| HW05: Shell Tokenizer            |
-|  7 | Feb 17   | shared mem & data races; semaphore locks & deadlock;   | CH1: Unix Shell                  |
-|  8 | Feb 24   | threads and mutexes; cond vars and atomics             | HW06: Parallel Sort (Processes)  |
-|  - | Mar 2    | Spring Break                                           | -                                |
-|  9 | Mar 9    | malloc: free lists;  malloc: optimizations & threads;  | HW07: Parallel Sort (Threads)    |
-| 10 | Mar 16   | Garbage Collection; OS Kernels                         | HW08: Simple Memory Allocator  |
-| 11 | Mar 23   | Looking at xv6; Disk Hardware                          | CH2: Advanced Memory Allocator   |
-| 12 | Mar 30   | File Systems: FAT; File Systems: ext                   | HW09: Examining xv6              |
-| 13 | Apr 6    | The FUSE API;  Concurrency solutions                   | HW10: Simple FS                  |
-| 14 | Apr 13   | Wrap Up; Last class Tuesday                            | CH3: Advanced FS                 |
+|Week| Starts     | Topics                                                 | Work Due  |
+|----| --------   | --------                                               | -----     |
+|  1 | Sep 07 (α) | Intro: Systems & Assembly                              | -         |
+|  2 | Sep 14     | ASM: "Design Recipe"; Large ASM Example;               | HW01: Linux Setup & Hello Worlds |
+|  3 | Sep 21     | ASM: Syscalls, I/O, the heap; Processes & Memory       | HW02: ASM, Pointers, Funs    |
+|  4 | Sep 28     | C: Arrays & Pointers; C: Data Structures;              | HW03: ASM Sort              |
+|  5 | Oct 05     | A Simple Tokenizer; Syscalls: fork, exec, waitpid;     | HW04: C Data Structures        |
+|  6 | Oct 12 (β) | Building a Shell & pipe; read, write, proc table, vmem;| HW05: Shell Tokenizer         |
+|  7 | Oct 19     | shared mem & data races; semaphore locks & deadlock;   | CH1: Unix Shell             |
+|  8 | Oct 26     | threads and mutexes; cond vars and atomics             | HW06: Parallel Sort (Processes)  |
+|  9 | Nov 02     | malloc: free lists;  malloc: optimizations & threads;  | HW07: Parallel Sort (Threads)    |
+| 10 | Nov 09 (γ) | Garbage Collection; OS Kernels                         | HW08: Simple Memory Allocator  |
+| 11 | Nov 16     | Looking at xv6; Disk Hardware                          | CH2: Advanced Memory Allocator  |
+| 12 | Nov 23 (δ) | File Systems: FAT; File Systems: ext                   | HW09: Examining xv6     |
+| 13 | Nov 30     | The FUSE API;  Concurrency solutions                   | HW10: Simple FS                |
+| 14 | Dec 07 (ε) | Wrap Up; Last class Monday                             | CH3: Advanced FS                |
+
+ * (α) No meeting Monday: First week
+ * (β) No meeting Monday: Colombus day
+ * (γ) No meeting Wednesday/Thursday: Veterans' Day
+ * (δ) No meeting Wednesday/Thursday: Thanksgiving
+ * (ε) No meeting Wednesday/Thursday: Last Week
 
 ## Textbook
 
@@ -156,12 +185,14 @@ For all assignments except the last challenge, late submissions will be
 penalized by 1% for each hour late.
 
 For the final assignment, late submissions will not be accepted after the sun
-comes up and the TAs start grading.
+comes up in Boston and the TAs start grading.
 
 **Late Registration**
 
-If you register for the course late, you will have three days to complete each
-assignment until you are caught up with the rest of the class.
+If you register late for the course please contact the professor for extended
+homework due dates as soon as possible. In general you will be expected to
+complete all of your assignments in order, and you will recieve an extension on
+at most one assignment due after your registration date.
 
 ## Policies
 
